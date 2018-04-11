@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- 个人信息认证 -->
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width">
+	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+	<title>个人信息认证</title>
+	<link rel="stylesheet" type="text/css" href="../../css/aui.css">
+	<link rel="stylesheet" type="text/css" href="../../css/aui-extends.css">
+</head>
+
+<body class="archive background-write">
+	<section class="aui-content id-card-wrap padding-horizontal-30">
+		<div class="aui-row border-top-dashed-1 padding-top-30">
+			<div class="aui-col-xs-12">
+				<p class="archive-note aui-text-center text-gray font-size-25">请提交身份证信息，仅用于揽钱审核</p>
+			</div>
+		</div>
+		<div class="aui-row archive-image-group">
+			<div class="aui-col-xs-4">
+				<img class="archive-image" src="../../image/IDcard-back.png" id="ID-front" onclick="javascript: getArchive();">
+				<p class="aui-text-center archive-image-tip font-size-26">身份证人像面</p>
+			</div>
+			<div class="aui-col-xs-4">
+				<img class="archive-image" src="../../image/IDcard-front.png" id="ID-back" onclick="javascript: getArchive();">
+				<p class="aui-text-center archive-image-tip font-size-26">身份证国徽面</p>
+			</div>
+			<div class="aui-col-xs-4">
+				<img class="archive-image" src="../../image/facial-recognition.png" id="photo-living" onclick="javascript: getArchive();">
+				<p class="aui-text-center archive-image-tip font-size-26">人脸识别</p>
+			</div>
+		</div>
+	</section>
+	<section class="aui-content archive-detail padding-horizontal-30">
+		<div class="aui-row border-top-dashed-1">
+			<div class="aui-col-xs-12 archive-detail-title text-black">身份证信息</div>
+		</div>
+		<div class="aui-row">
+			<div class="aui-col-xs-12 detail-group padding-horizontal-15">
+				<div class="detail-name aui-pull-left aui-text-left text-gray">姓名</div>
+				<div class="detail-content aui-pull-right aui-text-right text-black" id="ID-name"></div>
+			</div>
+			<div class="aui-col-xs-12 detail-group padding-horizontal-15 margin-top-21">
+				<div class="detail-name aui-pull-left aui-text-left text-gray">身份证号</div>
+				<div class="detail-content aui-pull-right aui-text-right text-black" id="ID-number"></div>
+			</div>
+			<div class="aui-col-xs-12 detail-group padding-horizontal-15 margin-top-21">
+				<div class="detail-name aui-pull-left aui-text-left text-gray">有效期</div>
+				<div class="detail-content aui-pull-right aui-text-right text-black" id="ID-validity-term"></div>
+			</div>
+		</div>
+	</section>
+	<button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" disabled="disabled" id="submit-btn"
+	  onclick="javascript: submit();">立即提交</button>
+	<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+
+	<script type="text/javascript">
+		var archive = null;
+		var User = null;
+
+		function getArchive() {
+			if (checkNetwork() && checkLogin()) {
+				openAutoRecognizer();
+			}
+		}
+
+		function openAutoRecognizer() {
+			var udcreditRecognizer = api.require('udcreditRecognizer');
+			User = $api.getStorage('User');
+			udcreditRecognizer.simpleFaceAuthentication({
+					authKey: 'e1cf6813-3e90-4562-ad47-7223718e6c8e',
+					outOrderId: User.Phone + '-' + api.deviceId + '-' + new Date().getTime()
+				},
+				function (ret, err) {
+					console.log(JSON.stringify(ret));
+					console.log(JSON.stringify(err));
+					if (ret.ret_code + '' == '000000') {
+						archive = ret;
+						$api.removeAttr('ID-front', 'onclick');
+						$api.removeAttr('ID-back', 'onclick');
+						$api.removeAttr('facial-recognition', 'onclick');
+						$api.removeAttr('submit-btn', 'disabled');
+						$api.attr('ID-front', 'src', ret.url_frontcard);
+						$api.attr('ID-back', 'src', ret.url_backcard);
+						$api.attr('photo-living', 'src', ret.url_photoliving);
+						$api.text('ID-name', ret.id_name);
+						$api.text('ID-number', ret.id_no);
+						$api.text('ID-validity-term', ret.start_card);
+						$api.removeCls('submit-btn', 'disabled');
+						$api.removeAttr('submit-btn', 'disabled');
+						User = $api.getStorage('User');
+						User.Archive.Name = ret.id_name;
+						User.Archive.Id = ret.id_no;
+						$api.setStorage('User', User);
+					}
+					if (err) {}
+				}
+			);
+		}
+
+		function submit() {
+			if (checkNetwork() && checkLogin()) {
+				checkFormat({
+					data: {
+						url: [archive.url_frontcard, archive.url_backcard, archive.url_photoliving],
+						id: archive.id_no,
+						name: archive.id_name,
+						sex: archive.flag_sex
+					},
+					success: function () {
+						User = $api.getStorage('User');
+						sendRequest({
+							url: 'ShenFenXinXin',
+							values: {
+								deviceId: api.deviceId,
+								phone: User.Phone,
+								name: archive.id_name,
+								identityCard: archive.id_no,
+								sex: archive.flag_sex,
+								identityCard_front: archive.url_frontcard,
+								identityCard_back: archive.url_backcard,
+								living_photo: archive.url_photoliving
+							},
+							showMessage: true,
+							success: function () {
+								User = $api.getStorage('User');
+								User.Archive.Name = archive.id_name;
+								User.Archive.Id = archive.id_no;
+								User.Step[0] = true;
+								$api.setStorage('User', User);
+								changeStep();
+							}
+						});
+					},
+					fail: function () {
+						alertMsg('个人信息认证失败，请重试');
+					}
+				});
+			}
+		}
+	</script>
+</body>
+
+</html>

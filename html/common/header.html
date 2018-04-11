@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- 头部 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <meta name="author" content="潘剑">
+    <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+    <title>头部</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../../css/aui-extends.css">
+    <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
+  </head>
+  <body>
+    <header class="header-wrap relative" id="header-wrap">
+      <div class="title aui-text-center font-size-35" id="title"></div>
+      <div class="absolute left-addon font-size-30" onclick="javascript: closeFormwork();">
+        <i class="iconfont icon-zuojiantou font-size-45"></i><span id="back-text">返回</span>
+      </div>
+    </header>
+    <script type="text/javascript" charset="utf-8" src="../../script/global-method.js"></script>
+    <script type="text/javascript">
+    var goal = null;
+    apiready = function () {
+       //  setHeader ();
+    }
+
+    function setHeader () {
+      var headerStyle = api.pageParam.style;
+      $api.text('title', headerStyle.title);
+      var textMark = $api.hasCls('back-text', 'aui-hide');
+      if (headerStyle.leftTextShow && textMark) {
+        $api.removeCls('back-text', 'aui-hide');
+      }
+      else if (!(headerStyle.leftTextShow || textMark)) {
+        $api.addCls('back-text', 'aui-hide');
+      }
+      if (headerStyle.bgColor){
+        $api.css('header-wrap','background-color: ' + headerStyle.bgColor + ' !important;');
+      }
+      if (headerStyle.textColor){
+        $api.css('header-wrap','color: ' + headerStyle.textColor + ' !important;');
+      }
+    }
+  </script>
+  </body>
+</html>

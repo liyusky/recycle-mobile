@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!-- 页面模板 -->
+<html class="background-transparent">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <meta name="author" content="潘剑">
+  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+  <title>页面模板</title>
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../css/aui-extends.css">
+  <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
+</head>
+
+<body class="background-transparent">
+  <script type="text/javascript" charset="utf-8" src="../../script/route.js"></script>
+  <script type="text/javascript">
+    var Layout = $api.getStorage('Layout');
+    var pageParam = null;
+    apiready = function () {
+      loadModulePage(api.pageParam.goal);
+      setListener();
+    }
+
+    function loadModulePage (goal) {
+      setParam(goal);
+      switch (Route[goal].type) {
+        case 'Cover':
+          openFrame(goal);
+          break;
+        case 'Certification':
+          openFrame('renzheng-header');
+          openFrame(goal);
+          break;
+        case 'Default':
+          openFrame('header');
+          openFrame(goal);
+          break;
+        case 'Selector':
+          openFrame(goal);
+          break;
+        case 'Tip':
+          openFrame(goal);
+          break;
+      }
+    }
+
+    function openFrame (goal) {
+      var top = null;
+      var height = null;
+      var animationType = 'none';
+      var animationDirection = 'push';
+      switch (Route[goal].type) {
+        case 'Header':
+          top = 0;
+          height = Layout.DefaultHeaderHeight;
+          break;
+        case 'RenzhengHeader':
+          top = 0;
+          height = Layout.CertificationHeaderHeight;
+          break;
+        case 'Default':
+          top = Layout.DefaultHeaderHeight;
+          height = Layout.DefaultContentHeight;
+          pageParam = api.pageParam;
+          // if (api.pageParam.url) pageParam.url = api.pageParam.url;
+          break;
+        case 'Cover':
+          top = 0;
+          height = 'auto'
+          pageParam = api.pageParam;
+          break;
+        case 'Certification':
+          top = Layout.CertificationHeaderHeight;
+          height = Layout.CertificationContentHeight;
+          animationDirection = 'from_right';
+          pageParam = api.pageParam;
+          break;
+        case 'Selector':
+          top = 0;
+          height = 'auto'
+          break;
+        case 'Tip':
+          top = 0;
+          height = 'auto'
+          break;
+      }
+      if (Route[goal].animationType) animationType = Route[goal].animationType;
+      if (Route[goal].animationDirection) animationDirection = Route[goal].animationDirection;
+
+      api.openFrame({
+        name: goal,
+        url: Route[goal].url,
+        bounces: false,
+        hScrollBarEnabled: false,
+        vScrollBarEnabled: false,
+        rect: {
+          x: 0,
+          y: top,
+          w: 'auto',
+          h: height
+        },
+        animation: {
+          type: animationType,
+          subType: animationDirection,
+          duration: 300
+        },
+        pageParam: pageParam
+      });
+    }
+
+    function setParam (goal) {
+      switch (Route[goal].type) {
+        case 'Default':
+          var leftTextShow = true;
+          var bgColor = false;
+          var textColor = false;
+          if (typeof Route[goal].leftTextShow === 'boolean') leftTextShow = Route[goal].leftTextShow;
+          if (Route[goal].bgColor) bgColor = Route[goal].bgColor;
+          if (Route[goal].textColor) textColor = Route[goal].textColor;
+          pageParam = {
+            goal: goal,
+            style: {
+              title: Route[goal].title,
+              leftTextShow: leftTextShow,
+              bgColor: bgColor,
+              textColor: textColor
+            }
+          }
+          if (api.pageParam.title) pageParam.style.title = api.pageParam.title;
+          break;
+        case 'Cover':
+          pageParam = {goal: goal};
+          break;
+        case 'Certification':
+          pageParam = {step: Route[goal].step};
+          break;
+      }
+    }
+
+    function setListener () {
+      api.addEventListener(
+        {name: 'ChangeStep'},
+        function (ret, err) {
+          if (ret) {
+            if (ret.value.step < 4) {
+              openFrame(ret.value.goal);
+            }
+          }
+        }
+      );
+      api.addEventListener(
+        {name: 'OpenFrame'},
+        function (ret, err) {
+          if (ret){
+            switch (Route[ret.value.goal].type) {
+              case 'Selector':
+                pageParam = ret.value.pageParam;
+                break;
+            }
+            loadModulePage(ret.value.goal);
+          }
+        }
+      );
+      api.addEventListener(
+        {name: 'CloseFrame'},
+        function (ret, err) {
+          if (ret) {
+            api.closeFrame({name: ret.value.goal});
+          }
+        }
+      );
+      api.addEventListener(
+        {name: 'BindBankCard'},
+        function (ret, err) {
+          if (ret) openFrame('yinhangka');
+        }
+      );
+    }
+</script>
+</body>
+
+</html>
