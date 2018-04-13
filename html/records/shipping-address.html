@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+  />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+  <title>收货地址</title>
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../css/records/shipping-address.css">
+</head>
+
+<body>
+  <header class="header">
+    <img src="./img/back.png" class="back">
+    <p class="header-title">我的收货地址</p>
+    <span class="compile">编辑</span>
+  </header>
+  <div class="content">
+    <ul class="address-list" id="list">
+      <li>
+        <div class="box">
+          <p class="name">张三丰</p>
+          <p class="phone">
+            <span id="phone-head">185</span>
+            <span>****</span>
+            <span id="phone-tail">9898</span>
+          </p>
+          <p class="address">浙江省杭州市西湖区一秀小区2幢4单元202室</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    apiready = function () {
+    
+    }
+
+    function init() {
+      if (checkNet() && checkLogin()) {
+        request({
+          url: 'xxxxx',
+          values: {},
+          success: function () {
+            render();
+          },
+          default: function () {}
+        });
+      }
+    }
+
+    function render(data) {
+      var htmlStr = '';
+      for (var i = 0; i < data.length; i++) {
+        htmlStr += setHtml(data[i]);
+      }
+      $api.html('list', htmlStr);
+    }
+
+    function setHtml(data) {
+      return htmlStr = '<li data-id="' + data.id + '">' +
+        '<div class="box">' +
+          '<p class="name">' + data.name + '</p>' +
+          '<p class="phone">' +
+            '<span id="phone-head">' + data.substr(0, 3) + '</span>'
+            '<span>****</span>' +
+            '<span id="phone-tail">' + data.substr(-4) + '</span>' +
+          '</p>' +
+          '<p class="address">' + data.address + '</p>' +
+        '</div>' +
+      '</li>';
+    }
+  </script>
+</body>
+
+</html>

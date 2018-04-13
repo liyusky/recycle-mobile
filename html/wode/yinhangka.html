@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- 我的银行卡  -->
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <script type="text/javascript" charset="utf-8" src="../../../script/global/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../script/global/api.js"></script>
+	<title>我的银行卡</title>
+	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui-extends.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/swiper.min.css">
+	<script type="text/javascript" charset="utf-8" src="../../../iconfont/lanqian/iconfont.js"></script>
+</head>
+
+<body class="yinhangka">
+	<section class="aui-content" id="title">
+		<div class="aui-row">
+			<div class="aui-col-xs-12 title">
+				<p class="font-size-28 padding-left-40 text-black" id="title-message">您还未绑定银行卡，请添加银行卡。</p>
+			</div>
+		</div>
+	</section>
+	<section class="aui-content bank-wrap background-write aui-hide" id="bank-wrap">
+		<ul class="swiper-wrapper" id="swiper-wrapper"></ul>
+	</section>
+	<section class="aui-content padding-horizontal-40 padding-vertical-30 aui-hide" id="note">
+		<div class="aui-row">
+			<div class="aui-col-xs-12 note-wrap font-size-26 text-black">
+				<p>备注：</p>
+				<p>1.借款通过申请后，我们将会将您的所借款项发放到该张银行卡</p>
+				<p>2.未完成借款期间不允许更换银行卡</p>
+				<p>3.我们将根据您提供的身份证信息、银行卡信息在依法设立的第三方征信机构核实您的账户信息。</p>
+			</div>
+		</div>
+	</section>
+	<section class="aui-content aui-text-center margin-top-30">
+		<p>
+			<div class="aui-btn btn-square font-size-35" onclick="javascript: addCard();">添加银行卡</div>
+		</p>
+	</section>
+  <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-property.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-method.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../../../script/lanqian/swiper.min.js"></script>
+	<script type="text/javascript">
+    var User = $api.getStorage('User');
+		apiready = function () {
+      setListener();
+      init();
+		}
+
+    function init () {
+      if (checkNetwork() && checkLogin()) {
+        sendRequest({
+          url: 'GetBankCardList',
+          values: {
+            phone: User.Phone,
+            deviceId: api.deviceId
+          },
+          showMessage: true,
+          success: function (data) {
+            User = $api.getStorage('User');
+            User.Card = formatCard(data);
+            $api.setStorage('User', User);
+            setLayout(User.Card);
+          }
+        });
+      }
+    }
+
+    function setLayout (content) {
+      if (content.length) {
+        var htmlStr = '';
+        for (var i = 0; i < content.length; i++) {
+          htmlStr += setBankCardHTML(content[i]);
+        }
+        $api.addCls('title', 'background-write');
+        $api.text('title-message', '绑定的银行卡将用于收款和还款');
+        $api.html('swiper-wrapper', htmlStr);
+        $api.removeCls('bank-wrap', 'aui-hide');
+        $api.removeCls('note', 'aui-hide');
+        setSwiper();
+      }
+      else {
+        alertMsg('您尚未绑定银行卡！');
+      }
+    }
+
+    function setBankCardHTML (card) {
+      var htmlStr = '<li class="swiper-slide bank-item">' +
+      '<div class="mantissa absolute font-size-35 text-write">' + card.number.substr(-4, 4) + '</div>' +
+      '<div class="bg absolute">' +
+      '<img class="bg-image" src="../../../image/lanqian/card/' + BankList[card.bank] + '.png">' +
+      '</div>' +
+      '</li>';
+      return htmlStr;
+    }
+
+		function addCard () {
+			if (checkNetwork() && checkLogin()) {
+				if (User.Step[1]) {
+          api.sendEvent({
+    				name: 'OpenFrame',
+    				extra: {
+    					goal: 'tianjiayinhangka'
+    				}
+    			});
+				}
+        else {
+					alertMsg('请先完成身份认证');
+				}
+			}
+		}
+
+		function setSwiper () {
+			var swiper = new Swiper('#bank-wrap', {
+				effect: 'coverflow',
+				centeredSlides: true,
+				slidesPerView: 'auto',
+				coverflow: {
+					rotate: 0,
+					stretch: -50,
+					depth: 200,
+					modifier: 1.5,
+					slideShadows: false
+				}
+			});
+		}
+
+    function setListener () {
+      api.addEventListener(
+        {name: 'Refresh'},
+        function (ret, err) {
+          if (ret) {
+            alertMsg("绑定成功");
+            init();
+          }
+        }
+      );
+      api.addEventListener(
+        {name:'online'},
+        function(ret, err){
+          if (ret) init();
+        }
+      );
+    }
+
+    function formatCard (content) {
+      var result = null;
+      var cardList = [];
+      var card = {};
+      for (var i = 0; i < content.length; i++) {
+        var oldCard = content[i];
+        for (var key in oldCard) {
+          switch (key) {
+            case 'KaHao':
+              card.number = oldCard.KaHao;
+              break;
+            case 'KaiHuHang':
+              if (oldCard.KaiHuHang.indexOf('邮政') !== -1) {
+                card.bank = '邮政储蓄银行';
+              }
+              else {
+                card.bank = oldCard.KaiHuHang;
+              }
+              break;
+            case 'BankType':
+              card.type = oldCard.BankType;
+              break;
+          }
+        }
+        cardList.push(card);
+        card = {};
+      }
+      return cardList;
+    }
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+  />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+  <title>回收记录</title>
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
+</head>
+
+<body class="empower background-write">
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    function submit() {
+      request({
+        url: 'xxxxx',
+        values: {
+        },
+        showMessage: '正在发送...',
+        success: function () {
+          kill();
+        },
+        default: function () { }
+      });
+    }
+
+    function render(data) {
+      var htmlStr = '';
+      for (var i = 0; i < data.length; i++) {
+        htmlStr += setHtml(data[i]);
+      }
+    }
+
+    function setHtml(data) {
+      return htmlStr = '';
+    }
+  </script>
+</body>
+
+</html>

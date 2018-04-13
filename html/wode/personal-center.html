@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>个人中心</title>
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../css/wode/personal-center.css">
+</head>
+
+<body>
+  <header>
+    <img src="./img/banner.png" alt="" class="banner">
+    <div class="head-content">
+      <img src="./img/back.png" alt="" class="back">
+      <p class="head-title">个人中心</p>
+      <img src="./img/manage.png" alt="" class="manage">
+    </div>
+    <div class="login-dialog">
+      <img src="./img/personn.png" class="person-img">
+      <a href="javascript:;" class="login" onclick="javascript: create('login');">登陆</a>
+      <a href="javascript:;" class="register" onclick="javascript: create('register');">注册</a>
+    </div>
+  </header>
+  <div class="content">
+    <ul class="list">
+      <li onclick="javascript: create('personal-information');">
+        <img src="./img/data.png" class="icon">
+        <p>我的资料</p>
+        <img src="./img/more.png" alt="" class="more">
+      </li>
+      <li onclick="javascript: create('recycling-records');">
+        <img src="./img/record.png" class="icon">
+        <p>回收记录</p>
+        <img src="./img/more.png" alt="" class="more">
+      </li>
+      <li onclick="javascript: create('yinhangka');">
+        <img src="./img/card.png" class="icon">
+        <p>我的银行卡</p>
+        <img src="./img/more.png" alt="" class="more">
+      </li>
+      <li onclick="javascript: create('shipping-address');">
+        <img src="./img/address.png" class="icon">
+        <p>我的收货地址</p>
+        <img src="./img/more.png" alt="" class="more">
+      </li>
+      <li onclick="javascript: create('personal-information');">
+        <img src="./img/help.png" class="icon">
+        <p>帮助中心</p>
+        <img src="./img/more.png" alt="" class="more">
+      </li>
+      <li onclick="javascript: create('yijianfankui');">
+        <img src="./img/feedback.png" class="icon">
+        <p>意见反馈</p>
+        <img src="./img/more.png" class="more">
+      </li>
+    </ul>
+  </div>
+  <footer>
+    <p class="tel">客服电话: 400-078-8866</p>
+    <p class="time">服务时间:9:00-21:00</p>
+  </footer>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript">
+    var User = $api.getStorage('User');
+    var index = 0;
+    apiready = function () {
+      init();
+    }
+
+    function init() {
+      if (checkNet() && checkLogin()) {}
+    }
+  </script>
+</body>
+
+</html>

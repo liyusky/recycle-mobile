@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+.header {
+  width: 100%;
+  height: 17.2vw;
+  padding-top: 5.6vw;
+  padding-left: 4.8vw;
+  padding-right: 4.8vw;
+  line-height: 11.6vw;
+  font-size: 4.8vw;
+  position: relative;
+}
+
+.header .sign {
+  width: 100%;
+  height: 100%;
+  background: none;
+  position: absolute;
+  padding-top: 5.6vw;
+  padding-left: 4.8vw;
+  padding-right: 4.8vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.header .sign div {
+  width: auto;
+  height: 100%;
+}
+
+.header .title {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+}
+
+.header {
+  background-color: #fff;
+  color: #333333;
+  border-bottom: 1px solid #cbcbcb;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+body {
+  padding-top: 17.2vw;
+}
+
+body {
+  background: #f3f3f3;
+}
+
+header {
+  height: 12vw;
+  background: #fff;
+  line-height: 12vw;
+  text-align: center;
+}
+
+header .back {
+  float: left;
+  margin-top: 3.33333vw;
+  width: 4.66667vw;
+  height: 5.46667vw;
+}
+
+header .header-title {
+  font-size: 4.66667vw;
+}
+
+.content .recycle {
+  width: 92.13333vw;
+  height: 38.4vw;
+  margin: 3.86667vw auto;
+  position: relative;
+}
+
+.content .recycle .message {
+  position: absolute;
+  left: 0;
+  top: 4.4vw;
+  padding-left: 6.8vw;
+  padding-top: 4vw;
+  width: 100%;
+}
+
+.content .recycle .message .phonetype {
+  float: left;
+  font-size: 4.26667vw;
+}
+
+.content .recycle .message a {
+  color: #666;
+  float: right;
+  margin-right: 3.2vw;
+  font-size: 3.46667vw;
+}
+
+.content .recycle .price {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.content .recycle .price ul li {
+  width: 29.33333vw;
+  height: 13.33333vw;
+  float: left;
+  position: relative;
+  text-align: center;
+}
+
+.content .recycle .price ul li .help {
+  position: absolute;
+  width: 4vw;
+  height: 4vw;
+  right: 2.66667vw;
+  top: 0;
+}
+
+.content .recycle .price ul li p {
+  color: #666;
+  font-size: 3.73333vw;
+}
+
+.content .recycle .price ul li span {
+  margin-top: 2.66667vw;
+  font-size: 5.06667vw;
+  display: inline-block;
+}
+
+.status {
+  margin: 9.33333vw auto;
+  width: 100vw;
+  height: 72vw;
+  background: #fff;
+}
+
+.status .list .bodrenone {
+  border-bottom: 0 !important;
+}
+
+.status .list .order-list {
+  width: 87.73333vw;
+  height: 24vw;
+  float: right;
+  background: #fff;
+  border-bottom: 0.33333vw solid #ccc;
+  padding-top: 3.33333vw;
+  color: #666;
+}
+
+.status .list .order-list .mark {
+  color: #333;
+}
+
+.status .list .order-list .currentstatus {
+  font-size: 4vw;
+  line-height: 6.66667vw;
+}
+
+.status .list .order-list .message {
+  font-size: 3.33333vw;
+  line-height: 6.66667vw;
+}
+
+.status .list .order-list .time {
+  padding-bottom: 1.86667vw;
+  font-size: 3.2vw;
+}
+
+.status .schedule {
+  position: relative;
+  top: 5vw;
+}
+
+.status .schedule ul .statusicon {
+  position: relative;
+  z-index: 2;
+  left: 2.4vw;
+  display: inline-block;
+}
+
+.status .schedule ul .statusicon img {
+  height: 6vw;
+  width: 6vw;
+}
+
+.status .schedule ul .connect {
+  height: 17.33333vw;
+}
+
+.status .schedule ul .connect img {
+  width: 0.26667vw;
+  height: 18.93333vw;
+  position: relative;
+  left: 5.46667vw;
+  top: -1vw;
+}

@@ -25,7 +25,7 @@ function checkLogin(params) {
     flag = false;
     if (openLogin) {
       toast('请先登录');
-      open('empower');
+      create('empower');
     }
     try {
       params.fail(flag);
@@ -53,13 +53,15 @@ function checkNet(params) {
   try {
     if (typeof params.openOffline === 'boolean') openOffline = params.openOffline;
   } catch (e) { }
+
   if (api.connectionType !== 'none') {
     try {
       params.success(flag);
     } catch (e) { }
-  } else {
+  }
+  else {
     flag = false;
-    if (openOffline) open('offline');
+    if (openOffline) create('offline');
     try {
       params.fail(flag);
     } catch (e) { }
@@ -68,7 +70,6 @@ function checkNet(params) {
   try {
     params.default(flag);
   } catch (e) { }
-
   return flag;
 }
 function create(data) {
@@ -88,13 +89,13 @@ function create(data) {
   }
   var animationDirection = 'from_right';
   var animationType = 'movein';
-  if (Route[goal].animationDirection) animationDirection = Route[goal].animationDirection;
-  if (Route[goal].animationType) animationType = Route[goal].animationType;
+  if (ROUTER[goal].animationDirection) animationDirection = ROUTER[goal].animationDirection;
+  if (ROUTER[goal].animationType) animationType = ROUTER[goal].animationType;
 
-  alert(Route[goal].path)
+  alert(ROUTER[goal].path)
   api.openWin({
     name: goal,
-    url: Route[goal].path,
+    url: ROUTER[goal].path,
     vScrollBarEnabled: false,
     hScrollBarEnabled: false,
     animation: {
@@ -109,7 +110,7 @@ function kill(goal) {
   goal = goal ? goal : api.pageParam.goal;
   var type = 'reveal';
   var subType = 'from_left';
-  var param = Route ? Route[goal].kill : false;
+  var param = ROUTER ? ROUTER[goal].kill : false;
   if (param) {
     if (param.type) type = param.type;
     if (param.subType) type = param.subType;

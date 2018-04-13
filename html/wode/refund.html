@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+  />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+  <title>退款</title>
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../css/wode/refund.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <img src="./img/back.png" class="back">
+    <p class="header-title">退款</p>
+  </header>
+  <div class="content">
+    <div class="money">
+      <p class="sum">应退金额</p>
+      <span class="price" id="price">800.00</span>
+      <a href="javascript:;" class="explain">
+        <img src="./img/help.png">
+        <span class="explain-text">说明</span>
+      </a>
+    </div>
+    <div class="select">
+      <p>选择退款方式</p>
+    </div>
+    <div class="bank">
+      <ul class="banklist">
+        <li>
+          <div class="pay-type">
+            <img src="./img/chinabank.png" class="chinabank">
+            <p class="bank-name">中国银行</p>
+            <p class="cardnum">
+              <span class="pass">****</span>
+              <span class="pass">****</span>
+              <span class="pass">****</span>
+              <span class="num" id="card-tail">5925</span>
+              <span class="card-type">储蓄卡</span>
+            </p>
+          </div>
+          <a href="javascript:;" class="select"></a>
+        </li>
+        <li>
+          <div class="pay-type">
+            <img src="./img/alipay.png" class="alipay">
+            <div class="item-content">
+              <p class="bank-name">支付宝</p>
+              <p class="message">(支付宝将另收取2元支付通道费)</p>
+            </div>
+          </div>
+          <div class="selectd select">
+            <img src="./img/check.png">
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <button class="btn">确认退款</button>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    var cardDom = null;
+    var aliDom = null;
+
+    apiready = function () {
+      var cardDom = null;
+      var aliDom = null;
+      init();
+    }
+
+    function init() {
+      request({
+        url: 'xxxxx',
+        values: {},
+        success: function () {
+          render();
+        },
+        default: function () { }
+      });
+    }
+
+    function render(data) {
+      $api.text('price', data.price);
+      $api.text('card-tail', data.tail);
+    }
+
+    function selectCard() {
+      if ($api.hasCls(cardDom, '')) {
+        $api.removeCls(cardDom, '');
+        $api.addCls(cardDom, '');
+      }
+    }
+
+    function selectALi() {
+      if ($api.hasCls(aliDom, '')) {
+        $api.removeCls(aliDom, '');
+        $api.addCls(aliDom, '');
+      }
+    }
+
+    function submit() {
+      request({
+        url: 'xxxxx',
+        values: {},
+        showMessage: '正在发送...',
+        success: function () {
+        },
+        default: function () {}
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, li {
+  list-style: none;
+}
+
+header {
+  background: url("./img/banner.png");
+  height: 53.33333vw;
+}
+
+header .head-content {
+  text-align: center;
+  line-height: 15vw;
+}
+
+header .head-content .back {
+  margin-left: 4.93333vw;
+  margin-top: 4vw;
+  float: left;
+  width: 5.33333vw;
+  width: 5.33333vw;
+}
+
+header .head-content .head-title {
+  display: inline-block;
+  color: #fff;
+}
+
+header .head-content .manage {
+  margin-right: 4vw;
+  float: right;
+  margin-top: 4vw;
+  width: 5.33333vw;
+  width: 5.33333vw;
+}
+
+header .login-dialog {
+  width: 46.66667vw;
+  height: 34.66667vw;
+  margin: 0 auto;
+}
+
+header .login-dialog .person-img {
+  width: 21.33333vw;
+  height: 21.33333vw;
+  display: block;
+  margin: 0 auto;
+}
+
+header .login-dialog a {
+  width: 20.66667vw;
+  height: 8.66667vw;
+  display: inline-block;
+  background: #80c5ff;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  line-height: 8.66667vw;
+  margin-top: 4vw;
+  margin-right: 2vw;
+}
+
+.content {
+  margin-top: 9.33333vw;
+}
+
+.content .list {
+  width: 91.33333vw;
+  margin: 0 auto;
+}
+
+.content .list li {
+  border-bottom: 1px solid #efefef;
+  line-height: 14.4vw;
+  height: 14.4vw;
+}
+
+.content .list li .icon {
+  width: 4.66667vw;
+  height: 4.93333vw;
+  float: left;
+  margin-top: 5.33333vw;
+}
+
+.content .list li p {
+  display: inline;
+  margin-left: 3.06667vw;
+}
+
+.content .list li .more {
+  float: right;
+  margin-top: 4vw;
+}
+
+footer {
+  height: 30.66667vw;
+  background: #f4f4f4;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+footer p {
+  text-align: center;
+}
+
+footer .tel {
+  margin-top: 10.26667vw;
+}
+
+footer .time {
+  margin-top: 3vw;
+}

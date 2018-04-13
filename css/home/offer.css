@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background: #f4f4f4;
+}
+
+header {
+  height: 12vw;
+  background: #fff;
+  line-height: 12vw;
+  text-align: center;
+}
+
+header .person {
+  float: left;
+  padding-left: 5.06667vw;
+  padding-top: 2.66667vw;
+}
+
+header .person img {
+  width: 8vw;
+  height: 8vw;
+  float: left;
+}
+
+header .header-title {
+  font-size: 0.93333rem;
+  width: 80vw;
+  display: inline;
+  text-align: center;
+}
+
+header .remind img {
+  float: right;
+  margin-right: 4vw;
+  width: 8vw;
+  height: 8vw;
+  margin-top: 2.66667vw;
+}
+
+.message {
+  height: 13.33333vw;
+  background: #1c91fd;
+  line-height: 13.33333vw;
+  color: #fff;
+}
+
+.message .trumpet img {
+  float: left;
+  margin-left: 3.46667vw;
+  margin-top: 1.33333vw;
+}
+
+.message .m-list {
+  margin-left: 15vw;
+  font-size: 0.8rem;
+}
+
+.banner {
+  background: url(./img/banner.png);
+  height: 40.2vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner .bannerText {
+  text-align: center;
+  height: 13.33333vw;
+  color: #fff;
+}
+
+.banner .bannerText .safe {
+  margin-top: 6.66667vw;
+  display: inline-block;
+}
+
+.banner .bannerText .order {
+  margin-top: 2.66667vw;
+}
+
+.content {
+  width: 66.4vw;
+  margin: 20px auto;
+}
+
+.content .phone-type {
+  text-align: center;
+}
+
+.content .phone-type .left-mark {
+  width: 11.33333vw;
+  height: 1vw;
+  background: #0486ff;
+  float: left;
+  margin-top: 10px;
+}
+
+.content .phone-type .left-markimg {
+  margin-right: 10px;
+}
+
+.content .phone-type .right-markimg {
+  margin-left: 10px;
+}
+
+.content .phone-type .head-title {
+  color: #111;
+  display: inline;
+}
+
+.content .phone-type .right-mark {
+  float: right;
+}
+
+.content .phone-content {
+  width: 69.33333vw;
+  position: relative;
+}
+
+.content .phone-content .phoneimg {
+  margin-left: 7.33333vw;
+  margin-top: 8.53333vw;
+  float: left;
+}
+
+.content .phone-content .phone-message {
+  height: 22.66667vw;
+  float: left;
+  position: absolute;
+  right: -20px;
+  line-height: 22.66667vw vw;
+  top: 170px;
+}
+
+.content .phone-content .phone-message .max {
+  color: #fb560a;
+}
+
+.content .phone-btn {
+  width: 100%;
+  height: 12.66667vw;
+  background: #1990fe;
+  display: inline-block;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 12.66667vw;
+  color: #fff;
+  margin-top: 4.53333vw;
+}
+
+.recycle {
+  margin-bottom: 2.66667vw;
+  width: 89.33333vw;
+  height: 36.66667vw;
+  background: #fff;
+  margin: 0 auto;
+}
+
+.recycle .recycle-title {
+  text-align: center;
+  line-height: 10vw;
+  margin-bottom: 4vw;
+  margin-top: 2.66667vw;
+}
+
+.recycle .w100 {
+  width: 13.33333vw;
+  height: 14.66667vw;
+  margin-left: 7vw;
+  float: left;
+  background: #e0f2fe;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.recycle .w100 img {
+  margin-top: 3vw;
+  width: 8vw;
+  height: 8vw;
+}

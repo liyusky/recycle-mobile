@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>回收进度</title>
+  <link rel="stylesheet" href="../../css/records/recycling-schedule.css">
+</head>
+
+<body>
+  <header class="header">
+    <img src="./img/back.png" alt="" class="back">
+    <p class="header-title">回收进度</p>
+  </header>
+  <div class="content">
+    <div class="recycle">
+      <img src="./img/recycle.png" alt="" class="recycle">
+      <div class="message">
+        <p class="phonetype">
+          <span>手机型号</span>
+          <span id="phone-type">iphone 6s</span>
+        </p>
+      </div>
+      <div class="price">
+        <ul>
+          <li>
+            <p>手机估价</p>
+            <span id="capital">1200.00元</span>
+          </li>
+          <li>
+            <p>定金+预付款</p>
+            <span id="interest">900.00元</span>
+          </li>
+          <li>
+            <p>履约期</p>
+            <span id="time">7</span>
+            <span>天</span>
+            <img src="./img/help.png" alt="" class="help">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="status">
+    <div class="list">
+      <ul>
+        <li class="order-list">
+          <ul>
+            <li class="currentstatus mark">审核不通过</li>
+            <li class="message">您绑定的iCloud账号密码不正确</li>
+            <li class="time">2018-04-10 12:05:58</li>
+          </ul>
+        </li>
+        <li class="order-list">
+          <ul>
+            <li class="currentstatus">审核中</li>
+            <li class="message">审核中,请等待</li>
+            <li class="time">2018-04-10 11:55:58</li>
+          </ul>
+        </li>
+        <li class="order-list bodrenone">
+          <ul>
+            <li class="currentstatus">订单提交</li>
+            <li class="message">您的订单已提交</li>
+            <li class="time">2018-04-10 11:54:25</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="schedule">
+      <ul>
+        <li class="statusicon">
+          <img src="./img/success.png" alt="">
+        </li>
+        <li class="connect">
+          <img src="./img/connect.png" alt="">
+        </li>
+        <li class="statusicon">
+          <img src="./img/currentstatus.png" alt="">
+        </li>
+        <li class="connect">
+          <img src="./img/connect.png" alt="">
+        </li>
+        <li class="statusicon">
+          <img src="./img/currentstatus.png" alt="">
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    apiready = function () {
+      
+    }
+
+    function render(data) {
+      $api.text('phone-type', data.type);
+      $api.text('capital', data.capital);
+      $api.text('interest', data.interest);
+      $api.text('time', data.time);
+    }
+  </script>
+</body>
+
+</html>
