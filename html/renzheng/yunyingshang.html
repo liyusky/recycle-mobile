@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- 运营商认证 -->
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+	<meta name="author" content="潘剑">
+	<script src="../../script/flexible.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<title>运营商认证</title>
+	<link rel="stylesheet" href="../../css/aui.css">
+	<link rel="stylesheet" href="../../css/aui-extends.css">
+</head>
+
+<body class="yunyingshang background-write">
+	<iframe id="iframe"></iframe>
+  <section class="cover aui-hide" id="empty-wrap">
+		<img class="image-note" src="../../image/empty-loan.png">
+		<p class="font-size-30 aui-text-center text-gray margin-top-30">你还没有打开通知权限哦</p>
+	</section>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+
+	<script type="text/javascript">
+    var User = $api.getStorage('User');
+    var index = 0;
+		apiready = function() {
+      setListener();
+			init();
+		}
+
+		function init () {
+      if (checkNetwork() && checkLogin()) {
+        sendRequest({
+          url: 'GetPhoneOperatorAuthInfoUrl',
+          values: {
+            deviceId: api.deviceId,
+            phone: User.Phone
+          },
+          showMessage: true,
+          success: function(data) {
+            if (true) {
+              $api.attr('iframe', 'src', data);
+            }
+          }
+        });
+      }
+		}
+
+    function setListener () {
+      $api.byId('iframe').onload = function() {
+        index++;
+        if (index === 2) {
+          setTimeout(function () {
+            if (checkNetwork() && checkLogin()) {
+              sendRequest({
+                url: 'GetCurrentStep',
+                values: {
+                  deviceId: api.deviceId,
+                  phone: User.Phone
+                },
+                success: function(data) {
+                  User = $api.getStorage('User');
+                  User.Step[3] = true;
+                  $api.setStorage('User', User);
+                  if (data.Step4) changeStep();
+                }
+              });
+            }
+          }, 3000);
+        }
+      };
+    }
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!-- 我的 -->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../iconfont/iconfont.js"></script>
+  <title>我的</title>
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../css/aui-extends.css">
+  <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
+</head>
+
+<body class="wode">
+  <!-- s 登陆显示 -->
+  <header class="aui-content wode-header relative">
+    <div class="aui-row">
+      <div class="aui-col-xs-12">
+        <div class="author-wrap">
+          <div class="author-avatar aui-pull-left">
+            <img class="author-avatar-image" src="../../image/wode-touxiang.png">
+          </div>
+          <div class="author-message aui-pull-left">
+            <div>
+              <p class="author-message-phone text-write font-size-30">
+                <span id="phone"></span>
+              </p>
+              <div class="author-real-sign aui-text-center" id="real-message"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg absolute">
+        <img class="bg-image" src="../../image/wode-bg.png">
+      </div>
+    </div>
+  </header>
+  <!-- e 登陆显示 -->
+
+  <!-- s 银行卡 优惠券 现金红包 -->
+  <!-- <section class="aui-content padding-horizontal-30 background-write nav-wrap">
+    <div class="aui-row aui-text-center font-size-27">
+      <div class="aui-col-xs-6" onclick="javascript: jump('yinhangka');">
+        <svg class="icon icon-size-yinhangka" aria-hidden="true">
+          <use xlink:href="#icon-yinhangka"></use>
+        </svg>
+        <span class="padding-left-12">银行卡</span>
+      </div>
+      <div class="aui-col-xs-6" onclick="javascript: jump('youhuiquan');">
+        <svg class="icon icon-size-youhuiquan" aria-hidden="true">
+          <use xlink:href="#icon-youhuiquan"></use>
+        </svg>
+        <span class="padding-left-12">优惠券</span>
+      </div>
+      <div class="aui-col-xs-4 aui-hide" onclick="javascript: jump('xianjinhongbao');">
+        <svg class="icon icon-size-xianjinhongbao" aria-hidden="true">
+          <use xlink:href="#icon-xianjinhongbao"></use>
+        </svg>
+        <span class="padding-left-12">现金红包</span>
+      </div>
+    </div>
+  </section> -->
+  <!-- e 银行卡 优惠券 现金红包 -->
+
+  <!-- s 近期待还 借款记录 -->
+  <section class="aui-content margin-top-30 background-write">
+    <ul class="padding-left-30">
+      <li class="list-item padding-right-30 font-size-27" onclick="javascript: jump('jinqidaihuan');">
+        <div class="icon-wrap aui-pull-left">
+          <svg class="icon icon-control icon-size-jinqidaihuan" aria-hidden="true">
+            <use xlink:href="#icon-jinqidaihuan"></use>
+          </svg>
+        </div>
+        <div class="title-warp aui-pull-left">近期待还</div>
+        <i class="iconfont icon-youjiantou font-size-45 text-gray aui-pull-right"></i>
+        <div class="addon-wrap aui-pull-right aui-hide">
+          <span id="loan-count">0</span>
+          <span>笔</span>
+        </div>
+      </li>
+      <li class="list-item padding-right-30 font-size-27 border-top-solid-1" onclick="javascript: jump('jiekuanjilu');">
+        <div class="icon-wrap aui-pull-left">
+          <svg class="icon icon-control icon-size-jiekuanjilu" aria-hidden="true">
+            <use xlink:href="#icon-jiekuanjilu"></use>
+          </svg>
+        </div>
+        <div class="title-warp aui-pull-left">借款记录</div>
+        <i class="iconfont icon-youjiantou font-size-45 text-gray aui-pull-right"></i>
+      </li>
+    </ul>
+  </section>
+  <!-- e 近期待还 借款记录 -->
+
+  <!-- s 邀请好友 我的客服 帮助与反馈 关于我们 -->
+  <section class="aui-content margin-top-30 background-write">
+    <ul class="aui-list padding-left-30">
+      <li class="list-item padding-right-30 font-size-27 aui-hide" onclick="javascript: jump('yaoqinghaoyou');">
+        <div class="icon-wrap aui-pull-left">
+          <svg class="icon icon-size-yaoqinghaoyou" aria-hidden="true">
+            <use xlink:href="#icon-yaoqinghaoyou"></use>
+          </svg>
+        </div>
+        <div class="title-warp aui-pull-left">邀请好友</div>
+        <i class="iconfont icon-youjiantou font-size-45 text-gray aui-pull-right"></i>
+      </li>
+      <li class="list-item padding-right-30 font-size-27" onclick="javascript: chat();">
+        <div class="icon-wrap aui-pull-left">
+          <svg class="icon icon-control icon-size-kefu" aria-hidden="true">
+            <use xlink:href="#icon-kefu"></use>
+          </svg>
+        </div>
+        <div class="title-warp aui-pull-left">我的客服</div>
+        <i class="iconfont icon-youjiantou font-size-45 text-gray aui-pull-right"></i>
+      </li>
+      <li class="list-item padding-right-30 font-size-27 border-top-solid-1 aui-hide" onclick="javascript: jump('bangzhuyufankui');">
+        <div class="icon-wrap aui-pull-left">
+          <svg class="icon icon-control icon-size-bangzhuyufankui" aria-hidden="true">
+            <use xlink:href="#icon-bangzhuyufankui"></use>
+          </svg>
+        </div>
+        <div class="title-warp aui-pull-left">帮助与反馈</div>
+        <i class="iconfont icon-youjiantou font-size-45 text-gray aui-pull-right"></i>
+      </li>
+      <li class="list-item padding-right-30 font-size-27 border-top-solid-1" onclick="javascript: jump('guanyuwomen');">
+        <div class="icon-wrap aui-pull-left">
+          <svg class="icon icon-control icon-size-guanyuwomen" aria-hidden="true">
+            <use xlink:href="#icon-guanyuwomen"></use>
+          </svg>
+        </div>
+        <div class="title-warp aui-pull-left">关于我们</div>
+        <i class="iconfont icon-youjiantou font-size-45 text-gray aui-pull-right"></i>
+      </li>
+    </ul>
+  </section>
+  <!-- e 邀请好友 我的客服 帮助与反馈 关于我们 -->
+  <div class="margin-top-60"></div>
+  <button class="logout-btn text-black font-size-30 background-write margin-top-150" onclick="javascript: logout();">退出登录</button>
+  <script type="text/javascript" charset="utf-8" src="../../script/global-property.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global-method.js"></script>
+  <script type="text/javascript">
+    var User = null;
+    apiready = function() {
+      setListener();
+      init();
+    }
+
+    function init () {
+      if (checkNetwork() && checkLogin()) {
+        showLoginStatus();
+      }
+    }
+
+    function showLoginStatus () {
+      User = $api.getStorage('User');
+      $api.text('phone', User.Phone);
+      var realMessage = '未完成认证';
+      if (User.Step === 4) {
+        realMessage = '已完成认证';
+      }
+      $api.text('real-message', realMessage);
+    }
+
+    function logout () {
+      if (checkNetwork() && checkLogin()) {
+        api.confirm({
+            msg: '是否确定退出？',
+            buttons: ['取消', '退出']
+          },
+          function(ret, err) {
+            if (ret.buttonIndex === 2) {
+              User = $api.getStorage('User');
+              User.Status = false;
+              $api.setStorage('User', User);
+              setLogoutStatus();
+            }
+          }
+        );
+      }
+    }
+
+    function setListener () {
+      api.addEventListener(
+        {name: 'Login'},
+        function(ret, err) {
+          if (ret){
+            showLoginStatus();
+          }
+        }
+      );
+      api.addEventListener(
+        {name:'online'},
+        function(ret, err){
+          if (ret) init();
+        }
+      );
+      api.addEventListener(
+        {name:'CloseCertification'},
+        function(ret, err){
+          if (ret) init();
+        }
+      );
+    }
+
+    function setLogoutStatus () {
+      api.sendEvent({name: 'Logout'});
+    }
+
+    function chat () {
+      if (checkNetwork() && checkLogin()) {
+        User = $api.getStorage('User');
+        sendRequest({
+          url: 'GetCustomerServiceQQ',
+          values: {
+            phone: User.Phone
+          },
+          showMessage: '正在连接...',
+          success: function (data) {
+            var QQModule = api.require('toQQ');
+            QQModule.open({number: data.QQ});
+          },
+          fail: function () {
+          }
+        });
+      }
+    }
+
+    function jump (page) {
+      if (checkNetwork() && checkLogin()) {
+        openFormwork(page);
+      }
+    }
+
+  </script>
+</body>
+
+</html>

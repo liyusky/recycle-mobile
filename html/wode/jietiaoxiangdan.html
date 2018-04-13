@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!-- 借条详单 -->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <meta name="author" content="潘剑">
+  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+  <script  type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+  <title>借条详单</title>
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../css/aui-extends.css">
+  <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
+</head>
+
+<body class="jietiaoxiangdan">
+  <section id="detail-wrap">
+    <div class="aui-content background-write margin-top-30">
+      <ul class="loan-list">
+        <li class="aui-row loan-details" id="start-process">
+          <div class="loan-flow">
+            <div class="loan-finished loan-line-top">
+              <i class="iconfont icon-quanquanxuanze font-size-33 text-gray"></i>
+            </div>
+          </div>
+          <div class="loan-messgae text-black">
+            <p class="loan-messgae-title">
+              <span>申请提交成功</span>
+              <span class="aui-pull-right" data-id="start-date"></span>
+            </p>
+            <p class="loan-messgae-content">
+              <span>申请借款</span>
+              <span data-id="capital"></span>
+              <span>元，期限</span>
+              <span data-id="time"></span>
+              <span>天，手续费</span>
+              <span data-id="dividend"></span>
+              <span>元</span>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="aui-content detail-list">
+      <ul class="aui-list">
+        <li class="aui-row">
+          <div class="aui-col-xs-12">
+            <div class="loan-entry aui-pull-left">
+              <p class="font-size-28 text-black">借款金额</p>
+            </div>
+            <div class="loan-entry-content aui-pull-right">
+              <p class="font-size-28 text-gray">
+                <span data-id="capital"></span>
+                <span>元</span>
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="aui-row">
+          <div class="aui-col-xs-12">
+            <div class="loan-entry aui-pull-left">
+              <p class="font-size-28 text-black">手续费用</p>
+            </div>
+            <div class="loan-entry-content aui-pull-right">
+              <p class="font-size-28 text-gray">
+                <span data-id="dividend"></span>
+                <span>元</span>
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="aui-row">
+          <div class="aui-col-xs-12">
+            <div class="loan-entry aui-pull-left">
+              <p class="font-size-28 text-black">借款期限</p>
+            </div>
+            <div class="loan-entry-content aui-pull-right">
+              <p class="font-size-28 text-gray">
+                <span data-id="time"></span>
+                <span>天</span>
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="aui-row">
+          <div class="aui-col-xs-12">
+            <div class="loan-entry aui-pull-left">
+              <p class="font-size-28 text-black">申请日期</p>
+            </div>
+            <div class="loan-entry-content aui-pull-right">
+              <p class="font-size-28 text-gray" id="start-date"></p>
+            </div>
+          </div>
+        </li>
+        <li class="aui-row">
+          <div class="aui-col-xs-12">
+            <div class="loan-entry aui-pull-left">
+              <p class="font-size-28 text-black">还款期限</p>
+            </div>
+            <div class="loan-entry-content aui-pull-right">
+              <p class="font-size-28 text-gray" id="end-date"></p>
+            </div>
+          </div>
+        </li>
+        <li class="aui-row">
+          <div class="aui-col-xs-12">
+            <div class="loan-entry aui-pull-left">
+              <p class="font-size-28 text-black">使用银行卡</p>
+            </div>
+            <div class="loan-entry-content aui-pull-right">
+              <p class="font-size-28 text-gray" id="card"></p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="cover aui-hide" id="empty-wrap">
+    <img class="image-note" src="../../image/empty-loan.png">
+    <p class="font-size-30 aui-text-center text-gray margin-top-30">很遗憾，获取数据失败</p>
+  </section>
+  <script type="text/javascript" charset="utf-8" src="../../script/global-property.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global-method.js"></script>
+  <script type="text/javascript">
+    apiready = function () {
+      init();
+    }
+
+    function init () {
+      if (checkNetwork() && checkLogin()) {
+        sendRequest({
+          url: 'GetLoanInfo',
+          values: {
+            deviceId: api.deviceId,
+            phone: User.Phone,
+            id: api.pageParam.id
+          },
+          showMessage: true,
+          success: function (data) {
+            data = formatData(data);
+            setLayout(data);
+          },
+          fail: function () {
+            showTip();
+          }
+        });
+      }
+    }
+
+    function setLayout (content) {
+      setStatusLayout(content.status);
+      render();
+
+      function listSetText (dataID, text) {
+        var domList = $api.domAll('[data-id="' + dataID + '"]');
+        for (var i = 0; i < domList.length; i++) {
+          (function (i) {
+            $api.text(domList[i], text);
+          })(i);
+        }
+      }
+
+      function setStatusLayout (content) {
+        var htmlStr = '';
+        var process = LoanStatus[content].process;
+        for (var i = 0; i < process.length; i++) {
+          var status = process[i];
+          var finishSign = false;
+          if (i === process.length - 1) {
+            finishSign = true;
+          }
+          htmlStr = setHtml(LoanStatus[status], finishSign) + htmlStr;
+        }
+        $api.before('start-process', htmlStr);
+      }
+
+      function setHtml (content, finishSign) {
+        var lineClass = null;
+        var color = null;
+        if (finishSign) {
+          lineClass = 'loan-active loan-line-bottom';
+          color = 'blue';
+        }
+        else {
+          lineClass = 'loan-finished loan-line-top loan-line-bottom';
+          color = 'gray';
+        }
+        var htmlstr = '<li class="aui-row loan-details">' +
+        '<div class="loan-flow">' +
+        '<div class="' + lineClass + '">' +
+        '<i class="iconfont icon-quanquanxuanze font-size-33 text-' + color + '"></i>' +
+        '</div>' +
+        '</div>' +
+        '<div class="loan-messgae text-black">' +
+        '<p class="loan-messgae-title">' +
+        '<span>' + content.name + '</span>' +
+        '</p>' +
+        '<p class="loan-messgae-content">' + content.msg + '</p>' +
+        '</div>' +
+        '</li>';
+        return htmlstr;
+      }
+
+      function render () {
+        listSetText('capital', content.capital);
+        listSetText('dividend', content.dividend);
+        listSetText('time', content.time);
+        $api.text('start-date', content.startDate);
+        $api.text('end-date', content.endDate);
+        var cardStr = content.card.bank + ' ' + content.card.type + ' ' + '（尾号：' + content.card.tail + '）';
+        $api.text('card', cardStr);
+      }
+    }
+
+    function formatData (data) {
+      if (data.ZhuangTai === '已放款') {
+        data.ZhuangTai = '待还款';
+      }
+      var content = {
+        status: data.ZhuangTai,
+        startDate: data.CreateDate,
+        endDate: data.HuanKuanShiJian,
+        auditDate: data.ShenHeShiJian,
+        lendDate: data.FangKuanShiJian,
+        capital: data.ShenQingJine,
+        time: data.QiXian,
+        dividend: data.ServiceAmount,
+        card:{
+          tail: data.KaHao.substr(-4, 4),
+          bank: data.KaiHuHang,
+          type: '储蓄卡'
+        }
+      };
+
+      return content;
+    }
+
+    function showTip () {
+      $api.removeCls('empty-wrap', 'aui-hide');
+      $api.addCls('detail-wrap', 'aui-hide');
+    }
+  </script>
+</body>
+
+</html>

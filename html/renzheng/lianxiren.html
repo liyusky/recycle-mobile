@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<!-- 联系人认证 -->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+  />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+  <title>联系人认证</title>
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../css/aui-extends.css">
+  <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
+  <script type="text/javascript" charset="utf-8" src="../../iconfont/iconfont.js"></script>
+</head>
+
+<body class="background-light-red contact">
+  <section class="aui-content padding-horizontal-30">
+    <div class="aui-row">
+      <div class="aui-col-xs-12 contact-hint aui-text-center border-top-dashed-1">
+        <i class="iconfont icon-baozhang font-size-40 icon-blue vertical-sub"></i>
+        <span class="font-size-28">花花无忧承诺确保你的信息安全</span>
+      </div>
+    </div>
+  </section>
+  <section class="aui-content padding-left-30 background-write">
+    <ul class="aui-list">
+      <li class="aui-list-item aui-row border-bottom-solid-1" onclick="javascript: openSelector('first');">
+        <div class="aui-col-xs-12 input-group font-size-30">
+          <div class="aui-pull-left input-label text-black">与本人关系</div>
+          <input class="input-control aui-pull-left text-gray" id="first-relationship" type="text" readonly="readonly">
+          <div class="aui-pull-right text-gray">
+            <span>请选择</span>
+            <i class="iconfont icon-youjiantou font-size-35"></i>
+          </div>
+        </div>
+      </li>
+      <li class="aui-list-item aui-row border-bottom-solid-1" onclick="javascript: selectSingleContact('first');">
+        <div class="aui-col-xs-12 input-group font-size-30">
+          <div class="aui-pull-left input-label text-black">姓名</div>
+          <input class="input-control aui-pull-left text-gray" id="first-contact-name" readonly="readonly" type="text" placeholder="请输入紧急联系人姓名">
+          <div class="aui-pull-right text-gray">
+            <i class="iconfont icon-youjiantou font-size-35"></i>
+          </div>
+        </div>
+      </li>
+      <li class="aui-list-item aui-row">
+        <div class="aui-col-xs-12 input-group font-size-30">
+          <div class="aui-pull-left input-label text-black">手机号</div>
+          <input class="input-control aui-pull-left text-gray" readonly="readonly" type="text" placeholder="请输入手机号" id="first-contact-phone">
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section class="aui-content padding-left-30 background-write margin-top-30">
+    <ul class="aui-list">
+      <li class="aui-list-item aui-row border-bottom-solid-1" onclick="javascript: openSelector('second');">
+        <div class="aui-col-xs-12 input-group font-size-30">
+          <div class="aui-pull-left input-label text-black">与本人关系</div>
+          <input class="input-control aui-pull-left text-gray" id="second-relationship" type="text" readonly="readonly">
+          <div class="aui-pull-right text-gray">
+            <span>请选择</span>
+            <i class="iconfont icon-youjiantou font-size-35"></i>
+          </div>
+        </div>
+      </li>
+      <li class="aui-list-item aui-row border-bottom-solid-1" onclick="javascript: selectSingleContact('second');">
+        <div class="aui-col-xs-12 input-group font-size-30">
+          <div class="aui-pull-left input-label text-black">姓名</div>
+          <input class="input-control aui-pull-left text-gray" id="second-contact-name" readonly="readonly" type="text" placeholder="请输入紧急联系人姓名">
+          <div class="aui-pull-right text-gray">
+            <i class="iconfont icon-youjiantou font-size-35"></i>
+          </div>
+        </div>
+      </li>
+      <li class="aui-list-item aui-row">
+        <div class="aui-col-xs-12 input-group font-size-30">
+          <div class="aui-pull-left input-label text-black">手机号</div>
+          <input class="input-control aui-pull-left text-gray" id="second-contact-phone" readonly="readonly" type="text" placeholder="请输入手机号">
+        </div>
+      </li>
+    </ul>
+  </section>
+  <button class="aui-btn btn-fillet font-size-40 aui-text-center margin-top-90" onclick="javascript: submit();">下一步</button>
+</body>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+
+<script type="text/javascript">
+  var contactlist = [];
+
+  apiready = function () {
+    setListener();
+    setTimeout(init, 1000);
+  }
+
+  function init() {
+    var contacts = api.require('contacts');
+    switch (api.systemType) {
+      case 'ios':
+        contacts.allContacts(
+          function (ret, err) {
+            getAllContacts(ret, err);
+          }
+        );
+        break;
+      case 'android':
+        contacts.queryByPage({},
+          function (ret, err) {
+            getAllContacts(ret, err);
+          }
+        );
+        break;
+    }
+
+    function getAllContacts(ret, err) {
+      if (ret) {
+        if (ret.status) {
+          var arr = ret.contacts;
+          try {
+            if (ret.contacts) {
+              for (var i = 0; i < ret.contacts.length; i++) {
+                var name = ret.contacts[i].fullName ? ret.contacts[i].fullName : (ret.contacts[i].lastName + ret.contacts[
+                  i].firstName);
+                var phones = ret.contacts[i].phones;
+                if (phones) {
+                  for (var j = 0; j < phones.length; j++) {
+                    for (var p in phones[j]) {
+                      contactlist.push({
+                        name: name,
+                        tel: phones[j][p]
+                      });
+                    }
+                  }
+                }
+              }
+            }
+          } catch (err) {
+            alert(err);
+          }
+          if (contactlist.length === 0) {
+            alertMsg('通讯录权限获取不成功');
+          }
+        } else {
+          getPermission();
+        }
+      }
+
+      if (err) {
+        if (err.code === -1) getPermission();
+      }
+    }
+  }
+
+  function selectSingleContact(position) {
+    var contacts = api.require('contacts');
+    contacts.select(function (ret, err) {
+      if (ret) {
+        if (ret.status) {
+          var phone = null;
+          var name = null;
+          for (key in ret.phones[0]) {
+            phone = ret.phones[0][key];
+          }
+          try {
+            phone = phone.replace(/[ ]/g, "");
+            phone = phone.replace("+86", "");
+            phone = phone.replace(/-/g, '');
+            if (checkFormat({
+                data: {
+                  name: ret.fullName
+                }
+              })) {
+              name = ret.fullName;
+            }
+            if (checkFormat({
+                data: {
+                  phone: phone
+                }
+              })) {
+              $api.val(position + '-contact-name', name);
+              $api.val(position + '-contact-phone', phone);
+            }
+          } catch (e) {
+            alertMsg('请您选择存有号码的用户');
+          }
+        }
+      }
+      if (err) {
+        switch (err.code) {
+          case -1:
+            getPermission();
+            break;
+        }
+      }
+    });
+  }
+
+  function contactFormat(content) {
+    var phone = null;
+    var name = null;
+    for (key in ret.phones[0]) {
+      phone = ret.phones[0][key];
+    }
+  }
+
+  function getPermission() {
+    alertMsg("请设置本应用获取通讯录权限!");
+    var mySettingInfo = api.require('mySettingInfo');
+    switch (api.systemType) {
+      case 'android':
+        mySettingInfo.settingInt({
+            index: 20
+          },
+          function (ret, err) {
+            if (err) {
+              alertMsg('获取通讯录权限失败');
+              closeFormwork();
+            }
+          }
+        );
+        break;
+      case 'iOS':
+        mySettingInfo.settingInt({
+            index: 11
+          },
+          function (ret, err) {
+            if (err) {
+              alertMsg('获取通讯录权限失败');
+              closeFormwork();
+            }
+          }
+        );
+        break;
+    }
+  }
+
+  function submit() {
+    if (checkNetwork() && checkLogin()) {
+      var firstName = $api.val('first-contact-name');
+      var firstPhone = $api.val('first-contact-phone');
+      var firstRelationship = $api.val('first-relationship');
+      var secondName = $api.val('second-contact-name');
+      var secondPhone = $api.val('second-contact-phone');
+      var secondRelationship = $api.val('second-relationship');
+      if (firstRelationship === secondRelationship) {
+        alertMsg('请不要填写相同的联系人关系');
+        return false;
+      }
+      if (firstPhone === secondPhone) {
+        alertMsg('请不要填写相同的联系人号码');
+        return false;
+      }
+      var firstFlag = checkFormat({
+        data: {
+          phone: firstPhone,
+          name: firstName
+        },
+        fail: function () {
+          alertMsg('第一联系人认证失败，请重试！');
+        }
+      });
+      var secondFlag = checkFormat({
+        data: {
+          phone: secondPhone,
+          name: secondName
+        },
+        fail: function () {
+          alertMsg('第二联系人认证失败，请重试！');
+        }
+      });
+      if (firstFlag && secondFlag && contactlist.length > 0) {
+        alert(escape(JSON.stringify(contactlist)));
+        sendRequest({
+          url: 'LianXiRenXinXi',
+          values: {
+            deviceId: api.deviceId,
+            phone: User.Phone,
+            name_1: firstName,
+            phone_1: firstPhone,
+            relationship_1: firstRelationship,
+            name_2: secondName,
+            phone_2: secondPhone,
+            relationship_2: secondRelationship,
+            telList: escape(JSON.stringify(contactlist))
+          },
+          showMessage: true,
+          success: function () {
+            var User = $api.getStorage('User');
+            User.Step[1] = true;
+            $api.setStorage('User', User);
+            changeStep();
+          }
+        });
+      } else {
+        alertMsg('请添加联系人');
+      }
+    }
+  }
+
+  function setListener() {
+    api.addEventListener({
+        name: 'Select'
+      },
+      function (ret, err) {
+        if (ret) {
+          if (ret.value.goal === 'relationship') $api.val(ret.value.type + '-relationship', ret.value.value);
+        }
+      }
+    );
+  }
+
+  function openSelector(type) {
+    api.sendEvent({
+      name: 'OpenFrame',
+      extra: {
+        goal: 'relationship',
+        pageParam: {
+          type: type
+        }
+      }
+    });
+  }
+</script>
+
+</html>

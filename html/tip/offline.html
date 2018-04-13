@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- 无网提示 -->
+<html>
+	<head>
+		<meta charset="utf-8">
+	  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+	  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+	  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+	  <title>无网提示</title>
+	  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+	  <link rel="stylesheet" type="text/css" href="../../css/aui-extends.css">
+	</head>
+	<body class="offline">
+		<section class="cover">
+			<img class="image-note" src="../../image/empty-network.png">
+			<p class="font-size-30 text-gray aui-text-center margin-top-45">请检查网络连接</p>
+		</section>
+    <script type="text/javascript" charset="utf-8" src="../../script/global-method.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      apiready = function () {
+        setOnceOfflineIniOS();
+        setListener();
+      }
+
+      function setListener () {
+        api.addEventListener(
+          {name:'online'},
+          function(ret, err){
+            if (ret) closeFormwork();
+          }
+        );
+      }
+
+      function setOnceOfflineIniOS() {
+        var Offline = $api.getStorage('Offline');
+        if (api.systemType === 'ios' && Offline.Mark) {
+          setTimeout(function () {
+            closeFormwork();
+          }, 100);
+          Offline.Mark = false;
+          var Offline = $api.setStorage('Offline', Offline);
+        }
+      }
+    </script>
+	</body>
+</html>
