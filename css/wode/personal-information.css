@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f4f4f4;
+}
+
+.clear {
+  clear: both;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+header {
+  height: 12vw;
+  background: #fff;
+  line-height: 12vw;
+  text-align: center;
+}
+
+header .back {
+  margin-left: 5.06667vw;
+  float: left;
+  width: 5.33333vw;
+  margin-top: 2.66667vw;
+}
+
+header .header-title {
+  font-size: 0.93333rem;
+}
+
+.content {
+  width: 89.33333vw;
+  margin: 5.33333vw auto;
+}
+
+.content .message {
+  height: 6.66667vw;
+  line-height: 6.66667vw;
+  padding-left: 1.33333vw;
+}
+
+.content .message .border {
+  float: left;
+}
+
+.content .message .required {
+  float: left;
+  font-size: 4.8vw;
+  padding-left: 2vw;
+}
+
+.content .message .full {
+  float: left;
+  margin-left: 1.33333vw;
+  color: #999;
+}
+
+.content .ullist {
+  margin: 5.33333vw auto;
+}
+
+.content .ullist ul li {
+  height: 20vw;
+}
+
+.content .ullist ul li .icon {
+  width: 10.66667vw;
+  height: 10.66667vw;
+  float: left;
+  margin-top: 3vw;
+}
+
+.content .ullist ul li .box {
+  float: left;
+  margin-top: 4vw;
+}
+
+.content .ullist ul li .box .title {
+  display: inline-block;
+  padding-left: 2vw;
+  font-size: 1.06667rem;
+}
+
+.content .ullist ul li .box .list-text {
+  padding-left: 2vw;
+  font-size: 0.8rem;
+}
+
+.content .ullist ul li .status {
+  float: right;
+  margin-top: 5.06667vw;
+  margin-right: 3vw;
+}
+
+.content .ullist ul li .more {
+  float: right;
+  margin-top: 4vw;
+}
+
+.selectable {
+  width: 89.33333vw;
+  margin: 5.33333vw auto;
+}
+
+.selectable .selecthead {
+  height: 6.66667vw;
+  line-height: 6.66667vw;
+  padding-left: 1.33333vw;
+}
+
+.selectable .border {
+  float: left;
+}
+
+.selectable .select {
+  float: left;
+  padding-left: 2vw;
+}
+
+.selectable .fullmessage {
+  float: left;
+  padding-left: 1.33333vw;
+  color: #999;
+}
+
+.selectable .select-content {
+  margin: 5.33333vw auto;
+}
+
+.selectable .select-content ul li {
+  float: left;
+  text-align: center;
+  margin-right: 14vw;
+  margin-left: 3vw;
+}
+
+.selectable .select-content ul li img {
+  width: 10.66667vw;
+}
+
+.selectable .btn {
+  height: 10.66667vw;
+  display: block;
+  background: #1990fe;
+  color: #fff;
+  text-align: center;
+  line-height: 10.66667vw;
+  border-radius: 3vw;
+  margin: 4vw auto;
+}

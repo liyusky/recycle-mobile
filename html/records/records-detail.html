@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+  />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+  <title>订单详情</title>
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../css/records/records-detail.css">
+</head>
+
+<body>
+  <header class="header">
+    <img src="./img/back.png" alt="" class="back">
+    <p class="header-title">订单详情</p>
+  </header>
+  <div class="content">
+    <div class="recycle">
+      <img src="./img/recycle.png" alt="" class="recycle">
+      <div class="message">
+        <p class="phonetype"> 
+          <span>手机型号</span>
+          <span id="phone-type">iphone 6s</span>
+        </p>
+        <a href="javascript:;">查看详情></a>
+      </div>
+      <div class="price">
+        <ul>
+          <li>
+            <p>手机估价 </p>
+            <span id="capital">1200.00元</span>
+          </li>
+          <li>
+            <p>定金+预付款</p>
+            <span id="interest">900.00元</span>
+          </li>
+          <li>
+            <p>履约期</p>
+            <span id="time">7</span>
+            <span>天</span>
+            <img src="./img/help.png" alt="" class="help">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="status">
+    <div class="list">
+      <ul>
+        <li class="order-list">
+          <ul>
+            <li class="currentstatus mark">预付款打款成功</li>
+            <li class="message">已打款至尾号 (6589) 银行卡</li>
+            <li class="time">2018-04-10 12:05:58</li>
+          </ul>
+        </li>
+        <li class="order-list">
+          <ul>
+            <li class="currentstatus">审核中</li>
+            <li class="message">请耐心等待10-60分钟</li>
+            <li class="time">2018-04-10 11:55:58</li>
+          </ul>
+        </li>
+        <li class="order-list">
+          <ul>
+            <li class="currentstatus">订单提交</li>
+            <li class="message">&nbsp;</li>
+            <li class="time">2018-04-10 11:54:25</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="schedule">
+      <ul>
+        <li class="statusicon">
+          <img src="./img/success.png" alt="">
+        </li>
+        <li class="connect">
+          <img src="./img/connect.png" alt="">
+        </li>
+        <li class="statusicon">
+          <img src="./img/currentstatus.png" alt="">
+        </li>
+        <li class="connect">
+          <img src="./img/connect.png" alt="">
+        </li>
+        <li class="statusicon">
+          <img src="./img/currentstatus.png" alt="">
+        </li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="honour">
+      <div class="time">
+        <img src="./img/time.png" alt="">
+        <p>
+          <span>履约期</span>
+          <span id="overdue">6</span>
+          <span>天</span>
+        </p>
+      </div>
+      <a href="javascript:;" class="btn">不卖了</a>
+      <a href="javascript:;" class="btn">确定卖出填写寄回信息</a>
+    </div>
+  </div>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    apiready = function () {
+      init();
+    }
+
+    function init() {
+      request({
+        url: 'xxxxx',
+        values: {
+          phoneCode: phoneCode,
+          password: password
+        },
+        success: function (data) {
+          render();
+        },
+        default: function () {}
+      });
+    }
+
+    function render(data) {
+      $api.text('phone-type', data.type);
+      $api.text('capital', data.capital);
+      $api.text('interest', data.interest);
+      $api.text('time', data.time);
+      $api.text('overdue', data.overdue);
+    }
+
+    function submit() {
+      var name = $api.val('name');
+      var phone = $api.val('phone');
+      var addressDetail = $api.val('name');
+      request({
+        url: 'xxxxx',
+        values: {
+          name: name,
+          phone: phone
+        },
+        showMessage: '正在发送...',
+        success: function () {},
+        default: function () {}
+      });
+    }
+
+    function cancel() {
+      request({
+        url: 'xxxxx',
+        values: {
+          name: name,
+          phone: phone
+        },
+        showMessage: '正在发送...',
+        success: function () {
+          kill();
+        },
+        default: function () {}
+      });
+    }
+
+    function confirm() {
+      request({
+        url: 'xxxxx',
+        values: {
+          name: name,
+          phone: phone
+        },
+        showMessage: '正在发送...',
+        success: function () {
+          kill();
+        },
+        default: function () {}
+      });
+    }
+  </script>
+</body>
+
+</html>

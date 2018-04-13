@@ -8,10 +8,11 @@
    * @Proofreader [潘剑]
    * @datetime    2017-10-10T17:59:42+080
    */
-function checkPassword(password) {
+function checkPassword(password, message) {
   var result = true;
+  message = message ? message : '请输入密码';
   if (!password) {
-    toast('请输入密码');
+    toast(message);
     result = false;
   }
   else if (password.length < 6) {

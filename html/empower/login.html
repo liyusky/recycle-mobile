@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+  />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+  <title>登录</title>
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
+</head>
+
+<body class="empower background-write">
+
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPassword.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+  <script type="text/javascript" charset="utf-8">
+
+    function submit() {
+      var phone = $api.val('phone');
+      var password = $api.val('password');
+      if (checkPhone(phone)) return;
+      if (checkPassword(password)) return;
+
+      request({
+        url: 'xxxxx',
+        values: {
+          phone: phone,
+          password: password
+        },
+        showMessage: '正在发送...',
+        init: function () {
+          closeBtnClick('submit-btn');
+        },
+        success: function () {
+          kill();
+        },
+        default: function () {
+          openBtnClick('submit-btn');
+        }
+      });
+    }
+
+  </script>
+</body>
+
+</html>
