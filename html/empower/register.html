@@ -9,16 +9,42 @@
   <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
   <title>注册</title>
-  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
-  <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
-      <style>
-        body {
-          background-color: #fff;
-        }
-      </style>
+  <link rel="stylesheet" type="text/css" href="../../css/empower/register.css">
 </head>
 
-<body class="empower background-write">
+<body>
+  <header class="header">
+    <img src="./img/back.png" class="back">
+    <p class="header-title">注册</p>
+  </header>
+  <div class="register">
+    <ul>
+      <li class="setleft">
+        <p class="text">图片验证码</p>
+        <input type="text" placeholder="请输入图片验证码">
+        <img src="http://passport.360.cn/captcha.php?m=create&app=i360&scene=login&userip=&level=default&sign=8820a4&r=1523681447&_=1523681453866"
+          alt="">
+      </li>
+      <li class="setleft-three">
+        <p class="text">验证码</p>
+        <input type="text" placeholder="请输入验证码">
+        <span class="sendMsg">发送验证码</span>
+      </li>
+      <li class="setpass-left">
+        <p class="text">设置密码</p>
+        <input type="text" placeholder="请设置6-12位数字和字母">
+        <img src="./img/switch.png" alt="" class="switch">
+        <img src="./img/clear.png" alt="" class="clear">
+      </li>
+    </ul>
+    <div class="register-explain">
+      <label for="register">
+        <input type="checkbox" id="register">
+        <span class="mark">注册即同意 《用户注册协议》</span>
+      </label>
+      <button class="btn">注册</button>
+    </div>
+  </div>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
@@ -27,7 +53,6 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhoneVerificationCode.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8">
-
     function sendSMS() {
       var imageCode = $api.val('image-code');
       if (checkImageVerificationCode(imageCode)) return;
@@ -41,8 +66,7 @@
         init: function () {
           closeBtnClick('send-image-btn');
         },
-        success: function () {
-        },
+        success: function () {},
         default: function () {
           openBtnClick('submit-btn');
         }
@@ -73,7 +97,6 @@
         }
       });
     }
-
   </script>
 </body>
 
