@@ -108,19 +108,19 @@ function create(data) {
 }
 function kill(goal) {
   goal = goal ? goal : api.pageParam.goal;
-  var type = 'reveal';
-  var subType = 'from_left';
-  var param = ROUTER ? ROUTER[goal].kill : false;
+  var animationType = 'reveal';
+  var animationDirection = 'from_left';
+  var param = ROUTER[goal] ? ROUTER[goal].kill : false;
   if (param) {
-    if (param.type) type = param.type;
-    if (param.subType) type = param.subType;
+    if (param.type) animationType = param.type;
+    if (param.direction) animationDirection = param.direction;
   }
   
   api.closeWin({
     name: goal,
     animation: {
-      type: type,
-      subType: subType,
+      type: animationType,
+      subType: animationDirection,
       duration: 300
     }
   });

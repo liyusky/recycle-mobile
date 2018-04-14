@@ -1,0 +1,299 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+.header {
+  width: 100%;
+  height: 17.2vw;
+  padding-top: 5.6vw;
+  padding-left: 4.8vw;
+  padding-right: 4.8vw;
+  line-height: 11.6vw;
+  font-size: 4.8vw;
+  position: relative;
+}
+
+.header .sign {
+  width: 100%;
+  height: 100%;
+  background: none;
+  position: absolute;
+  padding-top: 5.6vw;
+  padding-left: 4.8vw;
+  padding-right: 4.8vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.header .sign div {
+  width: auto;
+  height: 100%;
+}
+
+.header .title {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+}
+
+.header {
+  background-color: #fff;
+  color: #333333;
+  border-bottom: 1px solid #cbcbcb;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+body {
+  padding-top: 17.2vw;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background: #f4f4f4;
+}
+
+.clear {
+  clear: both;
+}
+
+header {
+  background: #fff;
+  height: 12vw;
+  line-height: 12vw;
+  text-align: center;
+  color: #fff;
+}
+
+header .person {
+  float: left;
+  margin-top: 3.33333vw;
+  width: 4.66667vw;
+  height: 5.46667vw;
+}
+
+header .h-title {
+  display: inline;
+  text-align: center;
+  font-size: 4.66667vw;
+  color: #333;
+}
+
+header .remind {
+  float: right;
+  margin-top: 3.33333vw;
+  width: 5.33333vw;
+  height: 5.33333vw;
+}
+
+.banner {
+  position: relative;
+}
+
+.banner .bannerimg {
+  width: 100%;
+}
+
+.banner .bannerText {
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  margin-left: -26vw;
+  top: 0;
+}
+
+.banner .bannerText .safe {
+  margin-top: 6.66667vw;
+  width: 46.8vw;
+  height: 7.33333vw;
+}
+
+.banner .bannerText .order {
+  margin-top: 2.66667vw;
+  font-size: 4vw;
+}
+
+.content {
+  width: 89.33333vw;
+  height: 100%;
+  margin: 2.66667vw auto;
+  background: #fff;
+  border-radius: 0.4vw;
+}
+
+.content .phone-type {
+  padding-left: 8vw;
+  padding-right: 8vw;
+  text-align: center;
+}
+
+.content .phone-type .left-mark {
+  width: 11.33333vw;
+  height: 0.4vw;
+  background: #0486ff;
+  float: left;
+  margin-top: 10.4vw;
+}
+
+.content .phone-type .left-markimg {
+  margin-top: 9.33333vw;
+  margin-left: 1.06667vw;
+}
+
+.content .phone-type .head-title {
+  color: #111;
+  display: inline;
+  font-size: 5.06667vw;
+  margin-left: 4.13333vw;
+  margin-right: 4.13333vw;
+}
+
+.content .phone-type .right-mark {
+  float: right;
+}
+
+.content .phone-content .phoneimg {
+  margin-left: 16vw;
+  margin-top: 8.53333vw;
+  float: left;
+}
+
+.content .phone-content .phone-message {
+  float: left;
+  margin-left: 4vw;
+  margin-top: 16vw;
+  line-height: 6.66667vw;
+  font-size: 4vw;
+}
+
+.content .phone-content .phone-message .max {
+  color: #fb560a;
+}
+
+.content .phone-btn {
+  width: 78.66667vw;
+  height: 12.66667vw;
+  margin: 0 auto;
+  background: #1990fe;
+  font-size: 5.06667vw;
+  display: block;
+  border-radius: 1.06667vw;
+  text-align: center;
+  line-height: 12.66667vw;
+  color: #fff;
+  margin-top: 4.53333vw;
+  margin-bottom: 7.33333vw;
+  outline: none;
+  border: none;
+}
+
+.recycle {
+  margin-bottom: 2.66667vw;
+  border-radius: 0.4vw;
+  width: 89.33333vw;
+  height: 36.66667vw;
+  background: #fff;
+  margin: 5.6vw auto 2.66667vw;
+}
+
+.recycle .recycle-title {
+  text-align: center;
+  line-height: 13.33333vw;
+  margin-bottom: 4vw;
+  margin-top: 2.66667vw;
+  font-size: 5.06667vw;
+}
+
+.recycle .recycle-text {
+  font-size: 3.33333vw;
+  margin-top: 3.33333vw;
+  margin-left: -0.4vw;
+}
+
+.recycle .loan img {
+  width: 6vw;
+  height: 5.33333vw;
+}
+
+.recycle .recycleicon {
+  padding-left: 1vw;
+}
+
+.recycle .w100 {
+  height: 12.53333vw;
+  float: left;
+  background: #e0f2fe;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 2vw;
+  margin-left: 2.66667vw;
+}
+
+.recycle .w100 img {
+  margin-top: 3.33333vw;
+  width: 6vw;
+  height: 6vw;
+}
+
+.recycle .than {
+  width: 3.33333vw;
+  height: 4.93333vw;
+  float: left;
+  margin-top: 3.33333vw;
+}

@@ -5,67 +5,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>借条大师白卡</title>
   <link rel="stylesheet" href="../../css/home/home.css">
 </head>
 
 <body>
-  <header class="header">
-    <div class="sign">
-      <div onclick="javascript: create('personal-center');">
-        <i class="iconfont icon-arrow-left"></i>
-      </div>
-      <div></div>
-    </div>
-    <div class="title">借入详情</div>
-  </header>
-  <div class="message">
-    <a href="javascript:;" class="trumpet">
-      <img src="./img/trumpet.png" alt="">
-    </a>
-    <p class="m-list">用户尾号860刚刚卖出一部iphone 6s获得1500元</p>
-  </div>
-  <div class="banner">
-    <div class="bannerText">
-      <h3 class="safe">高价 便捷 安全</h3>
-      <p class="order">在线下单 借款无需等待</p>
-    </div>
-  </div>
-
-  <div class="content">
-    <div class="phone-type">
-      <div class="left-mark"></div>
-      <img src="./img/type.png" class="left-markimg">
-      <p class="head-title">您的手机型号</p>
-      <img src="./img/type.png" class="right-markimg">
-      <div class="right-mark left-mark"></div>
-    </div>
-    <div class="phone-content">
-      <img src="./img/phone.png" alt="" class="phoneimg">
-      <div class="phone-message">
-        <p class="messagelist" id="deviceModel">iphone 6s</p>
-        <p class="messagelist" id="deviceName">内存: 16G</p>
-        <p class="messagelist">
-          <span class="max">最高回收:</span>￥5000</p>
+    <header class="header">
+      <img src="./img/person.png" class="person" onclick="javascript: create('personal-center');">
+      <p class="h-title">借条大师白卡</p>
+      <img src="./img/remind.png" class="remind" onclick="javascript: create('');">
+    </header>
+    <div class="clear"></div>
+    <!-- <div class="message">
+                <img src="./img/trumpet.png" alt="" class="trumpet">
+                <p class="m-list">用户尾号860刚刚卖出一部iphone 6s获得1500元</p>
+        </div> -->
+    <div class="banner">
+      <img src="./img/banner.png" class="bannerimg">
+      <div class="bannerText">
+        <img src="./img/safe.png" class="safe">
+        <p class="order">在线下单 借款无需等待</p>
       </div>
     </div>
-    <a href="javascript:;" class="phone-btn">马上评估 立即拿钱</a>
-  </div>
-  <footer class="recycle">
-    <p class="recycle-title">回收流程</p>
-    <div class="evaluate w100">
-      <img src="./img/evaluate.png" alt="">
+    
+    <div class="content">
+      <div class="phone-type">
+        <div class="left-mark"></div>
+        <img src="./img/type.png" alt="" class="left-markimg">
+        <p class="head-title"> 您的手机型号</p>
+        <img src="./img/type.png" alt="" class="right-markimg">
+        <div class="right-mark left-mark"></div>
+      </div>
+      <div class="phone-content">
+        <img src="./img/phone.png" alt="" class="phoneimg">
+        <div class="phone-message">
+          <p class="messagelist" id="device-model">iphone 6s</p>
+          <!-- <p class="messagelist">内存: 16G</p> -->
+          <p class="messagelist">
+            <span class="max">最高回收:</span>￥5000
+          </p>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <button class="phone-btn">马上评估 立即拿钱</button>
     </div>
-    <div class="order w100">
-      <img src="./img/order.png" alt="">
-    </div>
-    <div class="loan w100">
-      <img src="./img/icon.png" alt="">
-    </div>
-    <div class="quality w100">
-      <img src="./img/checkout.png" alt="">
-    </div>
-  </footer>
+    <footer class="recycle">
+      <p class="recycle-title">回收流程</p>
+      <div class="recycleicon">
+        <div class="evaluate w100">
+          <img src="./img/evaluate.png" alt="">
+          <p class="recycle-text">旧机估价</p>
+        </div>
+        <img src="./img/than.png" alt="" class="than">
+        <div class="order w100">
+          <img src="./img/order.png" alt="">
+          <p class="recycle-text">在线下单</p>
+        </div>
+        <img src="./img/than.png" alt="" class="than">
+        <div class="loan w100">
+          <img src="./img/icon.png" alt="">
+          <p class="recycle-text">急速结款</p>
+        </div>
+        <img src="./img/than.png" alt="" class="than">
+        <div class="quality w100">
+          <img src="./img/checkout.png" alt="">
+          <p class="recycle-text">质检入库</p>
+        </div>
+      </div>
+    </footer>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
@@ -77,12 +84,13 @@
     }
 
     function init() {
-      if (checkNet() && checkLogin()) initRender();
+      // if (checkNet() && checkLogin());
+      initRender();
     }
 
     function initRender() {
-      $api.text('deviceModel', api.deviceModel);
-      $api.text('deviceName', api.deviceName);
+      $api.text('device-model', api.deviceModel);
+      $api.text('device-name', api.deviceName);
     }
   </script>
 </body>

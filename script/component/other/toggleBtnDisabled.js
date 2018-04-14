@@ -8,7 +8,7 @@
  * @datetime    2017-10-13T13:18:58+080
  */
 function closeBtnClick(dom) {
-  let disabled = $api.attr(dom, 'disabled');
+  var disabled = $api.attr(dom, 'disabled');
   if (!disabled) {
     $api.attr(dom, 'disabled', 'disabled');
     $api.addCls(dom, 'disabled');
@@ -25,7 +25,7 @@ function closeBtnClick(dom) {
  * @datetime    2017-10-13T13:19:49+080
  */
 function openBtnClick(dom) {
-  let disabled = $api.attr(dom, 'disabled');
+  var disabled = $api.attr(dom, 'disabled');
   if (disabled) {
     $api.removeAttr(dom, 'disabled');
     $api.removeCls(dom, 'disabled');
