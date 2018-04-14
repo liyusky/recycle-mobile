@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+.header {
+  width: 100%;
+  height: 17.2vw;
+  padding-top: 5.6vw;
+  padding-left: 4.8vw;
+  padding-right: 4.8vw;
+  line-height: 11.6vw;
+  font-size: 4.8vw;
+  position: relative;
+}
+
+.header .sign {
+  width: 100%;
+  height: 100%;
+  background: none;
+  position: absolute;
+  padding-top: 5.6vw;
+  padding-left: 4.8vw;
+  padding-right: 4.8vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.header .sign div {
+  width: auto;
+  height: 100%;
+}
+
+.header .title {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+}
+
+.header {
+  background-color: #fff;
+  color: #333333;
+  border-bottom: 1px solid #cbcbcb;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+body {
+  padding-top: 17.2vw;
+}
+
+body {
+  background: #f4f4f4;
+}
+
+header {
+  height: 12vw;
+  background: #fff;
+  line-height: 12vw;
+  text-align: center;
+}
+
+header .back {
+  float: left;
+  margin-top: 3.33333vw;
+  width: 4.66667vw;
+  height: 5.46667vw;
+}
+
+header .header-title {
+  font-size: 4.66667vw;
+  display: inline;
+}
+
+header .compile {
+  float: right;
+  font-size: 4.66667vw;
+  color: #333;
+}
+
+.content {
+  margin-top: 2.66667vw;
+}
+
+.content .setting {
+  background: #fff;
+}
+
+.content .setting li {
+  width: 96vw;
+  height: 13.33333vw;
+  border-bottom: 0.4vw solid #efefef;
+  margin-left: 4vw;
+  line-height: 13.33333vw;
+}
+
+.content .setting li .setlist {
+  font-size: 4.66667vw;
+  float: left;
+}
+
+.content .setting li img {
+  float: right;
+  margin-top: 4.66667vw;
+  width: 2.13333vw;
+  height: 3.6vw;
+  margin-right: 4vw;
+}
+
+.content .setting li:last-child {
+  border-bottom: 0;
+}
+
+.exit {
+  height: 11.73333vw;
+  background: #fff;
+  color: #ff4444;
+  width: 100%;
+  font-size: 4vw;
+  display: block;
+  margin: 6.66667vw auto;
+}

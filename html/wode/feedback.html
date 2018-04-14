@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>意见反馈</title>
+  <link rel="stylesheet" href="../../css/wode/feedback.css">
+</head>
+
+<body>
+  <header class="header">
+    <img src="./img/back.png" class="back" onclick="javascript: kill();">
+    <p class="header-title">意见反馈</p>
+  </header>
+  <div class="describe">
+    <p class="message">
+      <span>*</span>请描述您遇到的问题</p>
+    <textarea class="txt" id="textarea"></textarea>
+    <p class="number">
+      <span>0</span>
+      <span>/</span>
+      <span>200</span>
+    </p>
+  </div>
+  <input type="text" placeholder="手机号/邮箱 (选填, 方便我们联系您)" class="information" id="account">
+  <button class="btn">提交</button>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script>
+    function submit() {
+      var content = $api.val('textarea');
+      var account = $api.val('account');
+      if (!content) toast('请输入内容');
+      if (!account) toast('请输入手机号或邮箱');
+      request({
+        url: 'xxxxx',
+        values: {},
+        showMessage: '正在加载...',
+        success: function () {
+          kill();
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
