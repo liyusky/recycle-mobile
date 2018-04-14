@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
-  />
-  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>登录</title>
-  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
-  <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
-    <style>
-      body {
-        background-color: #fff;
-      }
-    </style>
+  <link rel="stylesheet" type="text/css" href="../../css/empower/login.css">
 </head>
 
 <body>
-
-  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPassword.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
-  <script type="text/javascript" charset="utf-8">
-
+  <header class="header">
+    <img src="./img/back.png" class="back" onclick="javascript: kill();">
+    <p class="header-title">登录</p>
+  </header>
+  <div class="logo">
+    <img src="./img/logo.png" class="logo-img">
+    <img src="./img/logotext.png" alt="" class="logo-text">
+    <span class="text">闲置二手回收共享经济</span>
+  </div>
+  <div class="login">
+    <div class="areacode">
+      <span>+86</span>
+    </div>
+    <input type="number" placeholder="请输入您的手机号码" class="phone">
+  </div>
+  <button class="btn">下一步</button>
+  <script>
     function submit() {
-      var phone = $api.val('phone');
       var password = $api.val('password');
-      if (checkPhone(phone)) return;
       if (checkPassword(password)) return;
 
       request({
         url: 'xxxxx',
         values: {
-          phone: phone,
+          phoneCode: phoneCode,
           password: password
         },
         showMessage: '正在发送...',
@@ -51,7 +49,6 @@
         }
       });
     }
-
   </script>
 </body>
 

@@ -17,7 +17,7 @@
   <header class="header">
     <img src="./img/back.png" class="back" onclick="javascript: kill();">
     <p class="header-title">我的收货地址</p>
-    <span class="compile">编辑</span>
+    <span class="compile" onclick="javascript: create('add-shipping-address');">编辑</span>
   </header>
   <div class="content">
     <ul class="address-list" id="list">
@@ -35,6 +35,7 @@
     </ul>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8">
     apiready = function () {
