@@ -1,6 +1,6 @@
 /**
- * [appRequest 发送ajax请求]
- * @method      appRequest
+ * [request 发送ajax请求]
+ * @method      request
  * @param       {[json]}   params    [发送请求需要的地址、数据及完成后的回调函数]
  * @paramDemo   {url(string): 地址名称, data(json): 需要发送的参数, tip(boolean/string): 要给用户显示的信息, success(fn): 执行成功后的回调, fail(fn): 执行失败后的回调, error(fn): 发生错误后的回调, default(fn): 默认必须执行的回调}
  * @version     [1.0]
@@ -8,7 +8,7 @@
  * @Proofreader [潘剑]
  * @datetime    2017-10-13T15:00:38+080
  */
-function appRequest(params) {
+function request(params) {
   try {
     params.operation.init();
   } catch (e) {}

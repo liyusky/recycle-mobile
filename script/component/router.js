@@ -44,4 +44,7 @@ window.ROUTER = {
   'setting': {
     path: 'widget://html/wode/setting.html'
   },
+  'offer': {
+    path: 'widget://html/home/offer.html'
+  },
 }

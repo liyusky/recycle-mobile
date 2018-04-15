@@ -61,7 +61,7 @@
         用户在撤销出售手机(解除愿《手机回收合同》)后，亦可选择将该手机 再次向平台出售手机,仅需签订相关交易文本,无需进行其他流程。
       </div>
     </div>
-    <button class="btn">马上拿钱</button>
+    <button class="btn" onclick="javascript: submit();">马上拿钱</button>
   </div>
   <div class="mark">
         <div class="dialog">
@@ -82,6 +82,9 @@
             </div>
         </div>
   </div>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script>
     apiready = function () {
       init();
