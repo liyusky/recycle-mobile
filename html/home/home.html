@@ -13,7 +13,6 @@
     <header class="header">
       <img src="../../image/home/person.png" class="person" onclick="javascript: create('personal-center');">
       <p class="h-title">借条大师白卡</p>
-      <img src="../../image/home/remind.png" class="remind" onclick="javascript: create('');">
     </header>
     <div class="clear"></div>
     <!-- <div class="message">
@@ -79,12 +78,14 @@
   <script type="text/javascript">
     var User = $api.getStorage('User');
     var index = 0;
+
     apiready = function () {
       init();
     }
 
     function init() {
-      // if (checkNet() && checkLogin());
+      // if (checkNet() && checkLogin()){
+      // }
       initRender();
     }
 

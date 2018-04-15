@@ -1,7 +1,11 @@
 window.ROUTER = {
   'personal-center': {
     path: 'widget://html/wode/personal-center.html',
-    animationDirection: 'from_left'
+    animationDirection: 'from_left',
+    create: {},
+    kill: {
+      direction: 'from_left'
+    }
   },
   'personal-information': {
     path: 'widget://html/wode/personal-information.html'
@@ -42,5 +46,7 @@ window.ROUTER = {
   'feedback': {
     path: 'widget://html/wode/feedback.html'
   },
-
+  'setting': {
+    path: 'widget://html/wode/setting.html'
+  },
 }

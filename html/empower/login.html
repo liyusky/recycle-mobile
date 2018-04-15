@@ -23,9 +23,9 @@
     <div class="areacode">
       <span>+86</span>
     </div>
-    <input type="number" placeholder="请输入您的手机号码" class="phone" id="account">
+    <input type="text" placeholder="请输入您的手机号码" class="phone" id="account">
   </div>
-  <button class="btn">下一步</button>
+  <button class="btn" onclick="javascript: submit();">下一步</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
@@ -33,7 +33,7 @@
   <script>
     function submit() {
       var account = $api.val('account');
-      if (!checkPhone(password)) return;
+      // if (!checkPhone(password)) return;
       create({
         goal: 'input-password',
         account: account

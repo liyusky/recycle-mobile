@@ -1,7 +1,7 @@
 /**
  * [checkLogin 检查用户是否登陆]
  * @method      checkLogin
- * @param       {json}        callback      [{success:callbackFun,fail:callbackFun} 成功/失败状态下执行的函数]
+ * @param       {json}        params        [{success:callbackFun,fail:callbackFun} 成功/失败状态下执行的函数]
  * @return      {[boolean]}                 [true:已登录  /  false: 未登录]
  * @version     [1.0]
  * @author      [潘剑]
@@ -72,6 +72,15 @@ function checkNet(params) {
   } catch (e) { }
   return flag;
 }
+/**
+ * [create 以win的方式打开页面]
+ * @method      checkNetwork
+ * @param       {[json]}         data                [''  /  {goal: '', xxxx: , xxx: ,}]
+ * @version     [1.0]
+ * @author      [潘剑]
+ * @Proofreader [潘剑]
+ * @datetime    2017-10-07T14:04:38+080
+ */
 function create(data) {
   var goal = null;
   var pageParam = null;
@@ -91,7 +100,7 @@ function create(data) {
   var animationType = 'movein';
   if (ROUTER[goal].animationDirection) animationDirection = ROUTER[goal].animationDirection;
   if (ROUTER[goal].animationType) animationType = ROUTER[goal].animationType;
-  
+
   api.openWin({
     name: goal,
     url: ROUTER[goal].path,
@@ -105,6 +114,15 @@ function create(data) {
     pageParam: pageParam
   });
 }
+/**
+ * [kill 关闭页面]
+ * @method      checkNetwork
+ * @param       {[json]}         data                [ / 'goal']
+ * @version     [1.0]
+ * @author      [潘剑]
+ * @Proofreader [潘剑]
+ * @datetime    2017-10-07T14:04:38+080
+ */
 function kill(goal) {
   goal = goal ? goal : api.pageParam.goal;
   var animationType = 'reveal';

@@ -1,3 +1,13 @@
+/**
+ * [check 检查]
+ * @method      checkBankCard
+ * @param       {[json]}    params    {init: fn, type: {bankCard: ['', '', ''], phone: ''} success: fn,}
+ * @return      {[boolean]}           [true: 格式正确 / false: 格式错误]
+ * @version     [1.0]
+ * @author      [潘剑]
+ * @Proofreader [潘剑]
+ * @datetime    2017-10-21T17:23:25+080
+ */
 function check(params) {
   try {
     params.init();
@@ -25,7 +35,8 @@ function check(params) {
     try {
       params.success(flag);
     } catch (e) {}
-  } else {
+  }
+  else {
     try {
       params.fail(flag);
     } catch (e) {}
