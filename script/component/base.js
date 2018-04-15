@@ -96,11 +96,13 @@ function create(data) {
       };
       break;
   }
-  var animationDirection = 'from_right';
+  var animationDirection = 'from_left';
   var animationType = 'movein';
-  if (ROUTER[goal].animationDirection) animationDirection = ROUTER[goal].animationDirection;
-  if (ROUTER[goal].animationType) animationType = ROUTER[goal].animationType;
-
+  var param = ROUTER[goal] ? ROUTER[goal].create : false;
+  if (param) {
+    if (param.type) animationType = param.type;
+    if (param.direction) animationDirection = param.direction;
+  }
   api.openWin({
     name: goal,
     url: ROUTER[goal].path,
@@ -126,7 +128,7 @@ function create(data) {
 function kill(goal) {
   goal = goal ? goal : api.pageParam.goal;
   var animationType = 'reveal';
-  var animationDirection = 'from_left';
+  var animationDirection = 'from_right';
   var param = ROUTER[goal] ? ROUTER[goal].kill : false;
   if (param) {
     if (param.type) animationType = param.type;

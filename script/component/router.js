@@ -1,11 +1,6 @@
 window.ROUTER = {
   'personal-center': {
-    path: 'widget://html/wode/personal-center.html',
-    animationDirection: 'from_left',
-    create: {},
-    kill: {
-      direction: 'from_left'
-    }
+    path: 'widget://html/wode/personal-center.html'
   },
   'personal-information': {
     path: 'widget://html/wode/personal-information.html'
