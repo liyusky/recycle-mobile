@@ -6,17 +6,20 @@ window.ROUTER = {
   'personal-information': {
     path: 'widget://html/wode/personal-information.html'
   },
-  'empower': {
-    path: 'widget://html/shouquan/empower.html'
-  },
   'login': {
     path: 'widget://html/empower/login.html'
+  },
+  'input-password': {
+    path: 'widget://html/empower/input-password.html'
   },
   'register': {
     path: 'widget://html/empower/register.html'
   },
   'modify-password': {
     path: 'widget://html/empower/modify-password.html'
+  },
+  'forget-password': {
+    path: 'widget://html/empower/forget-password.html'
   },
   'recycling-records': {
     path: 'widget://html/records/recycling-records.html'

@@ -23,30 +23,20 @@
     <div class="areacode">
       <span>+86</span>
     </div>
-    <input type="number" placeholder="请输入您的手机号码" class="phone">
+    <input type="number" placeholder="请输入您的手机号码" class="phone" id="account">
   </div>
   <button class="btn">下一步</button>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
   <script>
     function submit() {
-      var password = $api.val('password');
-      if (checkPassword(password)) return;
-
-      request({
-        url: 'xxxxx',
-        values: {
-          phoneCode: phoneCode,
-          password: password
-        },
-        showMessage: '正在发送...',
-        init: function () {
-          closeBtnClick('submit-btn');
-        },
-        success: function () {
-          kill();
-        },
-        default: function () {
-          openBtnClick('submit-btn');
-        }
+      var account = $api.val('account');
+      if (!checkPhone(password)) return;
+      create({
+        goal: 'input-password',
+        account: account
       });
     }
   </script>

@@ -91,8 +91,7 @@ function create(data) {
   var animationType = 'movein';
   if (ROUTER[goal].animationDirection) animationDirection = ROUTER[goal].animationDirection;
   if (ROUTER[goal].animationType) animationType = ROUTER[goal].animationType;
-
-  alert(ROUTER[goal].path)
+  
   api.openWin({
     name: goal,
     url: ROUTER[goal].path,
