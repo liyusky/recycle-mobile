@@ -152,7 +152,7 @@ header .header-title {
 .login {
   height: 10.66667vw;
   margin: 23.06667vw auto;
-  border-bottom: 0.4vw solid #e0e0e0;
+  border-bottom: 1vw solid #e0e0e0;
   width: 96vw;
   margin-left: 4vw;
 }
@@ -162,15 +162,17 @@ header .header-title {
   height: 10.66667vw;
   text-align: center;
   line-height: 10.66667vw;
-  border-right: 0.4vw solid #e0e0e0;
+  border-right: 1vw solid #e0e0e0;
   float: left;
 }
 
 .login .phone {
-  height: 100%;
+  height: 10.66667vw;
+  line-height: 10.66667vw;
   outline: none;
   border: none;
   padding-left: 6.66667vw;
+  float: left;
 }
 
 .btn {

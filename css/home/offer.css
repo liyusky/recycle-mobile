@@ -199,7 +199,7 @@ header .header-title {
   font-size: 5.06667vw;
 }
 
-.mark {
+.details .mark {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -208,7 +208,7 @@ header .header-title {
   top: 0;
 }
 
-.mark .dialog {
+.details .mark .dialog {
   width: 74.66667vw;
   background: #fff;
   position: absolute;
@@ -218,25 +218,26 @@ header .header-title {
   border-radius: 2vw;
 }
 
-.mark .dialog .dialog-title {
+.details .mark .dialog .dialog-title {
   font-size: 4.26667vw;
   text-align: center;
   margin-top: 6.66667vw;
 }
 
-.mark .dialog .dialog-content {
+.details .mark .dialog .dialog-content {
   margin-top: 4vw;
-  border-bottom: 0.4vw solid #ddd;
+  border-bottom: 0.8vw solid #ddd;
   padding-left: 5.06667vw;
   padding-right: 5.06667vw;
 }
 
-.mark .dialog .dialog-content #yes {
+.details .mark .dialog .dialog-content #yes {
   float: left;
   font-size: 4.26667vw;
+  margin-top: 1vw
 }
 
-.mark .dialog .dialog-content label {
+.details .mark .dialog .dialog-content label {
   margin-left: 1.6vw;
   outline: none;
   border: none;
@@ -244,23 +245,23 @@ header .header-title {
   height: 4vw;
 }
 
-.mark .dialog .dialog-content .content-text {
+.details .mark .dialog .dialog-content .content-text {
   font-size: 3.6vw;
   line-height: 6.66667vw;
 }
 
-.mark .dialog .dialog-content .affirm {
+.details .mark .dialog .dialog-content .affirm {
   font-size: 3.6vw;
   padding-bottom: 6vw;
   padding-top: 6vw;
 }
 
-.mark .dialog .dialog-footer {
+.details .mark .dialog .dialog-footer {
   height: 13.33333vw;
   border-radius: 0 0 2.66667vw 2.66667vw;
 }
 
-.mark .dialog .dialog-footer button {
+.details .mark .dialog .dialog-footer button {
   outline: none;
   border: none;
   width: 50%;
@@ -271,11 +272,11 @@ header .header-title {
   font-size: 4.26667vw;
 }
 
-.mark .dialog .dialog-footer button:first-child {
-  border-right: 0.4vw solid #ddd;
+.details .mark .dialog .dialog-footer button:first-child {
+  border-right:0.8vw solid #ddd;
   border-radius: 0 0 0 2.66667vw;
 }
 
-.mark .dialog .dialog-footer button:last-child {
+.details .mark .dialog .dialog-footer button:last-child {
   border-radius: 0 0 2.66667vw 0;
 }

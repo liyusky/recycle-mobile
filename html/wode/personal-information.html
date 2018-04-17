@@ -10,88 +10,78 @@
 </head>
 
 <body>
-    <header class="header">
-      <div class="sign">
-        <div onclick="javascript: kill();">
-          <i class="iconfont icon-arrow-left"></i>
+  <header class="header">
+       <img src="../../image/common/back.png"class="back" onclick="javascript: kill();">
+       <p class="header-title">完善资料</p>
+   </header>
+   <div class="content">
+           <div class="message">
+               <img src="../../image/wode/border.png" class="border">
+              <span class="required">必填</span>
+              <p class="full">请完整填写以下信息</p>
+           </div>
+
+   <div class="ullist">
+           <ul>
+               <li>
+                       <img src="../../image/wode/autonym.png" class="icon">
+                       <div class="box">
+                       <h5 class="title">实名认证</h6>
+                           <p class="list-text">身份信息认证</p>
+                       </div>
+                       <img src="../../image/wode/more.png" class="more">
+                       <span class="status">待认证</span>
+               </li>
+               <li>
+                       <img src="../../image/wode/communication.png" class="icon">
+                        <div class="box">
+                       <h5 class="title">上传通讯录</h6>
+                       <p class="list-text">个人通信录信息</p>
+                       </div>
+                       <img src="../../image/wode/more.png" class="more">
+                       <span class="status">待认证</span>
+               </li>
+               <li>
+                       <img src="../../image/wode/credit.png" class="icon">
+                       <div class="box">
+                       <h5 class="title">芝麻信用认证</h6>
+                       <p class="list-text">芝麻积分</p>
+                   </div>
+                       <img src="../../image/wode/more.png" class="more">
+                       <span class="status">待认证</span>
+               </li>
+                  <li>
+                       <img src="../../image/wode/operator.png" class="icon">
+                       <div class="box">
+                       <h5 class="title">运营商认证</h6>
+                       <p class="list-text">运营商信息认证</p>
+                       </div>
+                       <img src="../../image/wode/more.png" class="more">
+                       <span class="status">待认证</span>
+               </li>
+           </ul>
+       </div>
+   <div class="selectable">
+           <div class="selecthead">
+               <img src="../../image/wode/border.png" class="border">
+               <p class="select">可选认证</p>
+               <span class="fullmessage">请完整填写以下信息</span>
+           </div>
+           <div class="select-content">
+               <ul>
+                   <li><img src="../../image/wode/alipay.png" class="icon"><p>支付宝</p><img src="../../image/wode/remain.png" alt="" class="remain"></li>
+                   <li class="jd"><img src="../../image/wode/jdlogo.png" class="icon"><p>京东</p><img src="../../image/wode/remain.png" alt="" class="remain"></li>
+                   <li><img src="../../image/wode/chsi.png" class="icon"><p>学信网</p><img src="../../image/wode/remain.png" alt="" class="remain"></li>
+               </ul>
+           </div>
+           <div class="clear"></div>
+           <button class="btn">请先完善资料</button>
+       </div>
+
         </div>
-        <div></div>
-      </div>
-      <div class="title">完善资料</div>
-    </header>
-  <div class="content">
-    <div class="message">
-      <img src="../../image/wode/border.png" class="border">
-      <span class="required">必填</span>
-      <p class="full">请完整填写以下信息</p>
-    </div>
-    <div class="ullist">
-      <ul>
-        <li id="step-1">
-          <img src="../../image/wode/autonym.png" class="icon">
-          <div class="box">
-            <h5 class="title">实名认证</h6>
-              <p class="list-text">身份信息认证</p>
-          </div>
-          <img src="../../image/wode/more.png" class="more">
-          <span class="status" id="flag-1">待认证</span>
-        </li>
-        <li id="step-2">
-          <img src="../../image/wode/communication.png" class="icon">
-          <div class="box">
-            <h5 class="title">上传通讯录</h6>
-              <p class="list-text">个人通信录信息</p>
-          </div>
-          <img src="../../image/wode/more.png" class="more">
-          <span class="status" id="flag-2">待认证</span>
-        </li>
-        <li id="step-3">
-          <img src="../../image/wode/operator.png" class="icon">
-          <div class="box">
-            <h5 class="title">运营商认证</h6>
-              <p class="list-text">运营商信息认证</p>
-          </div>
-          <img src="../../image/wode/more.png" class="more">
-          <span class="status" id="flag-3">待认证</span>
-        </li>
-        <li id="step-4">
-          <img src="../../image/wode/cards.png" class="icon">
-          <div class="box">
-            <h5 class="title">绑定银行卡</h6>
-              <p class="list-text">绑定个人收款银行卡</p>
-          </div>
-          <img src="../../image/wode/more.png" class="more">
-          <span class="status" id="flag-4">待认证</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="selectable">
-    <div class="selecthead">
-      <img src="../../image/wode/border.png" class="border">
-      <p class="select">可选认证</p>
-      <span class="fullmessage">请完整填写以下信息</span>
-    </div>
-    <div class="select-content">
-      <ul>
-        <li>
-          <img src="../../image/wode/alipay.png">
-          <p>支付宝</p>
-        </li>
-        <li>
-          <img src="../../image/wode/jdlogo.png">
-          <p>京东</p>
-        </li>
-        <li>
-          <img src="../../image/wode/chsi.png">
-          <p>学信网</p>
-        </li>
-      </ul>
-    </div>
-    <div class="clear"></div>
-    <a class="btn" onclick="javascript: authentication();">请先完善资料</a>
-  </div>
     <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script>

@@ -149,7 +149,7 @@ header .header-title {
   outline: none;
   border: none;
   font-size: 3.6vw;
-  height: 100%;
+  line-height: 15.2vw;
   float: left;
   padding-left: 0.66667vw;
   padding-right: 0.66667vw;
@@ -219,6 +219,7 @@ header .header-title {
   margin-left: 7.2vw;
   border: none;
   outline: none;
+  margin-top: 0.8vw;
 }
 
 .register .register-explain .register-text {

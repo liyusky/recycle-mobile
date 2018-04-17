@@ -6,44 +6,39 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
 	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <script type="text/javascript" charset="utf-8" src="../../../script/global/flexible.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../../script/global/api.js"></script>
 	<title>我的银行卡</title>
-	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui.css">
-	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui-extends.css">
-	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/wode/yinhangka.css">
 	<script type="text/javascript" charset="utf-8" src="../../../iconfont/lanqian/iconfont.js"></script>
 </head>
 
 <body class="yinhangka">
-	<section class="aui-content" id="title">
-		<div class="aui-row">
-			<div class="aui-col-xs-12 title">
-				<p class="font-size-28 padding-left-40 text-black" id="title-message">您还未绑定银行卡，请添加银行卡。</p>
-			</div>
-		</div>
-	</section>
-	<section class="aui-content bank-wrap background-write aui-hide" id="bank-wrap">
-		<ul class="swiper-wrapper" id="swiper-wrapper"></ul>
-	</section>
-	<section class="aui-content padding-horizontal-40 padding-vertical-30 aui-hide" id="note">
-		<div class="aui-row">
-			<div class="aui-col-xs-12 note-wrap font-size-26 text-black">
-				<p>备注：</p>
-				<p>1.借款通过申请后，我们将会将您的所借款项发放到该张银行卡</p>
-				<p>2.未完成借款期间不允许更换银行卡</p>
-				<p>3.我们将根据您提供的身份证信息、银行卡信息在依法设立的第三方征信机构核实您的账户信息。</p>
-			</div>
-		</div>
-	</section>
-	<section class="aui-content aui-text-center margin-top-30">
-		<p>
-			<div class="aui-btn btn-square font-size-35" onclick="javascript: addCard();">添加银行卡</div>
-		</p>
-	</section>
-  <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-property.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-method.js"></script>
+
+	<header class="header">
+    <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
+		<p class="header-title">我的银行卡</p>
+</header>
+<div class="content">
+		<ul class="list">
+				<li>
+						<img src="../../image/wode/bank.png">
+						<div class="card-message">
+								<p class="bank-type">中国银行</p>
+								<span class="card-type">储蓄卡</span>
+										<p class="card-num">
+										 <span class="hidenum">****</span> <span class="hidenum">****</span> <span class="hidenum">****</span>
+										 <span class="shownum">5198</span> </p>
+						</div>
+				</li>
+		</ul>
+</div>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/lanqian/global-property.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/lanqian/global-method.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../../script/lanqian/swiper.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 	<script type="text/javascript">
     var User = $api.getStorage('User');
 		apiready = function () {

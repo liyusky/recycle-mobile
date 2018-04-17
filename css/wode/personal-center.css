@@ -126,10 +126,9 @@ header .head-content .manage {
 }
 
 header .login-dialog {
-  height: 34.66667vw;
-  text-align: center;
+  width: 43vw;
   position: absolute;
-  left: 26.66667vw;
+  left: 24.66667vw;
   top: 20vw;
 }
 
@@ -140,19 +139,25 @@ header .login-dialog .person-img {
   margin: 0 auto;
 }
 
-header .login-dialog a {
-  width: 20.66667vw;
-  height: 8.66667vw;
-  display: inline-block;
+header .login-dialog .loginbtn{
+  float: left;
+}
+
+header .login-dialog .loginbtn a {
+  width: 20vw;
+  height: 8vw;
   background: #80c5ff;
-  border-radius: 10px;
+  border-radius: 1.33333vw;
   color: #fff;
   text-align: center;
   line-height: 8.66667vw;
   margin-top: 4vw;
-  margin-right: 4.26667vw;
   font-size: 4.66667vw;
   float: left;
+}
+
+header .login-dialog .loginbtn a.register{
+  margin-left: 3vw;
 }
 
 .content .list {

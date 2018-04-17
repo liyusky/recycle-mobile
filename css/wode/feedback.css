@@ -153,6 +153,7 @@ header .compile {
   background: #f4f4f4;
   padding: 2.66667vw;
   font-size: 3.6vw;
+  resize:none;
 }
 
 .describe .number {

@@ -101,7 +101,7 @@ body {
 }
 
 body {
-  background: #fff;
+  background: #f3f3f3;
 }
 
 header {
@@ -120,70 +120,44 @@ header .back {
 
 header .header-title {
   font-size: 4.66667vw;
-  display: inline;
 }
 
-header .compile {
-  float: right;
-  font-size: 4.66667vw;
-  color: #333;
-}
-
-.question-wrap {
-  width: 92vw;
-  margin: 4vw auto 0;
-  background: #f4f4f4;
-  border-radius: 2vw;
-  padding: 4vw;
-}
-
-.question-wrap .question-note {
-  font-size: 4vw;
-}
-
-.question-note .text-red {
-  color: #ed5e40;
-}
-
-.question-wrap .text-gray {
+.content .list li {
   width: 100%;
-  outline: none;
-  border: none;
-  background: #f4f4f4;
-  padding: 2.66667vw;
-  font-size: 3.6vw;
-  resize: none;
-}
-
-.question-content .aui-text-right {
-  text-align: right;
-}
-
-.contact {
-  width: 92vw;
-  height: 13.33333vw;
-  margin: 4vw auto 0;
-  display: block;
-  background: #f4f4f4;
-  font-size: 4vw;
-  padding-left: 4vw;
-  padding-right: 4vw;
-  outline: none;
-  border: none;
-  border-radius: 2vw;
-}
-
-.btn {
-  width: 86.66667vw;
-  height: 10.66667vw;
-  background: #1990fe;
-  text-align: center;
-  line-height: 10.66667vw;
+  position: relative;
   color: #fff;
+}
+
+.content .list li img {
+  width: 91.73333vw;
+  height: 28.26667vw;
   display: block;
-  outline: none;
-  border: none;
-  margin: 10.66667vw auto;
-  border-radius: 2vw;
-  font-size: 5.06667vw;
+  margin: 4vw auto;
+}
+
+.content .list .hidenum {
+  font-size: 6.26667vw;
+}
+
+.content .list .shownum {
+  font-size: 7.46667vw;
+}
+
+.content .list .card-message {
+  position: absolute;
+  left: 20vw;
+  top: 3.33333vw;
+}
+
+.content .list .bank-type {
+  font-size: 4.26667vw;
+}
+
+.content .list .card-type {
+  margin-top: 0.93333vw;
+  font-size: 3.06667vw;
+}
+
+.content .list .card-num {
+  font-size: 3.46667vw;
 }

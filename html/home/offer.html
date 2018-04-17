@@ -11,7 +11,7 @@
 
 <body>
   <header class="header">
-    <img src="../../image/common/back.png" alt="" class="back">
+    <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
     <p class="header-title">手机报价</p>
   </header>
   <div class="banner">
@@ -62,27 +62,29 @@
       </div>
     </div>
     <button class="btn" onclick="javascript: submit();">马上拿钱</button>
-  </div>
-  <div class="mark">
-        <div class="dialog">
-            <div class="dialog-title"><p>《手机合同》</p></div>
-            <div class="dialog-content">
-                <div class="content-text">您在使用趣回收产品卖出手机服务前,请认真阅读并充分理解《手机合同》。
-                    当您点击同意,并开始使用手机卖出服务,即表示您已经理解并同意改合同,
-                    该合同将构成对您具有法律约束力的法律文件。
-                </div>
-                    <div class="affirm">
-                        <input type="checkbox" id="yes">
-                        <label for="yes">我阅读并理解 《手机合同》</label>
-                    </div>
-            </div>
-            <div class="dialog-footer">
-                <button>同意</button>
-                <button>我知道了</button>
-            </div>
-        </div>
+    <div class="mark">
+          <div class="dialog">
+              <div class="dialog-title"><p>《手机合同》</p></div>
+              <div class="dialog-content">
+                  <div class="content-text">您在使用趣回收产品卖出手机服务前,请认真阅读并充分理解《手机合同》。
+                      当您点击同意,并开始使用手机卖出服务,即表示您已经理解并同意改合同,
+                      该合同将构成对您具有法律约束力的法律文件。
+                  </div>
+                      <div class="affirm">
+                          <input type="checkbox" id="yes">
+                          <label for="yes">我阅读并理解 《手机合同》</label>
+                      </div>
+              </div>
+              <div class="dialog-footer">
+                  <button>同意</button>
+                  <button>我知道了</button>
+              </div>
+          </div>
+    </div>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script>
@@ -91,7 +93,7 @@
     }
     function init() {
       // if (checkNet() && checkLogin()) {
-        
+
       // }
 
 
