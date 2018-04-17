@@ -19,9 +19,8 @@
     <ul>
       <li class="setleft">
         <p class="text">图片验证码</p>
-        <input type="text" placeholder="请输入图片验证码">
-        <img src="http://passport.360.cn/captcha.php?m=create&app=i360&scene=login&userip=&level=default&sign=8820a4&r=1523681447&_=1523681453866"
-          alt="">
+        <input type="text" placeholder="请输入图片验证码" id="phone-code">
+        <img src="" onclick="javascript: getImageCode(this);">
       </li>
       <li class="setleft-three">
         <p class="text">验证码</p>
@@ -37,7 +36,7 @@
     </ul>
     <div class="register-explain">
       <label for="register">
-        <input type="checkbox" id="register">
+        <input type="checkbox" id="checkbox">
         <span class="mark">注册即同意 《用户注册协议》</span>
       </label>
       <button class="btn">注册</button>
@@ -49,21 +48,32 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkImageVerificationCode.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPassword.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkImageVerificationCode.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhoneVerificationCode.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8">
-
-
+    var User = null;
+  
+    function getImageCode(_this) {
+      var url = '' + new Date();
+      $api.attr(_this, 'src', url);
+    }
 
     function sendSMS() {
+      if (!checkNet()) return;
+      
+      var account = $api.val('account');
+      if (checkPhone(phone)) return;
+      
       var imageCode = $api.val('image-code');
       if (checkImageVerificationCode(imageCode)) return;
-
+      
       request({
         url: 'xxxxx',
         values: {
+          account: account,
           imageCode: imageCode
         },
         showMessage: '正在发送...',
@@ -72,35 +82,66 @@
         },
         success: function () {},
         default: function () {
-          openBtnClick('submit-btn');
+          openBtnClick('send-image-btn');
         }
       });
     }
 
     function submit() {
+      if (!checkNet()) return;
+      
+      var agreement = $api.byId('checkbox').checked;
+      if (!agreement) {
+        toast('请同意注册协议!');
+        return;
+      }
+
+      var phone = $api.val('phone');
+      if (checkPhone(phone)) return;
+
+
       var phoneCode = $api.val('phone-code');
-      var password = $api.val('password');
       if (checkPhoneVerificationCode(phoneCode)) return;
+
+      var password = $api.val('password');
       if (checkPassword(password)) return;
 
       request({
         url: 'xxxxx',
         values: {
+          account: account,
           phoneCode: phoneCode,
           password: password
         },
-        showMessage: '正在发送...',
+        showMessage: '注册中...',
         init: function () {
+          closeBtnClick('send-image-btn');
           closeBtnClick('submit-btn');
         },
         success: function () {
+          setLoginStatus(phone);
+          sendLoginEvent();
           kill();
         },
         default: function () {
+          openBtnClick('send-image-btn');
           openBtnClick('submit-btn');
         }
       });
     }
+
+    function setLoginStatus(phone) {
+      User = $api.getStorage('User');
+      User.Status = true;
+      User.Phone = phone;
+      $api.setStorage('User', User);
+    }
+
+    function sendLoginEvent() {
+      api.sendEvent({name: 'LOGIN-EVENT'});
+    }
+
+    
   </script>
 </body>
 

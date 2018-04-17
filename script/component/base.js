@@ -126,23 +126,34 @@ function create(data) {
  * @datetime    2017-10-07T14:04:38+080
  */
 function kill(goal) {
-  goal = goal ? goal : api.pageParam.goal;
-  var animationType = 'reveal';
-  var animationDirection = 'from_right';
-  var param = ROUTER[goal] ? ROUTER[goal].kill : false;
-  if (param) {
-    if (param.type) animationType = param.type;
-    if (param.direction) animationDirection = param.direction;
+  if (goal instanceof Array) {
+    goal.forEach(function (element) {
+      closeWin(element);
+    });
+  }
+  else {
+    closeWin(goal);
   }
   
-  api.closeWin({
-    name: goal,
-    animation: {
-      type: animationType,
-      subType: animationDirection,
-      duration: 300
+  function closeWin(goal) {
+    goal = goal ? goal : api.pageParam.goal;
+    var animationType = 'reveal';
+    var animationDirection = 'from_right';
+    var param = ROUTER[goal] ? ROUTER[goal].kill : false;
+    if (param) {
+      if (param.type) animationType = param.type;
+      if (param.direction) animationDirection = param.direction;
     }
-  });
+
+    api.closeWin({
+      name: goal,
+      animation: {
+        type: animationType,
+        subType: animationDirection,
+        duration: 300
+      }
+    });
+  }
 }
 /**
  * [toast 显示toast弹出消息]

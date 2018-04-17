@@ -8,7 +8,7 @@
   <title>个人中心</title>
   <link rel="stylesheet" type="text/css" href="../../css/wode/personal-center.css">
   <style>
-    body{
+    body {
       background-color: #fff;
     }
   </style>
@@ -20,14 +20,15 @@
     <div class="head-content">
       <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
       <p class="head-title">个人中心</p>
-      <img src="../../image/wode/manage.png" alt="" class="manage"  onclick="javascript: create('setting');">
+      <img src="../../image/wode/manage.png" alt="" class="manage" onclick="javascript: create('setting');">
     </div>
     <div class="login-dialog">
       <img src="../../image/wode/person.png" class="person-img">
       <div class="loginbtn">
-      <a href="javascript:;" class="login" onclick="javascript: create('login');">登陆</a>
-      <a href="javascript:;" class="register" onclick="javascript: create('register');">注册</a>
+        <a href="javascript:;" class="login" onclick="javascript: create('login');">登陆</a>
+        <a href="javascript:;" class="register" onclick="javascript: create('register');">注册</a>
       </div>
+      <p id="account"></p>
     </div>
   </header>
   <div class="content">
@@ -72,14 +73,29 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript">
-    var User = $api.getStorage('User');
-    var index = 0;
+    var User = null;
     apiready = function () {
       init();
     }
 
     function init() {
       // if (checkNet() && checkLogin()) {}
+    }
+
+    function render() {
+      User = $api.getStorage('User');
+      $api.text('account', User.Phone);
+      if (User.Archive.Name) $api.text('account', User.Archive.Name);
+    }
+
+
+    function setListener() {
+      api.addEventListener(
+        {name: 'LOGIN-EVENT'},
+        function (ret, err) {
+          render();
+        }
+      );
     }
   </script>
 </body>
