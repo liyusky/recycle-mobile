@@ -40,7 +40,7 @@ function request(params) {
   api.ajax(
     {
       url: url,
-      method: 'GET',
+      method: 'POST',
       data: {
         values: params.data
       }

@@ -24,7 +24,7 @@
       </p>
       <h3 class="money">
         <span>￥</span>
-        <span id="money">1200.00</span>
+        <span id="money">500.00</span>
       </h3>
       <a href="javascript:;" class="anew">重新估价></a>
     </div>
@@ -87,27 +87,23 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./js/mobile-detect.min.js"></script>
   <script>
+
+
     apiready = function () {
       init();
     }
+
+    // var md = new MobileDetect(window.navigator.userAgent);
+
+    // alert('您的手机型号:'+md.versionStr('Build')+'安卓版本号:'+md.versionStr('Android'))
     function init() {
       // if (checkNet() && checkLogin()) {
 
       // }
 
 
-      request({
-        url: 'xxxxx',
-        values: {
-          phoneCode: phoneCode,
-          password: password
-        },
-        success: function (data) {
-          render();
-        },
-        default: function () { }
-      });
     }
 
     function render(data) {
@@ -117,10 +113,19 @@
 
     function submit(params) {
       request({
-        url: 'xxxxx',
+        url: 'http://192.168.0.110:8008/JDBService.svc/ShanDianDai',
         values: {
-          phoneCode: phoneCode,
-          password: password
+          sj: phoneCode,
+          deviceId:api.deviceId,
+          jinE:'500',
+          QiXian:7,
+          FeiYong:105,
+          RuZhangKa:'xxxx',
+          PhoneName:手机名称(品牌),
+          PhoneModel:(型号),
+          StorageSpace(存储空间)
+          SerialNumber(序列号)
+
         },
         showMessage: '正在发送...',
         success: function (data) {

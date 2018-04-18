@@ -116,10 +116,10 @@
 
     function init() {
       request({
-        url: 'xxxxx',
+        url: 'http://192.168.0.110:8008/JDBService.svc/GetZXJD',
         values: {
-          phoneCode: phoneCode,
-          password: password
+          sj: phoneCode,
+          deviceId: api.deviceId
         },
         success: function (data) {
           render();

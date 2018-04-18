@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>绑定银行卡</title>
+    <link rel="stylesheet" type="text/css" href="../../css/records/addcard.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
+        <p class="header-title">绑定银行卡</p>
+    </header>
+    <div class="content">
+        <div class="content-head">
+            <p class="title">绑卡只限于实名认证名下的银行卡绑定 </p>
+        </div>
+        <ul class="address-list-compile">
+            <li>
+                <p>真实姓名:</p>
+                <input type="username" placeholder="张三" class="name">
+            </li>
+            <li>
+                <p>身份证号:</p>
+                <input type="text" placeholder="3408241998086659855">
+            </li>
+            <li>
+                <p>银行卡号:</p>
+                <input type="number" placeholder="请输入银行账号">
+            </li>
+            <li>
+                <p>开户银行:</p>
+                <input type="text" placeholder="请点击获取">
+            </li>
+            <li>
+                <p class="phone">手机号:</p>
+                <input type="number" placeholder="请输入手机号">
+            </li>
+            <li>
+                <p class="code">验证码:</p>
+                <input type="text" placeholder="请输入验证码">
+                <a href="javascript:;" class="sendmesg">发送验证码</a>
+            </li>
+        </ul>
+    </div>
+    <button class="btn">确认绑定</button>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var address = null;
+
+        function submit() {
+            var name = $api.val('name');
+            var phone = $api.val('phone');
+            var addressDetail = $api.val('address-detail');
+            request({
+                url: 'xxxxx',
+                values: {
+                    name: name,
+                    phone: phone,
+                    address: address,
+                    addressDetail: addressDetail
+                },
+                showMessage: '正在发送...',
+                success: function() {
+                    kill();
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

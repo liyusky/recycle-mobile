@@ -1,3 +1,0 @@
-developmentAppApi = {
-      url:'xxxxx'
-}

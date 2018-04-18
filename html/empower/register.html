@@ -17,6 +17,10 @@
   </header>
   <div class="register">
     <ul>
+      <li class="setleft-three">
+        <p class="text">用户名</p>
+        <input type="text" placeholder="请输入手机号" id="phone">
+      </li>
       <li class="setleft">
         <p class="text">图片验证码</p>
         <input type="text" placeholder="请输入图片验证码" id="phone-code">
@@ -24,8 +28,8 @@
       </li>
       <li class="setleft-three">
         <p class="text">验证码</p>
-        <input type="text" placeholder="请输入验证码">
-        <span class="sendMsg">发送验证码</span>
+        <input type="text" placeholder="请输入验证码" id="pass">
+        <span class="sendMsg" id="sendMsg">发送验证码</span>
       </li>
       <li class="setpass-left">
         <p class="text">设置密码</p>
@@ -39,7 +43,7 @@
         <input type="checkbox" id="checkbox">
         <span class="mark">注册即同意 《用户注册协议》</span>
       </label>
-      <button class="btn">注册</button>
+      <button class="btn" onclick="javascript:submit()">注册</button>
     </div>
   </div>
 
@@ -55,7 +59,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8">
     var User = null;
-  
+
     function getImageCode(_this) {
       var url = '' + new Date();
       $api.attr(_this, 'src', url);
@@ -63,18 +67,21 @@
 
     function sendSMS() {
       if (!checkNet()) return;
-      
+
       var account = $api.val('account');
       if (checkPhone(phone)) return;
-      
+
       var imageCode = $api.val('image-code');
       if (checkImageVerificationCode(imageCode)) return;
-      
+
       request({
-        url: 'xxxxx',
+        url: 'SendTemplateSMS_XJFD',
         values: {
+<<<<<<< HEAD
           account: account,
           imageCode: imageCode
+          type:'注册'
+>>>>>>> 添加接口
         },
         showMessage: '正在发送...',
         init: function () {
@@ -89,7 +96,7 @@
 
     function submit() {
       if (!checkNet()) return;
-      
+
       var agreement = $api.byId('checkbox').checked;
       if (!agreement) {
         toast('请同意注册协议!');
@@ -107,21 +114,37 @@
       if (checkPassword(password)) return;
 
       request({
-        url: 'xxxxx',
+        url: 'UserRegister',
         values: {
+<<<<<<< HEAD
           account: account,
           phoneCode: phoneCode,
           password: password
+=======
+          deviceId:api.deviceId,
+          phone:$api.val('phone'),
+          mima: $api.val('pass'),
+          yanzhengma: $api.val('sendMsg')
+>>>>>>> 添加接口
         },
         showMessage: '注册中...',
         init: function () {
           closeBtnClick('send-image-btn');
           closeBtnClick('submit-btn');
         },
+<<<<<<< HEAD
         success: function () {
           setLoginStatus(phone);
           sendLoginEvent();
           kill();
+=======
+        success: function (data) {
+           if(data.Code == 1){
+                toast('注册成功');
+           }else{
+                toast('注册失败,请稍后重试...');
+           }
+>>>>>>> 添加接口
         },
         default: function () {
           openBtnClick('send-image-btn');
@@ -141,7 +164,7 @@
       api.sendEvent({name: 'LOGIN-EVENT'});
     }
 
-    
+
   </script>
 </body>
 
