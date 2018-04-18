@@ -96,7 +96,21 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script>
     apiready = function () {
+      init();
+    }
 
+    function init() {
+      if (!checkNet() || !checkLogin()) return;
+      
+      request({
+        url: 'xxxxx',
+        data: {},
+        showMessage: '正在发送...',
+        success: function (data) {
+          render(data);
+        },
+        default: function () {}
+      });
     }
 
     function render(data) {

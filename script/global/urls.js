@@ -6,5 +6,4 @@ var  developmentAppApi = {
   'ShanDianDai':'http://192.168.0.110:8008/JDBService.svc/ShanDianDai', // 提交定胆
   'GetZXJD':'http://192.168.0.110:8008/JDBService.svc/GetZXJD', //  订单进度
   'ShenFenXinXi':'http://192.168.0.110:8008/JDBService.svc/GetZXJD' // 身份验证
-
 };

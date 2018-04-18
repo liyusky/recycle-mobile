@@ -27,15 +27,30 @@
       </li>
     </ul>
   </div>
-  <button class="exit">退出</button>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-    <script>
-      function logout() {
-        
-      }
-    </script>
+  <button class="exit" onclick="javascript: logout();">退出</button>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script>
+    var User = null;
+
+    function logout() {
+      setLogoutStatus();
+      sendLogoutEvent();
+    }
+    
+    function setLogoutStatus() {
+      User = $api.getStorage('User');
+      User.Status = false;
+      $api.setStorage('User', User);
+    }
+
+    function sendLogoutEvent() {
+      api.sendEvent({
+        name: 'LOGOUT-EVENT'
+      });
+    }
+  </script>
 </body>
 
 </html>

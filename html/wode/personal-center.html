@@ -24,7 +24,7 @@
     </div>
     <div class="login-dialog">
       <img src="../../image/wode/person.png" class="person-img">
-      <div class="loginbtn">
+      <div class="loginbtn" id="empower-btns">
         <a href="javascript:;" class="login" onclick="javascript: create('login');">登陆</a>
         <a href="javascript:;" class="register" onclick="javascript: create('register');">注册</a>
       </div>
@@ -72,9 +72,11 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleShow.js"></script>
   <script type="text/javascript">
     var User = null;
     apiready = function () {
+      setListener();
       init();
     }
 
@@ -84,14 +86,31 @@
 
     function render() {
       User = $api.getStorage('User');
+      if (User.Status) {
+        hide('empower-btns');
+        show('account');
+      }
+      else {
+        show('empower-btns');
+        hide('account');
+      }
+      
       $api.text('account', User.Phone);
       if (User.Archive.Name) $api.text('account', User.Archive.Name);
     }
 
 
     function setListener() {
-      api.addEventListener(
-        {name: 'LOGIN-EVENT'},
+      api.addEventListener({
+          name: 'LOGIN-EVENT'
+        },
+        function (ret, err) {
+          render();
+        }
+      );
+      api.addEventListener({
+          name: 'LOGOUT-EVENT'
+        },
         function (ret, err) {
           render();
         }

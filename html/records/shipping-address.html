@@ -42,16 +42,15 @@
     }
 
     function init() {
-      if (checkNet() && checkLogin()) {
-        request({
-          url: 'xxxxx',
-          values: {},
-          success: function () {
-            render();
-          },
-          default: function () {}
-        });
-      }
+      if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'xxxxx',
+        values: {},
+        success: function (data) {
+          render(data);
+        },
+        default: function () {}
+      });
     }
 
     function render(data) {
@@ -75,6 +74,16 @@
         '</div>' +
       '</li>';
     }
+
+     function setListener() {
+        api.addEventListener({
+          name: 'ADD-ADRESS-EVENT'
+        },
+          function (ret, err) {
+            init();
+          }
+        );
+      }
   </script>
 </body>
 

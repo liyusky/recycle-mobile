@@ -1,99 +1,102 @@
 <!DOCTYPE html>
 <!-- 帮助中心 -->
 <html>
-	<head>
-		<meta charset="utf-8">
-	  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
-	  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-	  <title>帮助中心</title>
-	  <link rel="stylesheet" type="text/css" href="../../css/wode/help.css">
-	</head>
-	<body class="yijianfankui">
-    <header class="header">
-      <img src="../../image/common/back.png"  class="back" onclick="javascript: kill();">
-      <p class="header-title">帮助中心</p>
-  </header>
-  <div class="help-content">
-      <ul>
-          <li>
-              <img src="../../image/wode/faq.png" class="faq">
-              <p class="title">如何修改登录密码</p>
-              <img src="../../image/wode/top.png" alt="" class="switch">
-          </li>
-          <li>
-              <img src="../../image/wode/faq.png" class="faq">
-              <p class="title">如何修改支付密码</p>
-              <img src="../../image/wode/top.png" alt="" class="switch">
-              <div class="details">
-                  在"我的-设置-支付密码",输入原来密码验证身份,再设置新的支付密码
-              </div>
-          </li>
-          <li>
-              <img src="../../image/wode/faq.png" class="faq">
-              <p class="title">忘记登录密码</p>
-              <img src="../../image/wode/top.png" alt="" class="switch">
-              <div class="details">
-                  在"登录页点击"忘记密码", 输入注册手机号码,系统将发送验证码到注册手机号码上。
-                  填入验证码,点击"下一步",再重新设置登录密码。
-              </div>
-          </li>
-          <li>
-              <img src="../../image/wode/faq.png" class="faq">
-              <p class="title">忘记支付密码</p>
-              <img src="../../image/wode/top.png" alt="" class="switch">
-          </li>
-          <li>
-              <img src="../../image/wode/faq.png" class="faq">
-              <p class="title">充值多久到账、有无手续费</p>
-              <img src="../../image/wode/top.png" alt="" class="switch">
-          </li>
-          <li>
-              <img src="../../image/wode/faq.png" class="faq">
-              <p class="title">充值提示"无卡支付"如何处理</p>
-              <img src="../../image/wode/top.png" alt="" class="switch">
-          </li>
-          <li>
-              <img src="../../image/wode/faq.png" class="faq">
-              <p class="title">不同银行充值限制规则</p>
-              <img src="../../image/wode/top.png" alt="" class="switch">
-          </li>
-          <li>
-              <img src="../../image/wode/faq.png" class="faq">
-              <p class="title">充值多久到账、有无手续费</p>
-              <img src="../../image/wode/top.png" alt="" class="switch">
-          </li>
-          <li>
-              <img src="../../image/wode/faq.png" class="faq">
-              <p class="title">充值提示"无卡支付"如何处理</p>
-              <img src="../../image/wode/top.png" alt="" class="switch">
-          </li>
-      </ul>
-</div>
 
-	</body>
-	<script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-	<script type="text/javascript">
-		function count (dom) {
-			$api.text('count', dom.value.length);
-		}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+    />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>帮助中心</title>
+    <link rel="stylesheet" type="text/css" href="../../css/wode/help.css">
+</head>
+
+<body class="yijianfankui">
+    <header class="header">
+        <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
+        <p class="header-title">帮助中心</p>
+    </header>
+    <div class="help-content">
+        <ul>
+            <li>
+                <img src="../../image/wode/faq.png" class="faq">
+                <p class="title">如何修改登录密码</p>
+                <img src="../../image/wode/top.png" alt="" class="switch">
+            </li>
+            <li>
+                <img src="../../image/wode/faq.png" class="faq">
+                <p class="title">如何修改支付密码</p>
+                <img src="../../image/wode/top.png" alt="" class="switch">
+                <div class="details">
+                    在"我的-设置-支付密码",输入原来密码验证身份,再设置新的支付密码
+                </div>
+            </li>
+            <li>
+                <img src="../../image/wode/faq.png" class="faq">
+                <p class="title">忘记登录密码</p>
+                <img src="../../image/wode/top.png" alt="" class="switch">
+                <div class="details">
+                    在"登录页点击"忘记密码", 输入注册手机号码,系统将发送验证码到注册手机号码上。 填入验证码,点击"下一步",再重新设置登录密码。
+                </div>
+            </li>
+            <li>
+                <img src="../../image/wode/faq.png" class="faq">
+                <p class="title">忘记支付密码</p>
+                <img src="../../image/wode/top.png" alt="" class="switch">
+            </li>
+            <li>
+                <img src="../../image/wode/faq.png" class="faq">
+                <p class="title">充值多久到账、有无手续费</p>
+                <img src="../../image/wode/top.png" alt="" class="switch">
+            </li>
+            <li>
+                <img src="../../image/wode/faq.png" class="faq">
+                <p class="title">充值提示"无卡支付"如何处理</p>
+                <img src="../../image/wode/top.png" alt="" class="switch">
+            </li>
+            <li>
+                <img src="../../image/wode/faq.png" class="faq">
+                <p class="title">不同银行充值限制规则</p>
+                <img src="../../image/wode/top.png" alt="" class="switch">
+            </li>
+            <li>
+                <img src="../../image/wode/faq.png" class="faq">
+                <p class="title">充值多久到账、有无手续费</p>
+                <img src="../../image/wode/top.png" alt="" class="switch">
+            </li>
+            <li>
+                <img src="../../image/wode/faq.png" class="faq">
+                <p class="title">充值提示"无卡支付"如何处理</p>
+                <img src="../../image/wode/top.png" alt="" class="switch">
+            </li>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+<script type="text/javascript">
+    function count(dom) {
+        $api.text('count', dom.value.length);
+    }
 
     var switchs = document.querySelectorAll('.switch');
-   for(var i=0;i<switchs.length;i++){
-       switchs[i].onoff = false;
-       switchs[i].onclick = function(){
-           var details =  this.parentNode.getElementsByClassName('details')[0];
-           if(this.onoff){
-               this.src = "../../image/wode/top.png";
-               details ? details.style.display = "none" : delete details;
-           }else{
-               details ? details.style.display = "block": delete details;
-               this.src = "../../image/wode/bottom.png";
-           }
-           this.onoff = !this.onoff;
-       }
+    for (var i = 0; i < switchs.length; i++) {
+        switchs[i].onoff = false;
+        switchs[i].onclick = function () {
+            var details = this.parentNode.getElementsByClassName('details')[0];
+            if (this.onoff) {
+                this.src = "../../image/wode/top.png";
+                details ? details.style.display = "none" : delete details;
+            } else {
+                details ? details.style.display = "block" : delete details;
+                this.src = "../../image/wode/bottom.png";
+            }
+            this.onoff = !this.onoff;
+        }
 
-   }
-	</script>
+    }
+</script>
+
 </html>

@@ -17,8 +17,8 @@
     <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
     <p class="header-title">回收记录</p>
   </header>
-  <div class="content">
-    <div class="recycle">
+  <ul class="content">
+    <li class="recycle">
       <img src="../../image/records/recycle.png" alt="" class="recycle">
       <div class="message">
         <p class="phonetype">
@@ -31,25 +31,22 @@
         <ul>
           <li>
             <p>手机估价 </p>
-            <span id="capital">1200.00元</span>
+            <span>1200.00元</span>
           </li>
           <li>
             <p>定金+预付款</p>
-            <span id="interest">900.00元</span>
+            <span>900.00元</span>
           </li>
           <li>
             <p>履约期</p>
-            <span id="time">7</span>
+            <span>7</span>
             <span>天</span>
-            <img src="../../image/records/help.png" alt="" class="help">
+            <img src="../../image/records/help.png" class="help">
           </li>
         </ul>
       </div>
-    </div>
-  </div>
-
-
-
+    </li>
+  </ul>
 
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -61,13 +58,14 @@
 
 
     function submit() {
+      if (!checkNet() || !checkLogin()) return;
       request({
         url: 'xxxxx',
-        values: {
+        data: {
         },
         showMessage: '正在发送...',
-        success: function () {
-          kill();
+        success: function (data) {
+          render(data);
         },
         default: function () { }
       });

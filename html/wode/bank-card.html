@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>我的银行卡</title>
+  <link rel="stylesheet" href="./data.css">
+</head>
+
+<body>
+
+
+  <header class="header">
+    <img src="./img/back.png" alt="" class="back" onclick="javascript: kill();">
+    <p class="header-title">我的银行卡</p>
+  </header>
+  <div class="content">
+    <ul class="list">
+      <li>
+        <img id="bank-image" src="./img/bank.png">
+        <div class="card-message">
+          <p class="bank-type" id="bank-name">中国银行</p>
+          <span class="card-type">储蓄卡</span>
+          <p class="card-num">
+            <span class="hidenum">****</span>
+            <span class="hidenum">****</span>
+            <span class="hidenum">****</span>
+            <span class="shownum" id="card-tail">5198</span>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript">
+    apiready = function () {
+      setListener();
+      init();
+    }
+
+    function init() {
+      if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'xxxxx',
+        values: {},
+        showMessage: '正在加载...',
+        success: function (data) {
+          render(data);
+        }
+      });
+    }
+
+    function render(data) {
+      $api.attr('bank-image', 'src', data.src);
+      $api.text('card-type', data.type);
+      $api.text('card-tail', data.tail);
+    }
+
+
+    function setListener() {
+      api.addEventListener({
+          name: 'BIND-CARD-EVENT'
+        },
+        function (ret, err) {
+          init();
+        }
+      );
+    }
+  </script>
+</body>
+
+</html>

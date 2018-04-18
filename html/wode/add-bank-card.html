@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绑定银行卡</title>
+  <link rel="stylesheet" href="../../css/wode/add-bank-card.css">
+</head>
+
+<body>
+
+
+  <header class="header">
+    <img src="./img/back.png" class="back" onclick="javascript: kill();">
+    <p class="header-title">绑定银行卡</p>
+  </header>
+
+  <div class="content">
+    <div class="content-head">
+      <p class="title">绑卡只限于实名认证名下的银行卡绑定 </p>
+    </div>
+    <ul class="address-list-compile">
+      <li>
+        <p>真实姓名:</p>
+        <input id="name" type="username" placeholder="请输入真实姓名" class="name">
+      </li>
+      <li>
+        <p>身份证号:</p>
+        <input id="id" type="text" placeholder="请输入身份证号">
+      </li>
+      <li>
+        <p>银行卡号:</p>
+        <input id="card" type="number" placeholder="请输入银行账号">
+      </li>
+      <li>
+        <p>开户银行:</p>
+        <input id="bank" type="text" placeholder="请点击获取">
+      </li>
+      <li>
+        <p class="phone">手机号:</p>
+        <input id="phone" type="number" placeholder="请输入手机号">
+      </li>
+      <li>
+        <p class="code">验证码:</p>
+        <input id="code" type="text" placeholder="请输入验证码">
+        <a class="sendmesg">发送验证码</a>
+      </li>
+    </ul>
+  </div>
+
+  <button onclick="javascript: submit();">绑定银行卡</button>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript">
+    function submit() {
+      if (!checkNet() || !checkLogin()) return;
+      var id = $api.val('id');
+      var name = $api.val('name');
+      var card = $api.val('card');
+      var bank = $api.val('bank');
+      var phone = $api.val('phone');
+      var code = $api.val('code');
+      request({
+        url: 'xxxxx',
+        values: {},
+        showMessage: '正在绑定...',
+        success: function () {
+          sendBindCardEvent();
+        }
+      });
+    }
+
+    function sendBindCardEvent() {
+      api.sendEvent({
+        name: 'BIND-CARD-EVENT'
+      });
+    }
+  </script>
+</body>
+
+</html>
