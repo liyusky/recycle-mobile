@@ -77,9 +77,8 @@
       request({
         url: 'SendTemplateSMS_XJFD',
         values: {
-<<<<<<< HEAD
           account: account,
-          imageCode: imageCode
+          imageCode: imageCode,
           type:'注册'
         },
         showMessage: '正在发送...',
@@ -116,20 +115,16 @@
         values: {
           account: account,
           phoneCode: phoneCode,
-          pas
           deviceId:api.deviceId,
           phone:$api.val('phone'),
           mima: $api.val('pass'),
           yanzhengma: $api.val('sendMsg')
->>>>>>> 添加接口
         },
         showMessage: '注册中...',
         init: function () {
           closeBtnClick('send-image-btn');
           closeBtnClick('submit-btn');
         },
-<<<<<<< HEAD
-=======
         success: function (data) {
            if(data.Code == 1){
                 toast('注册成功');
@@ -139,7 +134,6 @@
            }else{
                 toast('注册失败,请稍后重试...');
            }
->>>>>>> 添加接口
         },
         default: function () {
           openBtnClick('send-image-btn');
