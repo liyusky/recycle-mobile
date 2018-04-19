@@ -8,7 +8,6 @@
 	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
 	<title>我的银行卡</title>
 	<link rel="stylesheet" type="text/css" href="../../css/wode/yinhangka.css">
-	<script type="text/javascript" charset="utf-8" src="../../../iconfont/lanqian/iconfont.js"></script>
 </head>
 
 <body class="yinhangka">
@@ -30,16 +29,14 @@
 						</div>
 				</li>
 		</ul>
-    <button class="btn">绑定银行卡</button>
+    <button class="btn" onclick="javascript:create('addcard')">绑定银行卡</button>
 </div>
 
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/lanqian/global-property.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/lanqian/global-method.js"></script>
-	<script type="text/javascript" charset="utf-8" src="../../../script/lanqian/swiper.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
 	<script type="text/javascript">
     var User = $api.getStorage('User');
 		apiready = function () {
@@ -48,7 +45,7 @@
 		}
 
     function init () {
-      if (checkNetwork() && checkLogin()) {
+      if (!checkNet() || !checkLogin()) return;
         sendRequest({
           url: 'GetBankCardList',
           values: {
@@ -63,7 +60,6 @@
             setLayout(User.Card);
           }
         });
-      }
     }
 
     function setLayout (content) {

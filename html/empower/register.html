@@ -28,12 +28,12 @@
       </li>
       <li class="setleft-three">
         <p class="text">验证码</p>
-        <input type="text" placeholder="请输入验证码" id="pass">
+        <input type="text" placeholder="请输入验证码" id="code">
         <span class="sendMsg" id="sendMsg">发送验证码</span>
       </li>
       <li class="setpass-left">
         <p class="text">设置密码</p>
-        <input type="text" placeholder="请设置6-12位数字和字母">
+        <input type="text" placeholder="请设置6-12位数字和字母" id="password">
         <img src="../../image/common/switch.png" alt="" class="switch">
         <img src="../../image/common/clear.png" alt="" class="clear">
       </li>
@@ -57,6 +57,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkImageVerificationCode.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhoneVerificationCode.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
     var User = null;
 
@@ -116,7 +117,7 @@
           deviceId:api.deviceId,
           phone:phone,
           mima: password,
-          yanzhengma: $api.val('sendMsg')
+          yanzhengma: phoneCode
         },
         showMessage: '注册中...',
         init: function () {
