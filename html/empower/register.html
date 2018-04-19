@@ -113,11 +113,9 @@
       request({
         url: 'UserRegister',
         values: {
-          account: account,
-          phoneCode: phoneCode,
           deviceId:api.deviceId,
-          phone:$api.val('phone'),
-          mima: $api.val('pass'),
+          phone:phone,
+          mima: password,
           yanzhengma: $api.val('sendMsg')
         },
         showMessage: '注册中...',

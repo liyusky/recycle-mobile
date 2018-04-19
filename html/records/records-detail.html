@@ -116,10 +116,11 @@
 
     function init() {
         if (!checkNet() || !checkLogin()) return;
+        var User = $api.getStorage('User');
       request({
         url: 'GetZXJD',
         values: {
-          sj: phoneCode,
+          sj: User.Phone,
           deviceId: api.deviceId
         },
         success: function (data) {
