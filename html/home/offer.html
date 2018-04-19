@@ -89,21 +89,12 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="./js/mobile-detect.min.js"></script>
   <script>
-
-
     apiready = function () {
       init();
     }
 
-    // var md = new MobileDetect(window.navigator.userAgent);
-
-    // alert('您的手机型号:'+md.versionStr('Build')+'安卓版本号:'+md.versionStr('Android'))
     function init() {
-      // if (checkNet() && checkLogin()) {
-
-      // }
-
-
+      if (!checkNet() || !checkLogin()) return;
     }
 
     function render(data) {
@@ -121,11 +112,10 @@
           QiXian:7,
           FeiYong:105,
           RuZhangKa:'xxxx',
-          PhoneName:手机名称(品牌),
-          PhoneModel:(型号),
-          StorageSpace(存储空间)
-          SerialNumber(序列号)
-
+          // PhoneName:手机名称(品牌),
+          // PhoneModel:(型号),
+          // StorageSpace(存储空间)
+          // SerialNumber(序列号)
         },
         showMessage: '正在发送...',
         success: function (data) {

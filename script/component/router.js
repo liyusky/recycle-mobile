@@ -52,5 +52,20 @@ window.ROUTER = {
   },
   'details':{
     path: 'widget://html/records/records-detail.html'
+  },
+  'renzheng': {
+    path: 'widget://html/renzheng/renzheng.html'
+  },
+  'gerenxinxi': {
+    path: 'widget://html/renzheng/gerenxinxi.html'
+  },
+  'lianxiren': {
+    path: 'widget://html/renzheng/lianxiren.html'
+  },
+  'yunyingshang': {
+    path: 'widget://html/renzheng/yunyingshang.html'
+  },
+  'zhimafen': {
+    path: 'widget://html/renzheng/zhimafen.html'
   }
 }

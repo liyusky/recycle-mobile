@@ -404,6 +404,7 @@
 		}
 	};
 	u.offset = function (el) {
+		el = u.getDom(el);
 		if (!u.isElement(el)) {
 			console.warn('$api.offset Function need el param, el param must be DOM Element');
 			return;

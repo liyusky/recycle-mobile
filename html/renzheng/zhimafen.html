@@ -3,32 +3,33 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
-	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-	<meta name="author" content="潘剑">
-	<script src="../../script/flexible.js" charset="utf-8"></script>
-	<script type="text/javascript" src="../../script/api.js"></script>
-	<title>芝麻认证</title>
-	<link rel="stylesheet" href="../../css/aui.css">
-	<link rel="stylesheet" href="../../css/aui-extends.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+  />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <meta name="author" content="潘剑">
+  <script src="../../script/flexible.js" charset="utf-8"></script>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <title>芝麻认证</title>
+  <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui-extends.css">
 </head>
 
 <body class="zhimafen">
-	<iframe id="iframe"></iframe>
+  <iframe id="iframe"></iframe>
   <section class="cover aui-hide" id="empty-wrap">
-		<img class="image-note" src="../../image/empty-loan.png">
-		<p class="font-size-30 aui-text-center text-gray margin-top-30">你还没有打开通知权限哦</p>
-	</section>
-	<script type="text/javascript">
+    <img class="image-note" src="../../image/empty-loan.png">
+    <p class="font-size-30 aui-text-center text-gray margin-top-30">你还没有打开通知权限哦</p>
+  </section>
+  <script type="text/javascript">
     var User = $api.getStorage('User');
     var index = 0;
-		apiready = function() {
+    apiready = function () {
       setListener();
-			init();
-		}
+      init();
+    }
 
-		function init() {
+    function init() {
       if (checkNetwork() && checkLogin()) {
         sendRequest({
           url: 'GetZhimaAuthInfoUrl',
@@ -37,30 +38,30 @@
             phone: User.Phone
           },
           showMessage: true,
-          success: function(data) {
+          success: function (data) {
             $api.attr('iframe', 'src', data);
           }
         });
       }
-		}
+    }
 
-    function setListener () {
-      $api.byId('iframe').onload = function() {
+    function setListener() {
+      $api.byId('iframe').onload = function () {
         index++;
         if (index === 3) {
           setTimeout(function () {
             if (checkNetwork() && checkLogin()) {
-              sendRequest({
+              request({
                 url: 'GetCurrentStep',
                 values: {
                   deviceId: api.deviceId,
                   phone: User.Phone
                 },
-                success: function(data) {
+                success: function (data) {
                   User = $api.getStorage('User');
                   User.Step[2] = true;
                   $api.setStorage('User', User);
-                  if (data.Step3) changeStep();
+                  if (data.Step3) sendCloseStepEvent();
                 }
               });
             }
@@ -69,9 +70,20 @@
       };
     }
 
+
+    function sendCloseStepEvent() {
+      api.sendEvent({
+        name: 'CLOSE-STEP-EVENT',
+        extra: {
+          step: 0,
+          goal: 'yunyingshang'
+        }
+      });
+    }
+
     //跳转 第四部
     // changeStep(3);
-	</script>
+  </script>
 </body>
 
 </html>

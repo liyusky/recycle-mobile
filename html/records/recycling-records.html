@@ -11,8 +11,6 @@
 </head>
 
 <body class="empower background-write">
-
-
   <header class="header">
     <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
     <p class="header-title">回收记录</p>
@@ -47,16 +45,12 @@
       </div>
     </li>
   </ul>
-
-
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8">
-
-
     function submit() {
       if (!checkNet() || !checkLogin()) return;
       request({
