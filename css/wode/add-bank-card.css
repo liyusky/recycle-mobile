@@ -179,3 +179,18 @@ header .compile {
 .content .address-list-compile li:last-child {
   border-bottom: none;
 }
+
+.btn {
+  width: 86.66667vw;
+  height: 10.66667vw;
+  background: #1990fe;
+  text-align: center;
+  line-height: 10.66667vw;
+  color: #fff;
+  display: block;
+  outline: none;
+  border: none;
+  margin: 10.66667vw auto;
+  border-radius: 2vw;
+  font-size: 5.06667vw;
+}

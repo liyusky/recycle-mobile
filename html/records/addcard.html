@@ -57,6 +57,7 @@
         var address = null;
 
         function submit() {
+          if (!checkNet() || !checkLogin()) return;
             var name = $api.val('name');
             var phone = $api.val('phone');
             var addressDetail = $api.val('address-detail');

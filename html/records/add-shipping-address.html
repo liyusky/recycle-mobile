@@ -28,8 +28,8 @@
       </li>
       <li>
         当前住址:
-        <input type="text" placeholder="请选择省、市、区">
-        <img src="../../image/records/more.png" class="more">
+        <input type="text" placeholder="请选择省、市、区" id="city" readonly="readonly">
+        <img src="../../image/records/more.png" class="more" id="more">
       </li>
       <li>
         详细地址:
@@ -38,6 +38,8 @@
     </ul>
   </div>
   <button class="btn">保存</button>
+
+
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -46,7 +48,25 @@
   <script type="text/javascript" charset="utf-8">
     var address = null;
 
+    $api.byId('more').onclick = function(){
+      var citySelector = api.require('citySelector');
+      citySelector.open({
+          y: api.frameHeight / 1.4,
+          fixedOn: api.frameName
+      }, function(ret) {
+          if (ret) {
+            var html = '';
+              for(var key in ret){
+                html+= ' '+ret[key];
+              }
+              $api.val('city',html);
+          }
+      });
+    };
+
+
     function submit() {
+      if (!checkNet() || !checkLogin()) return;
       var name = $api.val('name');
       var phone = $api.val('phone');
       var addressDetail = $api.val('address-detail');
@@ -69,7 +89,12 @@
       api.sendEvent({
         name: 'ADD-ADRESS-EVENT'
       });
-    }
+    };
+
+
+
+
+
   </script>
 </body>
 

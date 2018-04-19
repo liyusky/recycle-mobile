@@ -210,17 +210,19 @@ header .header-title {
   font-size: 3.6vw;
 }
 
-.register .register-explain label {
-  margin-left: 7.2vw;
+.register .register-explain .protocol{
+  padding-left: 7.199999999999999vw;
 }
 
-.register .register-explain label #register {
-  float: left;
-  margin-left: 7.2vw;
-  border: none;
-  outline: none;
-  margin-top: 0.8vw;
+.register .register-explain label {
+  margin-left: 1.7333333333333334vw;
+
 }
+
+.register .register-explain  #checkbox{
+  float: left;
+}
+
 
 .register .register-explain .register-text {
   width: 66.66667vw;
@@ -232,7 +234,6 @@ header .header-title {
 
 .register .register-explain .mark {
   color: #fa570a;
-  float: left;
   margin-left: 1.73333vw;
   font-size: 3.6vw;
 }

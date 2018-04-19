@@ -107,6 +107,7 @@
     }
 
     function submit() {
+      if (!checkNet() || !checkLogin()) return;
       request({
         url: 'xxxxx',
         values: {},

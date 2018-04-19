@@ -33,6 +33,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script>
     function submit() {
+      if (!checkNet() || !checkLogin()) return;
       var content = $api.val('textarea');
       var account = $api.val('account');
       if (!content) toast('请输入内容');

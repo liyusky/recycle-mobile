@@ -87,7 +87,6 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="./js/mobile-detect.min.js"></script>
   <script>
     apiready = function () {
       init();
@@ -103,8 +102,9 @@
     }
 
     function submit(params) {
+      if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'http://192.168.0.110:8008/JDBService.svc/ShanDianDai',
+        url: 'ShanDianDai',
         values: {
           sj: phoneCode,
           deviceId:api.deviceId,

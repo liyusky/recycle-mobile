@@ -67,5 +67,8 @@ window.ROUTER = {
   },
   'zhimafen': {
     path: 'widget://html/renzheng/zhimafen.html'
+  },
+  'addcard':{
+     path: 'widget://html/records/addcard.html'
   }
 }

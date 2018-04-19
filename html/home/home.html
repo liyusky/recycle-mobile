@@ -16,7 +16,7 @@
   </header>
   <div class="clear"></div>
   <!-- <div class="message">
-                <img src="./img/trumpet.png" alt="" class="trumpet">
+                <img src="./img/trumpet.png"  class="trumpet">
                 <p class="m-list">用户尾号860刚刚卖出一部iphone 6s获得1500元</p>
         </div> -->
   <div class="banner">
@@ -29,13 +29,13 @@
   <div class="content">
     <div class="phone-type">
       <div class="left-mark"></div>
-      <img src="../../image/home/type.png" alt="" class="left-markimg">
+      <img src="../../image/home/type.png"  class="left-markimg">
       <p class="head-title"> 您的手机型号</p>
-      <img src="../../image/home/type.png" alt="" class="right-markimg">
+      <img src="../../image/home/type.png"  class="right-markimg">
       <div class="right-mark left-mark"></div>
     </div>
     <div class="phone-content">
-      <img src="../../image/home/phone.png" alt="" class="phoneimg">
+      <img src="../../image/home/phone.png"  class="phoneimg">
       <div class="phone-message">
         <p class="messagelist" id="device-model">iphone 6s</p>
         <!-- <p class="messagelist">内存: 16G</p> -->
@@ -45,28 +45,28 @@
       </div>
     </div>
     <div class="clear"></div>
-    <button class="phone-btn" onclick="javascript: create('offer');">马上评估 立即拿钱</button>
+    <button class="phone-btn" onclick="javascript: gotoOffer();">马上评估 立即拿钱</button>
   </div>
   <footer class="recycle">
     <p class="recycle-title">回收流程</p>
     <div class="recycleicon">
       <div class="evaluate w100">
-        <img src="../../image/home/evaluate.png" alt="">
+        <img src="../../image/home/evaluate.png" >
         <p class="recycle-text">旧机估价</p>
       </div>
-      <img src="../../image/home/than.png" alt="" class="than">
+      <img src="../../image/home/than.png"  class="than">
       <div class="order w100">
-        <img src="../../image/home/order.png" alt="">
+        <img src="../../image/home/order.png" >
         <p class="recycle-text">在线下单</p>
       </div>
-      <img src="../../image/home/than.png" alt="" class="than">
+      <img src="../../image/home/than.png"  class="than">
       <div class="loan w100">
-        <img src="../../image/home/icon.png" alt="">
+        <img src="../../image/home/icon.png" >
         <p class="recycle-text">急速结款</p>
       </div>
-      <img src="../../image/home/than.png" alt="" class="than">
+      <img src="../../image/home/than.png"  class="than">
       <div class="quality w100">
-        <img src="../../image/home/checkout.png" alt="">
+        <img src="../../image/home/checkout.png" >
         <p class="recycle-text">质检入库</p>
       </div>
     </div>
@@ -83,12 +83,21 @@
     }
 
     function init() {
-      if (!checkNet() || !checkLogin()) return;
       initRender();
     }
 
     function initRender() {
       $api.text('device-model', api.deviceModel);
+    }
+
+    function gotoOffer() {
+      if (!checkNet() || !checkLogin()) return;
+      create('offer');
+    }
+
+    function  person() {
+      if (!checkNet() || !checkLogin()) return;
+       create('personal-center')
     }
 
     function setUser() {

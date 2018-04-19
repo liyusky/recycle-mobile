@@ -115,8 +115,9 @@
     }
 
     function init() {
+        if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'http://192.168.0.110:8008/JDBService.svc/GetZXJD',
+        url: 'GetZXJD',
         values: {
           sj: phoneCode,
           deviceId: api.deviceId
@@ -153,6 +154,7 @@
     }
 
     function cancel() {
+      if (!checkNet() || !checkLogin()) return;
       request({
         url: 'xxxxx',
         values: {
@@ -168,6 +170,7 @@
     }
 
     function confirm() {
+      if (!checkNet() || !checkLogin()) return;
       request({
         url: 'xxxxx',
         values: {
