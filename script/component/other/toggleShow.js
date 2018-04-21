@@ -1,22 +1,22 @@
-function show (dom) {
-  if ($api.hasCls(dom, 'hide')) {
-    $api.removeCls(dom, 'hide');
+function show (id) {
+  if ($api.hasCls(id, 'hide')) {
+    $api.removeCls(id, 'hide');
   }
 }
 
-function hide (dom) {
-  if (!$api.hasCls(dom, 'hide')) {
-    $api.addCls(dom, 'hide');
+function hide(id) {
+  if (!$api.hasCls(id, 'hide')) {
+    $api.addCls(id, 'hide');
   }
 }
 
-function toggleShow (dom) {
-  if ($api.hasCls(dom, 'hide')) {
-    $api.removeCls(dom, 'hide');
+function toggleShow(id) {
+  if ($api.hasCls(id, 'hide')) {
+    $api.removeCls(id, 'hide');
   }
   else {
-    if (!$api.hasCls(dom, 'hide')) {
-      $api.addCls(dom, 'hide');
+    if (!$api.hasCls(id, 'hide')) {
+      $api.addCls(id, 'hide');
     }
   }
 }

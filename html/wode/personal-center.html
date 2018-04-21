@@ -25,40 +25,40 @@
     <div class="login-dialog">
       <img src="../../image/wode/person.png" class="person-img">
       <div class="loginbtn" id="empower-btns">
-        <a href="javascript:;" class="login" onclick="javascript: create('login');">登陆</a>
-        <a href="javascript:;" class="register" onclick="javascript: create('register');">注册</a>
+        <a href="javascript:;" class="login" onclick="javascript: gotoPage('login');">登陆</a>
+        <a href="javascript:;" class="register" onclick="javascript: gotoPage('register');">注册</a>
       </div>
       <p id="account"></p>
     </div>
   </header>
   <div class="content">
     <ul class="list">
-      <li onclick="javascript: create('personal-information');">
+      <li onclick="javascript: gotoPage('personal-information');">
         <img src="../../image/wode/data.png" class="icon">
         <p>我的资料</p>
         <img src="../../image/wode/more.png" alt="" class="more">
       </li>
-      <li onclick="javascript: create('recycling-records');">
+      <li onclick="javascript: gotoPage('recycling-records');">
         <img src="../../image/wode/record.png" class="icon">
         <p>回收记录</p>
         <img src="../../image/wode/more.png" alt="" class="more">
       </li>
-      <li onclick="javascript: create('yinhangka');">
+      <li onclick="javascript: gotoPage('yinhangka');">
         <img src="../../image/wode/card.png" class="icon">
         <p>我的银行卡</p>
         <img src="../../image/wode/more.png" alt="" class="more">
       </li>
-      <li onclick="javascript: create('shipping-address');">
+      <li onclick="javascript: gotoPage('shipping-address');">
         <img src="../../image/wode/address.png" class="icon">
         <p>我的收货地址</p>
         <img src="../../image/wode/more.png" alt="" class="more">
       </li>
-      <li onclick="javascript: create('help-center');">
+      <li onclick="javascript: gotoPage('help-center');">
         <img src="../../image/wode/help.png" class="icon">
         <p>帮助中心</p>
         <img src="../../image/wode/more.png" alt="" class="more">
       </li>
-      <li onclick="javascript: create('feedback');">
+      <li onclick="javascript: gotoPage('feedback');">
         <img src="../../image/wode/feedback.png" class="icon">
         <p>意见反馈</p>
         <img src="../../image/wode/more.png" class="more">
@@ -81,7 +81,7 @@
     }
 
     function init() {
-      // if (checkNet() && checkLogin()) {}
+      // if (!checkNet() || !checkLogin()) return;
     }
 
     function render() {
@@ -100,20 +100,32 @@
     }
 
     function setListener() {
-      api.addEventListener({
+      api.addEventListener(
+        {
           name: 'LOGIN-EVENT'
         },
         function (ret, err) {
           render();
         }
       );
-      api.addEventListener({
+      api.addEventListener(
+        {
           name: 'LOGOUT-EVENT'
         },
         function (ret, err) {
           render();
         }
       );
+    }
+
+    function gotoPage(goal) {
+      if (goal == 'login' || goal == 'register') {
+        if (!checkNet()) return;
+      }
+      else {
+        if (!checkNet() || !checkLogin()) return;
+      }
+      create(goal);
     }
   </script>
 </body>

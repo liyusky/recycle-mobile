@@ -9,7 +9,9 @@
 function readyToResend(dom) {
   closeBtnClick(dom);
   var second = 60;
-  var animation = setInterval(function () {
+  showSecond();
+  var animation = setInterval(showSecond, 1000);
+  function showSecond() {
     if (second > 0) {
       $api.text(dom, second + '秒后重试');
       second--;
@@ -19,5 +21,5 @@ function readyToResend(dom) {
       $api.text(dom, '获取验证码');
       openBtnClick(dom);
     }
-  }, 1000);
+  }
 }

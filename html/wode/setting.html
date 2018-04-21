@@ -21,7 +21,7 @@
         <p class="setlist">关于我们</p>
         <img src="../../image/wode/more.png" alt="">
       </li>
-      <li onclick="javascript: create('modify-password');">
+      <li onclick="javascript: gotoPage('modify-password');">
         <p class="setlist">修改登录密码</p>
         <img src="../../image/wode/more.png" alt="">
       </li>
@@ -43,12 +43,19 @@
       User = $api.getStorage('User');
       User.Status = false;
       $api.setStorage('User', User);
+      kill();
     }
 
     function sendLogoutEvent() {
       api.sendEvent({
         name: 'LOGOUT-EVENT'
       });
+    }
+
+
+    function gotoPage(goal) {
+      if (!checkNet() || !checkLogin()) return;
+      create(goal);
     }
   </script>
 </body>

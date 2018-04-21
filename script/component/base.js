@@ -16,7 +16,7 @@ function checkLogin(params) {
   } catch (e) { }
 
   User = $api.getStorage('User');
-  if (User.Login) {
+  if (User.Status) {
     try {
       params.success(flag);
     } catch (e) { }
@@ -25,7 +25,7 @@ function checkLogin(params) {
     flag = false;
     if (openLogin) {
       toast('请先登录');
-      create('empower');
+      create('login');
     }
     try {
       params.fail(flag);

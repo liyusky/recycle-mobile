@@ -31,7 +31,7 @@ function AppStatusHandle(ret, err, operation) {
   if (ret) {
     if (ret.message) toast(ret.message);
     switch (ret.code) {
-      case 200:
+      case 1:
         try {
           operation.success(ret.data);
         } catch (e) {}

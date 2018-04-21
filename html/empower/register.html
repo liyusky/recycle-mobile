@@ -19,17 +19,17 @@
     <ul>
       <li class="setleft-three">
         <p class="text">用户名</p>
-        <input type="text" placeholder="请输入手机号" id="phone">
+        <input type="text" placeholder="请输入手机号" id="account">
       </li>
       <li class="setleft">
         <p class="text">图片验证码</p>
-        <input type="text" placeholder="请输入图片验证码" id="phone-code">
+        <input type="text" placeholder="请输入图片验证码" id="image-code">
         <img src="" onclick="javascript: getImageCode(this);">
       </li>
       <li class="setleft-three">
         <p class="text">验证码</p>
-        <input type="text" placeholder="请输入验证码" id="code">
-        <span class="sendMsg" id="sendMsg">发送验证码</span>
+        <input type="text" placeholder="请输入验证码" id="phone-code">
+        <button class="sendMsg" id="send-SMS-btn" onclick="javascript: sendSMS(this);">发送验证码</button>
       </li>
       <li class="setpass-left">
         <p class="text">设置密码</p>
@@ -57,6 +57,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkImageVerificationCode.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhoneVerificationCode.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/readyToResend.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
     var User = null;
@@ -66,29 +67,28 @@
       $api.attr(_this, 'src', url);
     }
 
-    function sendSMS() {
+    function sendSMS(dom) {
       if (!checkNet()) return;
 
       var account = $api.val('account');
-      if (checkPhone(phone)) return;
+      if (!checkPhone(account)) return;
 
       var imageCode = $api.val('image-code');
-      if (checkImageVerificationCode(imageCode)) return;
+      if (!checkImageVerificationCode(imageCode)) return;
+      readyToResend(dom);
 
       request({
-        url: 'SendTemplateSMS_XJFD',
-        values: {
+        url: 'SendSMS',
+        data: {
           account: account,
           imageCode: imageCode,
           type:'注册'
         },
-        showMessage: '正在发送...',
-        init: function () {
-          closeBtnClick('send-image-btn');
-        },
-        success: function () {},
-        default: function () {
-          openBtnClick('send-image-btn');
+        operation: {
+          init: function () {
+            readyToResend(dom);
+          },
+          success: function () {},
         }
       });
     }
@@ -97,46 +97,48 @@
       if (!checkNet()) return;
 
       var agreement = $api.byId('checkbox').checked;
-      if (!agreement) {
-        toast('请同意注册协议!');
-        return;
-      }
+      // if (!agreement) {
+      //   toast('请同意注册协议!');
+      //   return;
+      // }
 
-      var phone = $api.val('phone');
-      if (checkPhone(phone)) return;
+      var account = $api.val('account');
+      // if (!checkPhone(account)) return;
+
+      var imageCode = $api.val('image-code');
+      // if (!checkImageVerificationCode(imageCode)) return;
 
       var phoneCode = $api.val('phone-code');
-      if (checkPhoneVerificationCode(phoneCode)) return;
+      // if (!checkPhoneVerificationCode(phoneCode)) return;
 
       var password = $api.val('password');
-      if (checkPassword(password)) return;
+      // if (!checkPassword(password)) return;
 
       request({
         url: 'UserRegister',
-        values: {
+        data: {
           deviceId:api.deviceId,
-          phone:phone,
+          phone: account,
           mima: password,
           yanzhengma: phoneCode
         },
         showMessage: '注册中...',
-        init: function () {
-          closeBtnClick('send-image-btn');
-          closeBtnClick('submit-btn');
-        },
-        success: function (data) {
-           if(data.Code == 1){
-                toast('注册成功');
-                setLoginStatus(phone);
-                sendLoginEvent();
-                kill();
-           }else{
-                toast('注册失败,请稍后重试...');
-           }
-        },
-        default: function () {
-          openBtnClick('send-image-btn');
-          openBtnClick('submit-btn');
+        operation: {
+          init: function () {
+            closeBtnClick('submit-btn');
+          },
+          success: function (data) {
+            toast('注册成功');
+            setLoginStatus(account);
+            sendLoginEvent();
+            kill();
+          },
+          fail: function () {
+            toast('注册失败,请稍后重试...');
+          },
+          default: function () {
+            openBtnClick('submit-btn');
+          }
         }
       });
     }
