@@ -34,6 +34,8 @@
 
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
@@ -45,15 +47,16 @@
 		}
 
     function init () {
-      if (!checkNet() || !checkLogin()) return;
-        sendRequest({
-          url: 'GetBankCardList',
+      // if (!checkNet() || !checkLogin()) return;
+        request({
+          url: 'GetHYYHK',
           values: {
             phone: User.Phone,
             deviceId: api.deviceId
           },
           showMessage: true,
           success: function (data) {
+
             User = $api.getStorage('User');
             User.Card = formatCard(data);
             $api.setStorage('User', User);
@@ -143,9 +146,8 @@
       var result = null;
       var cardList = [];
       var card = {};
-      for (var i = 0; i < content.length; i++) {
         var oldCard = content[i];
-        for (var key in oldCard) {
+        for (var key in content) {
           switch (key) {
             case 'KaHao':
               card.number = oldCard.KaHao;
@@ -165,7 +167,6 @@
         }
         cardList.push(card);
         card = {};
-      }
       return cardList;
     }
 	</script>

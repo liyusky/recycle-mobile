@@ -134,7 +134,7 @@ function kill(goal) {
   else {
     closeWin(goal);
   }
-  
+
   function closeWin(goal) {
     goal = goal ? goal : api.pageParam.goal;
     var animationType = 'reveal';

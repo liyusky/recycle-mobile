@@ -98,6 +98,7 @@ a {
 
 body {
   padding-top: 17.2vw;
+  background: #fff;
 }
 
 .clear {
@@ -126,6 +127,7 @@ header .header-title {
   position: relative;
   color: #fff;
   text-align: center;
+  z-index: 1;
 }
 
 .banner img {
@@ -202,10 +204,11 @@ header .header-title {
 .details .mark {
   width: 100%;
   height: 100%;
-  position: absolute;
-  background: rgba(255, 255, 255, 0.3);
+  position: fixed;
+  background: rgba(255,255,255,0.3);
   left: 0;
   top: 0;
+  z-index: 3;
 }
 
 .details .mark .dialog {

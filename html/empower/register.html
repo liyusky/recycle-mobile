@@ -33,7 +33,7 @@
       </li>
       <li class="setpass-left">
         <p class="text">设置密码</p>
-        <input type="text" placeholder="请设置6-12位数字和字母" id="password">
+        <input type="password" placeholder="请设置6-12位数字和字母" id="password">
         <img src="../../image/common/switch.png" alt="" class="switch">
         <img src="../../image/common/clear.png" alt="" class="clear">
       </li>
@@ -48,10 +48,11 @@
   </div>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPassword.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkImageVerificationCode.js"></script>
@@ -61,9 +62,39 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
     var User = null;
+    var fullname = null;
+    var key = null;
+        var $switch = document.querySelector('.switch');
+        var clear = document.querySelector('.clear');
+      $switch.onOff = true;
+      $switch.onclick = function () {
+          if(this.onOff){
+            this.parentNode.getElementsByTagName('input')[0].type = 'text';
+          }else{
+            this.parentNode.getElementsByTagName('input')[0].type = 'password';
+          }
+          this.onOff = !this.onOff;
+      }
+      clear.onclick = function () {this.parentNode.getElementsByTagName('input')[0].value = '';}
+getkey();
+      function getkey() {
+        var xhr = new XMLHttpRequest();
+        var url = developmentAppApi['GenerateKey'];
+        var imgurl = developmentAppApi['GrapheCodeImg'];
+        xhr.open('GET',url,true);
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+            if(this.readyState == 4 && this.status == 200){
+                key = JSON.parse(this.responseText).d;
+                  $api.attr(getImg, 'src', imgurl+'?key='+key);
+            }
+        }
+      };
+
 
     function getImageCode(_this) {
-      var url = '' + new Date();
+      getkey()
+      var url = developmentAppApi['GrapheCodeImg']+'?key='+key;
       $api.attr(_this, 'src', url);
     }
 
@@ -73,6 +104,10 @@
       var account = $api.val('account');
       if (!checkPhone(account)) return;
 
+    function sendSMS() {
+      // if (!checkNet()) return;
+      var phone = $api.val('phone');
+      if (!checkPhone(phone)) toast('请认真填写手机号');return;
       var imageCode = $api.val('image-code');
       if (!checkImageVerificationCode(imageCode)) return;
       readyToResend(dom);
@@ -91,7 +126,11 @@
           success: function () {},
         }
       });
-    }
+    };
+
+
+
+
 
     function submit() {
       if (!checkNet()) return;
@@ -157,5 +196,4 @@
 
   </script>
 </body>
-
 </html>

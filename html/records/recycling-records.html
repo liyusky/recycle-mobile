@@ -15,7 +15,7 @@
     <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
     <p class="header-title">回收记录</p>
   </header>
-  <ul class="content">
+  <ul class="content" id="content">
     <li class="recycle">
       <img src="../../image/records/recycle.png" alt="" class="recycle">
       <div class="message">
@@ -46,36 +46,76 @@
     </li>
   </ul>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8">
-    function submit() {
-      if (!checkNet() || !checkLogin()) return;
-      request({
-        url: 'xxxxx',
-        data: {
-        },
-        showMessage: '正在发送...',
-        success: function (data) {
-          render(data);
-        },
-        default: function () { }
-      });
-    }
 
-    function render(data) {
-      var htmlStr = '';
-      for (var i = 0; i < data.length; i++) {
-        htmlStr += setHtml(data[i]);
+  apiready = function () {
+      init();
+  }
+
+      function init() {
+        // if (!checkNet() || !checkLogin()) return;
+        request({
+          url: 'GetHYJKJL',
+          values: {
+            Phone:$api.getStorage('User'),
+            deviceId:api.deviceId
+          },
+          showMessage: '正在发送...',
+          success: function (data) {
+            if(data.d.FangKuanRen){
+              render(data);
+            }
+          },
+          default: function () { }
+        });
+
+
+      function render(data) {
+        var htmlStr = '';
+          htmlStr += setHtml(data);
+        $api.html('content', htmlStr);
       }
-    }
 
-    function setHtml(data) {
-      return htmlStr = '';
-    }
+      function setHtml(data) {
+
+        return htmlStr = "<li class='recycle'>"+
+            "<img src='../../image/records/recycle.png'  class='recycle'>"+
+              "<div class='message'>"+
+                "<p class='phonetype'>"+
+                  "<span>手机型号</span>"+
+                  "<span id='phone-type'>"+api.deviceModel+"</span>"+
+                " </p>"+
+                "<a href='javascript:;' onclick='javascript:create('details');''>查看详情></a>"+
+              "</div>"+
+              "<div class='price'>"+
+              "  <ul>"+
+                  "<li>"+
+                  "  <p>手机估价 </p>"+
+                    "<span>500.00元</span>"+
+                  "</li>"+
+                  "<li>"+
+                  "  <p>定金+预付款</p>"+
+                  "  <span>"+parentInt(data.FeiYong)+parseInt(data.jieE)+".00元</span>"+
+                "  </li>"+
+                  "<li>"+
+                  "  <p>履约期</p>"+
+                    "<span>7</span>"+
+                    "<span>天</span>"+
+                    "<img src=''../../image/records/help.png' class='help'>"+
+                  "</li>"+
+                "</ul>"+
+              "</div>"+
+            "</li>";
+      }
+
+      }
+
+
   </script>
 </body>
 

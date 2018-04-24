@@ -34,6 +34,7 @@ function AppStatusHandle(ret, err, operation) {
       case 1:
         try {
           operation.success(ret.data);
+          toast(ret.data.message)
         } catch (e) {}
         break;
       case 401:

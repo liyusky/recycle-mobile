@@ -107,11 +107,14 @@
 
     function init() {
       request({
-        url: 'xxxxx',
+        url: 'other',
         values: {},
         showMessage: '正在加载...',
         success: function (data) {
-          //render(data);
+          if(data.code == 200){
+            render(data);
+            toast(data.message);
+          }
         }
       });
     }

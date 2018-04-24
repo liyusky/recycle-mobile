@@ -79,10 +79,13 @@
 
     function init() {
       request({
-        url: 'xxxxx',
+        url: 'other',
         values: {},
-        success: function () {
-          render();
+        success: function (data) {
+          if(data.code == 200){
+            toast(data.message)
+            render(data);
+          }
         },
         default: function () { }
       });
@@ -110,10 +113,13 @@
     function submit() {
       if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'xxxxx',
+        url: 'other',
         values: {},
         showMessage: '正在发送...',
-        success: function () {
+        success: function (data) {
+           if(data.code == 200){
+             toast(data.message);
+           }
         },
         default: function () {}
       });

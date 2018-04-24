@@ -52,27 +52,67 @@
 
   <button onclick="javascript: submit();" class="btn">绑定银行卡</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript">
+
+    var id = null;
+
+    apiready = function () {
+      getcardnum();
+    }
+
+      function getcardnum() {
+          request({
+            url:'GetHYYHK',
+            values:{
+              phone:api.getStorage('User'),
+              deviceId:api.deviceId
+            },
+            success:function (data) {
+              id = data.KaHao;
+            }
+          })
+      }
+
+
     function submit() {
-      if (!checkNet() || !checkLogin()) return;
-      var id = $api.val('id');
+      // if (!checkNet() || !checkLogin()) return;
+      // var id = $api.val('id');
       var name = $api.val('name');
       var card = $api.val('card');
       var bank = $api.val('bank');
       var phone = $api.val('phone');
       var code = $api.val('code');
+      if(!bank) return;
+      if(!checkName(name)) return;
+      if(!checkPhone(phone)) return;
+      if(!checkPhoneVerificationCode(code)) return;
+      if(!checkBankCard(card)) return;
       request({
-        url: 'xxxxx',
-        values: {},
+        url: 'AddYHK',
+        values: {
+          Phone:$api.getStorage('User'),
+          deviceId:api.deviceId,
+          kh:id,
+          yh:bank,
+          ylsj:phone
+        },
         showMessage: '正在绑定...',
-        success: function () {
-          sendBindCardEvent();
+        success: function (data) {
+          if(data.d.Code == 1){
+            sendBindCardEvent();
+            toast(data.d.Msg);
+          }else{
+            toast(data.d.Msg));
+          }
         }
       });
-    }
+    };
 
     function sendBindCardEvent() {
       api.sendEvent({

@@ -72,8 +72,11 @@
     </div>
   </footer>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript">
     var User = null;
 
@@ -87,16 +90,32 @@
     }
 
     function initRender() {
+      // 860716037690344
+      // if (!checkNet() || !checkLogin()) return;
       $api.text('device-model', api.deviceModel);
+      // 是否存在未处理的订单
+      request({
+        url:'IsExistsJT',
+        data:{
+          phone:$api.getStorage('User'),
+          deviceId:api.deviceId
+        },
+        success:function (data) {
+            if(data.d.Code == 0){
+
+            }
+        }
+      })
+
     }
 
     function gotoOffer() {
-      if (!checkNet() || !checkLogin()) return;
+      // if (!checkNet() || !checkLogin()) return;
       create('offer');
     }
 
     function  person() {
-      if (!checkNet() || !checkLogin()) return;
+      // if (!checkNet() || !checkLogin()) return;
        create('personal-center')
     }
 

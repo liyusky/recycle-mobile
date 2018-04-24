@@ -15,7 +15,7 @@
     <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
     <p class="header-title">订单详情</p>
   </header>
-  <div class="content">
+  <div class="content" id="content">
     <div class="recycle">
       <img src="../../image/records/recycle.png" alt="" class="recycle">
       <div class="message">
@@ -28,7 +28,7 @@
         <ul>
           <li>
             <p>手机估价 </p>
-            <span id="capital">1200.00元</span>
+            <span id="capital">500.00元</span>
           </li>
           <li>
             <p>定金+预付款</p>
@@ -49,7 +49,7 @@
     <div class="list">
       <ul>
         <li class="order-list">
-          <ul>
+          <ul id="list">
             <li class="currentstatus mark">预付款打款成功</li>
             <li class="message">已打款至尾号 (6589) 银行卡</li>
             <li class="time">2018-04-10 12:05:58</li>
@@ -100,8 +100,8 @@
           <span>天</span>
         </p>
       </div>
-      <button  class="btn">不卖了</button>
-      <button  class="btn">确定卖出填写寄回信息</button>
+      <button  class="btn"  onclick="javascript:cancel();">不卖了</button>
+      <button  class="btn" onclick="javascript:confirm();">确定卖出</button>
     </div>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -113,75 +113,154 @@
   <script type="text/javascript" charset="utf-8">
     apiready = function () {
       init();
+      getschedule();
     }
 
+  // 获取记录
     function init() {
-        if (!checkNet() || !checkLogin()) return;
-        var User = $api.getStorage('User');
-      request({
-        url: 'GetZXJD',
-        values: {
-          sj: User.Phone,
-          deviceId: api.deviceId
-        },
-        success: function (data) {
-          render();
-        },
-        default: function () {}
-      });
-    }
+            // if (!checkNet() || !checkLogin()) return;
+            request({
+              url: 'GetHYJKJL',
+              data: {
+                Phone:$api.getStorage('User'),
+                deviceId:api.deviceId
+              },
+              showMessage: '正在发送...',
+              success: function (data) {
+                if(data.d.JieKuanShiJian){
+                  render(data);
+                }
+              },
+              default: function () { }
+            });
 
-    function render(data) {
-      $api.text('phone-type', data.type);
-      $api.text('capital', data.capital);
-      $api.text('interest', data.interest);
-      $api.text('time', data.time);
-      $api.text('overdue', data.overdue);
-    }
+
+          function render(data) {
+            var htmlStr = '';
+              htmlStr += setHtml(data);
+            $api.html('content', htmlStr);
+          }
+
+          function setHtml(data) {
+
+            return htmlStr = "<div class='recycle'>"+
+                "<img src='../../image/records/recycle.png'  class='recycle'>"+
+                  "<div class='message'>"+
+                    "<p class='phonetype'>"+
+                      "<span>手机型号</span>"+
+                      "<span id='phone-type'>"+api.deviceModel+"</span>"+
+                    " </p>"+
+                    "<a href='javascript:;' onclick='javascript:create('details');''>查看详情></a>"+
+                  "</div>"+
+                  "<div class='price'>"+
+                  "  <ul>"+
+                      "<li>"+
+                      "  <p>手机估价 </p>"+
+                        "<span>500.00元</span>"+
+                      "</li>"+
+                      "<li>"+
+                      "  <p>定金+预付款</p>"+
+                      "  <span>"+parentInt(data.FeiYong)+parseInt(data.jieE)+".00元</span>"+
+                    "  </li>"+
+                      "<li>"+
+                      "  <p>履约期</p>"+
+                        "<span>7</span>"+
+                        "<span>天</span>"+
+                        "<img src=''../../image/records/help.png' class='help'>"+
+                      "</li>"+
+                    "</ul>"+
+                  "</div>"+
+                "</div>";
+          }
+    };
+
+
+      function getschedule() {
+
+        request({
+          url: 'GetZXJD',
+          data: {
+            sj:$api.getStorage('User'),
+            deviceId:api.deviceId
+          },
+          showMessage: '正在发送...',
+          success: function (data) {
+            if(data.d.ZT){
+              schedulerender(data);
+            }
+          },
+          default: function () { }
+        });
+
+        function schedulerender() {
+          var html = '';
+              html+= schedulHtml(data);
+          $api.html('list', html);
+
+        };
+
+        function schedulHtml(data) {
+                    var html = "<li class='order-list'>" +
+                        "<ul>" +
+                        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
+                        "<li class='message'>" + data.FangKuanYiJian + "</li>" +
+                        "<li class='time'>" + data.FangKuanShiJian + "</li>" +
+                        "</ul>" +
+                        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
+                        "<li class='message'>" + data.ShenHeYiJian + "</li>" +
+                        "<li class='time'>" + data.ShenHeShiJian + "</li>" +
+                        "</ul>" +
+                        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
+                        "<li class='message'>您的订单已提交</li>" +
+                        "<li class='time'>" + data.JieKuanShiJian + "</li>" +
+                        "</ul>" +
+                        "</li>";
+                      return html;
+        }
+
+      }
+
 
     function submit() {
       var name = $api.val('name');
       var phone = $api.val('phone');
       var addressDetail = $api.val('name');
       request({
-        url: 'xxxxx',
+        url: 'other',
         values: {
           name: name,
           phone: phone
         },
         showMessage: '正在发送...',
-        success: function () {},
+        success: function (data) {
+          if(data.d.Code == 200){
+            toast(data.message);
+            render(data);
+          }
+        },
         default: function () {}
       });
     }
 
     function cancel() {
       if (!checkNet() || !checkLogin()) return;
-      request({
-        url: 'xxxxx',
-        values: {
-          name: name,
-          phone: phone
-        },
-        showMessage: '正在发送...',
-        success: function () {
-          kill();
-        },
-        default: function () {}
-      });
+      create('refund');
     }
 
     function confirm() {
       if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'xxxxx',
+        url: 'other',
         values: {
           name: name,
           phone: phone
         },
         showMessage: '正在发送...',
-        success: function () {
-          kill();
+        success: function (data) {
+            if(data.d.Code == 200){
+              toast(data.message);
+              kill();
+            }
         },
         default: function () {}
       });

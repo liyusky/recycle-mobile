@@ -37,22 +37,23 @@
       </li>
     </ul>
   </div>
-  <button class="btn">保存</button>
+  <button class="btn" onclick="javascript:submit();">保存</button>
 
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check/check.js"></script>
   <script type="text/javascript" charset="utf-8">
     var address = null;
 
     $api.byId('more').onclick = function(){
       var citySelector = api.require('citySelector');
       citySelector.open({
-          y: api.frameHeight / 1.4,
+          y: api.frameHeight / 1.5,
           fixedOn: api.frameName
       }, function(ret) {
           if (ret) {
@@ -67,21 +68,33 @@
 
 
     function submit() {
-      if (!checkNet() || !checkLogin()) return;
+      // if (!checkNet() || !checkLogin()) return;
       var name = $api.val('name');
+      var user = $api.getStorage('User');
       var phone = $api.val('phone');
-      var addressDetail = $api.val('address-detail');
+      var addressDetail = $api.val('city');
+      var detailsAddress = $api.val('address-detail');
+      if(!checkPhone(phone)) return;
       request({
-        url: 'xxxxx',
+        url: 'EditReceivingAddress',
         values: {
-          name: name,
           phone: phone,
+          deviceId:api.deviceId,
+          Id:'',
+          Addressee:name,
           address: address,
-          addressDetail: addressDetail
+          AddresseePhone:phone,
+          CrrentAddress:addressDetail,
+          DetailAddress:detailsAddress
         },
         showMessage: '正在发送...',
-        success: function () {
-          kill();
+        success: function (data) {
+          if(data.d.Code == 1){
+            toast(data.d.Msg);
+            kill();
+          }else{
+            toast(data.d.Msg);
+          }
         }
       });
     }

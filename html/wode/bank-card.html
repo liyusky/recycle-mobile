@@ -35,31 +35,39 @@
     <button class="btn" onclick="javascript:create('addcard')">绑定银行卡</button>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript">
     apiready = function () {
-      setListener();
+      // setListener();
       init();
     }
 
     function init() {
-      if (!checkNet() || !checkLogin()) return;
+      // if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'xxxxx',
-        values: {},
+        url: 'GetHYYHK',
+        values: {
+          phone:$api.getStorage('User'),
+          deviceId:api.deviceId
+        },
         showMessage: '正在加载...',
         success: function (data) {
-          render(data);
+          if(data.d.ShouJiHao){
+            render(data);
+          }
         }
       });
     }
 
     function render(data) {
       $api.attr('bank-image', 'src', data.src);
-      $api.text('card-type', data.type);
-      $api.text('card-tail', data.tail);
+      $api.text('bank-name', data.KaiHuHang);
+      $api.text('card-type', '储蓄卡');
+      $api.text('card-tail', data.Weihao);
     }
 
 

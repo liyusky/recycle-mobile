@@ -70,5 +70,14 @@ window.ROUTER = {
   },
   'addcard':{
      path: 'widget://html/records/addcard.html'
+  },
+  'submit-order':{
+    path: 'widget://html/records/submit-order.html'
+  },
+  'home':{
+    path: 'widget://html/home/home.html'
+  },
+  'refund':{
+    path: 'widget://html/wode/refund.html'
   }
 }

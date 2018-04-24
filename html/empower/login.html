@@ -38,7 +38,7 @@
       if (!checkNet()) return;
       var account = $api.val('account');
       if (!checkPhone(account)) return;
-      
+
       request({
         url: 'CheckAccount',
         data: {

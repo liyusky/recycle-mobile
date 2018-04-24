@@ -62,7 +62,7 @@
       </div>
     </div>
     <button class="btn" onclick="javascript: submit();">马上拿钱</button>
-    <div class="mark">
+    <div class="mark" id="mark">
           <div class="dialog">
               <div class="dialog-title"><p>《手机合同》</p></div>
               <div class="dialog-content">
@@ -76,8 +76,8 @@
                       </div>
               </div>
               <div class="dialog-footer">
-                  <button>同意</button>
-                  <button>我知道了</button>
+                  <button onclick="javascript:rmdialog()">同意</button>
+                  <button onclick="javascript:rmdialog()">我知道了</button>
               </div>
           </div>
     </div>
@@ -88,38 +88,74 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="http://cdn.jsdelivr.net/npm/mobile-detect@1.4.1/mobile-detect.min.js"></script>
   <script>
+    var id = null;
     apiready = function () {
+      getcard();
       init();
-    }
+    };
+
+      Array.prototype.contains = function(needle) {
+      for (i in this) {
+          if (this[i].indexOf(needle) > 0)
+              return i;
+      }
+      return -1;
+  }
+
+
+
+    function rmdialog() {
+        $api.remove('mark');
+    };
+
+
+      function getcard() {
+        request({
+          url:'GetHYYHK',
+          values:{
+            phone:$api.getStorage('User'),
+            deviceId:api.deviceId
+          },
+          success:function (data) {
+            if(data.KaHao)
+              id = data.KaHao;
+          }
+        })
+      }
 
     function init() {
-      if (!checkNet() || !checkLogin()) return;
+      // if (!checkNet() || !checkLogin()) return;
+      $api.text('money', '500.00');
+      $api.text('type', api.deviceModel);
     }
 
-    function render(data) {
-      $api.text('money', money);
-      $api.text('type', type);
-    }
 
     function submit(params) {
-      if (!checkNet() || !checkLogin()) return;
+      // if (!checkNet() || !checkLogin()) return;
       request({
         url: 'ShanDianDai',
         values: {
-          sj: phoneCode,
+          sj: $api.getStorage('User'),
           deviceId:api.deviceId,
-          jinE:'500',
+          jinE:500,
           QiXian:7,
           FeiYong:105,
-          RuZhangKa:'xxxx',
-          // PhoneName:手机名称(品牌),
-          // PhoneModel:(型号),
-          // StorageSpace(存储空间)
-          // SerialNumber(序列号)
+          RuZhangKa:id,
+          PhoneName:'',
+          PhoneModel:api.deviceModel,
+          StorageSpace:'',
+          SerialNumber:''
         },
         showMessage: '正在发送...',
         success: function (data) {
+          if(data.d.Code == 1){
+            toast(data.Msg);
+            create('submit-order');
+          }else {
+            toast(data.Msg);
+          }
         },
         default: function () { }
       });
