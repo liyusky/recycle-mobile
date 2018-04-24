@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- 优惠券选择弹出框 -->
+<html class="background-transparent">
+	<head>
+		<meta charset="utf-8">
+	  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+	  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <script type="text/javascript" charset="utf-8" src="../../../script/global/flexible.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../../script/global/api.js"></script>
+	  <title>优惠券选择弹出框</title>
+	  <link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui.css">
+	  <link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui-extends.css">
+	</head>
+	<body class="background-transparent youhuiquan">
+		<section class="selector-bg" onclick="javascript: colse();"></section>
+		<footer class="selector">
+			<ul class="selector-list aui-text-center" id="selector-list"></ul>
+			<button class="selector-btn font-size-36 text-blue aui-text-center" onclick="javascript: colse();">取消</button>
+		</footer>
+    <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-property.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-method.js"></script>
+		<script type="text/javascript" charset="utf-8">
+      var User = null;
+			apiready = function () {
+        setListener();
+				init();
+			}
+
+			function init (type) {
+        User = $api.getStorage('User');
+				var htmlStr = '';
+        for (var key in User.Coupon) {
+          htmlStr += '<li class="list-item font-size-36" data-couponId="' + key + '" onclick="javascript: select(this);">优惠券' + User.Coupon[key] + '元</li>';
+        }
+				$api.html('selector-list', htmlStr);
+			}
+
+			function select (dom) {
+				$api.addCls(dom, 'selected');
+				var couponId = $api.attr(dom, 'data-couponId');
+				api.sendEvent({
+					name: 'Select',
+					extra: {
+						type: 'coupon',
+						couponId: couponId,
+					}
+				});
+				colse();
+			}
+
+			function colse () {
+				api.sendEvent({
+					name: 'CloseFrame',
+					extra: {
+						goal: 'coupon'
+					}
+				});
+			}
+
+      function setListener() {
+        api.addEventListener(
+          {name:'keyback'},
+          function(ret, err){}
+        );
+      }
+		</script>
+	</body>
+</html>

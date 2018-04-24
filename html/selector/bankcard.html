@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- 银行卡选择弹出框 -->
+<html class="background-transparent">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <script type="text/javascript" charset="utf-8" src="../../../script/global/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../script/global/api.js"></script>
+	<title>银行卡选择弹出框</title>
+	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui-extends.css">
+	<link rel="stylesheet" type="text/css" href="../../../iconfont/lanqian/iconfont.css">
+  <script type="text/javascript" charset="utf-8" src="../../../iconfont/lanqian/iconfont.js"></script>
+</head>
+
+<body class="background-transparent yinhangka">
+	<section class="selector-bg" onclick="javascript: colse();"></section>
+	<footer class="selector background-write">
+    <div class="selector-title border-bottom-solid-1 padding-horizontal-30">
+      <span>选择银行卡</span>
+      <i class="iconfont icon-guanbi aui-pull-right" onclick="javascript: colse();"></i>
+    </div>
+    <ul class="selector-list font-size-30" id="selector-list">
+      <li class="list-item border-bottom-solid-1 padding-horizontal-30" onclick="javascript: select(' + index + ');">
+        <svg class="icon icon-minshengyinhang" aria-hidden="true" id="sign">
+          <use xlink:href="#icon-minshengyinhang-shen"></use>
+        </svg>
+        <span class="padding-left-12">1111111111</span>
+			</li>
+    </ul>
+	</footer>
+  <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-property.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-method.js"></script>
+	<script type="text/javascript" charset="utf-8">
+    var User = null;
+		apiready = function() {
+      setListener();
+			init();
+		}
+
+		function init() {
+      User = $api.getStorage('User');
+			var htmlStr = '';
+			for (var i = 0; i < User.Card.length; i++) {
+				htmlStr += setCard(User.Card[i], i);
+			}
+			$api.html('selector-list', htmlStr);
+		}
+
+		function setCard (content, index) {
+      var signHtml = null;
+      if (content.bank === '光大银行' || content.bank === '民生银行' || content.bank === '广发银行') {
+        signHtml = '<svg class="icon icon-' + BankList[content.bank] + '" aria-hidden="true">' +
+            '<use xlink:href="#icon-' + BankList[content.bank] + '-shen"></use>' +
+          '</svg>';
+      }
+      else {
+        signHtml = '<i class="iconfont icon-' + BankList[content.bank] + ' font-size-45"></i>';
+      }
+      var cardStr = content.bank + ' ' + content.type + ' （尾号：' + content.number.substr(-4, 4) + '）';
+			var htmlStr = '<li class="list-item border-bottom-solid-1 padding-horizontal-30" onclick="javascript: select(' + index + ');">' +
+        signHtml +
+        '<span class="padding-left-12">' + cardStr + '</span>' +
+				'</li>';
+			return htmlStr;
+		}
+
+		function select (index) {
+			var card = User.Card[index];
+			api.sendEvent({
+				name: 'Select',
+				extra: {
+					type: 'bankcard',
+					card: card
+				}
+			});
+			colse();
+		}
+
+		function colse () {
+			api.sendEvent({
+				name: 'CloseFrame',
+				extra: {
+					goal: 'bankcard'
+				}
+			});
+		}
+
+    function setListener() {
+      api.addEventListener(
+        {name:'keyback'},
+        function(ret, err){}
+      );
+    }
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- 分享链接弹出框 -->
+<html class="background-transparent">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <script type="text/javascript" charset="utf-8" src="../../../script/global/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../script/global/api.js"></script>
+  <title>分享链接弹出框</title>
+  <link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui-extends.css">
+  <link rel="stylesheet" type="text/css" href="../../../iconfont/lanqian/iconfont.css">
+</head>
+
+<body class="fenxiang background-transparent">
+  <section class="selector-bg" onclick="javascript: colse();"></section>
+  <footer class="selector">
+    <ul class="selector-list">
+      <li class="list-item aui-text-center">
+        <i class="iconfont icon-wechat"></i>
+        <span>微信好友</span>
+      </li>
+      <li class="list-item aui-text-center">
+        <i class="iconfont icon-pengyouquan"></i>
+        <span>朋友圈</span>
+      </li>
+      <li class="list-item aui-text-center">
+        <i class="iconfont icon-weibo"></i>
+        <span>新浪微博</span>
+      </li>
+      <li class="list-item aui-text-center">
+        <i class="iconfont icon-tengxunQQ"></i>
+        <span>QQ好友</span>
+      </li>
+      <li class="list-item aui-text-center">
+        <i class="iconfont icon-QQkongjian"></i>
+        <span>QQ空间</span>
+      </li>
+      <li class="list-item aui-text-center">
+        <i class="iconfont icon-fuzhilianjie"></i>
+        <span>复制链接</span>
+      </li>
+      <li class="list-item aui-text-center">
+        <i class="iconfont icon-fasongyoujian"></i>
+        <span>发送邮件</span>
+      </li>
+      <li class="list-item aui-text-center">
+        <i class="iconfont icon-fasongduanxin"></i>
+        <span>发送短信</span>
+      </li>
+    </ul>
+    <button class="selector-btn text-gray aui-text-center border-top-solid-1" onclick="javascript: colse();">取消</button>
+  </footer>
+  <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-property.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-method.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    apiready = function() {
+      // init();
+      // setListener();
+    }
+
+    function init() {
+      if (checkNetwork()) {
+        sendRequest({
+          url: 'GetDownloadURL',
+          values: null,
+          showMessage: false,
+          success: function (data) {
+
+          },
+          fail: function () {
+
+          }
+        });
+      }
+    }
+
+    function colse () {
+      api.sendEvent({
+        name: 'CloseFrame',
+        extra: {
+          goal: 'sharelink'
+        }
+      });
+    }
+
+    function setListener() {
+      api.addEventListener(
+        {name:'keyback'},
+        function(ret, err){}
+      );
+    }
+  </script>
+</body>
+
+</html>

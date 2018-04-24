@@ -81,7 +81,8 @@
     }
 
     function init() {
-      // if (!checkNet() || !checkLogin()) return;
+      if (!checkNet() || !checkLogin()) return;
+      render();
     }
 
     function render() {
@@ -100,16 +101,14 @@
     }
 
     function setListener() {
-      api.addEventListener(
-        {
+      api.addEventListener({
           name: 'LOGIN-EVENT'
         },
         function (ret, err) {
           render();
         }
       );
-      api.addEventListener(
-        {
+      api.addEventListener({
           name: 'LOGOUT-EVENT'
         },
         function (ret, err) {
@@ -119,11 +118,14 @@
     }
 
     function gotoPage(goal) {
+      console.log(User.Status);
+      
+        // alert(User.Status);
       if (goal == 'login' || goal == 'register') {
         if (!checkNet()) return;
       }
-      else {
-        if (!checkNet() || !checkLogin()) return;
+      else if (!checkNet() || !checkLogin()) {
+        return;
       }
       create(goal);
     }

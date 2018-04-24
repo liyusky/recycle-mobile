@@ -274,9 +274,9 @@
       });
       if (firstFlag && secondFlag && contactlist.length > 0) {
         // alert(escape(JSON.stringify(contactlist)));
-        sendRequest({
+        request({
           url: 'LianXiRenXinXi',
-          values: {
+          data: {
             deviceId: api.deviceId,
             phone: User.Phone,
             name_1: firstName,
@@ -288,14 +288,17 @@
             telList: escape(JSON.stringify(contactlist))
           },
           showMessage: true,
-          success: function () {
-            var User = $api.getStorage('User');
-            User.Step[1] = true;
-            $api.setStorage('User', User);
-            sendChangeStepEvent();
+          operation:{
+            success: function () {
+              var User = $api.getStorage('User');
+              User.Step[1] = true;
+              $api.setStorage('User', User);
+              sendChangeStepEvent();
+            }
           }
         });
-      } else {
+      }
+      else {
         toast('请添加联系人');
       }
     }
@@ -303,7 +306,7 @@
 
   function setListener() {
     api.addEventListener({
-        name: 'Select'
+        name: 'SELECT-EVENT'
       },
       function (ret, err) {
         if (ret) {
@@ -331,7 +334,6 @@
       extra: {
         step: 1,
 				goal: 'lianxiren'
-        
       }
     });
   }

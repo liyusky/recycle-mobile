@@ -101,7 +101,7 @@
 		}
 
 		function submit() {
-			if (!checkNetwork() || !checkLogin()) return;
+			if (!checkNet() || !checkLogin()) return;
 			User = $api.getStorage('User');
 			request({
 				url: 'ShenFenXinXin',
@@ -116,16 +116,18 @@
 					living_photo: archive.url_photoliving
 				},
 				showMessage: true,
-				success: function () {
-					User = $api.getStorage('User');
-					User.Archive.Name = archive.id_name;
-					User.Archive.Id = archive.id_no;
-					User.Step[0] = true;
-					$api.setStorage('User', User);
-					sendChangeStepEvent();
-				},
-				fail: function () {
-					toast('个人信息认证失败，请重试');
+				operation: {
+					success: function () {
+						User = $api.getStorage('User');
+						User.Archive.Name = archive.id_name;
+						User.Archive.Id = archive.id_no;
+						User.Step[0] = true;
+						$api.setStorage('User', User);
+						sendChangeStepEvent();
+					},
+					fail: function () {
+						toast('个人信息认证失败，请重试');
+					}
 				}
 			});
 		}

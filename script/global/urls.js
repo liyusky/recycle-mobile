@@ -1,4 +1,4 @@
-var  developmentAppApi = {
+var developmentAppApi = {
   'UserRegister': 'http://192.168.0.110:8008/JDBService.svc/UserRegister', // 用户注册
   'UserLogin':'http://192.168.0.110:8008/JDBService.svc/UserLogin', // 用户登陆
   'FindPass':'http://192.168.0.110:8008/JDBService.svc/FindPass', // 找回密码

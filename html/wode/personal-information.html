@@ -106,24 +106,28 @@
     }
 
     function init() {
+      if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'other',
-        values: {},
+        url: 'Certification',
+        data: {},
         showMessage: '正在加载...',
-        success: function (data) {
-          if(data.d.Code == 1){
-            render(data.d);
-            toast(data.d.Msg);
+        operation: {
+          success: function (data) {
+            render(data);
           }
         }
       });
     }
 
     function render(data) {
+      var stepArr = [];
+      for (const key in data) {
+        stepArr.push(data[key]);
+      }
       var index;
       var page = ['gerenxinxi', 'lianxiren', 'zhimafen', 'yunyingshang'];
-      for (var i = 0; i < data.length; i++) {
-        if (data[i]) {
+      for (var i = 0; i < stepArr.length; i++) {
+        if (stepArr[i]) {
           $api.text('flag-' + (i + 1), '已认证');
         } else if (!index) {
           index = i + 1;
