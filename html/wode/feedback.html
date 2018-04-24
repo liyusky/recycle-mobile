@@ -48,7 +48,7 @@
         showMessage: '正在加载...',
         success: function (data) {
           if(data.d.Code){
-            toast(data.Msg);
+            toast(data.d.Msg);
             kill();
           }else{
             toast(data.d.Msg);

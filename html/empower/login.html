@@ -40,10 +40,9 @@
       if (!checkPhone(account)) return;
 
       request({
-        url: 'CheckAccount',
+        url: 'IsExists',
         data: {
-          deviceId: api.deviceId,
-          phone: account,
+          Phone: account,
         },
         showMessage: false,
         operation: {
@@ -51,16 +50,18 @@
             closeBtnClick('submit-btn');
           },
           success: function (data) {
-            create({
-              goal: 'input-password',
-              account: account
-            });
+            if(data.d.Code == 1){
+              create({
+                goal: 'input-password',
+                account: account
+              });
+            }else{
+              create({
+                goal: 'register',
+              });
+            }
           },
           fail: function () {
-            create({
-              goal: 'register',
-            });
-            kill();
           },
           default: function () {
             openBtnClick('submit-btn');

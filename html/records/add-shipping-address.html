@@ -91,6 +91,7 @@
         success: function (data) {
           if(data.d.Code == 1){
             toast(data.d.Msg);
+            create('shiping-address');
             kill();
           }else{
             toast(data.d.Msg);

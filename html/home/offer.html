@@ -88,23 +88,12 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-  <script type="text/javascript" charset="utf-8" src="http://cdn.jsdelivr.net/npm/mobile-detect@1.4.1/mobile-detect.min.js"></script>
   <script>
     var id = null;
     apiready = function () {
       getcard();
       init();
     };
-
-      Array.prototype.contains = function(needle) {
-      for (i in this) {
-          if (this[i].indexOf(needle) > 0)
-              return i;
-      }
-      return -1;
-  }
-
-
 
     function rmdialog() {
         $api.remove('mark');
@@ -151,10 +140,11 @@
         showMessage: '正在发送...',
         success: function (data) {
           if(data.d.Code == 1){
-            toast(data.Msg);
+            toast(data.d.Msg);
             create('submit-order');
+            kill();
           }else {
-            toast(data.Msg);
+            toast(data.d.Msg);
           }
         },
         default: function () { }

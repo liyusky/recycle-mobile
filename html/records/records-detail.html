@@ -217,7 +217,6 @@
                         "</li>";
                       return html;
         }
-
       }
 
 
@@ -233,8 +232,8 @@
         },
         showMessage: '正在发送...',
         success: function (data) {
-          if(data.d.Code == 200){
-            toast(data.message);
+          if(data.d.Code == 1){
+            toast(data.d.message);
             render(data);
           }
         },
@@ -257,8 +256,8 @@
         },
         showMessage: '正在发送...',
         success: function (data) {
-            if(data.d.Code == 200){
-              toast(data.message);
+            if(data.d.Code == 1){
+              toast(data.d.message);
               kill();
             }
         },

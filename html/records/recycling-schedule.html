@@ -112,7 +112,7 @@
                 showMessage: '正在发送...',
                 success: function(data) {
                     if (data.d.ZT!== null) {
-                        render(data);
+                        render(data.d);
                     }
                 },
                 default: function() {}
@@ -169,7 +169,7 @@
                 showMessage: '正在发送...',
                 success: function(data) {
                     if (data.d.FangKuanShiJian) {
-                        renders(data);
+                        renders(data.d);
                     }
                 },
                 default: function() {}

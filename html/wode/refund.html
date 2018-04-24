@@ -82,7 +82,7 @@
         url: 'other',
         values: {},
         success: function (data) {
-          if(data.code == 200){
+          if(data.d.Code == 1){
             toast(data.message)
             render(data);
           }

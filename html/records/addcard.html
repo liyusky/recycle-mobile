@@ -87,8 +87,11 @@
                   showMessage: '正在发送...',
                   success: function(data) {
                     if(data.d.Code == 1){
-                      toast(data.Msg);
+                      toast(data.d.Msg);
+                      create('yinhangka');
                       kill();
+                    }else{
+                      toast(data.d.Msg);
                     }
                   }
               });
@@ -108,7 +111,7 @@
                bankcardno:cardnum
              },
               success:function (data) {
-                if(data.errorCode){
+                if(data.d.errorCode){
                   certificate = false;
                 }else{
                   certificate = true;

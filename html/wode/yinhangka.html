@@ -58,7 +58,7 @@
           success: function (data) {
 
             User = $api.getStorage('User');
-            User.Card = formatCard(data);
+            User.Card = formatCard(data.d);
             $api.setStorage('User', User);
             setLayout(User.Card);
           }

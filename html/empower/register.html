@@ -24,7 +24,7 @@
       <li class="setleft">
         <p class="text">图片验证码</p>
         <input type="text" placeholder="请输入图片验证码" id="image-code">
-        <img src="" onclick="javascript: getImageCode(this);">
+        <img src="" onclick="javascript: getImageCode(this);" id="getImg">
       </li>
       <li class="setleft-three">
         <p class="text">验证码</p>
@@ -93,18 +93,17 @@ getkey();
 
 
     function getImageCode(_this) {
-      getkey()
+      getkey();
       var url = developmentAppApi['GrapheCodeImg']+'?key='+key;
       $api.attr(_this, 'src', url);
     }
 
     function sendSMS(dom) {
-      if (!checkNet()) return;
+      // if (!checkNet()) return;
 
       var account = $api.val('account');
       if (!checkPhone(account)) return;
 
-    function sendSMS() {
       // if (!checkNet()) return;
       var phone = $api.val('phone');
       if (!checkPhone(phone)) toast('请认真填写手机号');return;
@@ -116,42 +115,46 @@ getkey();
         url: 'SendSMS',
         data: {
           account: account,
-          imageCode: imageCode,
           type:'注册'
         },
         operation: {
           init: function () {
             readyToResend(dom);
           },
-          success: function () {},
+          success: function (data) {
+            if(data.d.Code == 1){
+              toast(data.d.Msg);
+              create('login');
+              kill();
+            }else{
+              toast(data.d.Msg);
+            }
+          },
         }
       });
     };
-
-
-
 
 
     function submit() {
       if (!checkNet()) return;
 
       var agreement = $api.byId('checkbox').checked;
-      // if (!agreement) {
-      //   toast('请同意注册协议!');
-      //   return;
-      // }
+      if (!agreement) {
+        toast('请同意注册协议!');
+        return;
+      }
 
       var account = $api.val('account');
-      // if (!checkPhone(account)) return;
+      if (!checkPhone(account)) return;
 
       var imageCode = $api.val('image-code');
-      // if (!checkImageVerificationCode(imageCode)) return;
+      if (!checkImageVerificationCode(imageCode)) return;
 
       var phoneCode = $api.val('phone-code');
-      // if (!checkPhoneVerificationCode(phoneCode)) return;
+      if (!checkPhoneVerificationCode(phoneCode)) return;
 
       var password = $api.val('password');
-      // if (!checkPassword(password)) return;
+      if (!checkPassword(password)) return;
 
       request({
         url: 'UserRegister',
@@ -167,10 +170,15 @@ getkey();
             closeBtnClick('submit-btn');
           },
           success: function (data) {
-            toast('注册成功');
-            setLoginStatus(account);
-            sendLoginEvent();
-            kill();
+            if(data.d.Code == 1){
+              toast(data.d.Msg);
+              create('login');
+              setLoginStatus(account);
+              sendLoginEvent();
+              kill();
+            }else{
+                toast('注册失败,请稍后重试...');
+            }
           },
           fail: function () {
             toast('注册失败,请稍后重试...');

@@ -111,9 +111,9 @@
         values: {},
         showMessage: '正在加载...',
         success: function (data) {
-          if(data.code == 200){
-            render(data);
-            toast(data.message);
+          if(data.d.Code == 1){
+            render(data.d);
+            toast(data.d.Msg);
           }
         }
       });

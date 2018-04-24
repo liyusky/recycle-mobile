@@ -197,8 +197,10 @@ header .header-title {
 .register ul .setleft-three .sendMsg {
   font-size: 3.2vw;
   color: #1990fe;
-  float: right;
-  margin-right: 6.8vw;
+  margin-left: 15vw;
+  background: #fff;
+  outline: none;
+  border: none;
 }
 
 .register ul .setpass-left input {

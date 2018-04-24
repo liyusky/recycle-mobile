@@ -74,7 +74,7 @@
               deviceId:api.deviceId
             },
             success:function (data) {
-              id = data.KaHao;
+              id = data.d.KaHao;
             }
           })
       }
@@ -107,8 +107,10 @@
           if(data.d.Code == 1){
             sendBindCardEvent();
             toast(data.d.Msg);
+            create('yinhangka');
+            kill();
           }else{
-            toast(data.d.Msg));
+            toast(data.d.Msg);
           }
         }
       });

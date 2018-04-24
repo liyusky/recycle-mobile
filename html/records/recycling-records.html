@@ -68,7 +68,7 @@
           showMessage: '正在发送...',
           success: function (data) {
             if(data.d.FangKuanRen){
-              render(data);
+              render(data.d);
             }
           },
           default: function () { }
