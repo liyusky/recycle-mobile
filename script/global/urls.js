@@ -1,4 +1,4 @@
-var developmentAppApi = {
+var productionAppApi = {
   'UserRegister': 'http://192.168.0.110:8008/JDBService.svc/UserRegister', // 用户注册
   'UserLogin':'http://192.168.0.110:8008/JDBService.svc/UserLogin', // 用户登陆
   'FindPass':'http://192.168.0.110:8008/JDBService.svc/FindPass', // 找回密码
@@ -17,4 +17,14 @@ var developmentAppApi = {
   'IsExistsJT':'http://192.168.0.110:8008/JDBService.svc/IsExistsJT', // 是否存在借条
   'GenerateKey':'http://192.168.0.110:8008/JDBService.svc/GenerateKey',  // 获取key
   'GrapheCodeImg':'http://192.168.0.110:8008/JDBService.svc/GrapheCodeImg'
+};
+
+var developmentAppApi = {
+  'Certification': 'http://192.168.0.109:8008/Certification.json',
+  'CheckAccount': 'http://192.168.0.109:8008/CheckAccount.json',
+  'FindPassword': 'http://192.168.0.109:8008/FindPassword.json',
+  'ModifyPassword': 'http://192.168.0.109:8008/ModifyPassword.json',
+  'SendSMS': 'http://192.168.0.109:8008/SendSMS.json',
+  'UserLogin': 'http://192.168.0.109:8008/UserLogin.json',
+  'UserRegister': 'http://192.168.0.109:8008/UserRegister.json'
 };

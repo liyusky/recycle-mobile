@@ -80,7 +80,7 @@
 		var aim = api.pageParam.aim;
 		openFrame(aim);
 	}
-	
+
 	function openFrame(goal) {
 		var height = $api.offset('header').h + $api.offset('progress').h;
 		api.openFrame({
@@ -111,6 +111,27 @@
 			},
 			function (ret, err) {
 				if (ret) kill();
+			}
+		);
+		api.addEventListener({
+				name: 'OPEN-SELECTOR-EVENT'
+			},
+			function (ret, err) {
+				if (ret) {
+					api.openFrame({
+						name: ret.value.goal,
+						url: ROUTER[ret.value.goal],
+						rect: {
+							x: 0,
+							y: 0,
+							w: 'auto',
+							h: 'auto'
+						},
+						pageParam: {
+							goal: ret.value.goal
+						}
+					});
+				}
 			}
 		);
 	}

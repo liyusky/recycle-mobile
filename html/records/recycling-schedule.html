@@ -2,207 +2,205 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>回收进度</title>
-    <link rel="stylesheet" href="../../css/records/recycling-schedule.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>回收进度</title>
+  <link rel="stylesheet" href="../../css/records/recycling-schedule.css">
 </head>
 
 <body>
-    <header class="header">
-        <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
-        <p class="header-title">回收进度</p>
-    </header>
-    <div class="content" id="content">
-        <div class="recycle">
-            <img src="../../image/records/recycle.png" alt="" class="recycle">
-            <div class="message">
-                <p class="phonetype">
-                    <span>手机型号</span>
-                    <span id="phone-type">iphone 6s</span>
-                </p>
-            </div>
-            <div class="price">
-                <ul>
-                    <li>
-                        <p>手机估价</p>
-                        <span id="capital">1200.00元</span>
-                    </li>
-                    <li>
-                        <p>定金+预付款</p>
-                        <span id="interest">900.00元</span>
-                    </li>
-                    <li>
-                        <p>履约期</p>
-                        <span id="time">7</span>
-                        <span>天</span>
-                        <img src="../../image/records/help.png" alt="" class="help">
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <header class="header">
+    <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
+    <p class="header-title">回收进度</p>
+  </header>
+  <div class="content" id="content">
+    <div class="recycle">
+      <img src="../../image/records/recycle.png" alt="" class="recycle">
+      <div class="message">
+        <p class="phonetype">
+          <span>手机型号</span>
+          <span id="phone-type">iphone 6s</span>
+        </p>
+      </div>
+      <div class="price">
+        <ul>
+          <li>
+            <p>手机估价</p>
+            <span id="capital">1200.00元</span>
+          </li>
+          <li>
+            <p>定金+预付款</p>
+            <span id="interest">900.00元</span>
+          </li>
+          <li>
+            <p>履约期</p>
+            <span id="time">7</span>
+            <span>天</span>
+            <img src="../../image/records/help.png" alt="" class="help">
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="status">
-        <div class="list">
-            <ul id="list">
-                <li class="order-list">
-                    <ul>
-                        <li class="currentstatus mark">审核不通过</li>
-                        <li class="message">您绑定的iCloud账号密码不正确</li>
-                        <li class="time">2018-04-10 12:05:58</li>
-                    </ul>
-                </li>
-                <li class="order-list">
-                    <ul>
-                        <li class="currentstatus">审核中</li>
-                        <li class="message">审核中,请等待</li>
-                        <li class="time">2018-04-10 11:55:58</li>
-                    </ul>
-                </li>
-                <li class="order-list bodrenone">
-                    <ul>
-                        <li class="currentstatus">订单提交</li>
-                        <li class="message">您的订单已提交</li>
-                        <li class="time">2018-04-10 11:54:25</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="schedule">
-            <ul>
-                <li class="statusicon">
-                    <img src="../../image/records/success.png" alt="">
-                </li>
-                <li class="connect">
-                    <img src="../../image/records/connect.png" alt="">
-                </li>
-                <li class="statusicon">
-                    <img src="../../image/records/currentstatus.png" alt="">
-                </li>
-                <li class="connect">
-                    <img src="../../image/records/connect.png" alt="">
-                </li>
-                <li class="statusicon">
-                    <img src="../../image/records/currentstatus.png" alt="">
-                </li>
-            </ul>
-        </div>
+  </div>
+  <div class="status">
+    <div class="list">
+      <ul id="list">
+        <li class="order-list">
+          <ul>
+            <li class="currentstatus mark">审核不通过</li>
+            <li class="message">您绑定的iCloud账号密码不正确</li>
+            <li class="time">2018-04-10 12:05:58</li>
+          </ul>
+        </li>
+        <li class="order-list">
+          <ul>
+            <li class="currentstatus">审核中</li>
+            <li class="message">审核中,请等待</li>
+            <li class="time">2018-04-10 11:55:58</li>
+          </ul>
+        </li>
+        <li class="order-list bodrenone">
+          <ul>
+            <li class="currentstatus">订单提交</li>
+            <li class="message">您的订单已提交</li>
+            <li class="time">2018-04-10 11:54:25</li>
+          </ul>
+        </li>
+      </ul>
     </div>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-    <script>
-        apiready = function() {
-            init();
-            initList();
-        }
+    <div class="schedule">
+      <ul>
+        <li class="statusicon">
+          <img src="../../image/records/success.png" alt="">
+        </li>
+        <li class="connect">
+          <img src="../../image/records/connect.png" alt="">
+        </li>
+        <li class="statusicon">
+          <img src="../../image/records/currentstatus.png" alt="">
+        </li>
+        <li class="connect">
+          <img src="../../image/records/connect.png" alt="">
+        </li>
+        <li class="statusicon">
+          <img src="../../image/records/currentstatus.png" alt="">
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script>
+    apiready = function () {
+      init();
+      initList();
+    }
 
-        function init() {
-            // if (!checkNet() || !checkLogin()) return;
-            request({
-                url: 'GetHYJKJL',
-                data: {
-                    Phone: $api.getStorage('User'),
-                    deviceId: api.deviceId
-                },
-                showMessage: '正在发送...',
-                success: function(data) {
-                    if (data.d.ZT!== null) {
-                        render(data.d);
-                    }
-                },
-                default: function() {}
-            });
+    function init() {
+      // if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'GetHYJKJL',
+        data: {
+          Phone: $api.getStorage('User'),
+          deviceId: api.deviceId
+        },
+        showMessage: '正在发送...',
+        success: function (data) {
+          if (data.d.ZT !== null) {
+            render(data.d);
+          }
+        },
+        default: function () {}
+      });
 
 
-            function render(data) {
-                var htmlStr = '';
-                    htmlStr += setHtml(data);
-                $api.html('content', htmlStr);
+      function render(data) {
+        var htmlStr = '';
+        htmlStr += setHtml(data);
+        $api.html('content', htmlStr);
 
-            }
-
-            function setHtml(data) {
-                return htmlStr = "<li class='recycle'>" +
-                    "<img src='../../image/records/recycle.png'  class='recycle'>" +
-                    "<div class='message'>" +
-                    "<p class='phonetype'>" +
-                    "<span>手机型号</span>" +
-                    "<span id='phone-type'>" + api.deviceModel + "</span>" +
-                    " </p>" +
-                    "</div>" +
-                    "<div class='price'>" +
-                    "  <ul>" +
-                    "<li>" +
-                    "  <p>手机估价 </p>" +
-                    "<span>500.00元</span>" +
-                    "</li>" +
-                    "<li>" +
-                    "  <p>定金+预付款</p>" +
-                    "  <span>" + parentInt(data.FeiYong) + parseInt(data.jieE) + ".00元</span>" +
-                    "  </li>" +
-                    "<li>" +
-                    "  <p>履约期</p>" +
-                    "<span>7</span>" +
-                    "<span>天</span>" +
-                    "<img src=''../../image/records/help.png' class='help'>" +
-                    "</li>" +
-                    "</ul>" +
-                    "</div>" +
-                    "</li>";
-            }
-
-        }
-        function initList() {
-            if (!checkNet() || !checkLogin()) return;
-
-            request({
-                url: 'GetZXJD',
-                data: {
-                    sj: api.getStorage('User'),
-                    deviceId: api.deviceId
-                },
-                showMessage: '正在发送...',
-                success: function(data) {
-                    if (data.d.FangKuanShiJian) {
-                        renders(data.d);
-                    }
-                },
-                default: function() {}
-            });
-        }
-
-      function sethtml(data) {
-        var html = "<li class='order-list'>" +
-            "<ul>" +
-            "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
-            "<li class='message'>" + data.FangKuanYiJian + "</li>" +
-            "<li class='time'>" + data.FangKuanShiJian + "</li>" +
-            "</ul>" +
-            "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
-            "<li class='message'>" + data.ShenHeYiJian + "</li>" +
-            "<li class='time'>" + data.ShenHeShiJian + "</li>" +
-            "</ul>" +
-            "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
-            "<li class='message'>您的订单已提交</li>" +
-            "<li class='time'>" + data.JieKuanShiJian + "</li>" +
-            "</ul>" +
-            "</li>";
-          return html;
       }
 
-        function renders(data) {
-            var html = '';
-                html+= sethtml(data);
-            $api.html('list', html);
-        }
+      function setHtml(data) {
+        return htmlStr = "<li class='recycle'>" +
+          "<img src='../../image/records/recycle.png'  class='recycle'>" +
+          "<div class='message'>" +
+          "<p class='phonetype'>" +
+          "<span>手机型号</span>" +
+          "<span id='phone-type'>" + api.deviceModel + "</span>" +
+          " </p>" +
+          "</div>" +
+          "<div class='price'>" +
+          "  <ul>" +
+          "<li>" +
+          "  <p>手机估价 </p>" +
+          "<span>500.00元</span>" +
+          "</li>" +
+          "<li>" +
+          "  <p>定金+预付款</p>" +
+          "  <span>" + parentInt(data.FeiYong) + parseInt(data.jieE) + ".00元</span>" +
+          "  </li>" +
+          "<li>" +
+          "  <p>履约期</p>" +
+          "<span>7</span>" +
+          "<span>天</span>" +
+          "<img src=''../../image/records/help.png' class='help'>" +
+          "</li>" +
+          "</ul>" +
+          "</div>" +
+          "</li>";
+      }
+    }
 
+    function initList() {
+      if (!checkNet() || !checkLogin()) return;
 
-    </script>
+      request({
+        url: 'GetZXJD',
+        data: {
+          sj: api.getStorage('User'),
+          deviceId: api.deviceId
+        },
+        showMessage: '正在发送...',
+        success: function (data) {
+          if (data.d.FangKuanShiJian) {
+            renders(data.d);
+          }
+        },
+        default: function () {}
+      });
+    }
+
+    function sethtml(data) {
+      var html = "<li class='order-list'>" +
+        "<ul>" +
+        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
+        "<li class='message'>" + data.FangKuanYiJian + "</li>" +
+        "<li class='time'>" + data.FangKuanShiJian + "</li>" +
+        "</ul>" +
+        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
+        "<li class='message'>" + data.ShenHeYiJian + "</li>" +
+        "<li class='time'>" + data.ShenHeShiJian + "</li>" +
+        "</ul>" +
+        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
+        "<li class='message'>您的订单已提交</li>" +
+        "<li class='time'>" + data.JieKuanShiJian + "</li>" +
+        "</ul>" +
+        "</li>";
+      return html;
+    }
+
+    function renders(data) {
+      var html = '';
+      html += sethtml(data);
+      $api.html('list', html);
+    }
+  </script>
 </body>
 
 </html>

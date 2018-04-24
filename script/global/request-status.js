@@ -24,6 +24,12 @@ var statusCode = {
 function AppStatusHandle(ret, err, operation) {
   // alert(JSON.stringify(ret))
   // alert(JSON.stringify(err))
+
+  if (typeof operation == 'function') {
+    operation(ret, err);
+    return;
+  }
+
   try {
     operation.before();
   } catch (e) {}

@@ -95,7 +95,7 @@
       if(!checkBankCard(card)) return;
       request({
         url: 'AddYHK',
-        values: {
+        data: {
           Phone:$api.getStorage('User'),
           deviceId:api.deviceId,
           kh:id,
@@ -103,13 +103,14 @@
           ylsj:phone
         },
         showMessage: '正在绑定...',
-        success: function (data) {
-          if(data.d.Code == 1){
+        operation: {
+          success: function (data) {
             sendBindCardEvent();
             toast(data.d.Msg);
             create('yinhangka');
             kill();
-          }else{
+          },
+          fail: function () {
             toast(data.d.Msg);
           }
         }

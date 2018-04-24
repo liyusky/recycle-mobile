@@ -288,7 +288,7 @@
             telList: escape(JSON.stringify(contactlist))
           },
           showMessage: true,
-          operation:{
+          operation: {
             success: function () {
               var User = $api.getStorage('User');
               User.Step[1] = true;
@@ -318,7 +318,7 @@
 
   function openSelector(type) {
     api.sendEvent({
-      name: 'OpenFrame',
+      name: 'OPEN-SELECTOR-EVENT',
       extra: {
         goal: 'relationship',
         pageParam: {

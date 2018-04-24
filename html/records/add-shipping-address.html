@@ -50,19 +50,19 @@
   <script type="text/javascript" charset="utf-8">
     var address = null;
 
-    $api.byId('more').onclick = function(){
+    $api.byId('more').onclick = function () {
       var citySelector = api.require('citySelector');
       citySelector.open({
-          y: api.frameHeight / 1.5,
-          fixedOn: api.frameName
-      }, function(ret) {
-          if (ret) {
-            var html = '';
-              for(var key in ret){
-                html+= ' '+ret[key];
-              }
-              $api.val('city',html);
+        y: api.frameHeight / 1.5,
+        fixedOn: api.frameName
+      }, function (ret) {
+        if (ret) {
+          var html = '';
+          for (var key in ret) {
+            html += ' ' + ret[key];
           }
+          $api.val('city', html);
+        }
       });
     };
 
@@ -74,26 +74,26 @@
       var phone = $api.val('phone');
       var addressDetail = $api.val('city');
       var detailsAddress = $api.val('address-detail');
-      if(!checkPhone(phone)) return;
+      if (!checkPhone(phone)) return;
       request({
         url: 'EditReceivingAddress',
         values: {
           phone: phone,
-          deviceId:api.deviceId,
-          Id:'',
-          Addressee:name,
+          deviceId: api.deviceId,
+          Id: '',
+          Addressee: name,
           address: address,
-          AddresseePhone:phone,
-          CrrentAddress:addressDetail,
-          DetailAddress:detailsAddress
+          AddresseePhone: phone,
+          CrrentAddress: addressDetail,
+          DetailAddress: detailsAddress
         },
         showMessage: '正在发送...',
         success: function (data) {
-          if(data.d.Code == 1){
+          if (data.d.Code == 1) {
             toast(data.d.Msg);
             create('shiping-address');
             kill();
-          }else{
+          } else {
             toast(data.d.Msg);
           }
         }
@@ -105,11 +105,6 @@
         name: 'ADD-ADRESS-EVENT'
       });
     };
-
-
-
-
-
   </script>
 </body>
 
