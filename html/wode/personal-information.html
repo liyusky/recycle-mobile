@@ -98,9 +98,8 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script>
-    var goal;
+    var goal, User;
     var page = ['gerenxinxi', 'lianxiren', 'zhimafen', 'yunyingshang'];
-
 
     apiready = function () {
       init();
@@ -125,6 +124,7 @@
       for (var i = 1; i < 5; i++) {
         stepArr.push(data['Step' + i]);
       }
+      saveCertification(stepArr);
       var index = false;
       
       for (var i = 0; i < stepArr.length; i++) {
@@ -148,6 +148,12 @@
         aim: goal,
         step: page.indexOf(goal) + 1
       });
+    }
+
+    function saveCertification(data) {
+      User = $api.getStorage('User');
+      User.Certification = data;
+      $api.setStorage('User', User);
     }
   </script>
 </body>
