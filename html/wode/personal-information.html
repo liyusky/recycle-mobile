@@ -23,41 +23,41 @@
 
     <div class="ullist">
       <ul>
-        <li onclick="javascript: authentication('gerenxinxi');">
+        <li id="step-1">
           <img src="../../image/wode/autonym.png" class="icon">
           <div class="box">
             <h5 class="title">实名认证</h6>
               <p class="list-text">身份信息认证</p>
           </div>
           <img src="../../image/wode/more.png" class="more">
-          <span class="status">待认证</span>
+          <span class="status" id="flag-1">待认证</span>
         </li>
-        <li>
+        <li id="step-2">
           <img src="../../image/wode/communication.png" class="icon">
           <div class="box">
             <h5 class="title">上传通讯录</h6>
               <p class="list-text">个人通信录信息</p>
           </div>
           <img src="../../image/wode/more.png" class="more">
-          <span class="status">待认证</span>
+          <span class="status" id="flag-2">待认证</span>
         </li>
-        <li>
+        <li id="step-3">
           <img src="../../image/wode/credit.png" class="icon">
           <div class="box">
             <h5 class="title">芝麻信用认证</h6>
               <p class="list-text">芝麻积分</p>
           </div>
           <img src="../../image/wode/more.png" class="more">
-          <span class="status">待认证</span>
+          <span class="status" id="flag-3">待认证</span>
         </li>
-        <li>
+        <li id="step-4">
           <img src="../../image/wode/operator.png" class="icon">
           <div class="box">
             <h5 class="title">运营商认证</h6>
               <p class="list-text">运营商信息认证</p>
           </div>
           <img src="../../image/wode/more.png" class="more">
-          <span class="status">待认证</span>
+          <span class="status" id="flag-4">待认证</span>
         </li>
       </ul>
     </div>
@@ -99,6 +99,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script>
     var goal;
+    var page = ['gerenxinxi', 'lianxiren', 'zhimafen', 'yunyingshang'];
 
 
     apiready = function () {
@@ -112,28 +113,29 @@
         data: {},
         showMessage: '正在加载...',
         operation: {
-          success: function (data) {
+          success: function(data) {
             render(data);
           }
         }
       });
     }
-
+    
     function render(data) {
       var stepArr = [];
-      for (const key in data) {
-        stepArr.push(data[key]);
+      for (var i = 1; i < 5; i++) {
+        stepArr.push(data['Step' + i]);
       }
-      var index;
-      var page = ['gerenxinxi', 'lianxiren', 'zhimafen', 'yunyingshang'];
+      var index = false;
+      
       for (var i = 0; i < stepArr.length; i++) {
         if (stepArr[i]) {
           $api.text('flag-' + (i + 1), '已认证');
-        } else if (!index) {
+        }
+        else if (!index) {
           index = i + 1;
         }
       }
-
+      
       if (index > 0) {
         goal = page[index - 1];
         $api.attr('step-' + index, 'onclick', 'authentication(\'' + goal + '\')');
@@ -143,7 +145,8 @@
     function authentication(goal) {
       create({
         goal: 'renzheng',
-        aim: goal
+        aim: goal,
+        step: page.indexOf(goal) + 1
       });
     }
   </script>

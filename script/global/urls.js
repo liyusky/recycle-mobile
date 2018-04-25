@@ -20,11 +20,11 @@ var productionAppApi = {
 };
 
 var developmentAppApi = {
-  'Certification': 'http://192.168.0.109:8008/Certification.json',
-  'CheckAccount': 'http://192.168.0.109:8008/CheckAccount.json',
-  'FindPassword': 'http://192.168.0.109:8008/FindPassword.json',
-  'ModifyPassword': 'http://192.168.0.109:8008/ModifyPassword.json',
-  'SendSMS': 'http://192.168.0.109:8008/SendSMS.json',
-  'UserLogin': 'http://192.168.0.109:8008/UserLogin.json',
-  'UserRegister': 'http://192.168.0.109:8008/UserRegister.json'
+  'Certification': 'http://192.168.0.109:8080/Certification.json',
+  'CheckAccount': 'http://192.168.0.109:8080/CheckAccount.json',
+  'FindPassword': 'http://192.168.0.109:8080/FindPassword.json',
+  'ModifyPassword': 'http://192.168.0.109:8080/ModifyPassword.json',
+  'SendSMS': 'http://192.168.0.109:8080/SendSMS.json',
+  'UserLogin': 'http://192.168.0.109:8080/UserLogin.json',
+  'UserRegister': 'http://192.168.0.109:8080/UserRegister.json'
 };

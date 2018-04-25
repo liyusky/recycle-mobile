@@ -40,7 +40,7 @@
       if (!checkPhone(account)) return;
 
       request({
-        url: 'IsExists',
+        url: 'CheckAccount',
         data: {
           Phone: account,
         },
@@ -50,18 +50,15 @@
             closeBtnClick('submit-btn');
           },
           success: function (data) {
-            if(data.d.Code == 1){
-              create({
-                goal: 'input-password',
-                account: account
-              });
-            }else{
-              create({
-                goal: 'register',
-              });
-            }
+            create({
+              goal: 'input-password',
+              account: account
+            });
           },
           fail: function () {
+            create({
+              goal: 'register',
+            });
           },
           default: function () {
             openBtnClick('submit-btn');

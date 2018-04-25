@@ -94,18 +94,18 @@
       // if (!checkNet() || !checkLogin()) return;
       $api.text('device-model', api.deviceModel);
       // 是否存在未处理的订单
-      request({
-        url:'IsExistsJT',
-        data:{
-          phone:$api.getStorage('User'),
-          deviceId:api.deviceId
-        },
-        success:function (data) {
-            if(data.d.Code == 0){
+      // request({
+      //   url:'IsExistsJT',
+      //   data:{
+      //     phone:$api.getStorage('User'),
+      //     deviceId:api.deviceId
+      //   },
+      //   success:function (data) {
+      //       if(data.d.Code == 0){
 
-            }
-        }
-      })
+      //       }
+      //   }
+      // })
 
     }
 

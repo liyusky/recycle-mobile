@@ -310,7 +310,10 @@
       },
       function (ret, err) {
         if (ret) {
-          if (ret.value.goal === 'relationship') $api.val(ret.value.type + '-relationship', ret.value.value);
+          $api.val(ret.value.type + '-relationship', ret.value.value);
+          api.closeFrame({
+            name: ret.value.goal
+          });
         }
       }
     );

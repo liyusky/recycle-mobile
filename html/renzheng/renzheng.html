@@ -67,6 +67,7 @@
 <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/progress.js"></script>
 
 <script type="text/javascript" charset="utf-8">
 	var progress = null;
@@ -76,7 +77,8 @@
 	}
 
 	function init() {
-		// progress = new Progress(api.pageParam.step);
+		alert(api.pageParam.step)
+		progress = new Progress(api.pageParam.step);
 		var aim = api.pageParam.aim;
 		openFrame(aim);
 	}
