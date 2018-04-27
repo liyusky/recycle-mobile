@@ -61,31 +61,11 @@
         用户在撤销出售手机(解除愿《手机回收合同》)后，亦可选择将该手机 再次向平台出售手机,仅需签订相关交易文本,无需进行其他流程。
       </div>
     </div>
-    <button class="btn" onclick="javascript: submit();">马上拿钱</button>
-    <div class="mark" id="mark">
-          <div class="dialog">
-              <div class="dialog-title"><p>《手机合同》</p></div>
-              <div class="dialog-content">
-                  <div class="content-text">您在使用趣回收产品卖出手机服务前,请认真阅读并充分理解《手机合同》。
-                      当您点击同意,并开始使用手机卖出服务,即表示您已经理解并同意改合同,
-                      该合同将构成对您具有法律约束力的法律文件。
-                  </div>
-                      <div class="affirm">
-                          <input type="checkbox" id="yes">
-                          <label for="yes">我阅读并理解 《手机合同》</label>
-                      </div>
-              </div>
-              <div class="dialog-footer">
-                  <button onclick="javascript:rmdialog()">同意</button>
-                  <button onclick="javascript:rmdialog()">我知道了</button>
-              </div>
-          </div>
     <div class="affirm">
       <input type="checkbox" id="yes">
       <label for="yes">我阅读并理解 《手机合同》</label>
     </div>
     <button class="btn" onclick="javascript: submit();">马上拿钱</button>
-  </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -134,11 +114,11 @@
           StorageSpace:'',
           SerialNumber:''
         },
-        showMessage: '正在发送...',
+        'tip': '正在发送...',
         success:function (data) {
               create('submit-order');
         },
-        'tip': '正在发送...'
+
     })
   };
     function submit() {
@@ -149,7 +129,7 @@
         return;
       }
       request({
-        url: 'SubmitApply',
+        url: 'ShanDianDai',
         values: {
           sj: User.Phone,
           deviceId: api.deviceId,
@@ -162,7 +142,7 @@
           StorageSpace: '',
           SerialNumber: ''
         },
-        showMessage: '正在发送...',
+        'tip': '正在发送...',
         operation: {
           init: function () {
             closeBtnClick('submit-btn');

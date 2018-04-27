@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我的银行卡</title>
+  <link rel="stylesheet" href="../../css/wode/yinhangka.css">
   <link rel="stylesheet" href="../../css/wode/bank-card.css">
 </head>
 
@@ -32,6 +33,7 @@
         </div>
       </li>
     </ul>
+    <button class="btn" onclick="javascript:create('add-bank-card')">绑定银行卡</button>
     <button class="btn" onclick="javascript:create('addcard')">绑定银行卡</button>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -72,13 +74,37 @@
       });
     };
 
+    var bankval = {
+      '光大':'../../image/wode/bank/gdyh-bg.png',
+      '广发':'../../image/wode/bank/gfyh-bg.png',
+      '工商':'../../image/wode/bank/gsyh-bg.png',
+      '华夏':'../../image/wode/bank/hyyh-bg.png',
+      '建设':'../../image/wode/bank/jsyh-bg.png',
+      '交通':'../../image/wode/bank/jtyh-bg.png',
+      '民生':'../../image/wode/bank/msyh-bg.png',
+      '农业':'../../image/wode/bank/nyyh-bg.png',
+      '平安':'../../image/wode/bank/payh-bg.png',
+      '浦发':'../../image/wode/bank/pfyh-bg.png',
+      '兴业':'../../image/wode/bank/xyyh-bg.png',
+      '邮政':'../../image/wode/bank/yzyh-bg.png',
+      '中国':'../../image/wode/bank/zgyh-bg.png',
+      '招商':'../../image/wode/bank/zsyh-bg.png',
+      '中信':'../../image/wode/bank/zxyh-bg.png'
+    };
+
+    function render(data) {
+          for(var key in bankval){
+            if(data.KaiHuHang.indexOf(key) !== -1){
+                $api.attr('bank-image', 'src', bankval[key]);
+            }
+          }
       request({
         url: 'GetHYYHK',
         values: {
           phone:$api.getStorage('User'),
           deviceId:api.deviceId
         },
-        showMessage: '正在加载...',
+        'tip': '正在加载...',
         success: function (data) {
           render(data);
         }
