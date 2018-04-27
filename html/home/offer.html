@@ -66,7 +66,6 @@
       <label for="yes">我阅读并理解 《手机合同》</label>
     </div>
     <button class="btn" onclick="javascript: submit();">马上拿钱</button>
-  </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -99,6 +98,29 @@
     }
 
 
+    function submit(params) {
+      // if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'ShanDianDai',
+        'data': {
+          sj: '13476615091',
+          deviceId:api.deviceId,
+          jinE:500,
+          QiXian:7,
+          FeiYong:105,
+          RuZhangKa:id,
+          PhoneName:'',
+          PhoneModel:api.deviceModel,
+          StorageSpace:'',
+          SerialNumber:''
+        },
+        'tip': '正在发送...',
+        success:function (data) {
+              create('submit-order');
+        },
+
+    })
+  };
     function submit() {
       if (!checkNet() || !checkLogin()) return;
       var agreement = $api.byId('yes').checked;
@@ -107,7 +129,7 @@
         return;
       }
       request({
-        url: 'SubmitApply',
+        url: 'ShanDianDai',
         values: {
           sj: User.Phone,
           deviceId: api.deviceId,
