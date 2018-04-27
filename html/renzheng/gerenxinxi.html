@@ -52,17 +52,21 @@
 			</div>
 		</div>
 	</section>
-	<button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" disabled="disabled" id="submit-btn"
-	  onclick="javascript: submit();">立即提交</button>
+	<!-- <button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" disabled="disabled" id="submit-btn"
+		onclick="javascript: submit();">立即提交</button> -->
+	<button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" id="submit-btn" onclick="javascript: submit();">立即提交</button>
 	<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
 	<script type="text/javascript">
 		var archive = null;
 		var User = null;
 
 		function getArchive() {
-			if (!checkNetwork() || !checkLogin()) return;
+			if (!checkNet() || !checkLogin()) return;
 			openAutoRecognizer();
 		}
 
@@ -101,6 +105,7 @@
 		}
 
 		function submit() {
+			sendChangeStepEvent();
 			if (!checkNet() || !checkLogin()) return;
 			User = $api.getStorage('User');
 			request({
@@ -136,8 +141,8 @@
 			api.sendEvent({
 				name: 'CHANGE-STEP-EVENT',
 				extra: {
-					step: 0,
-					goal: 'yunyingshang'
+					step: 1,
+					goal: 'lianxiren'
 				}
 			});
 		}

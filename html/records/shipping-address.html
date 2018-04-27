@@ -39,27 +39,24 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
     apiready = function () {
-        init()
+      init()
     }
 
     function init() {
-      // if (checkNet() && checkLogin()) {
-        request({
-          url: 'GetRA',
-          data: {
-            'deviceId': api.deviceId,
-            'phone':'13476615091'
-          },
-          tip: '正在发送...',
-          operation:{
-            success:function (data) {
-              render(data[0]);
-            },
-            fail:function () {
-
-            }
+      // if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'GetRA',
+        'values': {
+          phone: $api.getStorage('User'),
+          deviceId: api.deviceId
+        },
+        success: function (data) {
+          if (data.d.UserPhone) {
+            render(data.d);
           }
-        });
+        },
+        default: function () {}
+      });
     }
 
     function render(data) {
@@ -69,7 +66,7 @@
     }
 
     function setHtml(data) {
-      return htmlStr = '<li data-id="' + data.Id + '">' +
+      return htmlStr = '<li data-id="' + data.id + '">' +
         '<div class="box">' +
         '<p class="name">' + data.Addressee + '</p>' +
         '<p class="phone">' +

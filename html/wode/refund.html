@@ -13,7 +13,6 @@
 <body>
 
   <header class="header">
-    <img src="../../image/common/back.png" class="back">
     <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
     <p class="header-title">退款</p>
   </header>
@@ -43,7 +42,6 @@
               <span class="card-type">储蓄卡</span>
             </p>
           </div>
-          <img src="../../image/wode/select.png" class="selectImg">
           <a href="javascript:;" class="select" id="card-select"></a>
         </li>
         <li>
@@ -54,7 +52,6 @@
               <p class="message">(支付宝将另收取2元支付通道费)</p>
             </div>
           </div>
-            <img src="../../image/wode/check.png" class="selectImg">
           <div class="selectd select" id="ali-select">
             <img src="../../image/wode/check.png">
           </div>
@@ -65,11 +62,6 @@
   </div>
   <button class="btn">确认退款</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
@@ -79,14 +71,9 @@
 
     apiready = function () {
       init();
-    };
-
+    }
 
     function init() {
-      var name = $api.val('name');
-      var phone = $api.val('phone');
-      var addressCurrent = $api.val('address-current');
-      var addressDetail = $api.val('address-detail');
       if (!checkNet() || !checkLogin()) return;
       request({
         url: 'PaymentAmount',
@@ -116,30 +103,16 @@
     }
 
     function submit() {
-      var name = $api.val('name');
-      var phone = $api.val('phone');
-      var addressCurrent = $api.val('address-current');
-      var addressDetail = $api.val('address-detail');
+      if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'add-address',
-        data: {
-          'deviceId': api.deviceId,
-          'Id':'',
-          'UserPhone':phone,
-          'Addressee': name,
-          'AddresseePhone':phone,
-          'CrrentAddress': addressCurrent,
-          'DetailAddress':addressDetail
-        },
-        tip: '正在发送...',
-        operation:{
-          success:function (data) {
+        url: 'PaymentAmount',
+        data: {},
+        operation: {
+          success: function (data) {
           },
-          fail:function () {
-
-          }
+          default: function () {}
         }
-      })
+      });
     }
 
     function render(data) {

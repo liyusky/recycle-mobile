@@ -21,6 +21,12 @@
     <img class="image-note" src="../../image/empty-loan.png">
     <p class="font-size-30 aui-text-center text-gray margin-top-30">你还没有打开通知权限哦</p>
   </section>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript">
     var User = $api.getStorage('User');
     var index = 0;
@@ -30,7 +36,7 @@
     }
 
     function init() {
-      if (checkNetwork() && checkLogin()) {
+      if (checkNet() && checkLogin()) {
         sendRequest({
           url: 'GetZhimaAuthInfoUrl',
           values: {

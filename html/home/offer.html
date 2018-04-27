@@ -11,11 +11,6 @@
 
 <body>
   <header class="header">
-    <img src="../../image/common/back.png" alt="" class="back">
-    <p class="header-title">手机报价</p>
-  </header>
-  <div class="banner">
-    <img src="../../image/home/banner.png" alt="">
     <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
     <p class="header-title">手机报价</p>
   </header>
@@ -66,27 +61,11 @@
         用户在撤销出售手机(解除愿《手机回收合同》)后，亦可选择将该手机 再次向平台出售手机,仅需签订相关交易文本,无需进行其他流程。
       </div>
     </div>
-    <a href="javascript:;" class="btn" onclick="javascript:submit();">马上拿钱</a>
-    <button class="btn" onclick="javascript: submit();">马上拿钱</button>
-    <div class="mark" id="mark">
-          <div class="dialog">
-              <div class="dialog-title"><p>《手机合同》</p></div>
-              <div class="dialog-content">
-                  <div class="content-text">您在使用趣回收产品卖出手机服务前,请认真阅读并充分理解《手机合同》。
-                      当您点击同意,并开始使用手机卖出服务,即表示您已经理解并同意改合同,
-                      该合同将构成对您具有法律约束力的法律文件。
-                  </div>
-                      <div class="affirm">
-                          <input type="checkbox" id="yes">
-                          <label for="yes">我阅读并理解 《手机合同》</label>
-                      </div>
-              </div>
-              <div class="dialog-footer">
-                  <button onclick="javascript:rmdialog()">同意</button>
-                  <button onclick="javascript:rmdialog()">我知道了</button>
-              </div>
-          </div>
+    <div class="affirm">
+      <input type="checkbox" id="yes">
+      <label for="yes">我阅读并理解 《手机合同》</label>
     </div>
+    <button class="btn" onclick="javascript: submit();">马上拿钱</button>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -94,81 +73,70 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script>
-    var id = null;
+    var User = null;
     apiready = function () {
-      getcard();
+      User = $api.getStorage('User');
       init();
     };
 
-    function rmdialog() {
-        $api.remove('mark');
-    };
-
-
-      function getcard() {
-        request({
-          url:'GetHYYHK',
-          values:{
-            phone:$api.getStorage('User'),
-            deviceId:api.deviceId
-          },
-          success:function (data) {
-            if(data.KaHao)
-              id = data.KaHao;
-          }
-        })
-      }
-
     function init() {
-          var addressCurrent = $api.val('address-current');
-          var addressDetail = $api.val('address-detail');
+      if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'add-address',
-        'data': {
-          phoneCode: addressCurrent,
-          password: addressDetail
+        url: 'PhonePrice',
+        data: {
+          phone: User.Phone,
+          deviceId: api.deviceId
         },
-        tip:'正在发送',
-        operation:{
-          success:function (data) {
+        operation: {
+          success: function (data) {
+            $api.text('money', data.Price + data.FeiYong);
           }
         }
-    });
-
-  }
-      // if (!checkNet() || !checkLogin()) return;
-      $api.text('money', '500.00');
+      })
       $api.text('type', api.deviceModel);
+    }
 
 
-    function submit(params) {
-
-      var addressCurrent = $api.val('address-current');
-      var addressDetail = $api.val('address-detail');
-      // if (!checkNet() || !checkLogin()) return;
+    function submit() {
+      if (!checkNet() || !checkLogin()) return;
+      var agreement = $api.byId('yes').checked;
+      if (!agreement) {
+        toast('请同意注册协议!');
+        return;
+      }
       request({
-        url: 'ShanDianDai',
-        'data': {
-          sj: $api.getStorage('User'),
-          deviceId:api.deviceId,
-          jinE:500,
-          QiXian:7,
-          FeiYong:105,
-          RuZhangKa:id,
-          PhoneName:'',
-          PhoneModel:api.deviceModel,
-          StorageSpace:'',
-          SerialNumber:''
+        url: 'SubmitApply',
+        values: {
+          sj: User.Phone,
+          deviceId: api.deviceId,
+          jinE: 500,
+          QiXian: 7,
+          FeiYong: 105,
+          RuZhangKa: User.Card,
+          PhoneName: '',
+          PhoneModel: api.deviceModel,
+          StorageSpace: '',
+          SerialNumber: ''
         },
         showMessage: '正在发送...',
-        success:function (data) {
-              toast(data.Msg);
-              create('submit-order');
-        },
-        'tip': '正在发送...'
-    })
-  };
+        operation: {
+          init: function () {
+            closeBtnClick('submit-btn');
+          },
+          success: function (data) {
+            create('submit-order');
+            kill();
+          },
+          default: function () {
+            openBtnClick('submit-btn');
+          }
+        }
+      });
+    }
   </script>
 
 </body>
+
+</html>

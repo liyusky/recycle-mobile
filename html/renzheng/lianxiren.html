@@ -88,7 +88,9 @@
 <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
 <script type="text/javascript">
   var contactlist = [];
 
@@ -239,6 +241,8 @@
   }
 
   function submit() {
+              sendChangeStepEvent();
+    
     if (checkNet() && checkLogin()) {
       var firstName = $api.val('first-contact-name');
       var firstPhone = $api.val('first-contact-phone');
@@ -273,7 +277,7 @@
         }
       });
       if (firstFlag && secondFlag && contactlist.length > 0) {
-        // alert(escape(JSON.stringify(contactlist)));
+        alert(escape(JSON.stringify(contactlist)));
         request({
           url: 'LianXiRenXinXi',
           data: {
@@ -285,7 +289,7 @@
             name_2: secondName,
             phone_2: secondPhone,
             relationship_2: secondRelationship,
-            telList: escape(JSON.stringify(contactlist))
+            telList: '' //escape(JSON.stringify(contactlist))
           },
           showMessage: true,
           operation: {
@@ -335,8 +339,8 @@
     api.sendEvent({
       name: 'CHANGE-STEP-EVENT',
       extra: {
-        step: 1,
-				goal: 'lianxiren'
+        step: 2,
+				goal: 'zhimafen'
       }
     });
   }

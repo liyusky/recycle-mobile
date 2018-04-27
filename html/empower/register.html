@@ -45,7 +45,7 @@
           <span class="mark">《用户注册协议》</span>
         </label>
       </p>
-      <button class="btn" onclick="javascript:submit()">注册</button>
+      <button class="btn" onclick="javascript: submit()">注册</button>
     </div>
   </div>
 
@@ -80,26 +80,28 @@
     clear.onclick = function () {
       this.parentNode.getElementsByTagName('input')[0].value = '';
     }
-    getkey();
+
+    apiready = function () {
+      getkey();
+    }
 
     function getkey() {
-      var xhr = new XMLHttpRequest();
-      var url = developmentAppApi['GenerateKey'];
-      var imgurl = developmentAppApi['GrapheCodeImg'];
-      xhr.open('GET', url, true);
-      xhr.send(null);
-      xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          key = JSON.parse(this.responseText).d;
-          $api.attr(getImg, 'src', imgurl + '?key=' + key);
+      var imgurl = productionAppApi['ImageCode'];
+      api.ajax(
+        {
+          url: productionAppApi['ImageKey'],
+          method: 'GET',
+          data: {}
+        },
+        function (ret, err) {
+          $api.attr('getImg', 'src', imgurl + '?key=' + ret.Data.Key);
         }
-      }
+      );
     };
-
 
     function getImageCode(_this) {
       getkey();
-      var url = developmentAppApi['GrapheCodeImg'] + '?key=' + key;
+      var url = productionAppApi['ImageCode'] + '?key=' + key;
       $api.attr(_this, 'src', url);
     }
 
@@ -109,12 +111,8 @@
       var account = $api.val('account');
       if (!checkPhone(account)) return;
 
-      var phone = $api.val('phone');
-      if (!checkPhone(phone)) toast('请认真填写手机号');
-      return;
       var imageCode = $api.val('image-code');
       if (!checkImageVerificationCode(imageCode)) return;
-      readyToResend(dom);
 
       request({
         url: 'SendSMS',
@@ -135,7 +133,6 @@
         }
       });
     };
-
 
     function submit() {
       if (!checkNet()) return;
@@ -164,14 +161,19 @@
           deviceId: api.deviceId,
           phone: account,
           mima: password,
-          yanzhengma: phoneCode
+          yanzhengma: phoneCode,
+          key: '',
+          imgcode: '',
+          dezhi: '',
+          address: '',
+          txl: ''
         },
         showMessage: '注册中...',
         operation: {
           init: function () {
             closeBtnClick('submit-btn');
           },
-          success: function (data) {
+          success: function () {
             setLoginStatus(account);
             sendLoginEvent();
             kill();

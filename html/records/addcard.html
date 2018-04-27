@@ -76,8 +76,8 @@
             if(isCertificate()){
               request({
                   url: 'AddYHK',
-                  data: {
-                      phone: '13476615091',
+                  values: {
+                      phone: $api.getStorage('User'),
                       deviceId:api.deviceId,
                       kh:cardnum,
                       yh:banktype,
@@ -85,15 +85,15 @@
                       ylsj:phone
                   },
                   showMessage: '正在发送...',
-                  operation:{
-                    success: function(data) {
+                  success: function(data) {
+                    if(data.d.Code == 1){
+                      toast(data.d.Msg);
                       create('yinhangka');
                       kill();
-                  },fail:function(){
-
+                    }else{
+                      toast(data.d.Msg);
+                    }
                   }
-                  }
-
               });
             }else{
               toast('你还没有认证!请认证');
@@ -105,22 +105,21 @@
       var cardnum = $api.val('cardnum');
           request({
              url:'YinHangKa_STEP1',
-             data:{
-               sj:'13476615091',
+             values:{
+               sj:$api.getStorage('User'),
                deviceId:api.deviceId,
                bankcardno:cardnum
              },
-             operation:{
-                success:function (data) {
+              success:function (data) {
+                if(data.d.errorCode){
                   certificate = false;
-                },
-                fail:function () {
+                }else{
                   certificate = true;
                 }
               }
           });
 
-        return certificate;
+        return certificate && certificate;
       }
 
 

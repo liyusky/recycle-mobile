@@ -15,26 +15,18 @@ var productionAppApi = {
   'CheckAccount':'http://192.168.0.110:8008/JDBService.svc/IsExists', // 检查用户是否注册
   'FKYJ':'http://192.168.0.110:8008/JDBService.svc/FKYJ', // 用户反馈
   'IsExistsJT':'http://192.168.0.110:8008/JDBService.svc/IsExistsJT', // 是否存在借条
-  'GenerateKey':'http://192.168.0.110:8008/JDBService.svc/GenerateKey',  // 获取key
-  'GrapheCodeImg':'http://192.168.0.110:8008/JDBService.svc/GrapheCodeImg'
+  'ImageKey':'http://192.168.0.110:8008/JDBService.svc/GenerateKey',  // 获取key
+  'ImageCode':'http://192.168.0.110:8008/JDBService.svc/GrapheCodeImg'
 };
 
 var developmentAppApi = {
-  'Certification': 'http://192.168.0.109:8008/Certification.json',
-  'CheckAccount': 'http://192.168.0.109:8008/CheckAccount.json',
-  'FindPassword': 'http://192.168.0.109:8008/FindPassword.json',
-  'ModifyPassword': 'http://192.168.0.109:8008/ModifyPassword.json',
-  'SendSMS': 'http://192.168.0.109:8008/SendSMS.json',
-  'UserLogin': 'http://192.168.0.109:8008/UserLogin.json',
-  'UserRegister': 'http://192.168.0.109:8008/UserRegister.json'
+  'Certification': 'http://192.168.0.109:8080/Certification.json',
+  'CheckAccount': 'http://192.168.0.109:8080/CheckAccount.json',
+  'FindPassword': 'http://192.168.0.109:8080/FindPassword.json',
+  'ModifyPassword': 'http://192.168.0.109:8080/ModifyPassword.json',
+  'SendSMS': 'http://192.168.0.109:8080/SendSMS.json',
+  'UserLogin': 'http://192.168.0.109:8080/UserLogin.json',
+  'UserRegister': 'http://192.168.0.109:8080/UserRegister.json',
+  'ShenFenXinXin': 'http://192.168.0.109:8080/ShenFenXinXin.json',
+  'LianXiRenXinXi': 'http://192.168.0.109:8080/LianXiRenXinXi.json',
 };
-
-
-var testAppApi = {
-    'add-address':'http://192.168.0.200:4201/add-address.json',
-    'addcard':'http://192.168.0.200:4201/addcard.json',
-    'records':'http://192.168.0.200:4201/records.json',
-    'getaddress':'http://192.168.0.200:4201/getaddress.json',
-    'Verifycard':'http://192.168.0.200:4201/Verifycard.json',
-    'getcard':'http://192.168.0.200:4201/getcard.json'
-}

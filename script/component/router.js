@@ -68,8 +68,8 @@ window.ROUTER = {
   'zhimafen': {
     path: 'widget://html/renzheng/zhimafen.html'
   },
-  'add-bank-card':{
-     path: 'widget://html/wode/add-bank-card.html'
+  'addcard':{
+     path: 'widget://html/records/addcard.html'
   },
   'submit-order':{
     path: 'widget://html/records/submit-order.html'
@@ -79,8 +79,5 @@ window.ROUTER = {
   },
   'refund':{
     path: 'widget://html/wode/refund.html'
-  },
-  'recycling-schedule':{
-    path:'widget://html/records/recycling-schedule.html'
   }
 }
