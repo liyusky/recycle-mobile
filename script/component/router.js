@@ -79,5 +79,8 @@ window.ROUTER = {
   },
   'refund':{
     path: 'widget://html/wode/refund.html'
+  },
+  'relationship': {
+    path: 'widget://html/selector/relationship.html'
   }
 }

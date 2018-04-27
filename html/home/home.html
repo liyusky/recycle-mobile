@@ -107,7 +107,7 @@
               setStatus(data);
             },
           }
-        })
+        });
       }
     }
 
@@ -121,6 +121,7 @@
       try {
         User = $api.getStorage('User');
       } catch (e) {}
+
       if (!User) {
         User = {
           Status: true, //登录
