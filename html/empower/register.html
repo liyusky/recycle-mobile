@@ -104,12 +104,11 @@
     }
 
     function sendSMS(dom) {
-      // if (!checkNet()) return;
+      if (!checkNet()) return;
 
       var account = $api.val('account');
       if (!checkPhone(account)) return;
 
-      // if (!checkNet()) return;
       var phone = $api.val('phone');
       if (!checkPhone(phone)) toast('请认真填写手机号');
       return;
@@ -128,7 +127,6 @@
             readyToResend(dom);
           },
           success: function (data) {
-            create('login');
             kill();
           },
           fail: function () {
@@ -174,7 +172,6 @@
             closeBtnClick('submit-btn');
           },
           success: function (data) {
-            create('login');
             setLoginStatus(account);
             sendLoginEvent();
             kill();
