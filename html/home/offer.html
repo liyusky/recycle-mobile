@@ -146,12 +146,6 @@
 
       var addressCurrent = $api.val('address-current');
       var addressDetail = $api.val('address-detail');
-      request({
-        url: 'add-address',
-        'data': {
-          phoneCode: addressCurrent,
-          password: addressDetail
-        },
       // if (!checkNet() || !checkLogin()) return;
       request({
         url: 'ShanDianDai',
