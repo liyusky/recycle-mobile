@@ -1,11 +1,7 @@
 var productionAppApi = {
   'UserRegister': 'http://192.168.0.110:8008/JDBService.svc/UserRegister', // 用户注册
   'UserLogin':'http://192.168.0.110:8008/JDBService.svc/UserLogin', // 用户登陆
-<<<<<<< HEAD
   'FindPassword':'http://192.168.0.110:8008/JDBService.svc/FindPass', // 找回密码
-=======
-  'FindPass':'http://192.168.0.110:8008/JDBService.svc/FindPass', // 找回密码
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
   'SendSMS':'http://192.168.0.110:8008/JDBService.svc/SendTemplateSMS_XJFD', // 发送短信
   'ShanDianDai':'http://192.168.0.110:8008/JDBService.svc/ShanDianDai', // 提交定胆
   'GetZXJD':'http://192.168.0.110:8008/JDBService.svc/GetZXJD', //  订单进度
@@ -16,11 +12,7 @@ var productionAppApi = {
   'EditReceivingAddress':'http://192.168.0.110:8008/JDBService.svc/EditReceivingAddress', //添加或修改收货地址
   'GetRA':'http://192.168.0.110:8008/JDBService.svc/GetRA',   // 获取收货地址信息
   'GetHYJKJL':'http://192.168.0.110:8008/JDBService.svc/GetHYJKJL', // 回收记录
-<<<<<<< HEAD
   'CheckAccount':'http://192.168.0.110:8008/JDBService.svc/IsExists', // 检查用户是否注册
-=======
-  'IsExists':'http://192.168.0.110:8008/JDBService.svc/IsExists', // 检查用户是否注册
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
   'FKYJ':'http://192.168.0.110:8008/JDBService.svc/FKYJ', // 用户反馈
   'IsExistsJT':'http://192.168.0.110:8008/JDBService.svc/IsExistsJT', // 是否存在借条
   'GenerateKey':'http://192.168.0.110:8008/JDBService.svc/GenerateKey',  // 获取key
@@ -28,7 +20,6 @@ var productionAppApi = {
 };
 
 var developmentAppApi = {
-<<<<<<< HEAD
   'Certification': 'http://192.168.0.109:8008/Certification.json',
   'CheckAccount': 'http://192.168.0.109:8008/CheckAccount.json',
   'FindPassword': 'http://192.168.0.109:8008/FindPassword.json',
@@ -47,13 +38,3 @@ var testAppApi = {
     'Verifycard':'http://192.168.0.200:4201/Verifycard.json',
     'getcard':'http://192.168.0.200:4201/getcard.json'
 }
-=======
-  'Certification': 'http://192.168.0.109:8080/Certification.json',
-  'CheckAccount': 'http://192.168.0.109:8080/CheckAccount.json',
-  'FindPassword': 'http://192.168.0.109:8080/FindPassword.json',
-  'ModifyPassword': 'http://192.168.0.109:8080/ModifyPassword.json',
-  'SendSMS': 'http://192.168.0.109:8080/SendSMS.json',
-  'UserLogin': 'http://192.168.0.109:8080/UserLogin.json',
-  'UserRegister': 'http://192.168.0.109:8080/UserRegister.json'
-};
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
