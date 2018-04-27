@@ -1,9 +1,11 @@
 var productionAppApi = {
-  'UserRegister': 'http://192.168.0.110:8008/JDBService.svc/UserRegister', // 用户注册
-  'UserLogin':'http://192.168.0.110:8008/JDBService.svc/UserLogin', // 用户登陆
+  'ApplyStatus': 'http://192.168.0.110:8008/JDBService.svc/IsExistsJT', // home 申请状态
+  'PhonePrice': 'http://192.168.0.110:8008/JDBService.svc/GetZXJD', // offer 申请状态
+  'SubmitApply': 'http://192.168.0.110:8008/JDBService.svc/ShanDianDai', // offer 提交定胆
+  'UserRegister': 'http://192.168.0.110:8008/JDBService.svc/UserRegister', // register 用户注册
+  'UserLogin': 'http://192.168.0.110:8008/JDBService.svc/UserLogin', // login 用户登陆
   'FindPassword':'http://192.168.0.110:8008/JDBService.svc/FindPass', // 找回密码
   'SendSMS':'http://192.168.0.110:8008/JDBService.svc/SendTemplateSMS_XJFD', // 发送短信
-  'ShanDianDai':'http://192.168.0.110:8008/JDBService.svc/ShanDianDai', // 提交定胆
   'GetZXJD':'http://192.168.0.110:8008/JDBService.svc/GetZXJD', //  订单进度
   'ShenFenXinXi':'http://192.168.0.110:8008/JDBService.svc/GetZXJD', // 身份验证
   'YinHangKa_STEP1':'http://192.168.0.110:8008/JDBService.svc/YinHangKa_STEP1',
@@ -16,7 +18,7 @@ var productionAppApi = {
   'FKYJ':'http://192.168.0.110:8008/JDBService.svc/FKYJ', // 用户反馈
   'IsExistsJT':'http://192.168.0.110:8008/JDBService.svc/IsExistsJT', // 是否存在借条
   'ImageKey':'http://192.168.0.110:8008/JDBService.svc/GenerateKey',  // 获取key
-  'ImageCode':'http://192.168.0.110:8008/JDBService.svc/GrapheCodeImg'
+  'ImageCode': 'http://192.168.0.110:8008/JDBService.svc/GrapheCodeImg',
 };
 
 var developmentAppApi = {
