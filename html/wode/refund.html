@@ -42,7 +42,7 @@
               <span class="card-type">储蓄卡</span>
             </p>
           </div>
-          <a href="javascript:;" class="select"></a>
+          <a href="javascript:;" class="select" id="card-select"></a>
         </li>
         <li>
           <div class="pay-type">
@@ -52,7 +52,7 @@
               <p class="message">(支付宝将另收取2元支付通道费)</p>
             </div>
           </div>
-          <div class="selectd select">
+          <div class="selectd select" id="ali-select">
             <img src="../../image/wode/check.png">
           </div>
         </li>
@@ -68,26 +68,50 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
-    var cardDom = null;
-    var aliDom = null;
 
     apiready = function () {
-      var cardDom = null;
-      var aliDom = null;
       init();
     }
 
     function init() {
+      if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'other',
-        values: {},
-        success: function (data) {
-          if(data.d.Code == 1){
-            toast(data.message)
+        url: 'PaymentAmount',
+        data: {},
+        operation: {
+          success: function (data) {
+            data = formatData(data);
             render(data);
-          }
-        },
-        default: function () { }
+          },
+          default: function () {}
+        }
+      });
+    }
+
+    function selectCard() {
+      if ($api.hasCls('card-select', 'selectd')) {
+        $api.removeCls('ali-select', 'selectd');
+        $api.addCls('card-select', 'selectd');
+      }
+    }
+
+    function selectALi() {
+      if ($api.hasCls('ali-select', 'selectd')) {
+        $api.removeCls('card-select', 'selectd');
+        $api.addCls('ali-select', 'selectd');
+      }
+    }
+
+    function submit() {
+      if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'PaymentAmount',
+        data: {},
+        operation: {
+          success: function (data) {
+          },
+          default: function () {}
+        }
       });
     }
 
@@ -96,33 +120,12 @@
       $api.text('card-tail', data.tail);
     }
 
-    function selectCard() {
-      if ($api.hasCls(cardDom, '')) {
-        $api.removeCls(cardDom, '');
-        $api.addCls(cardDom, '');
+    function formatData(data) {
+      User = $api.getStorage('User');
+      return {
+        data: data.ZongJinE - data.YiJieFeiYong,
+        tail: User.Card.substr(-4)
       }
-    }
-
-    function selectALi() {
-      if ($api.hasCls(aliDom, '')) {
-        $api.removeCls(aliDom, '');
-        $api.addCls(aliDom, '');
-      }
-    }
-
-    function submit() {
-      if (!checkNet() || !checkLogin()) return;
-      request({
-        url: 'other',
-        values: {},
-        showMessage: '正在发送...',
-        success: function (data) {
-           if(data.code == 200){
-             toast(data.message);
-           }
-        },
-        default: function () {}
-      });
     }
   </script>
 </body>
