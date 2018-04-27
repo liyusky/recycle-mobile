@@ -159,10 +159,6 @@ header .compile {
   margin-left: 3.6vw;
 }
 
-.content .address-list li{
-  position: relative;
-}
-
 .content .address-list li .box .name, .content .address-list li .box .phone {
   font-size: 4.66667vw;
   margin-top: 6.93333vw;
@@ -170,7 +166,5 @@ header .compile {
 
 .content .address-list li .box .address {
   font-size: 4vw;
-  position: absolute;
-  bottom: 4vw;
-  left: 3.6vw;
+  margin-top: 4vw;
 }

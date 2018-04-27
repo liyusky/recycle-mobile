@@ -22,8 +22,8 @@ var statusCode = {
  * @datetime    2017-10-11T10:35:54+080
  */
 function AppStatusHandle(ret, err, operation) {
-  // alert(JSON.stringify(ret))
-  // alert(JSON.stringify(err))
+  alert(JSON.stringify(ret))
+  alert(JSON.stringify(err))
 
   if (typeof operation == 'function') {
     operation(ret, err);
@@ -40,12 +40,11 @@ function AppStatusHandle(ret, err, operation) {
       case 1:
         try {
           operation.success(ret.Data);
-          toast(ret.Msg)
         } catch (e) {}
         break;
-      case 0:
+      case 401:
         try {
-          operation.fail(ret.description);
+          operation.fail(ret.Msg);
         } catch (e) {}
         break;
     }

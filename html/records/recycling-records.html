@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -59,16 +60,17 @@
       // if (!checkNet() || !checkLogin()) return;
       request({
         url: 'GetHYJKJL',
-        'data': {
-          phone:'18255193029',
+        values: {
+          Phone: $api.getStorage('User'),
           deviceId: api.deviceId
         },
-        tip: '正在发送...',
-        operation:{
-          success: function (data) {
-              render(data[0]);
+        showMessage: '正在发送...',
+        original: function (data) {
+          if (data.d.FangKuanRen) {
+            render(data.d);
           }
-        }
+        },
+        // default: function () {}
       });
 
 
@@ -87,7 +89,7 @@
           "<span>手机型号</span>" +
           "<span id='phone-type'>" + api.deviceModel + "</span>" +
           "</p>" +
-          "<a href='javascript:;' onclick=javascript:create('details');>查看详情></a>"+
+          "<a href='javascript:;' onclick='javascript:create('details');''>查看详情></a>" +
           "</div>" +
           "<div class='price'>" +
           "<ul>" +
@@ -97,13 +99,13 @@
           "</li>" +
           "<li>" +
           "<p>定金+预付款</p>" +
-          "<span>" + (data.DaoZhang + data.FeiYong) + "元</span>" +
+          "<span>" + parseInt(data.FeiYong) + parseInt(data.jieE) + "元</span>" +
           "</li>" +
           "<li>" +
           "<p>履约期</p>" +
           "<span>7</span>" +
           "<span>天</span>" +
-          "<img src='../../image/records/help.png' class='help'>" +
+          "<img src=''../../image/records/help.png' class='help'>" +
           "</li>" +
           "</ul>" +
           "</div>" +

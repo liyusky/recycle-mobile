@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我的银行卡</title>
-  <link rel="stylesheet" href="../../css/wode/yinhangka.css">
   <link rel="stylesheet" href="../../css/wode/bank-card.css">
 </head>
 
@@ -33,7 +32,6 @@
         </div>
       </li>
     </ul>
-    <button class="btn" onclick="javascript:create('add-bank-card')">绑定银行卡</button>
     <button class="btn" onclick="javascript:create('addcard')">绑定银行卡</button>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -88,7 +86,6 @@
     }
 
     function render(data) {
-      $api.attr('bank-image', 'src', data.src);
       $api.text('bank-name', data.KaiHuHang);
       $api.text('card-type', '储蓄卡');
       $api.text('card-tail', data.Weihao);
