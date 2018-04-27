@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+  <link rel="stylesheet" type="text/css" href="../../css/empower/login.css">
+</head>
+
+<body>
+  <header class="header">
+    <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
+    <p class="header-title">登录</p>
+  </header>
+  <div class="logo">
+    <img src="../../image/login/logo.png" class="logo-img">
+    <img src="../../image/login/logotext.png" alt="" class="logo-text">
+    <span class="text">闲置二手回收共享经济</span>
+  </div>
+  <div class="login">
+    <div class="areacode">
+      <span>+86</span>
+    </div>
+    <input type="number" placeholder="请输入您的手机号码" class="phone" id="account" maxlength="11">
+  </div>
+  <button class="btn" id="submit-btn" onclick="javascript: submit();">下一步</button>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
+  <script>
+    function submit() {
+      if (!checkNet()) return;
+      var account = $api.val('account');
+      if (!checkPhone(account)) return;
+
+      request({
+        url: 'CheckAccount',
+        data: {
+          Phone: account,
+        },
+        showMessage: false,
+        operation: {
+          init: function () {
+            closeBtnClick('submit-btn');
+          },
+          success: function (data) {
+            create({
+              goal: 'input-password',
+              account: account
+            });
+          },
+          fail: function () {
+            create({
+              goal: 'register',
+            });
+          },
+          default: function () {
+            openBtnClick('submit-btn');
+          }
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
