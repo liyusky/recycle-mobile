@@ -23,7 +23,7 @@
     <div class="areacode">
       <span>+86</span>
     </div>
-    <input type="number" placeholder="请输入您的手机号码" class="phone" id="phone">
+    <input type="number" placeholder="请输入您的手机号码" class="phone" id="account" maxlength="11">
   </div>
   <button class="btn" id="submit-btn" onclick="javascript: submit();">下一步</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -33,39 +33,39 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPassword.js"></script>
   <script>
-  function submit() {
-    if (!checkNet()) return;
-    var account = $api.val('account');
-    if (!checkPhone(account)) return;
-    request({
-      url: 'CheckAccount',
-      data: {
-        Phone: account,
-      },
-      showMessage: false,
-      operation: {
-        init: function () {
-          closeBtnClick('submit-btn');
+    function submit() {
+      if (!checkNet()) return;
+      var account = $api.val('account');
+      if (!checkPhone(account)) return;
+
+      request({
+        url: 'CheckAccount',
+        data: {
+          Phone: account,
         },
-        success: function (data) {
-          create({
-            goal: 'input-password',
-            account: account
-          });
-        },
-        fail: function () {
-          create({
-            goal: 'register',
-          });
-        },
-        default: function () {
-          openBtnClick('submit-btn');
+        showMessage: false,
+        operation: {
+          init: function () {
+            closeBtnClick('submit-btn');
+          },
+          success: function (data) {
+            create({
+              goal: 'input-password',
+              account: account
+            });
+          },
+          fail: function () {
+            create({
+              goal: 'register',
+            });
+          },
+          default: function () {
+            openBtnClick('submit-btn');
+          }
         }
-      }
-    });
-  }
+      });
+    }
   </script>
 </body>
 
