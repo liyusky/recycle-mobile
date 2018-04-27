@@ -120,6 +120,7 @@
 			},
 			function (ret, err) {
 				if (ret) {
+					alert(ret.value.goal)
 					api.openFrame({
 						name: ret.value.goal,
 						url: ROUTER[ret.value.goal],
