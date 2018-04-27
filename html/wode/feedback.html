@@ -37,25 +37,29 @@
       // if (!checkNet() || !checkLogin()) return;
       var content = $api.val('textarea');
       var account = $api.val('account');
-      if (!account || !content) {
-        toast('请将内容或联系方式填写完整...');
+      if(!content){
+        toast('请将内容填写完整...');
+        return;
+      }
+      if(!account){
+        toast('请将联系方式填写完整...');
         return;
       }
       request({
         url: 'FKYJ',
-        values: {
-          sj: $api.getStorage('User'),
-          deviceId: api.deviceId,
-          nr: content
+        data: {
+          'deviceId': api.deviceId,
+          'sj':'18255193029',
+          'nr':content
         },
-        showMessage: '正在加载...',
-        success: function (data) {
-          if (data.d.Code) {
-            toast(data.d.Msg);
-            kill();
-          } else {
-            toast(data.d.Msg);
-          }
+        tip: '正在发送...',
+        operation:{
+           success:function () {
+
+           },
+           fail:function () {
+
+           }
         }
       });
     }

@@ -137,7 +137,24 @@ header .compile {
   border-radius: 2vw;
 }
 
-.content .address-list li .box .name, .content .address-list li .box .phone, .content .address-list li .box .address {
+.content .address-list .noaddress{
+  width: 37.333333333333336vw;
+  height: 33.333333333333336vw;
+  margin: 26.666666666666664vw auto;
+}
+
+.content .address-list .noaddress img{
+  width: 33.0666666666666vw;
+  height: 23.599999999999998vw;
+}
+
+.content .address-list .noaddress p {
+  font-size: 5.066666666666667vw;
+  text-align: center;
+  margin-top: 4vw
+}
+
+.content .address-list li .box .name, .content .address-list li .box .phone {
   float: left;
   margin-left: 3.6vw;
 }

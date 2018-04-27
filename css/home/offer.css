@@ -234,13 +234,13 @@ header .header-title {
   padding-right: 5.06667vw;
 }
 
-.details .mark .dialog .dialog-content #yes {
+.details  #yes {
   float: left;
   font-size: 4.26667vw;
   margin-top: 1vw
 }
 
-.details .mark .dialog .dialog-content label {
+.details label {
   margin-left: 1.6vw;
   outline: none;
   border: none;
@@ -253,7 +253,7 @@ header .header-title {
   line-height: 6.66667vw;
 }
 
-.details .mark .dialog .dialog-content .affirm {
+.details  .affirm {
   font-size: 3.6vw;
   padding-bottom: 6vw;
   padding-top: 6vw;
