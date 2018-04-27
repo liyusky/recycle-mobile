@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>设置</title>
+  <link rel="stylesheet" href="../../css/wode/setting.css">
+</head>
+
+<body>
+  <header class="header">
+    <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
+    <p class="header-title">设置</p>
+  </header>
+
+  <div class="content">
+    <ul class="setting">
+      <li>
+        <p class="setlist">关于我们</p>
+        <img src="../../image/wode/more.png" alt="">
+      </li>
+      <li onclick="javascript: gotoPage('modify-password');">
+        <p class="setlist">修改登录密码</p>
+        <img src="../../image/wode/more.png" alt="">
+      </li>
+    </ul>
+  </div>
+  <button class="exit" onclick="javascript: logout();">退出</button>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script>
+    var User = null;
+
+    function logout() {
+      setLogoutStatus();
+      sendLogoutEvent();
+    }
+
+    function setLogoutStatus() {
+      User = $api.getStorage('User');
+      User.Status = false;
+      $api.setStorage('User', User);
+      kill();
+    }
+
+    function sendLogoutEvent() {
+      api.sendEvent({
+        name: 'LOGOUT-EVENT'
+      });
+    }
+
+
+    function gotoPage(goal) {
+      // if (!checkNet() || !checkLogin()) return;
+      create(goal);
+    }
+  </script>
+</body>
+
+</html>

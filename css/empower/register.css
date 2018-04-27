@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+.header {
+  width: 100%;
+  height: 17.2vw;
+  padding-top: 5.6vw;
+  padding-left: 4.8vw;
+  padding-right: 4.8vw;
+  line-height: 11.6vw;
+  font-size: 4.8vw;
+  position: relative;
+}
+
+.header .sign {
+  width: 100%;
+  height: 100%;
+  background: none;
+  position: absolute;
+  padding-top: 5.6vw;
+  padding-left: 4.8vw;
+  padding-right: 4.8vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.header .sign div {
+  width: auto;
+  height: 100%;
+}
+
+.header .title {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+}
+
+.header {
+  background-color: #fff;
+  color: #333333;
+  border-bottom: 1px solid #cbcbcb;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+body {
+  padding-top: 17.2vw;
+}
+
+body {
+  background: #f4f4f4;
+}
+
+header {
+  height: 12vw;
+  background: #fff;
+  line-height: 12vw;
+  text-align: center;
+}
+
+header .back {
+  float: left;
+  margin-top: 3.33333vw;
+  width: 4.66667vw;
+  height: 5.46667vw;
+}
+
+header .header-title {
+  font-size: 4.66667vw;
+  display: inline;
+}
+
+.register {
+  margin: 4vw auto;
+}
+
+.register ul {
+  background: #fff;
+}
+
+.register ul li {
+  height: 15.2vw;
+  line-height: 15.2vw;
+  width: 94.66667vw;
+  margin-left: 5.33333vw;
+  border-bottom: 0.4vw solid #efefef;
+}
+
+.register ul li .text {
+  float: left;
+  font-size: 4vw;
+  padding-right: 8vw;
+}
+
+.register ul li input {
+  outline: none;
+  border: none;
+  font-size: 3.6vw;
+  line-height: 14.2vw;
+  float: left;
+  padding-left: 0.66667vw;
+  padding-right: 0.66667vw;
+}
+
+.register ul li .switch {
+  width: 4.93333vw;
+  height: 2.26667vw;
+  margin-left: 10.13333vw;
+}
+
+.register ul li .clear {
+  width: 4vw;
+  height: 4vw;
+  float: right;
+  margin-right: 6.66667vw;
+  margin-top: 5.6vw;
+}
+
+.register ul .setleft .text {
+  padding-right: 4vw;
+}
+
+.register ul .setleft input {
+  width: 33.33333vw;
+}
+
+.register ul .setleft img {
+  width: 17.33333vw;
+  height: 6.66667vw;
+  margin-right: 6.8vw;
+  display: inline-block;
+  margin-top: 4vw;
+  float: right;
+}
+
+.register ul .setleft-three .text {
+  padding-right: 12vw;
+}
+
+.register ul .setleft-three input {
+  width: 32vw;
+}
+
+.register ul .setleft-three .sendMsg {
+  font-size: 3.2vw;
+  color: #1990fe;
+  margin-left: 15vw;
+  background: #fff;
+  outline: none;
+  border: none;
+}
+
+.register ul .setpass-left input {
+  width: 42.66667vw;
+}
+
+.register .register-explain {
+  margin: 5.33333vw auto;
+  font-size: 3.6vw;
+}
+
+.register .register-explain .protocol{
+  padding-left: 7.199999999999999vw;
+}
+
+.register .register-explain label {
+  margin-left: 1.7333333333333334vw;
+
+}
+
+.register .register-explain  #checkbox{
+  float: left;
+}
+
+
+.register .register-explain .register-text {
+  width: 66.66667vw;
+  height: 17.2vw;
+  line-height: 17.2vw;
+  margin-left: 6.66667vw;
+  font-size: 3.6vw;
+}
+
+.register .register-explain .mark {
+  color: #fa570a;
+  margin-left: 1.73333vw;
+  font-size: 3.6vw;
+}
+
+.register .register-explain .btn {
+  width: 86.66667vw;
+  height: 12.66667vw;
+  display: block;
+  outline: none;
+  border: none;
+  font-size: 5.06667vw;
+  margin: 8vw auto;
+  border-radius: 1.6vw;
+  background: #71b8fa;
+  color: #fff;
+}

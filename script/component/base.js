@@ -89,10 +89,10 @@ function create(data) {
   }
   var animationDirection = 'from_right';
   var animationType = 'movein';
-  if (ROUTER[goal].animationDirection) animationDirection = ROUTER[goal].animationDirection;
-  if (ROUTER[goal].animationType) animationType = ROUTER[goal].animationType;
+  // if (ROUTER[goal].animationDirection) animationDirection = ROUTER[goal].animationDirection;
+  // if (ROUTER[goal].animationType) animationType = ROUTER[goal].animationType;
 
-  alert(ROUTER[goal].path)
+  // alert(ROUTER[goal].path)
   api.openWin({
     name: goal,
     url: ROUTER[goal].path,
@@ -115,7 +115,7 @@ function kill(goal) {
     if (param.type) animationType = param.type;
     if (param.direction) animationDirection = param.direction;
   }
-  
+
   api.closeWin({
     name: goal,
     animation: {

@@ -6,95 +6,181 @@
   <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
   />
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
   <title>注册</title>
   <link rel="stylesheet" type="text/css" href="../../css/empower/register.css">
 </head>
 
 <body>
   <header class="header">
-    <img src="./img/back.png" class="back">
+    <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
     <p class="header-title">注册</p>
   </header>
   <div class="register">
     <ul>
+      <li class="setleft-three">
+        <p class="text">用户名</p>
+        <input type="text" placeholder="请输入手机号" id="account">
+      </li>
       <li class="setleft">
         <p class="text">图片验证码</p>
-        <input type="text" placeholder="请输入图片验证码">
-        <img src="http://passport.360.cn/captcha.php?m=create&app=i360&scene=login&userip=&level=default&sign=8820a4&r=1523681447&_=1523681453866"
-          alt="">
+        <input type="text" placeholder="请输入图片验证码" id="image-code">
+        <img src="" onclick="javascript: getImageCode(this);" id="getImg">
       </li>
       <li class="setleft-three">
         <p class="text">验证码</p>
-        <input type="text" placeholder="请输入验证码">
-        <span class="sendMsg">发送验证码</span>
+        <input type="text" placeholder="请输入验证码" id="phone-code">
+        <button class="sendMsg" id="send-SMS-btn" onclick="javascript: sendSMS(this);">发送验证码</button>
       </li>
       <li class="setpass-left">
         <p class="text">设置密码</p>
-        <input type="text" placeholder="请设置6-12位数字和字母">
-        <img src="./img/switch.png" alt="" class="switch">
-        <img src="./img/clear.png" alt="" class="clear">
+        <input type="password" placeholder="请设置6-12位数字和字母" id="password">
+        <img src="../../image/common/switch.png" alt="" class="switch">
+        <img src="../../image/common/clear.png" alt="" class="clear">
       </li>
     </ul>
     <div class="register-explain">
-      <label for="register">
-        <input type="checkbox" id="register">
-        <span class="mark">注册即同意 《用户注册协议》</span>
-      </label>
-      <button class="btn">注册</button>
+      <p class="protocol">
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox">注册即同意
+          <span class="mark">《用户注册协议》</span>
+        </label>
+      </p>
+      <button class="btn" onclick="javascript:submit()">注册</button>
     </div>
   </div>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkImageVerificationCode.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPassword.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkImageVerificationCode.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhoneVerificationCode.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/readyToResend.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
-    function sendSMS() {
-      var imageCode = $api.val('image-code');
-      if (checkImageVerificationCode(imageCode)) return;
+    var User = null;
+    var fullname = null;
+    var key = null;
+    var $switch = document.querySelector('.switch');
+    var clear = document.querySelector('.clear');
+    $switch.onOff = true;
+    $switch.onclick = function () {
+      if (this.onOff) {
+        this.parentNode.getElementsByTagName('input')[0].type = 'text';
+      } else {
+        this.parentNode.getElementsByTagName('input')[0].type = 'password';
+      }
+      this.onOff = !this.onOff;
+    }
+    clear.onclick = function () {
+      this.parentNode.getElementsByTagName('input')[0].value = '';
+    }
+    getkey();
+    function getkey() {
+      var xhr = new XMLHttpRequest();
+      var url = productionAppApi['GenerateKey'];
+      var imgurl = productionAppApi['GrapheCodeImg'];
+      xhr.open('GET', url, true);
+      xhr.send(null);
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
 
+          key = JSON.parse(this.responseText).d;
+          $api.attr(getImg, 'src', imgurl + '?key=' + key);
+        }
+      }
+    };
+    function getImageCode(_this) {
+      getkey();
+      var url = productionAppApi['GrapheCodeImg'] + '?key=' + key;
+      $api.attr(_this, 'src', url);
+    }
+    function sendSMS(dom) {
+      // if (!checkNet()) return;
+      var account = $api.val('account');
+      // if (!checkPhone(account)) return;
+      // if (!checkNet()) return;
+      var phone = $api.val('phone');
+      // if (!checkPhone(phone)) return;
+      var imageCode = $api.val('image-code');
+      // if (!checkImageVerificationCode(imageCode)) return;
       request({
-        url: 'xxxxx',
-        values: {
-          imageCode: imageCode
+        url: 'SendSMS',
+        data: {
+          account: account,
+          type: '注册'
         },
-        showMessage: '正在发送...',
-        init: function () {
-          closeBtnClick('send-image-btn');
+        operation: {
+          init: function () {
+            readyToResend(dom);
+          },
+          success: function (data) {
+            create('login');
+            kill();
+          },
+          fail: function () {
+            toast('注册失败');
+          }
+        }
+      });
+    };
+    function submit() {
+      if (!checkNet()) return;
+      var agreement = $api.byId('checkbox').checked;
+      if (!agreement) {
+        toast('请同意注册协议!');
+        return;
+      }
+      var account = $api.val('account');
+      if (!checkPhone(account)) return;
+      var imageCode = $api.val('image-code');
+      if (!checkImageVerificationCode(imageCode)) return;
+      var phoneCode = $api.val('phone-code');
+      if (!checkPhoneVerificationCode(phoneCode)) return;
+      var password = $api.val('password');
+      if (!checkPassword(password)) return;
+      request({
+        url: 'UserRegister',
+        data: {
+          deviceId: api.deviceId,
+          phone: account,
+          mima: password,
+          yanzhengma: phoneCode
         },
-        success: function () {},
-        default: function () {
-          openBtnClick('submit-btn');
+        showMessage: '注册中...',
+        operation: {
+          init: function () {
+            closeBtnClick('submit-btn');
+          },
+          success: function (data) {
+            create('login');
+            setLoginStatus(account);
+            sendLoginEvent();
+            kill();
+          },
+          fail: function () {
+            toast('注册失败');
+          },
+          default: function () {
+            openBtnClick('submit-btn');
+          }
         }
       });
     }
-
-    function submit() {
-      var phoneCode = $api.val('phone-code');
-      var password = $api.val('password');
-      if (checkPhoneVerificationCode(phoneCode)) return;
-      if (checkPassword(password)) return;
-
-      request({
-        url: 'xxxxx',
-        values: {
-          phoneCode: phoneCode,
-          password: password
-        },
-        showMessage: '正在发送...',
-        init: function () {
-          closeBtnClick('submit-btn');
-        },
-        success: function () {
-          kill();
-        },
-        default: function () {
-          openBtnClick('submit-btn');
-        }
+    function setLoginStatus(phone) {
+      User = $api.getStorage('User');
+      User.Status = true;
+      User.Phone = phone;
+      $api.setStorage('User', User);
+    }
+    function sendLoginEvent() {
+      api.sendEvent({
+        name: 'LOGIN-EVENT'
       });
     }
   </script>

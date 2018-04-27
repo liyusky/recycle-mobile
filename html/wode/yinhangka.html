@@ -6,44 +6,36 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
 	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <script type="text/javascript" charset="utf-8" src="../../../script/global/flexible.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../../script/global/api.js"></script>
 	<title>我的银行卡</title>
-	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui.css">
-	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/aui-extends.css">
-	<link rel="stylesheet" type="text/css" href="../../../css/lanqian/swiper.min.css">
-	<script type="text/javascript" charset="utf-8" src="../../../iconfont/lanqian/iconfont.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../css/wode/yinhangka.css">
 </head>
 
 <body class="yinhangka">
-	<section class="aui-content" id="title">
-		<div class="aui-row">
-			<div class="aui-col-xs-12 title">
-				<p class="font-size-28 padding-left-40 text-black" id="title-message">您还未绑定银行卡，请添加银行卡。</p>
-			</div>
-		</div>
-	</section>
-	<section class="aui-content bank-wrap background-write aui-hide" id="bank-wrap">
-		<ul class="swiper-wrapper" id="swiper-wrapper"></ul>
-	</section>
-	<section class="aui-content padding-horizontal-40 padding-vertical-30 aui-hide" id="note">
-		<div class="aui-row">
-			<div class="aui-col-xs-12 note-wrap font-size-26 text-black">
-				<p>备注：</p>
-				<p>1.借款通过申请后，我们将会将您的所借款项发放到该张银行卡</p>
-				<p>2.未完成借款期间不允许更换银行卡</p>
-				<p>3.我们将根据您提供的身份证信息、银行卡信息在依法设立的第三方征信机构核实您的账户信息。</p>
-			</div>
-		</div>
-	</section>
-	<section class="aui-content aui-text-center margin-top-30">
-		<p>
-			<div class="aui-btn btn-square font-size-35" onclick="javascript: addCard();">添加银行卡</div>
-		</p>
-	</section>
-  <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-property.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../../script/lanqian/global-method.js"></script>
-	<script type="text/javascript" charset="utf-8" src="../../../script/lanqian/swiper.min.js"></script>
+	<header class="header">
+    <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
+		<p class="header-title">我的银行卡</p>
+</header>
+<div class="content">
+		<ul class="list" id="bankList">
+				<li>
+						<img src="../../image/wode/bank.png">
+						<div class="card-message">
+								<p class="bank-type">中国银行</p>
+								<span class="card-type">储蓄卡</span>
+										<p class="card-num">
+										 <span class="hidenum">****</span> <span class="hidenum">****</span> <span class="hidenum">****</span>
+										 <span class="shownum">5198</span> </p>
+						</div>
+				</li>
+		</ul>
+    <button class="btn" onclick="javascript:create('add-bank-card')">绑定银行卡</button>
+</div>
+<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
 	<script type="text/javascript">
     var User = $api.getStorage('User');
 		apiready = function () {
@@ -52,22 +44,27 @@
 		}
 
     function init () {
-      if (checkNetwork() && checkLogin()) {
-        sendRequest({
-          url: 'GetBankCardList',
-          values: {
-            phone: User.Phone,
-            deviceId: api.deviceId
-          },
-          showMessage: true,
-          success: function (data) {
-            User = $api.getStorage('User');
-            User.Card = formatCard(data);
-            $api.setStorage('User', User);
-            setLayout(User.Card);
-          }
-        });
-      }
+      // if (checkNetwork() && checkLogin()) {
+			var name = $api.val('name');
+      var phone = $api.val('phone');
+      var addressCurrent = $api.val('address-current');
+      var addressDetail = $api.val('address-detail');
+      request({
+        url: 'GetHYYHK',
+        data: {
+					'phone':'18255193029',
+          'deviceId': api.deviceId,
+        },
+        tip: '正在发送...',
+				operation:{
+					success:function (data) {
+							setLayout(data);
+					},
+					fail:function () {
+
+					}
+				}
+      });
     }
 
     function setLayout (content) {
@@ -75,26 +72,50 @@
         var htmlStr = '';
         for (var i = 0; i < content.length; i++) {
           htmlStr += setBankCardHTML(content[i]);
-        }
-        $api.addCls('title', 'background-write');
-        $api.text('title-message', '绑定的银行卡将用于收款和还款');
-        $api.html('swiper-wrapper', htmlStr);
-        $api.removeCls('bank-wrap', 'aui-hide');
-        $api.removeCls('note', 'aui-hide');
-        setSwiper();
+        };
+        $api.html('bankList', htmlStr);
+				for(var key in bankval){
+					if(card.KaiHuHang.indexOf(key) !== -1){
+							$api.attr('bank-image', 'src', bankval[key]);
+				}
       }
+		}
       else {
         alertMsg('您尚未绑定银行卡！');
       }
     }
 
+		var bankval = {
+			'光大':'../../image/wode/bank/gdyh-bg.png',
+			'广发':'../../image/wode/bank/gfyh-bg.png',
+			'工商':'../../image/wode/bank/gsyh-bg.png',
+			'华夏':'../../image/wode/bank/hyyh-bg.png',
+			'建设':'../../image/wode/bank/jsyh-bg.png',
+			'交通':'../../image/wode/bank/jtyh-bg.png',
+			'民生':'../../image/wode/bank/msyh-bg.png',
+			'农业':'../../image/wode/bank/nyyh-bg.png',
+			'平安':'../../image/wode/bank/payh-bg.png',
+			'浦发':'../../image/wode/bank/pfyh-bg.png',
+			'兴业':'../../image/wode/bank/xyyh-bg.png',
+			'邮政':'../../image/wode/bank/yzyh-bg.png',
+			'中国':'../../image/wode/bank/zgyh-bg.png',
+			'招商':'../../image/wode/bank/zsyh-bg.png',
+			'中信':'../../image/wode/bank/zxyh-bg.png'
+		};
+
+
+
     function setBankCardHTML (card) {
-      var htmlStr = '<li class="swiper-slide bank-item">' +
-      '<div class="mantissa absolute font-size-35 text-write">' + card.number.substr(-4, 4) + '</div>' +
-      '<div class="bg absolute">' +
-      '<img class="bg-image" src="../../../image/lanqian/card/' + BankList[card.bank] + '.png">' +
-      '</div>' +
-      '</li>';
+      var htmlStr = '<li>'+
+									'<img id="bank-image">'+
+									'<div class="card-message">'+
+										'<p class="bank-type">'+card.KaiHuHang+'</p>'+
+										'	<span class="card-type">储蓄卡</span>'+
+										'			<p class="card-num">'+
+										'<span class="hidenum">****</span> <span class="hidenum">****</span> <span class="hidenum">****</span>'+
+										'			 <span class="shownum">'+card.WeiHao+'</span> </p>'+
+									'</div>'+
+							'</li>';
       return htmlStr;
     }
 

@@ -18,7 +18,7 @@ function create(data) {
   if (Route[goal].animationDirection) animationDirection = Route[goal].animationDirection;
   if (Route[goal].animationType) animationType = Route[goal].animationType;
 
-  alert(Route[goal].path)
+  // alert(Route[goal].path)
   api.openWin({
     name: goal,
     url: Route[goal].path,

@@ -11,11 +11,11 @@
 
 <body>
   <header class="header">
-    <img src="./img/back.png" alt="" class="back">
+    <img src="../../image/common/back.png" alt="" class="back">
     <p class="header-title">手机报价</p>
   </header>
   <div class="banner">
-    <img src="./img/banner.png" alt="">
+    <img src="../../image/home/banner.png" alt="">
     <div class="bannerText">
       <p class="message">
         <span>您的手机</span>
@@ -32,7 +32,7 @@
   <div class="details">
     <div class="rules">
       <div class="ruleshead">
-        <img src="./img/flow.png">
+        <img src="../../image/home/flow.png">
         <p class="title">反悔/撤销</p>
         <div class="clear"></div>
       </div>
@@ -43,7 +43,7 @@
     </div>
     <div class="rules">
       <div class="ruleshead">
-        <img src="./img/repeal.png" alt="">
+        <img src="../../image/home/repeal.png" alt="">
         <p class="title">出售流程</p>
       </div>
       <div class="clear"></div>
@@ -53,7 +53,7 @@
     </div>
     <div class="rules">
       <div class="ruleshead">
-        <img src="./img/contract.png" alt="">
+        <img src="../../image/home/contract.png" alt="">
         <p class="title"> 重新签约</p>
       </div>
       <div class="clear"></div>
@@ -61,26 +61,35 @@
         用户在撤销出售手机(解除愿《手机回收合同》)后，亦可选择将该手机 再次向平台出售手机,仅需签订相关交易文本,无需进行其他流程。
       </div>
     </div>
-    <a href="javascript:;" class="btn">马上拿钱</a>
+    <a href="javascript:;" class="btn" onclick="javascript:submit();">马上拿钱</a>
   </div>
-
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script>
     apiready = function () {
       init();
     }
     function init() {
+          var addressCurrent = $api.val('address-current');
+          var addressDetail = $api.val('address-detail');
       request({
-        url: 'xxxxx',
-        values: {
-          phoneCode: phoneCode,
-          password: password
+        url: 'add-address',
+        'data': {
+          phoneCode: addressCurrent,
+          password: addressDetail
         },
-        success: function (data) {
-          render();
-        },
-        default: function () { }
-      });
-    }
+        tip:'正在发送',
+        operation:{
+          success:function (data) {
+          }
+        }
+    });
+
+  }
 
     function render(data) {
       $api.text('money', money);
@@ -88,18 +97,24 @@
     }
 
     function submit(params) {
+
+      var addressCurrent = $api.val('address-current');
+      var addressDetail = $api.val('address-detail');
       request({
-        url: 'xxxxx',
-        values: {
-          phoneCode: phoneCode,
-          password: password
+        url: 'add-address',
+        'data': {
+          phoneCode: addressCurrent,
+          password: addressDetail
         },
-        showMessage: '正在发送...',
-        success: function (data) {
-        },
-        default: function () { }
-      });
-    }
+        'tip': '正在发送...',
+        operation:{
+          success:function (data) {
+                toast(data.Msg);
+                create('submit-order');
+          }
+        }
+    })
+  };
   </script>
 
 </body>

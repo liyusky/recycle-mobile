@@ -11,12 +11,12 @@
 
 <body>
   <header class="header">
-    <img src="./img/back.png" alt="" class="back">
+    <img src="../../image/common/back.png" alt="" class="back">
     <p class="header-title">回收进度</p>
   </header>
-  <div class="content">
-    <div class="recycle">
-      <img src="./img/recycle.png" alt="" class="recycle">
+  <div class="content" id="content">
+    <!-- <div class="recycle">
+      <img src="../../image/records/recycle.png" alt="" class="recycle">
       <div class="message">
         <p class="phonetype">
           <span>手机型号</span>
@@ -37,16 +37,16 @@
             <p>履约期</p>
             <span id="time">7</span>
             <span>天</span>
-            <img src="./img/help.png" alt="" class="help">
+            <img src="../../image/records/help.png" alt="" class="help">
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="status">
     <div class="list">
-      <ul>
-        <li class="order-list">
+      <ul id="list">
+        <!-- <li class="order-list">
           <ul>
             <li class="currentstatus mark">审核不通过</li>
             <li class="message">您绑定的iCloud账号密码不正确</li>
@@ -66,40 +66,147 @@
             <li class="message">您的订单已提交</li>
             <li class="time">2018-04-10 11:54:25</li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="schedule">
       <ul>
         <li class="statusicon">
-          <img src="./img/success.png" alt="">
+          <img src="../../image/records/success.png" alt="">
         </li>
         <li class="connect">
-          <img src="./img/connect.png" alt="">
+          <img src="../../image/records/connect.png" alt="">
         </li>
         <li class="statusicon">
-          <img src="./img/currentstatus.png" alt="">
+          <img src="../../image/records/currentstatus.png" alt="">
         </li>
         <li class="connect">
-          <img src="./img/connect.png" alt="">
+          <img src="../../image/records/connect.png" alt="">
         </li>
         <li class="statusicon">
-          <img src="./img/currentstatus.png" alt="">
+          <img src="../../image/records/currentstatus.png" alt="">
         </li>
       </ul>
     </div>
   </div>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script>
-    apiready = function () {
-      
+  apiready = function () {
+    init();
+    initList();
+  }
+
+ // 获取记录
+    function init() {
+      request({
+        url: 'GetHYJKJL',
+        data: {
+          'deviceId': api.deviceId,
+          'phone':'13476615091'
+        },
+        tip: '正在发送...',
+        operation:{
+          success:function (data) {
+                render(data);
+          },
+          fail:function (data) {
+
+          }
+        }
+      });
     }
 
     function render(data) {
-      $api.text('phone-type', data.type);
-      $api.text('capital', data.capital);
-      $api.text('interest', data.interest);
-      $api.text('time', data.time);
+      var htmlStr = '';
+      for (var i = 0; i < data.length; i++) {
+        htmlStr += setHtml(data[i]);
+      }
+      $api.html('content', htmlStr);
     }
+
+    function setHtml(data) {
+      return htmlStr = '<li class="recycle">'+
+            '<img src="../../image/records/recycle.png" alt="" class="recycle">'+
+            '<div class="message">'+
+              '<p class="phonetype">'+
+              '  <span>手机型号</span>'+
+                '<span id="phone-type">'+api.DeviceModel+'</span>'+
+            '  </p>'+
+            '</div>'+
+            '<div class="price">'+
+              '<ul>'+
+              '  <li>'+
+                  '<p>手机估价 </p>'+
+                  '<span>500.00元</span>'+
+                '</li>'+
+              '  <li>'+
+                  '<p>定金+预付款</p>'+
+                  '<span>'+paseInt(data.DaoZhang)+paseInt(data.FeiYong)+'元</span>'+
+              '  </li>'+
+                '<li>'+
+                '  <p>履约期</p>'+
+                  '<span>7</span>'+
+                '  <span>天</span>'+
+              '    <img src="../../image/records/help.png" class="help">'+
+              '  </li>'+
+              '</ul>'+
+          '  </div>'+
+        '  </li>';
+    }
+
+   // 获取进度
+    function initList() {
+      // if (!checkNet() || !checkLogin()) return;
+      // if(!$api.getStorage('User')) return;
+      request({
+        url: 'GetZXJD',
+        data: {
+          sj: '13476615091',
+          deviceId: api.deviceId
+        },
+        'tip': '正在发送...',
+        operation:{
+          success: function (data) {
+              renderList(data[0]);
+          },
+          error:function () {
+
+          }
+        }
+    });
+  }
+
+      function renderList(data) {
+        var html = '';
+        html += setListhtml(data);
+        $api.html('list', html);
+      }
+    function setListhtml(data) {
+      var html = "<li class='order-list'>" +
+        "<ul>" +
+        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
+        "<li class='message'>" + data.FangKuanYiJian + "</li>" +
+        "<li class='time'>" + data.FangKuanShiJian + "</li>" +
+        "</ul>" +
+        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
+        "<li class='message'>" + data.ShenHeYiJian + "</li>" +
+        "<li class='time'>" + data.ShenHeShiJian + "</li>" +
+        "</ul>" +
+        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
+        "<li class='message'>您的订单已提交</li>" +
+        "<li class='time'>" + data.JieKuanShiJian + "</li>" +
+        "</ul>" +
+        "</li>";
+      return html;
+    }
+
+
+
   </script>
 </body>
 

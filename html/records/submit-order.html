@@ -6,27 +6,26 @@
   <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
   />
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
   <title>提交订单</title>
-  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
   <link rel="stylesheet" type="text/css" href="../../css/records/submit-order.css">
 </head>
 
 <body>
   <header class="header">
-    <img src="./img/back.png" class="back">
+    <img src="../../image/common/back.png" class="back">
     <p class="header-title">提交订单</p>
   </header>
   <div class="order-content">
-    <img src="./img/ordericon.png" class="order-icon">
+    <img src="../../image/records/ordericon.png" class="order-icon">
     <h3 class="order-title">订单提交成功</h3>
     <p class="order-text">
       平台正在审核您的资料,请保证信息填写无误, 审核过程中客服人员会电话与您沟通,请保持您的手机开机, 注意接听电话。
     </p>
   </div>
-  <button class="btn">查看回收进度</button>
+  <button class="btn" onclick="javascript:create('recycling-schedule')">查看回收进度</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8">
   </script>

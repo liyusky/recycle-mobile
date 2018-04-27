@@ -6,17 +6,14 @@
   <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
   />
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
   <title>退款</title>
-  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
   <link rel="stylesheet" type="text/css" href="../../css/wode/refund.css">
 </head>
 
 <body>
 
   <header class="header">
-    <img src="./img/back.png" class="back">
+    <img src="../../image/common/back.png" class="back">
     <p class="header-title">退款</p>
   </header>
   <div class="content">
@@ -24,7 +21,7 @@
       <p class="sum">应退金额</p>
       <span class="price" id="price">800.00</span>
       <a href="javascript:;" class="explain">
-        <img src="./img/help.png">
+        <img src="../../image/wode/help.png">
         <span class="explain-text">说明</span>
       </a>
     </div>
@@ -35,7 +32,7 @@
       <ul class="banklist">
         <li>
           <div class="pay-type">
-            <img src="./img/chinabank.png" class="chinabank">
+            <img src="../../image/wode/chinabank.png" class="chinabank">
             <p class="bank-name">中国银行</p>
             <p class="cardnum">
               <span class="pass">****</span>
@@ -45,19 +42,17 @@
               <span class="card-type">储蓄卡</span>
             </p>
           </div>
-          <a href="javascript:;" class="select"></a>
+          <img src="../../image/wode/select.png" class="selectImg">
         </li>
         <li>
           <div class="pay-type">
-            <img src="./img/alipay.png" class="alipay">
+            <img src="../../image/wode/alipay.png" class="alipay">
             <div class="item-content">
               <p class="bank-name">支付宝</p>
               <p class="message">(支付宝将另收取2元支付通道费)</p>
             </div>
           </div>
-          <div class="selectd select">
-            <img src="./img/check.png">
-          </div>
+            <img src="../../image/wode/check.png" class="selectImg">
         </li>
       </ul>
     </div>
@@ -65,7 +60,11 @@
   </div>
   <button class="btn">确认退款</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
     var cardDom = null;
     var aliDom = null;
@@ -74,16 +73,26 @@
       var cardDom = null;
       var aliDom = null;
       init();
-    }
+    };
+
 
     function init() {
+      var name = $api.val('name');
+      var phone = $api.val('phone');
+      var addressCurrent = $api.val('address-current');
+      var addressDetail = $api.val('address-detail');
       request({
-        url: 'xxxxx',
-        values: {},
-        success: function () {
-          render();
+        url: 'add-address',
+        data: {
+          'deviceId': api.deviceId,
+          'Id':'',
+          'UserPhone':phone,
+          'Addressee': name,
+          'AddresseePhone':phone,
+          'CrrentAddress': addressCurrent,
+          'DetailAddress':addressDetail
         },
-        default: function () { }
+        tip: '正在发送...'
       });
     }
 
@@ -107,13 +116,30 @@
     }
 
     function submit() {
+      var name = $api.val('name');
+      var phone = $api.val('phone');
+      var addressCurrent = $api.val('address-current');
+      var addressDetail = $api.val('address-detail');
       request({
-        url: 'xxxxx',
-        values: {},
-        showMessage: '正在发送...',
-        success: function () {
+        url: 'add-address',
+        data: {
+          'deviceId': api.deviceId,
+          'Id':'',
+          'UserPhone':phone,
+          'Addressee': name,
+          'AddresseePhone':phone,
+          'CrrentAddress': addressCurrent,
+          'DetailAddress':addressDetail
         },
-        default: function () {}
+        tip: '正在发送...',
+        operation:{
+          success:function (data) {
+                alertMsg(data.Msg);
+          },
+          fail:function () {
+
+          }
+        }
       });
     }
   </script>

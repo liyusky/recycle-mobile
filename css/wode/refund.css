@@ -244,22 +244,15 @@ header .header-title {
   width: 7.33333vw;
   height: 7.33333vw;
   border-radius: 100%;
-  border: 1px solid #d3d3d3;
   display: inline-block;
   margin-right: 4vw;
   position: relative;
 }
 
-.content .bank .banklist li .selectd {
-  border: none;
-}
-
-.content .bank .banklist li .selectd img {
+.content .bank .banklist li  .selectImg {
   width: 7.33333vw;
   height: 7.33333vw;
-  position: absolute;
-  left: 0;
-  top: 0;
+  margin-right: 4vw;
 }
 
 .btn {

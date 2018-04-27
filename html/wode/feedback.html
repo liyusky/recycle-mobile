@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>意见反馈</title>
+  <link rel="stylesheet" href="../../css/wode/feedback.css">
+</head>
+
+<body>
+  <header class="header">
+    <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
+    <p class="header-title">意见反馈</p>
+  </header>
+  <div class="describe">
+    <p class="message">
+      <span>*</span>请描述您遇到的问题</p>
+    <textarea class="txt" id="textarea"></textarea>
+    <p class="number">
+      <span>0</span>
+      <span>/</span>
+      <span>200</span>
+    </p>
+  </div>
+  <input type="text" placeholder="手机号/邮箱 (选填, 方便我们联系您)" class="information" id="account">
+  <button class="btn" onclick="javascript:submit();">提交</button>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script>
+    function submit() {
+      // if (!checkNet() || !checkLogin()) return;
+      var content = $api.val('textarea');
+      var account = $api.val('account');
+      if(!content){
+        toast('请将内容填写完整...');
+        return;
+      }
+      if(!account){
+        toast('请将联系方式填写完整...');
+        return;
+      }
+      request({
+        url: 'FKYJ',
+        data: {
+          'deviceId': api.deviceId,
+          'sj':'18255193029',
+          'nr':content
+        },
+        tip: '正在发送...',
+        operation:{
+           success:function () {
+              
+           },
+           fail:function () {
+
+           }
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
