@@ -192,13 +192,18 @@ header .header-title {
   margin: 9.33333vw auto;
   width: 100vw;
   background: #fff;
+  position: relative;
 }
 
-.status .list .bodrenone {
+.status .list #list {
+  float: right;
+
+}
+.status .list #list .bodrenone {
   border-bottom: 0 !important;
 }
 
-.status .list .order-list {
+.status .list #list .order-list {
   width: 87.73333vw;
   height: 24vw;
   float: right;
@@ -208,28 +213,29 @@ header .header-title {
   color: #666;
 }
 
-.status .list .order-list .mark {
+.status .list #list .order-list .mark {
   color: #333;
 }
 
-.status .list .order-list .currentstatus {
+.status .list #list .order-list .currentstatus {
   font-size: 4vw;
   line-height: 6.66667vw;
 }
 
-.status .list .order-list .message {
+.status .list #list .order-list .message {
   font-size: 3.33333vw;
   line-height: 6.66667vw;
 }
 
-.status .list .order-list .time {
+.status .list #list .order-list .time {
   font-size: 3.2vw;
   padding-bottom: 1.86667vw;
 }
 
 .status .schedule {
-  position: relative;
+  position: absolute;
   top: 5vw;
+  left:0;
 }
 
 .status .schedule ul .statusicon {

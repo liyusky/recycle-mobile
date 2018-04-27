@@ -138,16 +138,8 @@
           fail:function () {
 
           }
-      if (!checkNet() || !checkLogin()) return;
-      request({
-        url: 'PaymentAmount',
-        data: {},
-        operation: {
-          success: function (data) {
-          },
-          default: function () {}
         }
-      });
+      })
     }
 
     function render(data) {

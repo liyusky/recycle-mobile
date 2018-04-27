@@ -11,20 +11,12 @@
 </head>
 
 <body class="yinhangka">
-<<<<<<< HEAD
-=======
-
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
 	<header class="header">
     <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
 		<p class="header-title">我的银行卡</p>
 </header>
 <div class="content">
-<<<<<<< HEAD
 		<ul class="list" id="bankList">
-=======
-		<ul class="list">
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
 				<li>
 						<img src="../../image/wode/bank.png">
 						<div class="card-message">
@@ -36,7 +28,6 @@
 						</div>
 				</li>
 		</ul>
-<<<<<<< HEAD
     <button class="btn" onclick="javascript:create('add-bank-card')">绑定银行卡</button>
 </div>
 <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -45,18 +36,6 @@
 <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-=======
-    <button class="btn" onclick="javascript:create('addcard')">绑定银行卡</button>
-</div>
-
-
-  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
 	<script type="text/javascript">
     var User = $api.getStorage('User');
 		apiready = function () {
@@ -65,7 +44,6 @@
 		}
 
     function init () {
-<<<<<<< HEAD
       // if (checkNetwork() && checkLogin()) {
 			var name = $api.val('name');
       var phone = $api.val('phone');
@@ -87,28 +65,10 @@
 					}
 				}
       });
-=======
-      // if (!checkNet() || !checkLogin()) return;
-        request({
-          url: 'GetHYYHK',
-          values: {
-            phone: User.Phone,
-            deviceId: api.deviceId
-          },
-          showMessage: true,
-          success: function (data) {
-
-            User = $api.getStorage('User');
-            User.Card = formatCard(data.d);
-            $api.setStorage('User', User);
-            setLayout(User.Card);
-          }
-        });
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
     }
 
     function setLayout (content) {
-      if (content.length) {
+
         var htmlStr = '';
         for (var i = 0; i < content.length; i++) {
           htmlStr += setBankCardHTML(content[i]);
@@ -118,12 +78,11 @@
 					if(card.KaiHuHang.indexOf(key) !== -1){
 							$api.attr('bank-image', 'src', bankval[key]);
 				}
-      }
-		}
       else {
         alertMsg('您尚未绑定银行卡！');
       }
     }
+	}
 
 		var bankval = {
 			'光大':'../../image/wode/bank/gdyh-bg.png',

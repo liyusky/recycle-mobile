@@ -39,7 +39,6 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
     apiready = function () {
-<<<<<<< HEAD
         init()
     }
 
@@ -54,33 +53,13 @@
           tip: '正在发送...',
           operation:{
             success:function (data) {
-              render(data);
+              render(data[0]);
             },
             fail:function () {
 
             }
           }
         });
-=======
-      init()
-    }
-
-    function init() {
-      // if (!checkNet() || !checkLogin()) return;
-      request({
-        url: 'GetRA',
-        'values': {
-          phone: $api.getStorage('User'),
-          deviceId: api.deviceId
-        },
-        success: function (data) {
-          if (data.d.UserPhone) {
-            render(data.d);
-          }
-        },
-        default: function () {}
-      });
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
     }
 
     function render(data) {
@@ -94,19 +73,11 @@
         '<div class="box">' +
         '<p class="name">' + data.Addressee + '</p>' +
         '<p class="phone">' +
-<<<<<<< HEAD
-          '<span id="phone-head">' + data.AddresseePhone.substr(0, 3) + '</span>'+
-          '<span>****</span>' +
-          '<span id="phone-tail">' + data.AddresseePhone.substr(-4) + '</span>' +
-        '</p>' +
-          '<p class="address">' + data.CurrentAddress+data.DetailAddress + '</p>' +
-=======
         '<span id="phone-head">' + data.UserPhone.substr(0, 3) + '</span>'
       '<span>****</span>' +
       '<span id="phone-tail">' + data.UserPhone.substr(-4) + '</span>' +
         '</p>' +
         '<p class="address">' + data.CurrentAddress + data.DetailAddress + '</p>' +
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
         '</div>' +
         '</li>';
     }

@@ -98,18 +98,11 @@ function create(data) {
   }
   var animationDirection = 'from_left';
   var animationType = 'movein';
-<<<<<<< HEAD
-  // if (ROUTER[goal].animationDirection) animationDirection = ROUTER[goal].animationDirection;
-  // if (ROUTER[goal].animationType) animationType = ROUTER[goal].animationType;
-
-  // alert(ROUTER[goal].path)
-=======
   var param = ROUTER[goal] ? ROUTER[goal].create : false;
   if (param) {
     if (param.type) animationType = param.type;
     if (param.direction) animationDirection = param.direction;
   }
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
   api.openWin({
     name: goal,
     url: ROUTER[goal].path,
@@ -132,25 +125,14 @@ function create(data) {
  * @Proofreader [潘剑]
  * @datetime    2017-10-07T14:04:38+080
  */
-function kill(goal) {
-  if (goal instanceof Array) {
-    goal.forEach(function (element) {
-      closeWin(element);
-    });
-  }
-<<<<<<< HEAD
+ function kill(goal) {
+   if (goal instanceof Array) {
+     goal.forEach(function (element) {
+       closeWin(element);
+     });
+   }
 
-  api.closeWin({
-    name: goal,
-    animation: {
-      type: animationType,
-      subType: animationDirection,
-      duration: 300
-=======
-  else {
-    closeWin(goal);
-  }
-
+}
   function closeWin(goal) {
     goal = goal ? goal : api.pageParam.goal;
     var animationType = 'reveal';
@@ -159,7 +141,6 @@ function kill(goal) {
     if (param) {
       if (param.type) animationType = param.type;
       if (param.direction) animationDirection = param.direction;
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
     }
 
     api.closeWin({
@@ -171,7 +152,6 @@ function kill(goal) {
       }
     });
   }
-}
 /**
  * [toast 显示toast弹出消息]
  * @method      toast

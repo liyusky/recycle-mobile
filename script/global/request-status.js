@@ -35,15 +35,15 @@ function AppStatusHandle(ret, err, operation) {
   } catch (e) {}
 
   if (ret) {
-    if (ret.message) toast(ret.message);
-    switch (ret.code) {
+    if (ret.Msg) toast(ret.Msg);
+    switch (ret.Code) {
       case 1:
         try {
-          operation.success(ret.data);
-          toast(ret.data.message)
+          operation.success(ret.Data);
+          toast(ret.Msg)
         } catch (e) {}
         break;
-      case 401:
+      case 0:
         try {
           operation.fail(ret.description);
         } catch (e) {}

@@ -1,93 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
-<<<<<<< HEAD
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
     <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
     <title>添加收货地址</title>
     <link rel="stylesheet" type="text/css" href="../../css/records/add-shipping-address.css">
-=======
-  <meta charset="utf-8">
-  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
-  />
-  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <title>添加收货地址</title>
-  <link rel="stylesheet" type="text/css" href="../../css/records/add-shipping-address.css">
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
 </head>
 
 <body>
 
-<<<<<<< HEAD
-    <header class="header">
-        <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
-        <p class="header-title">我的收货地址</p>
-    </header>
-    <div class="content">
-        <ul class="address-list-compile">
-            <li>
-                收件人:
-                <input id="name" type="text" placeholder="请填写收件人姓名" class="name">
-            </li>
-            <li>
-                电话号码:
-                <input id="phone" type="number" placeholder="请填写手机号码">
-            </li>
-            <li>
-                当前住址:
-                <input type="text" placeholder="请选择省、市、区" id="address-current">
-                <img src="../../image/records/more.png" class="more">
-            </li>
-            <li>
-                详细地址:
-                <input id="address-detail" type="text" placeholder="填写街道、楼盘号等">
-            </li>
-        </ul>
-    </div>
-    <button class="btn" onclick="javascript:submit();">保存</button>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/check/check.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
-    <script type="text/javascript" charset="utf-8">
-        var address = null;
-
-        function submit() {
-            var name = $api.val('name');
-            var phone = $api.val('phone');
-            var addressCurrent = $api.val('address-current');
-            var addressDetail = $api.val('address-detail');
-            request({
-                url: 'EditReceivingAddress',
-                data: {
-                    'deviceId': api.deviceId,
-                    'phone': '13476615091',
-                    'Id': '',
-                    'Addressee': name,
-                    'AddresseePhone': phone,
-                    'CurrentAddress': addressCurrent,
-                    'DetailAddress': addressDetail
-                },
-                tip: '正在发送...',
-                operation: {
-                    success: function(data) {
-
-                    },
-                    fail: function(data) {},
-                    default: function() {
-                        openBtnClick('submit-btn');
-                    }
-                }
-            });
-        }
-    </script>
-=======
   <header class="header">
     <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
     <p class="header-title">我的收货地址</p>
@@ -146,14 +69,14 @@
     function submit() {
       // if (!checkNet() || !checkLogin()) return;
       var name = $api.val('name');
-      var user = $api.getStorage('User');
+      //var user = $api.getStorage('User');
       var phone = $api.val('phone');
       var addressDetail = $api.val('city');
       var detailsAddress = $api.val('address-detail');
       if (!checkPhone(phone)) return;
       request({
         url: 'EditReceivingAddress',
-        values: {
+        data: {
           phone: phone,
           deviceId: api.deviceId,
           Id: '',
@@ -164,15 +87,15 @@
           DetailAddress: detailsAddress
         },
         showMessage: '正在发送...',
-        success: function (data) {
-          if (data.d.Code == 1) {
-            toast(data.d.Msg);
+        operation:{
+          success: function (data) {
             create('shiping-address');
             kill();
-          } else {
-            toast(data.d.Msg);
-          }
+        },fail:function(){
+
         }
+        }
+
       });
     }
 
@@ -182,7 +105,6 @@
       });
     };
   </script>
->>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
 </body>
 
 </html>
