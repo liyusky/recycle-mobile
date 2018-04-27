@@ -1,22 +1,21 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
-    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-    <title>回收记录</title>
-    <link rel="stylesheet" type="text/css" href="../../css/records/recycling-records.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+  />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>回收记录</title>
+  <link rel="stylesheet" type="text/css" href="../../css/records/recycling-records.css">
 </head>
 
 <body class="empower background-write">
-
-    <header class="header">
-        <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
-        <p class="header-title">回收记录</p>
-    </header>
-    <ul class="content" id="content">
-        <!-- <li class="recycle">
+  <header class="header">
+    <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
+    <p class="header-title">回收记录</p>
+  </header>
+  <ul class="content" id="content">
+    <li class="recycle">
       <img src="../../image/records/recycle.png" alt="" class="recycle">
       <div class="message">
         <p class="phonetype">
@@ -29,7 +28,7 @@
         <ul>
           <li>
             <p>手机估价 </p>
-            <span>500.00元</span>
+            <span>1200.00元</span>
           </li>
           <li>
             <p>定金+预付款</p>
@@ -40,87 +39,80 @@
             <span>7</span>
             <span>天</span>
             <img src="../../image/records/help.png" class="help">
-          </li> -->
-    </ul>
-    </div>
+          </li>
+        </ul>
+      </div>
     </li>
-    </ul>
+  </ul>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    apiready = function () {
+      init();
+    }
+
+    function init() {
+      // if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'GetHYJKJL',
+        values: {
+          Phone: $api.getStorage('User'),
+          deviceId: api.deviceId
+        },
+        showMessage: '正在发送...',
+        original: function (data) {
+          if (data.d.FangKuanRen) {
+            render(data.d);
+          }
+        },
+        // default: function () {}
+      });
 
 
+      function render(data) {
+        var htmlStr = '';
+        htmlStr += setHtml(data);
+        $api.html('content', htmlStr);
+      }
 
+      function setHtml(data) {
 
+        return htmlStr = "<li class='recycle'>" +
+          "<img src='../../image/records/recycle.png'  class='recycle'>" +
+          "<div class='message'>" +
+          "<p class='phonetype'>" +
+          "<span>手机型号</span>" +
+          "<span id='phone-type'>" + api.deviceModel + "</span>" +
+          "</p>" +
+          "<a href='javascript:;' onclick='javascript:create('details');''>查看详情></a>" +
+          "</div>" +
+          "<div class='price'>" +
+          "<ul>" +
+          "<li>" +
+          "<p>手机估价</p>" +
+          "<span>500.00元</span>" +
+          "</li>" +
+          "<li>" +
+          "<p>定金+预付款</p>" +
+          "<span>" + parseInt(data.FeiYong) + parseInt(data.jieE) + "元</span>" +
+          "</li>" +
+          "<li>" +
+          "<p>履约期</p>" +
+          "<span>7</span>" +
+          "<span>天</span>" +
+          "<img src=''../../image/records/help.png' class='help'>" +
+          "</li>" +
+          "</ul>" +
+          "</div>" +
+          "</li>";
+      }
 
-
-    <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
-    <script type="text/javascript" charset="utf-8">
-        apiready = function() {
-            init();
-        }
-
-        function init() {
-            request({
-                url: 'GetHYJKJL',
-                data: {
-                    'deviceId': api.deviceId,
-                    'phone': '18255193029'
-                },
-                tip: '正在发送...',
-                operation: {
-                    success: function(data) {
-                        renderHtml(data[0]);
-                    },
-                    fail: function(data) {
-
-                    }
-                }
-            });
-        };
-
-
-        function renderHtml(data) {
-            var htmlStr = '';
-            htmlStr += setHtmlitle(data)
-            $api.html('content', htmlStr);
-        }
-
-        function setHtmlitle(data) {
-            var html = '';
-            html += "<li class='recycle'>" +
-                "<img src='../../image/records/recycle.png' class='recycle'>" +
-                "<div class='message'>" +
-                "<p class='phonetype'>" +
-                " <span>手机型号</span>" +
-                "<span id='phone-type'>" + api.deviceModel + "</span>" +
-                "  </p>" +
-                "<a href='javascript:;' onclick=javascript:create('details')>查看详情</a>" +
-                "</div>" +
-                "<div class='price'>" +
-                "<ul>" +
-                "  <li>" +
-                "<p>手机估价 </p>" +
-                "<span>500.00元</span>" +
-                "</li>" +
-                "<li>" +
-                "<p>定金+预付款</p>" +
-                "<span>" + (data.DaoZhang + data.FeiYong) + "元</span>" +
-                "</li>" +
-                "<li>" +
-                "  <p>履约期</p>" +
-                "<span>" + data.QiXian + "</span>" +
-                "<span>天</span>" +
-                "  <img src='../../image/records/help.png' class='help'>" +
-                "  </li>" +
-                "</ul>" +
-                "  </div>" +
-                "  </li>";
-            return html;
-        }
-    </script>
+    }
+  </script>
 </body>
 
 </html>

@@ -272,7 +272,10 @@ header .remind {
 }
 
 .recycle .recycleicon {
-  padding-left: 1vw;
+    padding-left: 2vw;
+    padding-right: 3vw;
+    width: 100%;
+    height: 100%;
 }
 
 .recycle .w100 {
@@ -281,7 +284,6 @@ header .remind {
   background: #e0f2fe;
   border-radius: 50%;
   text-align: center;
-  margin-right: 2vw;
   margin-left: 2.66667vw;
 }
 
@@ -293,7 +295,8 @@ header .remind {
 
 .recycle .than {
   width: 3.33333vw;
-  height: 4.93333vw;
-  float: left;
-  margin-top: 3.33333vw;
+      height: 4.93333vw;
+      float: left;
+      margin-top: 3.33333vw;
+      margin-left: 3vw;
 }

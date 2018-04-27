@@ -16,6 +16,11 @@
   </header>
   <div class="banner">
     <img src="../../image/home/banner.png" alt="">
+    <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
+    <p class="header-title">手机报价</p>
+  </header>
+  <div class="banner">
+    <img src="../../image/home/quote-banner.png" alt="">
     <div class="bannerText">
       <p class="message">
         <span>您的手机</span>
@@ -24,7 +29,7 @@
       </p>
       <h3 class="money">
         <span>￥</span>
-        <span id="money">1200.00</span>
+        <span id="money">500.00</span>
       </h3>
       <a href="javascript:;" class="anew">重新估价></a>
     </div>
@@ -62,6 +67,26 @@
       </div>
     </div>
     <a href="javascript:;" class="btn" onclick="javascript:submit();">马上拿钱</a>
+    <button class="btn" onclick="javascript: submit();">马上拿钱</button>
+    <div class="mark" id="mark">
+          <div class="dialog">
+              <div class="dialog-title"><p>《手机合同》</p></div>
+              <div class="dialog-content">
+                  <div class="content-text">您在使用趣回收产品卖出手机服务前,请认真阅读并充分理解《手机合同》。
+                      当您点击同意,并开始使用手机卖出服务,即表示您已经理解并同意改合同,
+                      该合同将构成对您具有法律约束力的法律文件。
+                  </div>
+                      <div class="affirm">
+                          <input type="checkbox" id="yes">
+                          <label for="yes">我阅读并理解 《手机合同》</label>
+                      </div>
+              </div>
+              <div class="dialog-footer">
+                  <button onclick="javascript:rmdialog()">同意</button>
+                  <button onclick="javascript:rmdialog()">我知道了</button>
+              </div>
+          </div>
+    </div>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -70,9 +95,31 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script>
+    var id = null;
     apiready = function () {
+      getcard();
       init();
-    }
+    };
+
+    function rmdialog() {
+        $api.remove('mark');
+    };
+
+
+      function getcard() {
+        request({
+          url:'GetHYYHK',
+          values:{
+            phone:$api.getStorage('User'),
+            deviceId:api.deviceId
+          },
+          success:function (data) {
+            if(data.KaHao)
+              id = data.KaHao;
+          }
+        })
+      }
+
     function init() {
           var addressCurrent = $api.val('address-current');
           var addressDetail = $api.val('address-detail');
@@ -90,11 +137,10 @@
     });
 
   }
+      // if (!checkNet() || !checkLogin()) return;
+      $api.text('money', '500.00');
+      $api.text('type', api.deviceModel);
 
-    function render(data) {
-      $api.text('money', money);
-      $api.text('type', type);
-    }
 
     function submit(params) {
 
@@ -106,13 +152,27 @@
           phoneCode: addressCurrent,
           password: addressDetail
         },
-        'tip': '正在发送...',
-        operation:{
-          success:function (data) {
-                toast(data.Msg);
-                create('submit-order');
-          }
-        }
+      // if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'ShanDianDai',
+        'data': {
+          sj: $api.getStorage('User'),
+          deviceId:api.deviceId,
+          jinE:500,
+          QiXian:7,
+          FeiYong:105,
+          RuZhangKa:id,
+          PhoneName:'',
+          PhoneModel:api.deviceModel,
+          StorageSpace:'',
+          SerialNumber:''
+        },
+        showMessage: '正在发送...',
+        success:function (data) {
+              toast(data.Msg);
+              create('submit-order');
+        },
+        'tip': '正在发送...'
     })
   };
   </script>

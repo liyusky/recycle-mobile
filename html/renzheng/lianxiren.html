@@ -10,8 +10,8 @@
   <script type="text/javascript" charset="utf-8" src="../../script/flexible.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/api.js"></script>
   <title>联系人认证</title>
-  <link rel="stylesheet" type="text/css" href="../../css/aui.css">
-  <link rel="stylesheet" type="text/css" href="../../css/aui-extends.css">
+  <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui.css">
+  <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui-extends.css">
   <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
   <script type="text/javascript" charset="utf-8" src="../../iconfont/iconfont.js"></script>
 </head>
@@ -85,9 +85,9 @@
   </section>
   <button class="aui-btn btn-fillet font-size-40 aui-text-center margin-top-90" onclick="javascript: submit();">下一步</button>
 </body>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
 
 <script type="text/javascript">
   var contactlist = [];
@@ -142,7 +142,7 @@
             alert(err);
           }
           if (contactlist.length === 0) {
-            alertMsg('通讯录权限获取不成功');
+            toast('通讯录权限获取不成功');
           }
         } else {
           getPermission();
@@ -169,14 +169,14 @@
             phone = phone.replace(/[ ]/g, "");
             phone = phone.replace("+86", "");
             phone = phone.replace(/-/g, '');
-            if (checkFormat({
+            if (check({
                 data: {
                   name: ret.fullName
                 }
               })) {
               name = ret.fullName;
             }
-            if (checkFormat({
+            if (check({
                 data: {
                   phone: phone
                 }
@@ -185,7 +185,7 @@
               $api.val(position + '-contact-phone', phone);
             }
           } catch (e) {
-            alertMsg('请您选择存有号码的用户');
+            toast('请您选择存有号码的用户');
           }
         }
       }
@@ -208,7 +208,7 @@
   }
 
   function getPermission() {
-    alertMsg("请设置本应用获取通讯录权限!");
+    toast("请设置本应用获取通讯录权限!");
     var mySettingInfo = api.require('mySettingInfo');
     switch (api.systemType) {
       case 'android':
@@ -217,8 +217,8 @@
           },
           function (ret, err) {
             if (err) {
-              alertMsg('获取通讯录权限失败');
-              closeFormwork();
+              toast('获取通讯录权限失败');
+              kill('renzheng');
             }
           }
         );
@@ -229,8 +229,8 @@
           },
           function (ret, err) {
             if (err) {
-              alertMsg('获取通讯录权限失败');
-              closeFormwork();
+              toast('获取通讯录权限失败');
+              kill('renzheng');
             }
           }
         );
@@ -239,7 +239,7 @@
   }
 
   function submit() {
-    if (checkNetwork() && checkLogin()) {
+    if (checkNet() && checkLogin()) {
       var firstName = $api.val('first-contact-name');
       var firstPhone = $api.val('first-contact-phone');
       var firstRelationship = $api.val('first-relationship');
@@ -247,11 +247,11 @@
       var secondPhone = $api.val('second-contact-phone');
       var secondRelationship = $api.val('second-relationship');
       if (firstRelationship === secondRelationship) {
-        alertMsg('请不要填写相同的联系人关系');
+        toast('请不要填写相同的联系人关系');
         return false;
       }
       if (firstPhone === secondPhone) {
-        alertMsg('请不要填写相同的联系人号码');
+        toast('请不要填写相同的联系人号码');
         return false;
       }
       var firstFlag = checkFormat({
@@ -260,7 +260,7 @@
           name: firstName
         },
         fail: function () {
-          alertMsg('第一联系人认证失败，请重试！');
+          toast('第一联系人认证失败，请重试！');
         }
       });
       var secondFlag = checkFormat({
@@ -269,14 +269,14 @@
           name: secondName
         },
         fail: function () {
-          alertMsg('第二联系人认证失败，请重试！');
+          toast('第二联系人认证失败，请重试！');
         }
       });
       if (firstFlag && secondFlag && contactlist.length > 0) {
-        alert(escape(JSON.stringify(contactlist)));
-        sendRequest({
+        // alert(escape(JSON.stringify(contactlist)));
+        request({
           url: 'LianXiRenXinXi',
-          values: {
+          data: {
             deviceId: api.deviceId,
             phone: User.Phone,
             name_1: firstName,
@@ -288,26 +288,32 @@
             telList: escape(JSON.stringify(contactlist))
           },
           showMessage: true,
-          success: function () {
-            var User = $api.getStorage('User');
-            User.Step[1] = true;
-            $api.setStorage('User', User);
-            changeStep();
+          operation: {
+            success: function () {
+              var User = $api.getStorage('User');
+              User.Step[1] = true;
+              $api.setStorage('User', User);
+              sendChangeStepEvent();
+            }
           }
         });
-      } else {
-        alertMsg('请添加联系人');
+      }
+      else {
+        toast('请添加联系人');
       }
     }
   }
 
   function setListener() {
     api.addEventListener({
-        name: 'Select'
+        name: 'SELECT-EVENT'
       },
       function (ret, err) {
         if (ret) {
-          if (ret.value.goal === 'relationship') $api.val(ret.value.type + '-relationship', ret.value.value);
+          $api.val(ret.value.type + '-relationship', ret.value.value);
+          api.closeFrame({
+            name: ret.value.goal
+          });
         }
       }
     );
@@ -315,12 +321,22 @@
 
   function openSelector(type) {
     api.sendEvent({
-      name: 'OpenFrame',
+      name: 'OPEN-SELECTOR-EVENT',
       extra: {
         goal: 'relationship',
         pageParam: {
           type: type
         }
+      }
+    });
+  }
+
+  function sendChangeStepEvent() {
+    api.sendEvent({
+      name: 'CHANGE-STEP-EVENT',
+      extra: {
+        step: 1,
+				goal: 'lianxiren'
       }
     });
   }

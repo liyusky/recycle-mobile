@@ -14,6 +14,7 @@
 
   <header class="header">
     <img src="../../image/common/back.png" class="back">
+    <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
     <p class="header-title">退款</p>
   </header>
   <div class="content">
@@ -43,6 +44,7 @@
             </p>
           </div>
           <img src="../../image/wode/select.png" class="selectImg">
+          <a href="javascript:;" class="select" id="card-select"></a>
         </li>
         <li>
           <div class="pay-type">
@@ -53,6 +55,9 @@
             </div>
           </div>
             <img src="../../image/wode/check.png" class="selectImg">
+          <div class="selectd select" id="ali-select">
+            <img src="../../image/wode/check.png">
+          </div>
         </li>
       </ul>
     </div>
@@ -65,13 +70,14 @@
     <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
-    var cardDom = null;
-    var aliDom = null;
 
     apiready = function () {
-      var cardDom = null;
-      var aliDom = null;
       init();
     };
 
@@ -81,37 +87,31 @@
       var phone = $api.val('phone');
       var addressCurrent = $api.val('address-current');
       var addressDetail = $api.val('address-detail');
+      if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'add-address',
-        data: {
-          'deviceId': api.deviceId,
-          'Id':'',
-          'UserPhone':phone,
-          'Addressee': name,
-          'AddresseePhone':phone,
-          'CrrentAddress': addressCurrent,
-          'DetailAddress':addressDetail
-        },
-        tip: '正在发送...'
+        url: 'PaymentAmount',
+        data: {},
+        operation: {
+          success: function (data) {
+            data = formatData(data);
+            render(data);
+          },
+          default: function () {}
+        }
       });
     }
 
-    function render(data) {
-      $api.text('price', data.price);
-      $api.text('card-tail', data.tail);
-    }
-
     function selectCard() {
-      if ($api.hasCls(cardDom, '')) {
-        $api.removeCls(cardDom, '');
-        $api.addCls(cardDom, '');
+      if ($api.hasCls('card-select', 'selectd')) {
+        $api.removeCls('ali-select', 'selectd');
+        $api.addCls('card-select', 'selectd');
       }
     }
 
     function selectALi() {
-      if ($api.hasCls(aliDom, '')) {
-        $api.removeCls(aliDom, '');
-        $api.addCls(aliDom, '');
+      if ($api.hasCls('ali-select', 'selectd')) {
+        $api.removeCls('card-select', 'selectd');
+        $api.addCls('ali-select', 'selectd');
       }
     }
 
@@ -134,13 +134,33 @@
         tip: '正在发送...',
         operation:{
           success:function (data) {
-                alertMsg(data.Msg);
           },
           fail:function () {
 
           }
+      if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'PaymentAmount',
+        data: {},
+        operation: {
+          success: function (data) {
+          },
+          default: function () {}
         }
       });
+    }
+
+    function render(data) {
+      $api.text('price', data.price);
+      $api.text('card-tail', data.tail);
+    }
+
+    function formatData(data) {
+      User = $api.getStorage('User');
+      return {
+        data: data.ZongJinE - data.YiJieFeiYong,
+        tail: User.Card.substr(-4)
+      }
     }
   </script>
 </body>

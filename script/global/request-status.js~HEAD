@@ -24,21 +24,34 @@ var statusCode = {
 function AppStatusHandle(ret, err, operation) {
   // alert(JSON.stringify(ret))
   // alert(JSON.stringify(err))
+
+  if (typeof operation == 'function') {
+    operation(ret, err);
+    return;
+  }
+
   try {
     operation.before();
   } catch (e) {}
 
   if (ret) {
-    if (ret.message) toast(ret.message);
-    switch (ret.code) {
-      case 200:
+    if (ret.Msg) toast(ret.Msg);
+    switch (Number(ret.Code)) {
+      case 1:
         try {
-          operation.success(ret.data);
+          operation.success(ret.Data);
+          toast(ret.Msg)
         } catch (e) {}
         break;
+      case 0:
+      try {
+        operation.error(ret.Msg);
+        toast(ret.Msg)
+      } catch (e) {}
+      break;
       case 401:
         try {
-          operation.fail(ret.description);
+          operation.fail(ret.Msg);
         } catch (e) {}
         break;
     }

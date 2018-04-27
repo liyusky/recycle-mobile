@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <header class="header">
       <img src="../../image/home/person.png" class="person" onclick="javascript: create('personal-center');">
       <p class="h-title">借条大师白卡</p>
@@ -79,15 +80,84 @@
     <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+=======
+  <header class="header">
+    <img src="../../image/home/person.png" class="person" onclick="javascript: create('personal-center');">
+    <p class="h-title">借条大师白卡</p>
+  </header>
+  <div class="clear"></div>
+  <!-- <div class="message">
+                <img src="./img/trumpet.png"  class="trumpet">
+                <p class="m-list">用户尾号860刚刚卖出一部iphone 6s获得1500元</p>
+        </div> -->
+  <div class="banner">
+    <img src="../../image/home/banner.png" class="bannerimg">
+    <div class="bannerText">
+      <img src="../../image/home/safe.png" class="safe">
+      <p class="order">在线下单 借款无需等待</p>
+    </div>
+  </div>
+  <div class="content">
+    <div class="phone-type">
+      <div class="left-mark"></div>
+      <img src="../../image/home/type.png"  class="left-markimg">
+      <p class="head-title"> 您的手机型号</p>
+      <img src="../../image/home/type.png"  class="right-markimg">
+      <div class="right-mark left-mark"></div>
+    </div>
+    <div class="phone-content">
+      <img src="../../image/home/phone.png"  class="phoneimg">
+      <div class="phone-message">
+        <p class="messagelist" id="device-model">iphone 6s</p>
+        <!-- <p class="messagelist">内存: 16G</p> -->
+        <p class="messagelist">
+          <span class="max">最高回收:</span>￥5000
+        </p>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <button class="phone-btn" onclick="javascript: gotoOffer();">马上评估 立即拿钱</button>
+  </div>
+  <footer class="recycle">
+    <p class="recycle-title">回收流程</p>
+    <div class="recycleicon">
+      <div class="evaluate w100">
+        <img src="../../image/home/evaluate.png" >
+        <p class="recycle-text">旧机估价</p>
+      </div>
+      <img src="../../image/home/than.png"  class="than">
+      <div class="order w100">
+        <img src="../../image/home/order.png" >
+        <p class="recycle-text">在线下单</p>
+      </div>
+      <img src="../../image/home/than.png"  class="than">
+      <div class="loan w100">
+        <img src="../../image/home/icon.png" >
+        <p class="recycle-text">急速结款</p>
+      </div>
+      <img src="../../image/home/than.png"  class="than">
+      <div class="quality w100">
+        <img src="../../image/home/checkout.png" >
+        <p class="recycle-text">质检入库</p>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
   <script type="text/javascript">
-    var User = $api.getStorage('User');
-    var index = 0;
+    var User = null;
+
     apiready = function () {
+      setUser();
       init();
     }
 
     function init() {
-      // if (checkNet() && checkLogin());
       initRender();
     }
 
@@ -96,8 +166,69 @@
     }
 
     function initRender() {
+      // 860716037690344
+      // if (!checkNet() || !checkLogin()) return;
       $api.text('device-model', api.deviceModel);
-      $api.text('device-name', api.deviceName);
+      // 是否存在未处理的订单
+      // request({
+      //   url:'IsExistsJT',
+      //   data:{
+      //     phone:$api.getStorage('User'),
+      //     deviceId:api.deviceId
+      //   },
+      //   success:function (data) {
+      //       if(data.d.Code == 0){
+
+      //       }
+      //   }
+      // })
+
+    }
+
+    function gotoOffer() {
+      // if (!checkNet() || !checkLogin()) return;
+      create('offer');
+    }
+
+    function  person() {
+      // if (!checkNet() || !checkLogin()) return;
+       create('personal-center')
+    }
+
+    function setUser() {
+      // $api.rmStorage('User');
+      try {
+        User = $api.getStorage('User');
+      } catch (e) {}
+      if (!User) {
+        User = {
+          Status: false,
+          Certification: [false, false, false, false],
+          Phone: null,
+          Archive: {
+            Name: null,
+            Id: null
+          },
+          Card: []
+        };
+        $api.setStorage('User', User);
+      }
+    }
+
+
+    function setListener() {
+      api.addEventListener({
+          name: 'LOGIN-EVENT'
+        },
+        function (ret, err) {
+          if (ret) {
+            api.setFrameGroupIndex({
+              name: groupName,
+              index: ret.value.index
+            });
+          }
+        }
+      );
     }
   </script>
 </body>

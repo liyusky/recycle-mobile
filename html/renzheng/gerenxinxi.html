@@ -7,8 +7,8 @@
 	<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width">
 	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
 	<title>个人信息认证</title>
-	<link rel="stylesheet" type="text/css" href="../../css/aui.css">
-	<link rel="stylesheet" type="text/css" href="../../css/aui-extends.css">
+	<link rel="stylesheet" type="text/css" href="../../css/renzheng/aui.css">
+	<link rel="stylesheet" type="text/css" href="../../css/renzheng/aui-extends.css">
 </head>
 
 <body class="archive background-write">
@@ -57,15 +57,13 @@
 	<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-
 	<script type="text/javascript">
 		var archive = null;
 		var User = null;
 
 		function getArchive() {
-			if (checkNetwork() && checkLogin()) {
-				openAutoRecognizer();
-			}
+			if (!checkNetwork() || !checkLogin()) return;
+			openAutoRecognizer();
 		}
 
 		function openAutoRecognizer() {
@@ -103,44 +101,45 @@
 		}
 
 		function submit() {
-			if (checkNetwork() && checkLogin()) {
-				checkFormat({
-					data: {
-						url: [archive.url_frontcard, archive.url_backcard, archive.url_photoliving],
-						id: archive.id_no,
-						name: archive.id_name,
-						sex: archive.flag_sex
-					},
+			if (!checkNet() || !checkLogin()) return;
+			User = $api.getStorage('User');
+			request({
+				url: 'ShenFenXinXin',
+				data: {
+					deviceId: api.deviceId,
+					phone: User.Phone,
+					name: archive.id_name,
+					identityCard: archive.id_no,
+					sex: archive.flag_sex,
+					identityCard_front: archive.url_frontcard,
+					identityCard_back: archive.url_backcard,
+					living_photo: archive.url_photoliving
+				},
+				showMessage: true,
+				operation: {
 					success: function () {
 						User = $api.getStorage('User');
-						sendRequest({
-							url: 'ShenFenXinXin',
-							values: {
-								deviceId: api.deviceId,
-								phone: User.Phone,
-								name: archive.id_name,
-								identityCard: archive.id_no,
-								sex: archive.flag_sex,
-								identityCard_front: archive.url_frontcard,
-								identityCard_back: archive.url_backcard,
-								living_photo: archive.url_photoliving
-							},
-							showMessage: true,
-							success: function () {
-								User = $api.getStorage('User');
-								User.Archive.Name = archive.id_name;
-								User.Archive.Id = archive.id_no;
-								User.Step[0] = true;
-								$api.setStorage('User', User);
-								changeStep();
-							}
-						});
+						User.Archive.Name = archive.id_name;
+						User.Archive.Id = archive.id_no;
+						User.Step[0] = true;
+						$api.setStorage('User', User);
+						sendChangeStepEvent();
 					},
 					fail: function () {
-						alertMsg('个人信息认证失败，请重试');
+						toast('个人信息认证失败，请重试');
 					}
-				});
-			}
+				}
+			});
+		}
+
+		function sendChangeStepEvent() {
+			api.sendEvent({
+				name: 'CHANGE-STEP-EVENT',
+				extra: {
+					step: 0,
+					goal: 'yunyingshang'
+				}
+			});
 		}
 	</script>
 </body>

@@ -37,16 +37,22 @@
       // if (!checkNet() || !checkLogin()) return;
       var content = $api.val('textarea');
       var account = $api.val('account');
+<<<<<<< HEAD
       if(!content){
         toast('请将内容填写完整...');
         return;
       }
       if(!account){
         toast('请将联系方式填写完整...');
+=======
+      if (!account || !content) {
+        toast('请将内容或联系方式填写完整...');
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
         return;
       }
       request({
         url: 'FKYJ',
+<<<<<<< HEAD
         data: {
           'deviceId': api.deviceId,
           'sj':'18255193029',
@@ -60,10 +66,29 @@
            fail:function () {
 
            }
+=======
+        values: {
+          sj: $api.getStorage('User'),
+          deviceId: api.deviceId,
+          nr: content
+        },
+        showMessage: '正在加载...',
+        success: function (data) {
+          if (data.d.Code) {
+            toast(data.d.Msg);
+            kill();
+          } else {
+            toast(data.d.Msg);
+          }
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
         }
       });
     }
   </script>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974

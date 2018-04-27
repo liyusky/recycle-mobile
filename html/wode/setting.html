@@ -31,7 +31,10 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+<<<<<<< HEAD
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+=======
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
   <script>
     var User = null;
 
@@ -39,7 +42,11 @@
       setLogoutStatus();
       sendLogoutEvent();
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
     function setLogoutStatus() {
       User = $api.getStorage('User');
       User.Status = false;
@@ -55,10 +62,18 @@
 
 
     function gotoPage(goal) {
+<<<<<<< HEAD
       // if (!checkNet() || !checkLogin()) return;
+=======
+      if (!checkNet() || !checkLogin()) return;
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
       create(goal);
     }
   </script>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974

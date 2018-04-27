@@ -12,17 +12,17 @@ function checkPhone(phone) {
   var tipFlag = arguments[1]; 
   var result = true;
   if (!phone) {
-    if (tipFlag) toast('手机号不能为空');
+    if (!tipFlag) toast('手机号不能为空');
     result = false;
   }
   else {
     if (phone.length < 11) {
-      if (tipFlag) toast('请不要选择短号');
+      if (!tipFlag) toast('请不要选择短号');
       result = false;
     } else {
       var pat = new RegExp('^(?:13|14|15|17|18)[0-9]{9}$', 'i');
       if (!pat.test(phone)) {
-        if (tipFlag) toast('手机号格式错误');
+        if (!tipFlag) toast('手机号格式错误');
         result = false;
       }
     }

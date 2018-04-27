@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- 关系选择弹出框 -->
+<html class="background-transparent">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+	/>
+	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+	<title>关系选择弹出框</title>
+	<link rel="stylesheet" type="text/css" href="../../css/renzheng/aui.css">
+	<link rel="stylesheet" type="text/css" href="../../css/renzheng/aui-extends.css">
+</head>
+
+<body class="guanxi background-transparent">
+	<section class="selector-bg" onclick="javascript: colse();"></section>
+	<footer class="selector">
+		<ul class="selector-list aui-text-center" id="selector-list"></ul>
+		<button class="selector-btn font-size-36 text-blue aui-text-center" onclick="javascript: colse();">取消</button>
+	</footer>
+	<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		apiready = function () {
+			setListener();
+			init(api.pageParam.type);
+		}
+
+		function init(type) {
+			var arr = null;
+			switch (type) {
+				case 'first':
+					arr = ['父亲', '母亲', '配偶'];
+					break;
+				case 'second':
+					arr = ['父亲', '母亲', '配偶', '亲戚', '朋友'];
+					break;
+			}
+			var htmlStr = '';
+			for (var i = 0; i < arr.length; i++) {
+				htmlStr += setHtmlStr(arr[i]);
+			}
+			$api.html('selector-list', htmlStr);
+		}
+
+		function setHtmlStr(content) {
+			return '<li class="list-item font-size-35" onclick="javascript: select(this);">' + content + '</li>';
+		}
+
+		function select(dom) {
+			$api.addCls(dom, 'selected');
+			var relationship = $api.text(dom);
+			api.sendEvent({
+				name: 'SELECT-EVENT',
+				extra: {
+					goal: 'relationship',
+					value: relationship,
+					type: api.pageParam.type
+				}
+			});
+			colse();
+		}
+
+		function colse() {
+			api.sendEvent({
+				name: 'CloseFrame',
+				extra: {
+					goal: 'relationship'
+				}
+			});
+		}
+
+		function setListener() {
+			api.addEventListener({
+					name: 'keyback'
+				},
+				function (ret, err) {}
+			);
+		}
+	</script>
+</body>
+
+</html>

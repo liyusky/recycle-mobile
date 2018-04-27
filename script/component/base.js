@@ -1,7 +1,7 @@
 /**
  * [checkLogin 检查用户是否登陆]
  * @method      checkLogin
- * @param       {json}        callback      [{success:callbackFun,fail:callbackFun} 成功/失败状态下执行的函数]
+ * @param       {json}        params        [{success:callbackFun,fail:callbackFun} 成功/失败状态下执行的函数]
  * @return      {[boolean]}                 [true:已登录  /  false: 未登录]
  * @version     [1.0]
  * @author      [潘剑]
@@ -16,7 +16,7 @@ function checkLogin(params) {
   } catch (e) { }
 
   User = $api.getStorage('User');
-  if (User.Login) {
+  if (User.Status) {
     try {
       params.success(flag);
     } catch (e) { }
@@ -25,7 +25,7 @@ function checkLogin(params) {
     flag = false;
     if (openLogin) {
       toast('请先登录');
-      create('empower');
+      create('login');
     }
     try {
       params.fail(flag);
@@ -72,6 +72,15 @@ function checkNet(params) {
   } catch (e) { }
   return flag;
 }
+/**
+ * [create 以win的方式打开页面]
+ * @method      checkNetwork
+ * @param       {[json]}         data                [''  /  {goal: '', xxxx: , xxx: ,}]
+ * @version     [1.0]
+ * @author      [潘剑]
+ * @Proofreader [潘剑]
+ * @datetime    2017-10-07T14:04:38+080
+ */
 function create(data) {
   var goal = null;
   var pageParam = null;
@@ -87,12 +96,20 @@ function create(data) {
       };
       break;
   }
-  var animationDirection = 'from_right';
+  var animationDirection = 'from_left';
   var animationType = 'movein';
+<<<<<<< HEAD
   // if (ROUTER[goal].animationDirection) animationDirection = ROUTER[goal].animationDirection;
   // if (ROUTER[goal].animationType) animationType = ROUTER[goal].animationType;
 
   // alert(ROUTER[goal].path)
+=======
+  var param = ROUTER[goal] ? ROUTER[goal].create : false;
+  if (param) {
+    if (param.type) animationType = param.type;
+    if (param.direction) animationDirection = param.direction;
+  }
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
   api.openWin({
     name: goal,
     url: ROUTER[goal].path,
@@ -106,15 +123,22 @@ function create(data) {
     pageParam: pageParam
   });
 }
+/**
+ * [kill 关闭页面]
+ * @method      checkNetwork
+ * @param       {[json]}         data                [ / 'goal']
+ * @version     [1.0]
+ * @author      [潘剑]
+ * @Proofreader [潘剑]
+ * @datetime    2017-10-07T14:04:38+080
+ */
 function kill(goal) {
-  goal = goal ? goal : api.pageParam.goal;
-  var animationType = 'reveal';
-  var animationDirection = 'from_left';
-  var param = ROUTER[goal] ? ROUTER[goal].kill : false;
-  if (param) {
-    if (param.type) animationType = param.type;
-    if (param.direction) animationDirection = param.direction;
+  if (goal instanceof Array) {
+    goal.forEach(function (element) {
+      closeWin(element);
+    });
   }
+<<<<<<< HEAD
 
   api.closeWin({
     name: goal,
@@ -122,8 +146,31 @@ function kill(goal) {
       type: animationType,
       subType: animationDirection,
       duration: 300
+=======
+  else {
+    closeWin(goal);
+  }
+
+  function closeWin(goal) {
+    goal = goal ? goal : api.pageParam.goal;
+    var animationType = 'reveal';
+    var animationDirection = 'from_right';
+    var param = ROUTER[goal] ? ROUTER[goal].kill : false;
+    if (param) {
+      if (param.type) animationType = param.type;
+      if (param.direction) animationDirection = param.direction;
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
     }
-  });
+
+    api.closeWin({
+      name: goal,
+      animation: {
+        type: animationType,
+        subType: animationDirection,
+        duration: 300
+      }
+    });
+  }
 }
 /**
  * [toast 显示toast弹出消息]

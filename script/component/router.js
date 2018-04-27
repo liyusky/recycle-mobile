@@ -68,8 +68,13 @@ window.ROUTER = {
   'zhimafen': {
     path: 'widget://html/renzheng/zhimafen.html'
   },
+<<<<<<< HEAD
   'add-bank-card':{
      path: 'widget://html/wode/add-bank-card.html'
+=======
+  'addcard':{
+     path: 'widget://html/records/addcard.html'
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
   },
   'submit-order':{
     path: 'widget://html/records/submit-order.html'
@@ -79,8 +84,11 @@ window.ROUTER = {
   },
   'refund':{
     path: 'widget://html/wode/refund.html'
+<<<<<<< HEAD
   },
   'recycling-schedule':{
     path:'widget://html/records/recycling-schedule.html'
+=======
+>>>>>>> fd927d44d5d1ea50c3bd819fb7cea87e2e87e974
   }
 }
