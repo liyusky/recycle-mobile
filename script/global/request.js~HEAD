@@ -24,7 +24,6 @@ function request(params) {
   // var url = RequestProductURL[params.url]; //生产环境
   url = productionAppApi[params.url];  //后台测试服务器
   // url = developmentAppApi[params.url];   // 前端独立测试
-
   if (params.tip) {
     switch (typeof params.tip) {
       case 'string':

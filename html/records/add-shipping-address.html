@@ -1,13 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
-  />
-  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <title>添加收货地址</title>
-  <link rel="stylesheet" type="text/css" href="../../css/records/add-shipping-address.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>添加收货地址</title>
+    <link rel="stylesheet" type="text/css" href="../../css/records/add-shipping-address.css">
 </head>
 
 <body>
@@ -70,14 +69,14 @@
     function submit() {
       // if (!checkNet() || !checkLogin()) return;
       var name = $api.val('name');
-      var user = $api.getStorage('User');
+      //var user = $api.getStorage('User');
       var phone = $api.val('phone');
       var addressDetail = $api.val('city');
       var detailsAddress = $api.val('address-detail');
       if (!checkPhone(phone)) return;
       request({
         url: 'EditReceivingAddress',
-        values: {
+        data: {
           phone: phone,
           deviceId: api.deviceId,
           Id: '',
@@ -88,15 +87,15 @@
           DetailAddress: detailsAddress
         },
         showMessage: '正在发送...',
-        success: function (data) {
-          if (data.d.Code == 1) {
-            toast(data.d.Msg);
+        operation:{
+          success: function (data) {
             create('shiping-address');
             kill();
-          } else {
-            toast(data.d.Msg);
-          }
+        },fail:function(){
+
         }
+        }
+
       });
     }
 

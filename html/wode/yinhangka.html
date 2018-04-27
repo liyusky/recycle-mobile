@@ -11,13 +11,12 @@
 </head>
 
 <body class="yinhangka">
-
 	<header class="header">
     <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
 		<p class="header-title">我的银行卡</p>
 </header>
 <div class="content">
-		<ul class="list">
+		<ul class="list" id="bankList">
 				<li>
 						<img src="../../image/wode/bank.png">
 						<div class="card-message">
@@ -29,16 +28,14 @@
 						</div>
 				</li>
 		</ul>
-    <button class="btn" onclick="javascript:create('addcard')">绑定银行卡</button>
+    <button class="btn" onclick="javascript:create('add-bank-card')">绑定银行卡</button>
 </div>
-
-
-  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
 	<script type="text/javascript">
     var User = $api.getStorage('User');
 		apiready = function () {
@@ -47,49 +44,77 @@
 		}
 
     function init () {
-      // if (!checkNet() || !checkLogin()) return;
-        request({
-          url: 'GetHYYHK',
-          values: {
-            phone: User.Phone,
-            deviceId: api.deviceId
-          },
-          showMessage: true,
-          success: function (data) {
+      // if (checkNetwork() && checkLogin()) {
+			var name = $api.val('name');
+      var phone = $api.val('phone');
+      var addressCurrent = $api.val('address-current');
+      var addressDetail = $api.val('address-detail');
+      request({
+        url: 'GetHYYHK',
+        data: {
+					'phone':'18255193029',
+          'deviceId': api.deviceId,
+        },
+        tip: '正在发送...',
+				operation:{
+					success:function (data) {
+							setLayout(data);
+					},
+					fail:function () {
 
-            User = $api.getStorage('User');
-            User.Card = formatCard(data.d);
-            $api.setStorage('User', User);
-            setLayout(User.Card);
-          }
-        });
+					}
+				}
+      });
     }
 
     function setLayout (content) {
-      if (content.length) {
+
         var htmlStr = '';
         for (var i = 0; i < content.length; i++) {
           htmlStr += setBankCardHTML(content[i]);
-        }
-        $api.addCls('title', 'background-write');
-        $api.text('title-message', '绑定的银行卡将用于收款和还款');
-        $api.html('swiper-wrapper', htmlStr);
-        $api.removeCls('bank-wrap', 'aui-hide');
-        $api.removeCls('note', 'aui-hide');
-        setSwiper();
-      }
+        };
+        $api.html('bankList', htmlStr);
+				for(var key in bankval){
+					if(card.KaiHuHang.indexOf(key) !== -1){
+							$api.attr('bank-image', 'src', bankval[key]);
+				}
       else {
         alertMsg('您尚未绑定银行卡！');
       }
     }
+	}
+
+		var bankval = {
+			'光大':'../../image/wode/bank/gdyh-bg.png',
+			'广发':'../../image/wode/bank/gfyh-bg.png',
+			'工商':'../../image/wode/bank/gsyh-bg.png',
+			'华夏':'../../image/wode/bank/hyyh-bg.png',
+			'建设':'../../image/wode/bank/jsyh-bg.png',
+			'交通':'../../image/wode/bank/jtyh-bg.png',
+			'民生':'../../image/wode/bank/msyh-bg.png',
+			'农业':'../../image/wode/bank/nyyh-bg.png',
+			'平安':'../../image/wode/bank/payh-bg.png',
+			'浦发':'../../image/wode/bank/pfyh-bg.png',
+			'兴业':'../../image/wode/bank/xyyh-bg.png',
+			'邮政':'../../image/wode/bank/yzyh-bg.png',
+			'中国':'../../image/wode/bank/zgyh-bg.png',
+			'招商':'../../image/wode/bank/zsyh-bg.png',
+			'中信':'../../image/wode/bank/zxyh-bg.png'
+		};
+
+
 
     function setBankCardHTML (card) {
-      var htmlStr = '<li class="swiper-slide bank-item">' +
-      '<div class="mantissa absolute font-size-35 text-write">' + card.number.substr(-4, 4) + '</div>' +
-      '<div class="bg absolute">' +
-      '<img class="bg-image" src="../../../image/lanqian/card/' + BankList[card.bank] + '.png">' +
-      '</div>' +
-      '</li>';
+      var htmlStr = '<li>'+
+									'<img id="bank-image">'+
+									'<div class="card-message">'+
+										'<p class="bank-type">'+card.KaiHuHang+'</p>'+
+										'	<span class="card-type">储蓄卡</span>'+
+										'			<p class="card-num">'+
+										'<span class="hidenum">****</span> <span class="hidenum">****</span> <span class="hidenum">****</span>'+
+										'			 <span class="shownum">'+card.WeiHao+'</span> </p>'+
+									'</div>'+
+							'</li>';
       return htmlStr;
     }
 

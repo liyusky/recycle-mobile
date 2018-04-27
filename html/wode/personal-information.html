@@ -118,7 +118,7 @@
         }
       });
     }
-    
+
     function render(data) {
       var stepArr = [];
       for (var i = 1; i < 5; i++) {
@@ -126,7 +126,7 @@
       }
       saveCertification(stepArr);
       var index = false;
-      
+
       for (var i = 0; i < stepArr.length; i++) {
         if (stepArr[i]) {
           $api.text('flag-' + (i + 1), '已认证');
@@ -135,7 +135,7 @@
           index = i + 1;
         }
       }
-      
+
       if (index > 0) {
         goal = page[index - 1];
         $api.attr('step-' + index, 'onclick', 'authentication(\'' + goal + '\')');

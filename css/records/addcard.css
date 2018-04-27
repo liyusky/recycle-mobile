@@ -1,195 +1,195 @@
 * {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-}
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+  }
 
-ol,
-ul, li {
-  list-style: none;
-}
+  ol,
+  ul, li {
+    list-style: none;
+  }
 
-a {
-  text-decoration: none;
-  color: none;
-}
+  a {
+    text-decoration: none;
+    color: none;
+  }
 
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+  }
 
-ol,
-ul, li {
-  list-style: none;
-}
+  ol,
+  ul, li {
+    list-style: none;
+  }
 
-a {
-  text-decoration: none;
-  color: none;
-}
+  a {
+    text-decoration: none;
+    color: none;
+  }
 
-.header {
-  width: 100%;
-  height: 17.2vw;
-  padding-top: 5.6vw;
-  padding-left: 4.8vw;
-  padding-right: 4.8vw;
-  line-height: 11.6vw;
-  font-size: 4.8vw;
-  position: relative;
-}
+  .header {
+    width: 100%;
+    height: 17.2vw;
+    padding-top: 5.6vw;
+    padding-left: 4.8vw;
+    padding-right: 4.8vw;
+    line-height: 11.6vw;
+    font-size: 4.8vw;
+    position: relative;
+  }
 
-.header .sign {
-  width: 100%;
-  height: 100%;
-  background: none;
-  position: absolute;
-  padding-top: 5.6vw;
-  padding-left: 4.8vw;
-  padding-right: 4.8vw;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 20;
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  align-items: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  justify-content: space-between;
-  -webkit-box-pack: space-between;
-  -webkit-justify-content: space-between;
-}
+  .header .sign {
+    width: 100%;
+    height: 100%;
+    background: none;
+    position: absolute;
+    padding-top: 5.6vw;
+    padding-left: 4.8vw;
+    padding-right: 4.8vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-box-pack: space-between;
+    -webkit-justify-content: space-between;
+  }
 
-.header .sign div {
-  width: auto;
-  height: 100%;
-}
+  .header .sign div {
+    width: auto;
+    height: 100%;
+  }
 
-.header .title {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  align-items: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  justify-content: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-}
+  .header .title {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+  }
 
-.header {
-  background-color: #fff;
-  color: #333333;
-  border-bottom: 1px solid #cbcbcb;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 5;
-}
+  .header {
+    background-color: #fff;
+    color: #333333;
+    border-bottom: 1px solid #cbcbcb;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+  }
 
-body {
-  padding-top: 17.2vw;
-}
+  body {
+    padding-top: 17.2vw;
+  }
 
-body {
-  background: #f4f4f4;
-}
+  body {
+    background: #f4f4f4;
+  }
 
-header {
-  height: 12vw;
-  background: #fff;
-  line-height: 12vw;
-  text-align: center;
-}
+  header {
+    height: 12vw;
+    background: #fff;
+    line-height: 12vw;
+    text-align: center;
+  }
 
-header .back {
-  float: left;
-  margin-top: 3.33333vw;
-  width: 4.66667vw;
-  height: 5.46667vw;
-}
+  header .back {
+    float: left;
+    margin-top: 3.33333vw;
+    width: 4.66667vw;
+    height: 5.46667vw;
+  }
 
-header .header-title {
-  font-size: 4.66667vw;
-  display: inline;
-}
+  header .header-title {
+    font-size: 4.66667vw;
+    display: inline;
+  }
 
-header .compile {
-  float: right;
-  font-size: 4.66667vw;
-  color: #333;
-}
+  header .compile {
+    float: right;
+    font-size: 4.66667vw;
+    color: #333;
+  }
 
-.content .content-head {
-  height: 17.33333vw;
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  align-items: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  justify-content: space-between;
-  -webkit-box-pack: space-between;
-  -webkit-justify-content: space-between;
-  padding-left: 3.46667vw;
-}
+  .content .content-head {
+    height: 17.33333vw;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-box-pack: space-between;
+    -webkit-justify-content: space-between;
+    padding-left: 3.46667vw;
+  }
 
-.content .content-head .title {
-  font-size: 3.6vw;
-}
+  .content .content-head .title {
+    font-size: 3.6vw;
+  }
 
-.content .address-list-compile li {
-  height: 13.33333vw;
-  line-height: 13.33333vw;
-  background: #fff;
-  border-bottom: 0.4vw solid #9a9a9a;
-  padding-left: 5.86667vw;
-}
+  .content .address-list-compile li {
+    height: 13.33333vw;
+    line-height: 13.33333vw;
+    background: #fff;
+    border-bottom: 0.4vw solid #9a9a9a;
+    padding-left: 5.86667vw;
+  }
 
-.content .address-list-compile li p {
-  font-size: 4.26667vw;
-  display: inline;
-  padding-right: 2.66667vw;
-}
+  .content .address-list-compile li p {
+    font-size: 4.26667vw;
+    display: inline;
+    padding-right: 2.66667vw;
+  }
 
-.content .address-list-compile li .code, .content .address-list-compile li .phone {
-  padding-right: 6.66667vw;
-}
+  .content .address-list-compile li .code, .content .address-list-compile li .phone {
+    padding-right: 6.66667vw;
+  }
 
-.content .address-list-compile li input {
-  outline: none;
-  border: none;
-  font-size: 3.6vw;
-}
+  .content .address-list-compile li input {
+    outline: none;
+    border: none;
+    font-size: 3.6vw;
+  }
 
-.content .address-list-compile li .sendmesg {
-  color: #1990fe;
-  font-size: 3.6vw;
-}
+  .content .address-list-compile li .sendmesg {
+    color: #1990fe;
+    font-size: 3.6vw;
+  }
 
-.content .address-list-compile li:last-child {
-  border-bottom: none;
-}
+  .content .address-list-compile li:last-child {
+    border-bottom: none;
+  }
 
 
-.btn {
-  width: 86.66667vw;
-  height: 12.66667vw;
-  background: #71b8fa;
-  margin: 12vw auto;
-  display: block;
-  border-radius: 1.33333vw;
-  outline: none;
-  border: none;
-  color: #fff;
-  font-size: 5.06667vw;
-}
+  .btn {
+    width: 86.66667vw;
+    height: 12.66667vw;
+    background: #71b8fa;
+    margin: 12vw auto;
+    display: block;
+    border-radius: 1.33333vw;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 5.06667vw;
+  }

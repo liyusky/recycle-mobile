@@ -125,16 +125,14 @@ function create(data) {
  * @Proofreader [潘剑]
  * @datetime    2017-10-07T14:04:38+080
  */
-function kill(goal) {
-  if (goal instanceof Array) {
-    goal.forEach(function (element) {
-      closeWin(element);
-    });
-  }
-  else {
-    closeWin(goal);
-  }
+ function kill(goal) {
+   if (goal instanceof Array) {
+     goal.forEach(function (element) {
+       closeWin(element);
+     });
+   }
 
+}
   function closeWin(goal) {
     goal = goal ? goal : api.pageParam.goal;
     var animationType = 'reveal';
@@ -154,7 +152,6 @@ function kill(goal) {
       }
     });
   }
-}
 /**
  * [toast 显示toast弹出消息]
  * @method      toast

@@ -137,9 +137,13 @@ header .compile {
   border-radius: 2vw;
 }
 
-.content .address-list li .box .name, .content .address-list li .box .phone, .content .address-list li .box .address {
+.content .address-list li .box .name, .content .address-list li .box .phone {
   float: left;
   margin-left: 3.6vw;
+}
+
+.content .address-list li{
+  position: relative;
 }
 
 .content .address-list li .box .name, .content .address-list li .box .phone {
@@ -149,5 +153,7 @@ header .compile {
 
 .content .address-list li .box .address {
   font-size: 4vw;
-  margin-top: 4vw;
+  position: absolute;
+  bottom: 4vw;
+  left: 3.6vw;
 }
