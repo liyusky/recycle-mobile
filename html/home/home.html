@@ -43,21 +43,9 @@
           <span class="max">最高回收:</span>￥5000
         </p>
       </div>
-      <div class="phone-content">
-        <img src="./img/phone.png" alt="" class="phoneimg">
-        <div class="phone-message">
-          <p class="messagelist" id="device-model">iphone 6s</p>
-          <!-- <p class="messagelist">内存: 16G</p> -->
-          <p class="messagelist">
-            <span class="max">最高回收:</span>￥5000
-          </p>
-        </div>
-      </div>
-      <div class="clear"></div>
-      <button class="phone-btn">马上评估 立即拿钱</button>
     </div>
     <div class="clear"></div>
-    <button class="phone-btn" onclick="javascript: gotoPage();">马上评估 立即拿钱</button>
+    <button class="phone-btn" onclick="javascript: gotoPage('offer');">马上评估 立即拿钱</button>
   </div>
   <footer class="recycle">
     <p class="recycle-title">回收流程</p>
@@ -123,26 +111,26 @@
       }
     }
 
-    function gotoPage () {
+    function gotoPage (goal) {
       if (!checkNet() || !checkLogin()) return;
       create(goal);
     }
 
     function setUser() {
-      // $api.rmStorage('User');
+      $api.rmStorage('User');
       try {
         User = $api.getStorage('User');
       } catch (e) {}
       if (!User) {
         User = {
-          Status: false, //登录
+          Status: true, //登录
           Certification: [false, false, false, false],
-          Phone: null,
+          Phone: '18255193029',
           Archive: {
             Name: null,
             Id: null
           },
-          Card: []
+          Card: ''
         };
         $api.setStorage('User', User);
       }

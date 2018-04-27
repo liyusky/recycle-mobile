@@ -103,11 +103,13 @@
 
  // 获取记录
     function init() {
+      var User = $api.getStorage('User');
+
       request({
         url: 'GetHYJKJL',
         data: {
           'deviceId': api.deviceId,
-          'phone':'13476615091'
+          'phone':User.Phone
         },
         tip: '正在发送...',
         operation:{
@@ -163,10 +165,11 @@
     function initList() {
       // if (!checkNet() || !checkLogin()) return;
       // if(!$api.getStorage('User')) return;
+      var User = $api.getStorage('User');
       request({
         url: 'GetZXJD',
         data: {
-          sj: '13476615091',
+          sj: User.Phone,
           deviceId: api.deviceId
         },
         'tip': '正在发送...',

@@ -111,7 +111,7 @@
     <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
     <script type="text/javascript" charset="utf-8">
- var day = null;
+       var day = null;
         apiready = function() {
            var day = null;
             init();
@@ -119,11 +119,12 @@
         }
 
         function init() {
+          var User = $api.getStorage('User');
             request({
                 url: 'GetHYJKJL',
                 data: {
                     'deviceId': api.deviceId,
-                    'phone': '18255193029'
+                    'phone': User.Phone
                 },
                 tip: '正在发送...',
                 operation: {
@@ -182,10 +183,12 @@
         function initList() {
             // if (!checkNet() || !checkLogin()) return;
             // if(!$api.getStorage('User')) return;
+
+            var User = $api.getStorage('User');
             request({
                 url: 'GetZXJD',
                 data: {
-                    sj: '18255193029',
+                    sj: User.Phone,
                     deviceId: api.deviceId
                 },
                 'tip': '正在发送...',

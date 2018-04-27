@@ -167,4 +167,9 @@ header .compile {
 .content .address-list li .box .address {
   font-size: 4vw;
   margin-top: 4vw;
+  float: left;
+  margin-left: 3.6vw;
+}
+.hide{
+  display: none;
 }

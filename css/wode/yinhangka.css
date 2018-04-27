@@ -154,12 +154,13 @@ header .header-title {
 }
 
 .content .list .card-type {
-  margin-top: 0.93333vw;
+  margin-top: 4.93333vw;
   font-size: 3.06667vw;
 }
 
 .content .list .card-num {
   font-size: 3.46667vw;
+  margin-top: 12.066666666666667vw;
 }
 
 .btn {
@@ -175,4 +176,8 @@ header .header-title {
   margin: 10.66667vw auto;
   border-radius: 2vw;
   font-size: 5.06667vw;
+}
+
+.hide{
+  display: none;
 }
