@@ -106,11 +106,11 @@
           operation: {
             success: function (data) {
               User = $api.getStorage('User');
-              User.Card = data.Card[data.Card.length - 1].KaHao;
-              User.Certification[0] = !!data.IsCertification;
-              User.Certification[1] = !!data.IsTxl;
-              User.Certification[2] = !!data.IsZhiMa;
-              User.Certification[3] = !!data.IsOperator;
+              // User.Card = data.Card[data.Card.length - 1].KaHao;
+              // User.Certification[0] = !!data.IsCertification;
+              // User.Certification[1] = !!data.IsTxl;
+              // User.Certification[2] = !!data.IsZhiMa;
+              // User.Certification[3] = !!data.IsOperator;
               $api.setStorage('User', User);
             }
           }
@@ -126,6 +126,7 @@
         }
 
         var mark = true;
+        User.Certification = [true, true, true, true]
         for (let i = 0; i < 4; i++) {
           if (!User.Certification[i]) mark = false;
         }
@@ -143,7 +144,7 @@
           kill();
           return;
         }
-
+        create('submit-order');
         request({
           url: 'SubmitApply',
           'data': {
@@ -173,14 +174,13 @@
               create('submit-order');
               kill();
             },
-            fail: function () {
-              create('renzheng');
-            },
             default: function () {
               openBtnClick('submit-btn');
             }
           }
         });
+
+
       }
     </script>
 

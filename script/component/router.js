@@ -29,13 +29,13 @@ window.ROUTER = {
   'add-shipping-address': {
     path: 'widget://html/records/add-shipping-address.html'
   },
-  'addcard': {
+  'add-bank-card': {
     path: 'widget://html/wode/add-bank-card.html'
   },
   'bank-card': {
     path: 'widget://html/wode/bank-card.html'
   },
-  'yinhangka': {
+  'bank-card': {
     path: 'widget://html/records/bank-card.html'
   },
   'help-center': {
@@ -91,5 +91,8 @@ window.ROUTER = {
   },
   'offline': {
     path: 'widget://html/tip/offline.html',
-  }
+  },
+  'recycling-schedule': {
+    path: 'widget://html/records/recycling-schedule.html',
+  },
 }
