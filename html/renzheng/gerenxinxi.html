@@ -52,9 +52,9 @@
 			</div>
 		</div>
 	</section>
-	<!-- <button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" disabled="disabled" id="submit-btn"
-		onclick="javascript: submit();">立即提交</button> -->
-	<button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" id="submit-btn" onclick="javascript: submit();">立即提交</button>
+	<button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" disabled="disabled" id="submit-btn"
+		onclick="javascript: submit();">立即提交</button>
+	<!-- <button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" id="submit-btn" onclick="javascript: submit();">立即提交</button> -->
 	<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
@@ -78,8 +78,8 @@
 					outOrderId: User.Phone + '-' + api.deviceId + '-' + new Date().getTime()
 				},
 				function (ret, err) {
-					console.log(JSON.stringify(ret));
-					console.log(JSON.stringify(err));
+					// console.log(JSON.stringify(ret));
+					// console.log(JSON.stringify(err));
 					if (ret.ret_code + '' == '000000') {
 						archive = ret;
 						$api.removeAttr('ID-front', 'onclick');
@@ -105,7 +105,6 @@
 		}
 
 		function submit() {
-			sendChangeStepEvent();
 			if (!checkNet() || !checkLogin()) return;
 			User = $api.getStorage('User');
 			request({
@@ -120,7 +119,7 @@
 					identityCard_back: archive.url_backcard,
 					living_photo: archive.url_photoliving
 				},
-				showMessage: true,
+				tip: true,
 				operation: {
 					success: function () {
 						User = $api.getStorage('User');
@@ -141,7 +140,7 @@
 			api.sendEvent({
 				name: 'CHANGE-STEP-EVENT',
 				extra: {
-					step: 1,
+					step: 2,
 					goal: 'lianxiren'
 				}
 			});

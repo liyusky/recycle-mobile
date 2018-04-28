@@ -39,13 +39,15 @@
       if (checkNet() && checkLogin()) {
         sendRequest({
           url: 'GetZhimaAuthInfoUrl',
-          values: {
+          data: {
             deviceId: api.deviceId,
             phone: User.Phone
           },
-          showMessage: true,
-          success: function (data) {
-            $api.attr('iframe', 'src', data);
+          tip: true,
+          operation: {
+            success: function (data) {
+              $api.attr('iframe', 'src', data);
+            }
           }
         });
       }
@@ -80,7 +82,7 @@
       api.sendEvent({
         name: 'CLOSE-STEP-EVENT',
         extra: {
-          step: 0,
+          step: 4,
           goal: 'yunyingshang'
         }
       });

@@ -77,10 +77,8 @@
 	}
 
 	function init() {
-		alert(api.pageParam.step)
 		progress = new Progress(api.pageParam.step);
-		var aim = api.pageParam.aim;
-		openFrame(aim);
+		openFrame(api.pageParam.aim);
 	}
 
 	function openFrame(goal) {
@@ -123,7 +121,7 @@
 					alert(ret.value.goal)
 					api.openFrame({
 						name: ret.value.goal,
-						url: ROUTER[ret.value.goal],
+						url: ROUTER[ret.value.goal].path,
 						rect: {
 							x: 0,
 							y: 0,
@@ -131,7 +129,8 @@
 							h: 'auto'
 						},
 						pageParam: {
-							goal: ret.value.goal
+							goal: ret.value.goal,
+							type: ret.value.type,
 						}
 					});
 				}

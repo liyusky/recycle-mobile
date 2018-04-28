@@ -92,116 +92,116 @@
   vertical-align: -0.3em !important; }
 
 .svg-wrap {
-  width: 0.48rem;
+  width: 4.8vw;
   height: 100%; }
 
 .icon-size-dui {
-  width: 0.8666666667rem;
-  height: 0.8666666667rem; }
+  width: 8.6666666667vw;
+  height: 8.6666666667vw; }
 
 .icon-size-baozhang {
-  width: 0.5866666667rem;
-  height: 0.64rem; }
+  width: 5.8666666667vw;
+  height: 6.4vw; }
 
 .icon-size-zhangdan {
-  width: 0.4133333333rem;
-  height: 0.56rem; }
+  width: 4.1333333333vw;
+  height: 5.6vw; }
 
 .icon-size-yinhangka {
-  width: 0.56rem;
-  height: 0.4666666667rem; }
+  width: 5.6vw;
+  height: 4.6666666667vw; }
 
 .icon-size-youhuiquan {
-  width: 0.56rem;
-  height: 0.56rem; }
+  width: 5.6vw;
+  height: 5.6vw; }
 
 .icon-size-kefu {
-  width: 0.56rem;
-  height: 0.56rem; }
+  width: 5.6vw;
+  height: 5.6vw; }
 
 .icon-size-yaoqinghaoyou {
-  width: 0.52rem;
-  height: 0.6133333333rem; }
+  width: 5.2vw;
+  height: 6.1333333333vw; }
 
 .icon-size-bangzhuzhongxin {
-  width: 0.52rem;
-  height: 0.52rem; }
+  width: 5.2vw;
+  height: 5.2vw; }
 
 .icon-size-shezhi {
-  width: 0.56rem;
-  height: 0.56rem; }
+  width: 5.6vw;
+  height: 5.6vw; }
 
 .icon-size-tuichu {
-  width: 0.56rem;
-  height: 0.56rem; }
+  width: 5.6vw;
+  height: 5.6vw; }
 
 .icon-size-guanyuwomen {
-  width: 0.52rem;
-  height: 0.52rem; }
+  width: 5.2vw;
+  height: 5.2vw; }
 
 .icon-size-hongbao {
-  width: 0.56rem;
-  height: 0.56rem; }
+  width: 5.6vw;
+  height: 5.6vw; }
 
 .icon-size-jiekuanjine {
-  width: 0.48rem;
-  height: 0.52rem; }
+  width: 4.8vw;
+  height: 5.2vw; }
 
 .icon-size-jiekuanxinxi {
-  width: 0.56rem;
-  height: 0.44rem; }
+  width: 5.6vw;
+  height: 4.4vw; }
 
 .icon-size-yinhangka {
-  width: 0.56rem;
-  height: 0.44rem; }
+  width: 5.6vw;
+  height: 4.4vw; }
 
 .icon-size-youhuiquan {
-  width: 0.52rem;
-  height: 0.48rem; }
+  width: 5.2vw;
+  height: 4.8vw; }
 
 .icon-size-xianjinhongbao {
-  width: 0.4rem;
-  height: 0.44rem; }
+  width: 4vw;
+  height: 4.4vw; }
 
 .icon-size-jinqidaihuan {
-  width: 0.4rem;
-  height: 0.48rem; }
+  width: 4vw;
+  height: 4.8vw; }
 
 .icon-size-jiekuanjilu {
-  width: 0.4rem;
-  height: 0.48rem; }
+  width: 4vw;
+  height: 4.8vw; }
 
 .icon-size-yaoqinghaoyou {
-  width: 0.52rem;
-  height: 0.48rem; }
+  width: 5.2vw;
+  height: 4.8vw; }
 
 .icon-size-kefu {
-  width: 0.52rem;
-  height: 0.48rem; }
+  width: 5.2vw;
+  height: 4.8vw; }
 
 .icon-size-bangzhuyufankui {
-  width: 0.48rem;
-  height: 0.48rem; }
+  width: 4.8vw;
+  height: 4.8vw; }
 
 .icon-size-guanyuwomen {
-  width: 0.48rem;
-  height: 0.48rem; }
+  width: 4.8vw;
+  height: 4.8vw; }
 
 .icon-size-jiekuanyinhangqia {
-  width: 0.52rem;
-  height: 0.36rem; }
+  width: 5.2vw;
+  height: 3.6vw; }
 
 .icon-guangdayinhang {
-  width: 0.8rem;
-  height: 0.96rem; }
+  width: 8vw;
+  height: 9.6vw; }
 
 .icon-minshengyinhang {
-  width: 0.64rem;
-  height: 0.64rem; }
+  width: 6.4vw;
+  height: 6.4vw; }
 
 .icon-guangfayinhang {
-  width: 0.56rem;
-  height: 0.56rem; }
+  width: 5.6vw;
+  height: 5.6vw; }
 
 /* end iconfont */
 /* start iconfont color */
@@ -329,56 +329,56 @@
 /* end 背景颜色 */
 /* start 外边距 */
 .margin-top-10 {
-  margin-top: 0.1333333333rem !important; }
+  margin-top: 1.3333333333vw !important; }
 
 .margin-top-15 {
-  margin-top: 0.2rem !important; }
+  margin-top: 2vw !important; }
 
 .margin-top-18 {
-  margin-top: 0.24rem !important; }
+  margin-top: 2.4vw !important; }
 
 .margin-top-21 {
-  margin-top: 0.28rem !important; }
+  margin-top: 2.8vw !important; }
 
 .margin-top-30 {
-  margin-top: 0.4rem !important; }
+  margin-top: 4vw !important; }
 
 .margin-top-40 {
-  margin-top: 0.5333333333rem !important; }
+  margin-top: 5.3333333333vw !important; }
 
 .margin-top-45 {
-  margin-top: 0.6rem !important; }
+  margin-top: 6vw !important; }
 
 .margin-top-50 {
-  margin-top: 0.6666666667rem !important; }
+  margin-top: 6.6666666667vw !important; }
 
 .margin-top-55 {
-  margin-top: 0.7333333333rem !important; }
+  margin-top: 7.3333333333vw !important; }
 
 .margin-top-60 {
-  margin-top: 0.8rem !important; }
+  margin-top: 8vw !important; }
 
 .margin-top-70 {
-  margin-top: 0.9333333333rem !important; }
+  margin-top: 9.3333333333vw !important; }
 
 .margin-top-80 {
-  margin-top: 1.0666666667rem !important; }
+  margin-top: 10.6666666667vw !important; }
 
 .margin-top-90 {
-  margin-top: 1.2rem !important; }
+  margin-top: 12vw !important; }
 
 .margin-top-100 {
-  margin-top: 1.2rem !important; }
+  margin-top: 12vw !important; }
 
 .margin-top-150 {
-  margin-top: 2rem !important; }
+  margin-top: 20vw !important; }
 
 .margin-bottom-30 {
-  margin-bottom: 0.4rem !important; }
+  margin-bottom: 4vw !important; }
 
 .margin-horizontal-30 {
-  margin-left: 0.4rem !important;
-  margin-right: 0.4rem !important; }
+  margin-left: 4vw !important;
+  margin-right: 4vw !important; }
 
 /* end 外边距 */
 /* start 边框 */
@@ -594,13 +594,13 @@
 /* end btn */
 /* start 底部导航栏 */
 .page-tab-wrap {
-  height: 1.3066666667rem; }
+  height: 13.0666666667vw; }
 
 /* end 底部导航栏 */
 /* start 输入框调整 */
 .input-flag-right {
   top: 0;
-  right: 0.4666666667rem; }
+  right: 4.6666666667vw; }
 
 .text-input-gray {
   color: #c6c6c6 !important; }
@@ -625,283 +625,283 @@
 /* end align */
 /* start 内边距 */
 .padding-left-12 {
-  padding-left: 0.16rem !important; }
+  padding-left: 1.6vw !important; }
 
 .padding-left-30 {
-  padding-left: 0.4rem !important; }
+  padding-left: 4vw !important; }
 
 .padding-left-40 {
-  padding-left: 0.5333333333rem !important; }
+  padding-left: 5.3333333333vw !important; }
 
 .padding-left-48 {
-  padding-left: 0.64rem !important; }
+  padding-left: 6.4vw !important; }
 
 .padding-right-50 {
-  padding-right: 0.6666666667rem !important; }
+  padding-right: 6.6666666667vw !important; }
 
 .padding-right-30 {
-  padding-right: 0.4rem !important; }
+  padding-right: 4vw !important; }
 
 .padding-right-10 {
-  padding-right: 0.1333333333rem !important; }
+  padding-right: 1.3333333333vw !important; }
 
 .padding-top-15 {
-  padding-top: 0.2rem !important; }
+  padding-top: 2vw !important; }
 
 .padding-top-50 {
-  padding-top: 0.6666666667rem !important; }
+  padding-top: 6.6666666667vw !important; }
 
 .padding-horizontal-10 {
-  padding-left: 0.1333333333rem !important;
-  padding-right: 0.1333333333rem !important; }
+  padding-left: 1.3333333333vw !important;
+  padding-right: 1.3333333333vw !important; }
 
 .padding-horizontal-15 {
-  padding-left: 0.2rem !important;
-  padding-right: 0.2rem !important; }
+  padding-left: 2vw !important;
+  padding-right: 2vw !important; }
 
 .padding-horizontal-40 {
-  padding-left: 0.5333333333rem !important;
-  padding-right: 0.5333333333rem !important; }
+  padding-left: 5.3333333333vw !important;
+  padding-right: 5.3333333333vw !important; }
 
 .padding-horizontal-30 {
-  padding-left: 0.4rem !important;
-  padding-right: 0.4rem !important; }
+  padding-left: 4vw !important;
+  padding-right: 4vw !important; }
 
 .padding-horizontal-40 {
-  padding-left: 0.5333333333rem !important;
-  padding-right: 0.5333333333rem !important; }
+  padding-left: 5.3333333333vw !important;
+  padding-right: 5.3333333333vw !important; }
 
 .padding-vertical-10 {
-  padding-top: 0.1333333333rem !important;
-  padding-bottom: 0.1333333333rem !important; }
+  padding-top: 1.3333333333vw !important;
+  padding-bottom: 1.3333333333vw !important; }
 
 .padding-vertical-15 {
-  padding-top: 0.2rem !important;
-  padding-bottom: 0.2rem !important; }
+  padding-top: 2vw !important;
+  padding-bottom: 2vw !important; }
 
 .padding-vertical-30 {
-  padding-top: 0.4rem !important;
-  padding-bottom: 0.4rem !important; }
+  padding-top: 4vw !important;
+  padding-bottom: 4vw !important; }
 
 /* end 内边距 */
 /* start 提示信息 */
 .authentication-start-hint {
   width: 100%;
-  height: 2.0533333333rem;
-  line-height: 0.6rem;
-  padding-top: 0.8533333333rem;
-  padding-left: 0.5066666667rem;
-  padding-right: 0.5066666667rem;
+  height: 20.5333333333vw;
+  line-height: 6vw;
+  padding-top: 8.5333333333vw;
+  padding-left: 5.0666666667vw;
+  padding-right: 5.0666666667vw;
   border-top: 1px dashed #dfdfdf; }
 
 .authentication-contact-hint {
-  height: 1.2rem;
-  line-height: 1.2rem; }
+  height: 12vw;
+  line-height: 12vw; }
 
 /* end 提示信息 */
 /* start 图片样式 */
 .authentication-start-image {
-  width: 4.4rem;
-  height: 4.5333333333rem;
+  width: 44vw;
+  height: 45.3333333333vw;
   margin-left: auto;
   margin-right: auto; }
 
 .gif {
-  width: 0.4rem;
-  height: 0.4rem;
-  margin-top: 0.4rem;
-  margin-bottom: 0.4rem;
+  width: 4vw;
+  height: 4vw;
+  margin-top: 4vw;
+  margin-bottom: 4vw;
   margin-left: auto;
   margin-right: auto; }
 
 /* end 图片样式 */
 /* start height */
 .height-130 {
-  height: 1.7333333333rem; }
+  height: 17.3333333333vw; }
 
 .height-139 {
-  height: 1.8533333333rem; }
+  height: 18.5333333333vw; }
 
 .height-40 {
-  height: 0.5333333333rem;
-  line-height: 0.5333333333rem; }
+  height: 5.3333333333vw;
+  line-height: 5.3333333333vw; }
 
 .height-70 {
-  height: 0.9333333333rem;
-  line-height: 0.9333333333rem; }
+  height: 9.3333333333vw;
+  line-height: 9.3333333333vw; }
 
 .height-90 {
-  height: 1.2rem;
-  line-height: 1.2rem; }
+  height: 12vw;
+  line-height: 12vw; }
 
 .height-100 {
-  height: 1.3333333333rem;
-  line-height: 1.3333333333rem; }
+  height: 13.3333333333vw;
+  line-height: 13.3333333333vw; }
 
 .height-101 {
-  height: 1.3466666667rem;
-  line-height: 1.3466666667rem; }
+  height: 13.4666666667vw;
+  line-height: 13.4666666667vw; }
 
 .height-115 {
-  height: 1.5333333333rem;
-  line-height: 1.5333333333rem; }
+  height: 15.3333333333vw;
+  line-height: 15.3333333333vw; }
 
 .line-height-54 {
-  line-height: 0.72rem; }
+  line-height: 7.2vw; }
 
 /* end height */
 /* start height */
 .bangzhuyufankui .title {
-  height: 1.04rem;
-  line-height: 1.04rem; }
+  height: 10.4vw;
+  line-height: 10.4vw; }
 .bangzhuyufankui .feedback-default {
-  height: 2.12rem;
-  padding-top: 0.24rem;
-  padding-bottom: 0.24rem; }
+  height: 21.2vw;
+  padding-top: 2.4vw;
+  padding-bottom: 2.4vw; }
   .bangzhuyufankui .feedback-default i {
-    line-height: 1.1866666667rem; }
+    line-height: 11.8666666667vw; }
   .bangzhuyufankui .feedback-default div {
-    line-height: 0.48rem; }
+    line-height: 4.8vw; }
 .bangzhuyufankui .feedback-more {
-  width: 4.6rem;
-  height: 2rem;
-  padding-left: 0.4rem;
-  padding-top: 0.4rem; }
+  width: 46vw;
+  height: 20vw;
+  padding-left: 4vw;
+  padding-top: 4vw; }
   .bangzhuyufankui .feedback-more .feedback-title {
-    line-height: 0.8rem; }
+    line-height: 8vw; }
   .bangzhuyufankui .feedback-more .feedback-message {
-    line-height: 0.6rem; }
+    line-height: 6vw; }
 
 .yijianfankui .question-wrap {
-  height: 5.56rem;
+  height: 55.6vw;
   border-top: 1px solid #e1e1e1;
   border-bottom: 1px solid #e1e1e1;
-  padding-left: 0.48rem; }
+  padding-left: 4.8vw; }
   .yijianfankui .question-wrap .question-note {
-    height: 1.04rem;
-    line-height: 1.04rem; }
+    height: 10.4vw;
+    line-height: 10.4vw; }
   .yijianfankui .question-wrap .question-content {
-    height: 4.52rem;
+    height: 45.2vw;
     border-top: 1px solid #e1e1e1;
-    padding-top: 0.16rem;
-    padding-right: 0.48rem; }
+    padding-top: 1.6vw;
+    padding-right: 4.8vw; }
     .yijianfankui .question-wrap .question-content textarea {
       width: 100%;
-      height: 3.44rem;
-      line-height: 0.6rem; }
+      height: 34.4vw;
+      line-height: 6vw; }
     .yijianfankui .question-wrap .question-content .count-wrap {
       width: 100%;
-      height: 0.88rem;
-      line-height: 0.88rem; }
+      height: 8.8vw;
+      line-height: 8.8vw; }
 .yijianfankui .image-wrap {
-  height: 3.68rem;
+  height: 36.8vw;
   border-top: 1px solid #e1e1e1;
   border-bottom: 1px solid #e1e1e1;
-  padding-left: 0.48rem;
-  padding-right: 0.48rem; }
+  padding-left: 4.8vw;
+  padding-right: 4.8vw; }
   .yijianfankui .image-wrap .image-note {
-    height: 1.08rem;
-    line-height: 1.08rem; }
+    height: 10.8vw;
+    line-height: 10.8vw; }
   .yijianfankui .image-wrap .image-content {
-    height: 2.6rem; }
+    height: 26vw; }
     .yijianfankui .image-wrap .image-content img {
-      width: 2rem;
-      height: 2rem;
+      width: 20vw;
+      height: 20vw;
       margin-left: auto;
       margin-right: auto; }
 .yijianfankui .contact {
-  padding-left: 0.48rem;
-  padding-right: 0.48rem;
+  padding-left: 4.8vw;
+  padding-right: 4.8vw;
   border-top: 1px solid #e1e1e1;
   border-bottom: 1px solid #e1e1e1; }
   .yijianfankui .contact .contact-content {
-    height: 1.24rem;
-    line-height: 1.24rem; }
+    height: 12.4vw;
+    line-height: 12.4vw; }
     .yijianfankui .contact .contact-content .contact-title {
-      width: 2.2rem;
+      width: 22vw;
       height: 100%; }
     .yijianfankui .contact .contact-content .contact-message {
-      width: 6.84rem;
-      margin-top: 0.2rem;
-      margin-bottom: 0.2rem;
-      padding-top: 0.2rem;
-      padding-bottom: 0.2rem;
-      height: 0.84rem;
-      line-height: 0.44rem; }
+      width: 68.4vw;
+      margin-top: 2vw;
+      margin-bottom: 2vw;
+      padding-top: 2vw;
+      padding-bottom: 2vw;
+      height: 8.4vw;
+      line-height: 4.4vw; }
     .yijianfankui .contact .contact-content input::-webkit-input-placeholder {
-      font-size: 0.4rem;
-      line-height: 0.44rem !important; }
+      font-size: 4vw;
+      line-height: 4.4vw !important; }
 
 /* end height */
 /* start modal */
 .tianjiayinhangka .modal-content {
-  width: 8.2666666667rem;
-  height: 5.92rem;
-  border-radius: 0.1066666667rem;
+  width: 82.6666666667vw;
+  height: 59.2vw;
+  border-radius: 1.0666666667vw;
   position: relative;
   z-index: 99;
   background: transparent; }
   .tianjiayinhangka .modal-content .modal-title {
     text-align: center;
-    height: 1.1466666667rem;
-    font-size: 0.4266666667rem;
-    line-height: 0.6133333333rem;
-    padding-top: 0.5333333333rem;
-    border-top-left-radius: 0.1066666667rem;
-    border-top-right-radius: 0.1066666667rem;
+    height: 11.4666666667vw;
+    font-size: 4.2666666667vw;
+    line-height: 6.1333333333vw;
+    padding-top: 5.3333333333vw;
+    border-top-left-radius: 1.0666666667vw;
+    border-top-right-radius: 1.0666666667vw;
     color: #000000; }
   .tianjiayinhangka .modal-content .modal-body {
     width: 100%;
-    height: 3.44rem;
-    margin-top: 0.16rem;
+    height: 34.4vw;
+    margin-top: 1.6vw;
     float: left; }
     .tianjiayinhangka .modal-content .modal-body .input-group {
-      width: 7.2666666667rem;
-      height: 1.2rem;
-      margin-top: 0.24rem;
-      margin-bottom: 0.24rem;
+      width: 72.6666666667vw;
+      height: 12vw;
+      margin-top: 2.4vw;
+      margin-bottom: 2.4vw;
       margin-left: auto;
       margin-right: auto;
       border: 1px solid #dfdfdf;
-      font-size: 0.3733333333rem;
-      line-height: 1.2rem;
-      border-radius: 0.08rem; }
+      font-size: 3.7333333333vw;
+      line-height: 12vw;
+      border-radius: 0.8vw; }
       .tianjiayinhangka .modal-content .modal-body .input-group .input-group-addon {
-        width: 1.9333333333rem;
-        height: 1.1733333333rem;
-        padding-left: 0.2666666667rem;
+        width: 19.3333333333vw;
+        height: 11.7333333333vw;
+        padding-left: 2.6666666667vw;
         color: #333333;
         float: left; }
       .tianjiayinhangka .modal-content .modal-body .input-group .input-control {
-        width: 5.2666666667rem;
-        height: 0.7733333333rem;
-        font-size: 0.3733333333rem;
-        line-height: 0.5066666667rem;
-        margin-top: 0.2rem;
-        margin-bottom: 0.2rem;
-        padding-top: 0.1333333333rem;
-        padding-bottom: 0.1333333333rem;
+        width: 52.6666666667vw;
+        height: 7.7333333333vw;
+        font-size: 3.7333333333vw;
+        line-height: 5.0666666667vw;
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+        padding-top: 1.3333333333vw;
+        padding-bottom: 1.3333333333vw;
         letter-spacing: 0.1em;
         outline: none;
         border: none;
         float: right; }
       .tianjiayinhangka .modal-content .modal-body .input-group input::-webkit-input-placeholder {
-        font-size: 0.3733333333rem;
-        line-height: 0.56rem !important;
+        font-size: 3.7333333333vw;
+        line-height: 5.6vw !important;
         color: #b3b3b3 !important; }
   .tianjiayinhangka .modal-content .modal-footer {
     width: 100%;
-    height: 1.2rem;
+    height: 12vw;
     border-top: 1px solid #dfdfdf;
-    border-bottom-left-radius: 0.1066666667rem;
-    border-bottom-right-radius: 0.1066666667rem;
+    border-bottom-left-radius: 1.0666666667vw;
+    border-bottom-right-radius: 1.0666666667vw;
     float: left; }
     .tianjiayinhangka .modal-content .modal-footer .modal-button {
       width: 50%;
       height: 100%;
-      font-size: 0.4rem;
+      font-size: 4vw;
       text-align: center;
-      line-height: 1.2rem;
+      line-height: 12vw;
       float: left;
       background: transparent;
       color: #369efa; }
@@ -918,39 +918,39 @@
   bottom: 0;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 0.1066666667rem;
+  border-radius: 1.0666666667vw;
   display: -webkit-flex;
   align-items: center;
   justify-content: center;
   -webkit-align-items: center;
   -webkit-justify-content: center; }
   .confirm-loan-page .modal .modal-content {
-    width: 8.2666666667rem;
-    height: 5.3333333333rem;
-    border-radius: 0.1066666667rem;
+    width: 82.6666666667vw;
+    height: 53.3333333333vw;
+    border-radius: 1.0666666667vw;
     position: relative;
     background: transparent; }
     .confirm-loan-page .modal .modal-content .modal-title {
       width: 100%;
-      height: 1.4666666667rem;
-      margin-top: 2.6666666667rem;
-      line-height: 1.4666666667rem;
-      font-size: 0.3733333333rem;
+      height: 14.6666666667vw;
+      margin-top: 26.6666666667vw;
+      line-height: 14.6666666667vw;
+      font-size: 3.7333333333vw;
       text-align: center;
       color: #333333; }
     .confirm-loan-page .modal .modal-content .modal-footer {
       width: 100%;
-      height: 1.2rem;
+      height: 12vw;
       border-top: 1px solid #dfdfdf;
-      border-bottom-left-radius: 0.1066666667rem;
-      border-bottom-right-radius: 0.1066666667rem;
+      border-bottom-left-radius: 1.0666666667vw;
+      border-bottom-right-radius: 1.0666666667vw;
       float: left; }
       .confirm-loan-page .modal .modal-content .modal-footer .modal-button {
         width: 100%;
         height: 100%;
-        font-size: 0.4rem;
+        font-size: 4vw;
         text-align: center;
-        line-height: 1.2rem;
+        line-height: 12vw;
         color: #369efa; }
     .confirm-loan-page .modal .modal-content .modal-bg {
       width: 100%;
@@ -961,59 +961,59 @@
       z-index: -1; }
 
 .detail .modal-content {
-  width: 8rem;
-  height: 5.76rem;
-  border-radius: 0.28rem;
+  width: 80vw;
+  height: 57.6vw;
+  border-radius: 2.8vw;
   position: relative;
   z-index: 99; }
   .detail .modal-content .modal-title {
-    height: 0.68rem;
-    line-height: 0.68rem;
-    margin-top: 0.36rem;
-    font-size: 0.4rem;
+    height: 6.8vw;
+    line-height: 6.8vw;
+    margin-top: 3.6vw;
+    font-size: 4vw;
     color: #ffffff;
     text-align: center;
-    margin-bottom: 0.36rem; }
+    margin-bottom: 3.6vw; }
   .detail .modal-content .modal-detail {
-    height: 0.8rem;
-    font-size: 0.4rem;
+    height: 8vw;
+    font-size: 4vw;
     color: #333333;
-    padding-left: 0.56rem;
-    padding-right: 0.56rem; }
+    padding-left: 5.6vw;
+    padding-right: 5.6vw; }
     .detail .modal-content .modal-detail .detail-number {
       display: block;
-      width: 0.48rem;
-      height: 0.48rem;
-      margin-right: 0.24rem;
-      margin-top: 0.16rem;
-      line-height: 0.56rem;
-      font-size: 0.36rem;
+      width: 4.8vw;
+      height: 4.8vw;
+      margin-right: 2.4vw;
+      margin-top: 1.6vw;
+      line-height: 5.6vw;
+      font-size: 3.6vw;
       text-align: center;
-      border-radius: 0.48rem;
+      border-radius: 4.8vw;
       background: #ffb636;
       color: #ffffff;
       float: left; }
     .detail .modal-content .modal-detail .detail-message {
       float: left;
-      width: 6.16rem;
-      height: 0.8rem; }
+      width: 61.6vw;
+      height: 8vw; }
       .detail .modal-content .modal-detail .detail-message .detail-message-name {
-        font-size: 0.4rem;
-        line-height: 0.88rem;
+        font-size: 4vw;
+        line-height: 8.8vw;
         text-align: left; }
       .detail .modal-content .modal-detail .detail-message .detail-message-money {
-        font-size: 0.4rem;
-        line-height: 0.88rem;
+        font-size: 4vw;
+        line-height: 8.8vw;
         float: right; }
   .detail .modal-content .modal-btn {
     width: 100%;
-    height: 1.48rem;
-    font-size: 0.44rem;
-    line-height: 1.48rem;
+    height: 14.8vw;
+    font-size: 4.4vw;
+    line-height: 14.8vw;
     border-top: 1px solid #dddddd;
     color: #369efa;
     background: transparent;
-    margin-top: 0.36rem; }
+    margin-top: 3.6vw; }
 
 .modal {
   width: 100%;
@@ -1043,89 +1043,89 @@
 /* end modal */
 /* start coupon */
 .youhuiquan .coupon {
-  width: 8.8666666667rem;
-  height: 3.2rem;
+  width: 88.6666666667vw;
+  height: 32vw;
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
+  padding-left: 2vw;
+  padding-right: 2vw;
   background-color: transparent;
   z-index: 0; }
   .youhuiquan .coupon .coupon-introduce {
-    padding-top: 0.48rem;
-    padding-bottom: 0.32rem;
+    padding-top: 4.8vw;
+    padding-bottom: 3.2vw;
     width: 100%;
-    height: 2.24rem;
+    height: 22.4vw;
     border-bottom: 1px dashed #e5e5e5; }
     .youhuiquan .coupon .coupon-introduce .coupon-money {
-      width: 2.6rem;
-      height: 1.44rem;
+      width: 26vw;
+      height: 14.4vw;
       text-align: center;
       vertical-align: middle;
       float: left; }
       .youhuiquan .coupon .coupon-introduce .coupon-money .coupon-money-flag {
-        font-size: 0.5866666667rem;
-        line-height: 1.44rem; }
+        font-size: 5.8666666667vw;
+        line-height: 14.4vw; }
       .youhuiquan .coupon .coupon-introduce .coupon-money .coupon-money-amount {
-        font-size: 1.3066666667rem;
-        line-height: 1.44rem; }
+        font-size: 13.0666666667vw;
+        line-height: 14.4vw; }
     .youhuiquan .coupon .coupon-introduce .coupon-message {
-      width: 5.8666666667rem;
-      height: 1.44rem;
+      width: 58.6666666667vw;
+      height: 14.4vw;
       float: right;
-      padding-top: 0.1333333333rem;
-      padding-bottom: 0.1333333333rem; }
+      padding-top: 1.3333333333vw;
+      padding-bottom: 1.3333333333vw; }
       .youhuiquan .coupon .coupon-introduce .coupon-message .coupon-type {
-        font-size: 0.4rem;
-        line-height: 0.6666666667rem; }
+        font-size: 4vw;
+        line-height: 6.6666666667vw; }
       .youhuiquan .coupon .coupon-introduce .coupon-message .coupon-note {
-        font-size: 0.2933333333rem;
-        line-height: 0.5066666667rem; }
+        font-size: 2.9333333333vw;
+        line-height: 5.0666666667vw; }
   .youhuiquan .coupon .coupon-date {
     width: 100%;
-    height: 0.96rem;
-    line-height: 0.96rem;
+    height: 9.6vw;
+    line-height: 9.6vw;
     border-top: 1px dashed #e5e5e5;
-    padding-left: 0.3333333333rem; }
+    padding-left: 3.3333333333vw; }
 .youhuiquan .overdue {
-  width: 2.88rem;
-  height: 1.4266666667rem;
+  width: 28.8vw;
+  height: 14.2666666667vw;
   position: absolute;
-  right: 0.6rem;
-  bottom: 0.76rem; }
+  right: 6vw;
+  bottom: 7.6vw; }
 
 /* end coupon */
 /* start loan */
 .huankuanxiangqing .tab-wrap, .jietiaoxiangdan .tab-wrap {
-  height: 1.36rem;
-  line-height: 1.36rem; }
+  height: 13.6vw;
+  line-height: 13.6vw; }
 .huankuanxiangqing .loan-list, .jietiaoxiangdan .loan-list {
   width: 100%;
   height: auto;
-  padding: 0.4rem; }
+  padding: 4vw; }
   .huankuanxiangqing .loan-list .loan-details, .jietiaoxiangdan .loan-list .loan-details {
     width: 100%;
-    height: 1.88rem; }
+    height: 18.8vw; }
     .huankuanxiangqing .loan-list .loan-details .loan-flow, .jietiaoxiangdan .loan-list .loan-details .loan-flow {
-      width: 0.72rem;
+      width: 7.2vw;
       height: 100%;
       float: left; }
       .huankuanxiangqing .loan-list .loan-details .loan-flow .loan-active, .jietiaoxiangdan .loan-list .loan-details .loan-flow .loan-active {
-        width: 0.52rem;
-        height: 0.52rem;
-        margin-top: 0.44rem;
-        margin-left: 0.04rem;
+        width: 5.2vw;
+        height: 5.2vw;
+        margin-top: 4.4vw;
+        margin-left: 0.4vw;
         border-radius: 50%;
-        padding: 0.04rem;
+        padding: 0.4vw;
         background-color: #c2e2fd;
         position: relative;
         z-index: 5; }
       .huankuanxiangqing .loan-list .loan-details .loan-flow .loan-finished, .jietiaoxiangdan .loan-list .loan-details .loan-flow .loan-finished {
-        width: 0.44rem;
-        height: 0.44rem;
-        margin-top: 0.48rem;
-        margin-left: 0.08rem;
+        width: 4.4vw;
+        height: 4.4vw;
+        margin-top: 4.8vw;
+        margin-left: 0.8vw;
         border-radius: 50%;
         background-color: #ffffff;
         position: relative;
@@ -1134,19 +1134,19 @@
         content: "";
         display: block;
         width: 2px;
-        height: 0.76rem;
+        height: 7.6vw;
         position: absolute;
         z-index: -1;
         left: 50%;
         top: 50%;
         margin-left: -1px;
-        margin-top: -0.8rem;
+        margin-top: -8vw;
         background-color: #d8d8d8; }
       .huankuanxiangqing .loan-list .loan-details .loan-flow .loan-line-bottom::after, .jietiaoxiangdan .loan-list .loan-details .loan-flow .loan-line-bottom::after {
         content: "";
         display: block;
         width: 2px;
-        height: 1.24rem;
+        height: 12.4vw;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -1154,71 +1154,71 @@
         background-color: #d8d8d8;
         z-index: -1; }
     .huankuanxiangqing .loan-list .loan-details .loan-messgae, .jietiaoxiangdan .loan-list .loan-details .loan-messgae {
-      width: 8.48rem;
+      width: 84.8vw;
       height: 100%;
-      padding-top: 0.44rem;
-      padding-left: 0.2rem;
+      padding-top: 4.4vw;
+      padding-left: 2vw;
       border-bottom: 1px solid #ddd;
       height: 100%;
       float: left; }
       .huankuanxiangqing .loan-list .loan-details .loan-messgae .loan-messgae-title, .jietiaoxiangdan .loan-list .loan-details .loan-messgae .loan-messgae-title {
-        font-size: 0.36rem;
-        line-height: 0.6rem; }
+        font-size: 3.6vw;
+        line-height: 6vw; }
       .huankuanxiangqing .loan-list .loan-details .loan-messgae .loan-messgae-content, .jietiaoxiangdan .loan-list .loan-details .loan-messgae .loan-messgae-content {
-        font-size: 0.28rem;
-        line-height: 0.8rem; }
+        font-size: 2.8vw;
+        line-height: 8vw; }
 .huankuanxiangqing .detail-list, .jietiaoxiangdan .detail-list {
-  margin-bottom: 1.6rem;
-  padding-top: 0.2rem;
-  padding-left: 0.4rem;
-  padding-right: 0.4rem;
-  padding-bottom: 0.2rem;
-  margin-top: 0.28rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 16vw;
+  padding-top: 2vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-bottom: 2vw;
+  margin-top: 2.8vw;
+  margin-bottom: 4vw;
   background-color: #fff; }
   .huankuanxiangqing .detail-list .loan-entry, .jietiaoxiangdan .detail-list .loan-entry {
-    width: 2.4rem;
-    height: 0.6666666667rem;
-    line-height: 0.6666666667rem; }
+    width: 24vw;
+    height: 6.6666666667vw;
+    line-height: 6.6666666667vw; }
   .huankuanxiangqing .detail-list .loan-entry-content, .jietiaoxiangdan .detail-list .loan-entry-content {
-    max-width: 6.8rem;
+    max-width: 68vw;
     width: auto;
-    height: 0.6666666667rem;
-    line-height: 0.6666666667rem; }
+    height: 6.6666666667vw;
+    line-height: 6.6666666667vw; }
 .huankuanxiangqing footer, .jietiaoxiangdan footer {
   display: -webkit-flex;
   align-items: center;
   -webkit-align-items: center;
   width: 100%;
-  height: 1.6rem;
+  height: 16vw;
   background: #ffffff;
-  padding-left: 0.4rem;
-  padding-right: 0.4rem;
+  padding-left: 4vw;
+  padding-right: 4vw;
   position: fixed;
   z-index: 100;
   bottom: 0;
   left: 0;
   right: 0;
-  font-size: 0.44rem; }
+  font-size: 4.4vw; }
   .huankuanxiangqing footer .footer-tip, .jietiaoxiangdan footer .footer-tip {
-    width: 3.48rem;
+    width: 34.8vw;
     height: 100%;
-    line-height: 1.6rem;
-    font-size: 0.4rem; }
+    line-height: 16vw;
+    font-size: 4vw; }
   .huankuanxiangqing footer .renewal-btn, .jietiaoxiangdan footer .renewal-btn {
-    width: 2.64rem;
-    height: 0.96rem;
+    width: 26.4vw;
+    height: 9.6vw;
     color: #2ba9fc;
     background-color: #ffffff;
-    margin-right: 0.44rem;
-    border-radius: 0.48rem;
+    margin-right: 4.4vw;
+    border-radius: 4.8vw;
     border: 1px solid #2ba9fc; }
   .huankuanxiangqing footer .repayment-btn, .jietiaoxiangdan footer .repayment-btn {
-    width: 2.64rem;
-    height: 0.96rem;
+    width: 26.4vw;
+    height: 9.6vw;
     background-color: #2ba9fc;
     color: #ffffff;
-    border-radius: 0.48rem; }
+    border-radius: 4.8vw; }
 
 /* end loan */
 /* start 字体颜色 */
@@ -1307,7 +1307,7 @@
 /* start 确认借款 */
 .querenjiekuan .confirm-loan-header {
   width: 100%;
-  height: 4.6rem;
+  height: 46vw;
   position: relative; }
   .querenjiekuan .confirm-loan-header .confirm-loan-header-wrap {
     position: fixed;
@@ -1317,8 +1317,8 @@
     z-index: 1; }
   .querenjiekuan .confirm-loan-header .confirm-focal-point {
     width: 100%;
-    height: 4.6rem;
-    padding-top: 1.7066666667rem;
+    height: 46vw;
+    padding-top: 17.0666666667vw;
     display: -webkit-box;
     display: -webkit-flex;
     align-items: center;
@@ -1328,27 +1328,27 @@
     -webkit-box-pack: center;
     -webkit-justify-content: center; }
     .querenjiekuan .confirm-loan-header .confirm-focal-point .confirm-focus-wrap {
-      width: 8rem;
-      height: 2rem; }
+      width: 80vw;
+      height: 20vw; }
 .querenjiekuan .list-title {
-  height: 1.32rem;
-  line-height: 1.32rem; }
+  height: 13.2vw;
+  line-height: 13.2vw; }
   .querenjiekuan .list-title .svg-wrap {
-    width: 0.64rem;
-    height: 1.32rem;
+    width: 6.4vw;
+    height: 13.2vw;
     display: -webkit-box;
     display: -webkit-flex;
     align-items: center;
     -webkit-box-align: center;
     -webkit-align-items: center; }
 .querenjiekuan .list-content {
-  padding-left: 0.4rem;
-  padding-right: 0.4rem;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem; }
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-top: 2vw;
+  padding-bottom: 2vw; }
   .querenjiekuan .list-content .list-item {
-    height: 0.8rem;
-    line-height: 0.8rem;
+    height: 8vw;
+    line-height: 8vw;
     display: -webkit-flex;
     align-items: center;
     justify-content: space-between;
@@ -1359,127 +1359,127 @@
       align-items: center;
       -webkit-align-items: center; }
 .querenjiekuan .note-wrap {
-  height: 1.36rem;
-  line-height: 1.36rem; }
+  height: 13.6vw;
+  line-height: 13.6vw; }
   .querenjiekuan .note-wrap .selected {
     color: #58d043; }
 .querenjiekuan .validate-btn {
-  margin-bottom: 1.08rem; }
+  margin-bottom: 10.8vw; }
 
 /* end 确认借款 */
 /* start 确认借款 */
 .invite-friend-header {
   width: 100%;
-  height: 7.64rem; }
+  height: 76.4vw; }
 
 .invite-friend-rule {
-  width: 8.7466666667rem;
-  height: 4.7466666667rem;
+  width: 87.4666666667vw;
+  height: 47.4666666667vw;
   margin-left: auto;
   margin-right: auto;
   position: relative;
   z-index: 1; }
   .invite-friend-rule .invite-friend-rule-message {
-    width: 7.9466666667rem;
-    height: 2.3733333333rem;
-    line-height: 0.5066666667rem;
-    font-size: 0.2933333333rem;
-    margin-top: 0.9466666667rem;
-    margin-left: 0.4rem;
-    margin-right: 0.4rem;
-    margin-bottom: 0.2666666667rem;
+    width: 79.4666666667vw;
+    height: 23.7333333333vw;
+    line-height: 5.0666666667vw;
+    font-size: 2.9333333333vw;
+    margin-top: 9.4666666667vw;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    margin-bottom: 2.6666666667vw;
     float: left; }
   .invite-friend-rule .invite-friend-rule-btn {
-    width: 2.5733333333rem;
-    height: 0.9066666667rem;
+    width: 25.7333333333vw;
+    height: 9.0666666667vw;
     margin-left: auto;
     margin-right: auto; }
 
 .invite-friend-winner {
-  width: 8.7466666667rem;
-  height: 4.4133333333rem;
-  margin-top: 0.1866666667rem;
+  width: 87.4666666667vw;
+  height: 44.1333333333vw;
+  margin-top: 1.8666666667vw;
   position: relative;
   margin-left: auto;
   margin-right: auto;
   z-index: 1; }
   .invite-friend-winner .invite-friend-winner-list {
-    width: 8.04rem;
-    height: 2.9333333333rem;
-    margin-top: 1.16rem;
-    margin-left: 0.32rem;
-    margin-right: 0.32rem;
+    width: 80.4vw;
+    height: 29.3333333333vw;
+    margin-top: 11.6vw;
+    margin-left: 3.2vw;
+    margin-right: 3.2vw;
     float: left; }
     .invite-friend-winner .invite-friend-winner-list .invite-friend-list-header {
-      width: 7.5866666667rem;
-      height: 0.8rem;
+      width: 75.8666666667vw;
+      height: 8vw;
       margin-left: auto;
       margin-right: auto;
-      line-height: 0.8rem;
-      font-size: 0.2933333333rem;
+      line-height: 8vw;
+      font-size: 2.9333333333vw;
       color: #fe9218; }
     .invite-friend-winner .invite-friend-winner-list .invite-friend-list-wrap {
-      width: 7.5866666667rem;
-      height: 2.4rem;
+      width: 75.8666666667vw;
+      height: 24vw;
       margin-left: auto;
       margin-right: auto;
-      font-size: 0.2933333333rem; }
+      font-size: 2.9333333333vw; }
       .invite-friend-winner .invite-friend-winner-list .invite-friend-list-wrap .invite-friend-list-item {
-        height: 0.48rem;
+        height: 4.8vw;
         color: #666666; }
 
 /* end 确认借款 */
 /* start 我的 */
 .wode .wode-header {
   width: 100%;
-  height: 4.16rem; }
+  height: 41.6vw; }
   .wode .wode-header .author-wrap {
     width: 100%;
-    height: 4.16rem;
-    padding-left: 0.72rem;
-    padding-right: 0.72rem;
-    padding-top: 1.32rem; }
+    height: 41.6vw;
+    padding-left: 7.2vw;
+    padding-right: 7.2vw;
+    padding-top: 13.2vw; }
     .wode .wode-header .author-wrap .author-avatar {
-      width: 1.8666666667rem;
-      height: 1.8666666667rem;
+      width: 18.6666666667vw;
+      height: 18.6666666667vw;
       border-radius: 50%;
-      border: 0.04rem solid rgba(255, 255, 255, 0.3);
+      border: 0.4vw solid rgba(255, 255, 255, 0.3);
       background: rgba(255, 255, 255, 0.3); }
       .wode .wode-header .author-wrap .author-avatar .author-avatar-image {
         width: 100%;
         height: 100%; }
     .wode .wode-header .author-wrap .author-message {
-      width: 6.6933333333rem;
-      height: 1.8666666667rem;
-      padding-top: 0.16rem;
-      padding-bottom: 0.32rem;
-      padding-left: 0.52rem; }
+      width: 66.9333333333vw;
+      height: 18.6666666667vw;
+      padding-top: 1.6vw;
+      padding-bottom: 3.2vw;
+      padding-left: 5.2vw; }
       .wode .wode-header .author-wrap .author-message .author-message-phone {
-        line-height: 0.88rem; }
+        line-height: 8.8vw; }
       .wode .wode-header .author-wrap .author-message .author-real-sign {
-        width: 1.84rem;
-        height: 0.52rem;
-        line-height: 0.52rem;
-        font-size: 0.28rem;
+        width: 18.4vw;
+        height: 5.2vw;
+        line-height: 5.2vw;
+        font-size: 2.8vw;
         color: #ffffff;
         background-color: transparent;
         border: 1px solid #ffffff;
-        border-radius: 0.08rem; }
+        border-radius: 0.8vw; }
 .wode .nav-wrap {
-  height: 1.32rem;
-  line-height: 1.32rem; }
+  height: 13.2vw;
+  line-height: 13.2vw; }
 .wode .list-item {
-  height: 1.32rem;
-  line-height: 1.32rem; }
+  height: 13.2vw;
+  line-height: 13.2vw; }
   .wode .list-item .icon-wrap {
-    width: 0.48rem;
-    height: 1.32rem;
-    margin-right: 0.2rem;
-    line-height: 1.32rem; }
+    width: 4.8vw;
+    height: 13.2vw;
+    margin-right: 2vw;
+    line-height: 13.2vw; }
   .wode .list-item .title-warp {
     width: auto;
-    height: 1.32rem;
-    line-height: 1.32rem; }
+    height: 13.2vw;
+    line-height: 13.2vw; }
   .wode .list-item .addon-wrap {
     width: auto;
     height: 100%;
@@ -1493,12 +1493,12 @@
     -webkit-justify-content: center; }
 .wode .logout-btn {
   width: 100%;
-  height: 1.32rem;
-  line-height: 1.32rem; }
+  height: 13.2vw;
+  line-height: 13.2vw; }
 
 .badge {
-  width: 0.24rem;
-  height: 0.24rem;
+  width: 2.4vw;
+  height: 2.4vw;
   border-radius: 50%;
   background: #ff706b;
   border: none;
@@ -1508,86 +1508,86 @@
 /* start 我的 */
 .empower .header-wrap {
   width: 100%;
-  height: 6.52rem;
+  height: 65.2vw;
   position: relative; }
   .empower .header-wrap .header-logo {
-    width: 3.6rem;
-    height: 1.76rem;
-    margin-top: 2rem;
+    width: 36vw;
+    height: 17.6vw;
+    margin-top: 20vw;
     margin-left: auto;
     margin-right: auto; }
   .empower .header-wrap .header-tab {
     position: absolute;
     width: 100%;
-    bottom: 0.4rem; }
+    bottom: 4vw; }
     .empower .header-wrap .header-tab .header-tab-item {
       width: 50%;
       text-align: center;
       float: left;
-      font-size: 0.48rem;
+      font-size: 4.8vw;
       padding: 0; }
     .empower .header-wrap .header-tab .selected {
       position: relative; }
     .empower .header-wrap .header-tab .selected::after {
       content: '';
       display: block;
-      border-bottom: 0.36rem solid #ffffff;
-      border-left: 0.28rem solid transparent;
-      border-right: 0.28rem solid transparent;
+      border-bottom: 3.6vw solid #ffffff;
+      border-left: 2.8vw solid transparent;
+      border-right: 2.8vw solid transparent;
       border-top: 0 solid transparent;
       position: absolute;
       left: 50%;
-      margin-left: -0.24rem;
-      bottom: -0.48rem; }
+      margin-left: -2.4vw;
+      bottom: -4.8vw; }
 .empower .input-group {
-  width: 9.2rem;
-  height: 1.28rem;
+  width: 92vw;
+  height: 12.8vw;
   margin-left: auto;
   margin-right: auto;
   border-bottom: 1px solid #dddddd; }
   .empower .input-group .input-group-addon {
     display: inline-block;
-    padding-left: 0.2rem;
-    padding-right: 0.28rem;
-    line-height: 1.28rem;
+    padding-left: 2vw;
+    padding-right: 2.8vw;
+    line-height: 12.8vw;
     color: #aaaaaa; }
   .empower .input-group .input-control {
-    max-width: 5.7333333333rem;
+    max-width: 57.3333333333vw;
     width: auto;
-    height: 0.88rem !important;
-    line-height: 0.48rem !important;
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
-    font-size: 0.4rem;
+    height: 8.8vw !important;
+    line-height: 4.8vw !important;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    font-size: 4vw;
     color: #bbbbbb;
     letter-spacing: 0.05em;
     outline: none;
     border: none; }
   .empower .input-group .verification-code-btn {
     display: inline-block;
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-    line-height: 1.28rem;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    line-height: 12.8vw;
     background: none; }
   .empower .input-group input::-webkit-input-placeholder {
-    font-size: 0.4rem;
-    line-height: 0.64rem !important;
+    font-size: 4vw;
+    line-height: 6.4vw !important;
     color: #b3b3b3 !important; }
 .empower .note {
   width: 100%;
-  height: 0.8rem;
-  margin-top: 1.12rem;
-  padding-left: 0.4rem; }
+  height: 8vw;
+  margin-top: 11.2vw;
+  padding-left: 4vw; }
   .empower .note i {
-    font-size: 0.44rem;
+    font-size: 4.4vw;
     color: #dddddd;
-    line-height: 0.68rem; }
+    line-height: 6.8vw; }
   .empower .note span {
-    font-size: 0.36rem;
-    padding-left: 0.16rem;
-    line-height: 0.84rem;
+    font-size: 3.6vw;
+    padding-left: 1.6vw;
+    line-height: 8.4vw;
     vertical-align: -0.12em; }
   .empower .note .selected {
     color: #369efa !important; }
@@ -1596,107 +1596,107 @@
 /* start 现金红包 */
 .xianjinhongbao header {
   width: 100%;
-  height: 5.6rem;
+  height: 56vw;
   position: relative;
   z-index: 0; }
   .xianjinhongbao header .message-warp {
     width: 100%;
-    height: 1.9066666667rem;
-    padding-top: 0.4rem;
-    padding-bottom: 0.6666666667rem; }
+    height: 19.0666666667vw;
+    padding-top: 4vw;
+    padding-bottom: 6.6666666667vw; }
     .xianjinhongbao header .message-warp .message-hint {
-      height: 0.8rem;
-      line-height: 0.8rem; }
+      height: 8vw;
+      line-height: 8vw; }
     .xianjinhongbao header .message-warp .message-money-count {
-      height: 1.3066666667rem;
-      line-height: 1.3066666667rem;
-      font-size: 0.9333333333rem; }
+      height: 13.0666666667vw;
+      line-height: 13.0666666667vw;
+      font-size: 9.3333333333vw; }
   .xianjinhongbao header .business-tag-bar {
-    height: 1.8rem;
-    border-top-left-radius: 0.4rem;
-    border-top-right-radius: 0.4rem;
+    height: 18vw;
+    border-top-left-radius: 4vw;
+    border-top-right-radius: 4vw;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 5; }
     .xianjinhongbao header .business-tag-bar .business-tag {
-      height: 1.8rem;
-      line-height: 1.8rem; }
+      height: 18vw;
+      line-height: 18vw; }
       .xianjinhongbao header .business-tag-bar .business-tag span {
         vertical-align: top; }
     .xianjinhongbao header .business-tag-bar .business-tag-bar:first-child {
-      border-top-left-radius: 0.4rem; }
+      border-top-left-radius: 4vw; }
     .xianjinhongbao header .business-tag-bar .business-tag-bar:last-child {
-      border-top-right-radius: 0.4rem; }
+      border-top-right-radius: 4vw; }
   .xianjinhongbao header .cash-out-wrap {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 24vw;
+    height: 24vw;
     position: absolute;
     left: 50%;
-    bottom: -1.2rem;
-    margin-left: -1.2rem;
-    padding: 0.24rem;
+    bottom: -12vw;
+    margin-left: -12vw;
+    padding: 2.4vw;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.2); }
     .xianjinhongbao header .cash-out-wrap .cash-out-btn {
-      width: 1.92rem;
-      height: 1.92rem;
-      line-height: 1.92rem;
+      width: 19.2vw;
+      height: 19.2vw;
+      line-height: 19.2vw;
       color: #ffffff;
       background: #51b9f4;
       border-radius: 50%;
       text-align: center;
-      font-size: 0.44rem; }
+      font-size: 4.4vw; }
 .xianjinhongbao .tab-wrap {
-  height: 0.88rem;
-  line-height: 0.88rem;
-  margin-top: 1.52rem;
+  height: 8.8vw;
+  line-height: 8.8vw;
+  margin-top: 15.2vw;
   vertical-align: middle; }
 .xianjinhongbao .content-list-wrap {
-  height: 9.76rem; }
+  height: 97.6vw; }
   .xianjinhongbao .content-list-wrap .content-list {
-    max-height: 9.76rem;
+    max-height: 97.6vw;
     height: auto; }
     .xianjinhongbao .content-list-wrap .content-list .content-list-item {
-      height: 1.88rem; }
+      height: 18.8vw; }
       .xianjinhongbao .content-list-wrap .content-list .content-list-item .content-number {
-        line-height: 1.88rem; }
+        line-height: 18.8vw; }
 
 .xianjinhongbaoshuoming .question {
-  line-height: 0.8rem;
-  font-size: 0.4133333333rem; }
+  line-height: 8vw;
+  font-size: 4.1333333333vw; }
 .xianjinhongbaoshuoming .answer {
-  line-height: 0.5333333333rem;
-  font-size: 0.3466666667rem; }
+  line-height: 5.3333333333vw;
+  font-size: 3.4666666667vw; }
   .xianjinhongbaoshuoming .answer li {
     list-style: disc inside; }
 
 .hongbaotixian .title {
-  line-height: 0.64rem; }
+  line-height: 6.4vw; }
 .hongbaotixian .money {
-  height: 1.0666666667rem;
-  line-height: 1.0666666667rem; }
+  height: 10.6666666667vw;
+  line-height: 10.6666666667vw; }
   .hongbaotixian .money .money-cash-out {
-    height: 1.0666666667rem;
-    line-height: 1.0666666667rem; }
+    height: 10.6666666667vw;
+    line-height: 10.6666666667vw; }
 .hongbaotixian .bank-card {
   width: 100%;
-  height: 2rem;
-  line-height: 2rem; }
+  height: 20vw;
+  line-height: 20vw; }
   .hongbaotixian .bank-card .bank-wrap {
     height: 100%; }
     .hongbaotixian .bank-card .bank-wrap .logo-wrap {
-      width: 0.6666666667rem;
-      height: 2rem;
-      margin-right: 0.32rem; }
+      width: 6.6666666667vw;
+      height: 20vw;
+      margin-right: 3.2vw; }
       .hongbaotixian .bank-card .bank-wrap .logo-wrap .bank-logo {
-        width: 0.6666666667rem;
-        height: 0.6666666667rem;
-        margin-top: 0.6666666667rem;
-        margin-bottom: 0.6666666667rem; }
+        width: 6.6666666667vw;
+        height: 6.6666666667vw;
+        margin-top: 6.6666666667vw;
+        margin-bottom: 6.6666666667vw; }
 .hongbaotixian .note {
-  line-height: 0.96rem; }
+  line-height: 9.6vw; }
 
 /* end 现金红包 */
 /* start 个人信息认证 */
@@ -1736,12 +1736,12 @@
 /* start 个人信息认证 */
 .renzheng header {
   width: 100%;
-  height: 5.68rem;
+  height: 56.8vw;
   border-bottom: 1px solid #dddddd; }
   .renzheng header .header-content-wrap {
     width: 100%;
-    height: 3.16rem;
-    line-height: 3.16rem;
+    height: 31.6vw;
+    line-height: 31.6vw;
     display: -webkit-box;
     display: -webkit-flex;
     align-items: center;
@@ -1749,62 +1749,62 @@
     -webkit-align-items: center; }
     .renzheng header .header-content-wrap .header-content {
       width: 100%;
-      height: 1.08rem;
-      line-height: 1.08rem;
+      height: 10.8vw;
+      line-height: 10.8vw;
       vertical-align: text-top; }
       .renzheng header .header-content-wrap .header-content span {
-        line-height: 1.08rem; }
+        line-height: 10.8vw; }
       .renzheng header .header-content-wrap .header-content .header-content-step {
         display: inline-block;
-        width: 1.08rem;
-        height: 1.08rem;
-        line-height: 1rem;
-        border: 0.08rem solid #a0cffe;
+        width: 10.8vw;
+        height: 10.8vw;
+        line-height: 10vw;
+        border: 0.8vw solid #a0cffe;
         background-color: #ecf6ff;
         border-radius: 50%;
         text-indent: -0.03em; }
   .renzheng header .header-note {
-    width: 8.56rem;
-    height: 1.2rem;
-    line-height: 1.2rem;
-    border-radius: 0.6rem;
+    width: 85.6vw;
+    height: 12vw;
+    line-height: 12vw;
+    border-radius: 6vw;
     left: 50%;
-    margin-left: -4.28rem;
-    bottom: -0.6rem;
+    margin-left: -42.8vw;
+    bottom: -6vw;
     z-index: 20;
-    box-shadow: 0 0.16rem 1rem 0 rgba(134, 203, 254, 0.3); }
+    box-shadow: 0 1.6vw 10vw 0 rgba(134, 203, 254, 0.3); }
 .renzheng .certification-content {
-  width: 9.4666666667rem;
-  height: 9.04rem;
+  width: 94.6666666667vw;
+  height: 90.4vw;
   margin-left: auto;
   margin-right: auto;
-  border-bottom-left-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem; }
+  border-bottom-left-radius: 4vw;
+  border-bottom-right-radius: 4vw;
+  padding-top: 10vw;
+  padding-bottom: 10vw; }
   .renzheng .certification-content .certification-logo {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 16vw;
+    height: 16vw;
     border-radius: 50%;
     margin-left: auto;
-    margin-top: 0.72rem;
+    margin-top: 7.2vw;
     margin-right: auto;
     background-color: #efefef;
     position: relative; }
     .renzheng .certification-content .certification-logo svg {
-      width: 1.08rem;
-      height: 1.12rem;
+      width: 10.8vw;
+      height: 11.2vw;
       margin-left: auto;
       margin-right: auto;
-      margin-top: 0.24rem;
-      margin-bottom: 0.24rem; }
+      margin-top: 2.4vw;
+      margin-bottom: 2.4vw; }
     .renzheng .certification-content .certification-logo .sign {
       display: none !important;
-      width: 0.6rem;
-      height: 0.6rem;
+      width: 6vw;
+      height: 6vw;
       position: absolute;
-      bottom: 0rem;
-      right: 0.12rem;
+      bottom: 0vw;
+      right: 1.2vw;
       z-index: 50; }
   .renzheng .certification-content .active {
     background: #daebff; }
@@ -1813,8 +1813,8 @@
     .renzheng .certification-content .selected .sign {
       display: block !important; }
   .renzheng .certification-content .certification-title {
-    height: 1.2rem;
-    line-height: 1.2rem; }
+    height: 12vw;
+    line-height: 12vw; }
 
 /* end 个人信息认证 */
 /* start 个人信息认证 */
@@ -1848,25 +1848,25 @@
 /* end 个人信息认证 */
 /* start 银行卡 */
 .yinhangka .title {
-  height: 1.52rem;
-  line-height: 1.52rem; }
+  height: 15.2vw;
+  line-height: 15.2vw; }
 .yinhangka .bank-wrap {
   width: 100%;
-  height: 4.92rem;
-  padding-top: 0.2rem;
-  padding-bottom: 0.6rem; }
+  height: 49.2vw;
+  padding-top: 2vw;
+  padding-bottom: 6vw; }
   .yinhangka .bank-wrap .bank-item {
-    width: 7.36rem;
-    height: 4.12rem;
-    border-radius: 0.2rem;
+    width: 73.6vw;
+    height: 41.2vw;
+    border-radius: 2vw;
     z-index: 2; }
     .yinhangka .bank-wrap .bank-item .mantissa {
-      line-height: 0.48rem;
+      line-height: 4.8vw;
       z-index: 5;
-      right: 1.48rem;
-      bottom: 1.52rem; }
+      right: 14.8vw;
+      bottom: 15.2vw; }
 .yinhangka .note-wrap {
-  line-height: 0.6rem; }
+  line-height: 6vw; }
 
 /* end 银行卡 */
 /* start action-button */
@@ -1880,32 +1880,32 @@
   z-index: 30; }
   .modal .action-button .action-button-header {
     width: 100%;
-    height: 1.24rem;
-    line-height: 1.24rem;
+    height: 12.4vw;
+    line-height: 12.4vw;
     position: relative; }
     .modal .action-button .action-button-header .close {
-      line-height: 1.24rem;
+      line-height: 12.4vw;
       position: absolute;
       top: 0;
-      right: 0.4rem; }
+      right: 4vw; }
   .modal .action-button .action-button-list {
     width: 100%;
-    padding-bottom: 0.52rem; }
+    padding-bottom: 5.2vw; }
     .modal .action-button .action-button-list .list-item {
       width: 100%;
-      height: 1.6rem; }
+      height: 16vw; }
       .modal .action-button .action-button-list .list-item .bank-logo {
-        width: 0.6666666667rem;
-        height: 0.6666666667rem;
-        margin-top: 0.4666666667rem;
-        margin-bottom: 0.4666666667rem;
-        margin-right: 0.32rem; }
+        width: 6.6666666667vw;
+        height: 6.6666666667vw;
+        margin-top: 4.6666666667vw;
+        margin-bottom: 4.6666666667vw;
+        margin-right: 3.2vw; }
       .modal .action-button .action-button-list .list-item .bank-message {
-        width: 6.96rem;
-        height: 1.6rem;
-        line-height: 1.6rem; }
+        width: 69.6vw;
+        height: 16vw;
+        line-height: 16vw; }
       .modal .action-button .action-button-list .list-item i {
-        line-height: 1.6rem; }
+        line-height: 16vw; }
 
 /* end action-button */
 /* start 提示 */
@@ -1920,55 +1920,55 @@
   background-color: #ffffff; }
   .offline .cover .loan-btn, .wodejiekuan .cover .loan-btn, .youhuiquan .cover .loan-btn, .jinqidaihuan .cover .loan-btn, .jiekuanjilu .cover .loan-btn {
     display: block;
-    width: 3.2rem;
-    height: 1.08rem;
+    width: 32vw;
+    height: 10.8vw;
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.08rem;
+    line-height: 10.8vw;
     border: 1px solid #369efa;
     color: #369efa;
-    font-size: 0.48rem;
+    font-size: 4.8vw;
     background: #ffffff;
-    border-radius: 0.16rem; }
+    border-radius: 1.6vw; }
 
 .offline .cover .image-note {
-  width: 4.56rem;
-  height: 2.96rem;
+  width: 45.6vw;
+  height: 29.6vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5.36rem; }
+  margin-top: 53.6vw; }
 
 .jiekuanjilu .cover .image-note, .jietiaoxiangdan .cover .image-note, .zhimafen .cover .image-note, .yunyingshang .cover .image-note {
-  width: 4rem;
-  height: 4.4rem;
-  margin-top: 2.92rem;
+  width: 40vw;
+  height: 44vw;
+  margin-top: 29.2vw;
   margin-left: auto;
   margin-right: auto; }
 .jiekuanjilu .cover .loan-btn, .jietiaoxiangdan .cover .loan-btn, .zhimafen .cover .loan-btn, .yunyingshang .cover .loan-btn {
-  margin-top: 0.6rem; }
+  margin-top: 6vw; }
 
 .youhuiquan .cover .image-note {
-  width: 4rem;
-  height: 2.2933333333rem;
+  width: 40vw;
+  height: 22.9333333333vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3.08rem; }
+  margin-top: 30.8vw; }
 
 .xianjinhongbao .cover .image-note {
-  width: 3.6rem;
-  height: 2.92rem;
+  width: 36vw;
+  height: 29.2vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1.7066666667rem; }
+  margin-top: 17.0666666667vw; }
 
 .jinqidaihuan .cover .image-note {
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 34vw;
+  height: 34vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3.36rem; }
+  margin-top: 33.6vw; }
 .jinqidaihuan .cover .loan-btn {
-  margin-top: 0.6rem; }
+  margin-top: 6vw; }
 
 /* end 提示 */
 /* start 提示 */
@@ -1984,7 +1984,7 @@
   background-color: rgba(0, 0, 0, 0.5); }
 
 .guanxi .selector, .youhuiquan .selector {
-  width: 9.44rem;
+  width: 94.4vw;
   height: auto;
   margin-left: auto;
   margin-right: auto;
@@ -1997,11 +1997,11 @@
     width: 100%;
     height: auto;
     background-color: #ffffff;
-    border-radius: 0.2rem; }
+    border-radius: 2vw; }
     .guanxi .selector .selector-list .list-item, .youhuiquan .selector .selector-list .list-item {
       width: 100%;
-      height: 1.2rem;
-      line-height: 1.2rem;
+      height: 12vw;
+      line-height: 12vw;
       border-bottom: 1px solid #dddddd;
       color: #666666;
       background-color: transparent; }
@@ -2009,12 +2009,12 @@
       border: none; }
   .guanxi .selector .selector-btn, .youhuiquan .selector .selector-btn {
     width: 100%;
-    height: 1.52rem;
-    margin-top: 0.4rem;
-    margin-bottom: 0.28rem;
-    line-height: 1.52rem;
+    height: 15.2vw;
+    margin-top: 4vw;
+    margin-bottom: 2.8vw;
+    line-height: 15.2vw;
     background-color: #ffffff;
-    border-radius: 0.2rem;
+    border-radius: 2vw;
     letter-spacing: 1em;
     text-indent: 1em; }
   .guanxi .selector .selected, .youhuiquan .selector .selected {
@@ -2031,26 +2031,26 @@
   z-index: 50; }
   .yinhangka .selector .selector-title {
     width: 100%;
-    height: 1.24rem;
-    line-height: 1.24rem;
+    height: 12.4vw;
+    line-height: 12.4vw;
     position: relative;
-    font-size: 0.52rem;
+    font-size: 5.2vw;
     text-align: center;
     color: #333333; }
   .yinhangka .selector .selector-list {
     width: 100%;
-    padding-bottom: 0.52rem; }
+    padding-bottom: 5.2vw; }
     .yinhangka .selector .selector-list .list-item {
       width: 100%;
-      height: 1.6rem;
-      line-height: 1.6rem;
+      height: 16vw;
+      line-height: 16vw;
       display: -webkit-flex;
       align-items: center;
       -webkit-align-items: center; }
 
 .fenxiang .selector {
   width: 100%;
-  height: 6.8rem;
+  height: 68vw;
   position: fixed;
   left: 0;
   right: 0;
@@ -2059,25 +2059,25 @@
   background-color: #ffffff; }
   .fenxiang .selector .selector-list {
     width: 100%;
-    height: 5.2rem;
-    padding-top: 0.64rem; }
+    height: 52vw;
+    padding-top: 6.4vw; }
     .fenxiang .selector .selector-list .list-item {
       width: 25%;
-      height: 2.28rem;
+      height: 22.8vw;
       float: left; }
       .fenxiang .selector .selector-list .list-item i {
-        font-size: 1.2rem;
-        line-height: 1.2rem; }
+        font-size: 12vw;
+        line-height: 12vw; }
       .fenxiang .selector .selector-list .list-item span {
         display: block;
-        font-size: 0.36rem;
-        line-height: 0.4rem;
-        margin-top: 0.24rem; }
+        font-size: 3.6vw;
+        line-height: 4vw;
+        margin-top: 2.4vw; }
   .fenxiang .selector .selector-btn {
     width: 100%;
-    height: 1.6rem;
-    line-height: 1.6rem;
-    font-size: 0.48rem;
+    height: 16vw;
+    line-height: 16vw;
+    font-size: 4.8vw;
     letter-spacing: 1em;
     text-indent: 1em;
     margin: 0;
@@ -2086,129 +2086,129 @@
 /* end 提示 */
 /* start 主页 */
 .home .logo {
-  width: 1.2rem;
-  height: 0.6rem;
+  width: 12vw;
+  height: 6vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0.28rem;
+  margin-top: 2.8vw;
   border: none;
   outline: none; }
 .home .slide-wrap {
-  padding-bottom: 0.28rem;
+  padding-bottom: 2.8vw;
   background: #f3f5f9; }
 
 .before-borrowing .message-warp {
-  height: 3.88rem; }
+  height: 38.8vw; }
   .before-borrowing .message-warp .count-wrap {
-    height: 2.04rem;
-    padding-top: 0.4rem; }
+    height: 20.4vw;
+    padding-top: 4vw; }
     .before-borrowing .message-warp .count-wrap .count {
-      line-height: 1.1333333333rem; }
+      line-height: 11.3333333333vw; }
     .before-borrowing .message-warp .count-wrap .count-label {
-      line-height: 0.56rem; }
+      line-height: 5.6vw; }
   .before-borrowing .message-warp .detail-wrap {
-    height: 1.84rem;
-    padding-top: 0.16rem;
-    padding-bottom: 0.12rem; }
+    height: 18.4vw;
+    padding-top: 1.6vw;
+    padding-bottom: 1.2vw; }
     .before-borrowing .message-warp .detail-wrap .detail-number {
-      line-height: 0.84rem; }
+      line-height: 8.4vw; }
     .before-borrowing .message-warp .detail-wrap .detail-note {
-      line-height: 0.48rem;
+      line-height: 4.8vw;
       vertical-align: middle; }
 .before-borrowing .rail-wrap {
-  width: 8rem;
-  height: 3.6rem;
-  padding-bottom: 0.4rem;
+  width: 80vw;
+  height: 36vw;
+  padding-bottom: 4vw;
   margin-left: auto;
   margin-right: auto;
   position: relative; }
   .before-borrowing .rail-wrap .rail {
-    width: 8.8rem;
-    height: 0.16rem;
+    width: 88vw;
+    height: 1.6vw;
     position: absolute;
-    left: -0.4rem;
-    top: 1.6rem;
+    left: -4vw;
+    top: 16vw;
     background: #efefef;
-    border-radius: 0.08rem;
+    border-radius: 0.8vw;
     z-index: 2; }
     .before-borrowing .rail-wrap .rail .rail-inner {
-      width: 0.56rem;
+      width: 5.6vw;
       height: 100%;
-      border-radius: 0.08rem;
+      border-radius: 0.8vw;
       background: #4ab6fa; }
   .before-borrowing .rail-wrap .rail-btn {
-    width: 0.64rem;
-    height: 0.64rem;
+    width: 6.4vw;
+    height: 6.4vw;
     position: absolute;
-    top: 1.36rem;
+    top: 13.6vw;
     left: 0;
     z-index: 2;
     border-radius: 50%; }
     .before-borrowing .rail-wrap .rail-btn .rail-current-money {
-      width: 2rem;
-      height: 0.6rem;
-      line-height: 0.6rem;
-      font-size: 0.4rem;
+      width: 20vw;
+      height: 6vw;
+      line-height: 6vw;
+      font-size: 4vw;
       position: absolute;
-      top: -0.88rem;
-      left: -0.68rem; }
+      top: -8.8vw;
+      left: -6.8vw; }
   .before-borrowing .rail-wrap .rail-price-wrap {
-    width: 7.36rem;
-    height: 0.6rem;
+    width: 73.6vw;
+    height: 6vw;
     position: absolute;
-    top: 2.12rem;
-    left: 0.32rem;
+    top: 21.2vw;
+    left: 3.2vw;
     z-index: 1;
     margin-left: auto;
     margin-right: auto; }
     .before-borrowing .rail-wrap .rail-price-wrap .rail-price-col {
-      height: 1.36rem;
+      height: 13.6vw;
       position: absolute;
       top: 0; }
       .before-borrowing .rail-wrap .rail-price-wrap .rail-price-col .rail-ruling {
-        font-size: 0.16rem;
-        line-height: 0.36rem;
+        font-size: 1.6vw;
+        line-height: 3.6vw;
         color: #cccccc; }
       .before-borrowing .rail-wrap .rail-price-wrap .rail-price-col .rail-number {
-        font-size: 0.36rem;
-        line-height: 0.68rem;
+        font-size: 3.6vw;
+        line-height: 6.8vw;
         color: #999999; }
 .before-borrowing .note {
-  margin-top: 0.36rem;
-  line-height: 0.4rem; }
+  margin-top: 3.6vw;
+  line-height: 4vw; }
 
 .borrowing .message-wrap {
-  width: 9.2rem;
-  height: 2.44rem;
+  width: 92vw;
+  height: 24.4vw;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem; }
+  padding-top: 4vw;
+  padding-bottom: 4vw; }
   .borrowing .message-wrap .message-number {
-    height: 1.08rem;
-    line-height: 1.08rem; }
+    height: 10.8vw;
+    line-height: 10.8vw; }
   .borrowing .message-wrap .message-tip {
-    height: 0.56rem;
-    line-height: 0.56rem; }
+    height: 5.6vw;
+    line-height: 5.6vw; }
 .borrowing .loan-list {
-  width: 8.88rem;
+  width: 88.8vw;
   border: 1px dashed #66b4e7;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0.56rem;
-  padding-left: 0.24rem;
-  padding-right: 0.24rem; }
+  margin-top: 5.6vw;
+  padding-left: 2.4vw;
+  padding-right: 2.4vw; }
   .borrowing .loan-list .loan-details {
     width: 100%;
-    height: 1.88rem; }
+    height: 18.8vw; }
     .borrowing .loan-list .loan-details .loan-flow {
-      width: 0.72rem;
+      width: 7.2vw;
       height: 100%;
       float: left; }
       .borrowing .loan-list .loan-details .loan-flow .loan-active {
-        width: 0.52rem;
-        height: 0.52rem;
-        margin-top: 0.48rem;
+        width: 5.2vw;
+        height: 5.2vw;
+        margin-top: 4.8vw;
         border-radius: 50%;
         background-color: #d8d8d8;
         position: relative;
@@ -2221,10 +2221,10 @@
           position: relative;
           z-index: 5; }
       .borrowing .loan-list .loan-details .loan-flow .loan-finished {
-        width: 0.36rem;
-        height: 0.36rem;
-        margin-top: 0.56rem;
-        margin-left: 0.08rem;
+        width: 3.6vw;
+        height: 3.6vw;
+        margin-top: 5.6vw;
+        margin-left: 0.8vw;
         border-radius: 50%;
         background-color: #d8d8d8;
         position: relative;
@@ -2233,19 +2233,19 @@
         content: "";
         display: block;
         width: 2px;
-        height: 0.76rem;
+        height: 7.6vw;
         position: absolute;
         z-index: 2;
         left: 50%;
         top: 50%;
         margin-left: -1px;
-        margin-top: -0.76rem;
+        margin-top: -7.6vw;
         background-color: #d8d8d8; }
       .borrowing .loan-list .loan-details .loan-flow .loan-line-bottom::after {
         content: "";
         display: block;
         width: 2px;
-        height: 1.16rem;
+        height: 11.6vw;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -2253,130 +2253,130 @@
         background-color: #d8d8d8;
         z-index: 2; }
     .borrowing .loan-list .loan-details .loan-messgae {
-      width: 7.36rem;
-      padding-top: 0.44rem;
-      padding-bottom: 0.44rem;
-      padding-right: 0.4rem;
-      margin-left: 0.2rem;
+      width: 73.6vw;
+      padding-top: 4.4vw;
+      padding-bottom: 4.4vw;
+      padding-right: 4vw;
+      margin-left: 2vw;
       height: 100%;
       float: left; }
       .borrowing .loan-list .loan-details .loan-messgae .loan-messgae-title {
-        font-size: 0.36rem;
-        line-height: 0.6rem; }
+        font-size: 3.6vw;
+        line-height: 6vw; }
       .borrowing .loan-list .loan-details .loan-messgae .loan-messgae-content {
-        font-size: 0.28rem;
-        line-height: 0.52rem; }
+        font-size: 2.8vw;
+        line-height: 5.2vw; }
 
 .after-borrowing .division-line {
   width: 100%;
-  height: 0.28rem;
+  height: 2.8vw;
   background-color: #f3f5f9; }
 .after-borrowing .message-wrap {
-  width: 9.2rem;
-  height: 2.44rem;
+  width: 92vw;
+  height: 24.4vw;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem; }
+  padding-top: 4vw;
+  padding-bottom: 4vw; }
   .after-borrowing .message-wrap .message-number {
-    height: 1.08rem;
-    line-height: 1.08rem; }
+    height: 10.8vw;
+    line-height: 10.8vw; }
   .after-borrowing .message-wrap .message-tip {
-    height: 0.56rem;
-    line-height: 0.56rem; }
+    height: 5.6vw;
+    line-height: 5.6vw; }
 .after-borrowing .detail-list {
-  width: 8.88rem;
+  width: 88.8vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0.56rem;
-  padding-top: 0.28rem;
-  padding-bottom: 0.28rem;
+  margin-top: 5.6vw;
+  padding-top: 2.8vw;
+  padding-bottom: 2.8vw;
   border: 1px dashed #66b4e7; }
   .after-borrowing .detail-list .list-item {
-    height: 0.8rem;
-    line-height: 0.8rem; }
+    height: 8vw;
+    line-height: 8vw; }
 
 /* end 主页 */
 /* start 近期待还 */
 .jinqidaihuan .voucher {
-  width: 9.32rem;
-  height: 2.92rem;
+  width: 93.2vw;
+  height: 29.2vw;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 0.32rem;
-  padding-right: 0.32rem;
-  margin-top: 0.28rem;
-  border-radius: 0.16rem;
+  padding-left: 3.2vw;
+  padding-right: 3.2vw;
+  margin-top: 2.8vw;
+  border-radius: 1.6vw;
   border: 1px solid #dddddd; }
   .jinqidaihuan .voucher .voucher-header {
     width: 100%;
-    height: 1rem;
-    line-height: 0.8rem;
-    padding-top: 0.2rem; }
+    height: 10vw;
+    line-height: 8vw;
+    padding-top: 2vw; }
   .jinqidaihuan .voucher .voucher-content {
     width: 100%;
-    height: 1.68rem; }
+    height: 16.8vw; }
     .jinqidaihuan .voucher .voucher-content .voucher-message {
-      width: 6.08rem;
+      width: 60.8vw;
       height: 100%; }
       .jinqidaihuan .voucher .voucher-content .voucher-message .voucher-message-item {
-        width: 3.04rem;
+        width: 30.4vw;
         height: 100%; }
         .jinqidaihuan .voucher .voucher-content .voucher-message .voucher-message-item .message-number {
-          height: 0.92rem;
-          line-height: 0.92rem; }
+          height: 9.2vw;
+          line-height: 9.2vw; }
         .jinqidaihuan .voucher .voucher-content .voucher-message .voucher-message-item .message-tip {
-          height: 0.64rem;
-          line-height: 0.64rem; }
+          height: 6.4vw;
+          line-height: 6.4vw; }
     .jinqidaihuan .voucher .voucher-content .voucher-btn {
-      width: 2.2rem;
-      height: 0.8rem;
-      border-radius: 0.12rem;
+      width: 22vw;
+      height: 8vw;
+      border-radius: 1.2vw;
       border: 1px solid #369efa;
       color: #369efa;
-      margin-top: 0.64rem; }
+      margin-top: 6.4vw; }
 
 /* end 近期待还 */
 /* start 我要还款 */
 .woyaohuankuan .message-warp {
-  height: 2.96rem;
-  padding-top: 0.56rem;
-  padding-bottom: 0.4rem;
+  height: 29.6vw;
+  padding-top: 5.6vw;
+  padding-bottom: 4vw;
   background-color: #fff; }
   .woyaohuankuan .message-warp .message-title {
-    height: 0.8rem;
-    line-height: 0.8rem; }
+    height: 8vw;
+    line-height: 8vw; }
   .woyaohuankuan .message-warp .message-count {
-    height: 1.2rem; }
+    height: 12vw; }
 .woyaohuankuan .select-list .select-list-item {
   height: auto; }
   .woyaohuankuan .select-list .select-list-item .item-title {
     width: 100%;
-    height: 1.08rem;
-    line-height: 1.08rem; }
+    height: 10.8vw;
+    line-height: 10.8vw; }
   .woyaohuankuan .select-list .select-list-item .item-content {
     width: 100%;
-    height: 1.32rem;
-    line-height: 1.32rem; }
+    height: 13.2vw;
+    line-height: 13.2vw; }
   .woyaohuankuan .select-list .select-list-item .item-addon {
-    width: 9.6rem;
-    height: 1.08rem;
-    line-height: 1.08rem;
-    margin-left: 0.4rem;
-    padding-right: 0.4rem; }
+    width: 96vw;
+    height: 10.8vw;
+    line-height: 10.8vw;
+    margin-left: 4vw;
+    padding-right: 4vw; }
 
 .other-bankcard-bd li .icon-dui1 {
   color: #00a7ff;
   float: right;
   font-size: 0.4rem;
-  margin-right: 0.4rem;
+  margin-right: 4vw;
   display: none; }
 
 .other-bankcard-bd li:first-child .icon-dui1 {
   display: block; }
 
 .othercard {
-  padding: 0.4rem 0 0.4rem 0.4rem; }
+  padding: 4vw 0 4vw 4vw; }
 
 .othercard span {
   color: #333;
@@ -2386,7 +2386,7 @@
   width: 100%;
   background-color: #fff;
   display: inline-block;
-  margin-bottom: 2.6666666667rem; }
+  margin-bottom: 26.6666666667vw; }
 
 .other-bankcard {
   width: 80%;
@@ -2396,10 +2396,10 @@
   background-color: #fff;
   display: none;
   z-index: 50;
-  border-radius: 0.1333333333rem; }
+  border-radius: 1.3333333333vw; }
 
 .other-bankcard-title {
-  padding: 0.4666666667rem 0 0.4666666667rem 0;
+  padding: 4.6666666667vw 0 4.6666666667vw 0;
   border-bottom: 1px solid #ddd;
   text-align: center; }
 
@@ -2411,10 +2411,10 @@
   float: right; }
 
 .other-bankcard-add {
-  padding: 0.4rem 0 0.4rem 0.4rem; }
+  padding: 4vw 0 4vw 4vw; }
 
 .other-bankcard-add span {
-  padding: 0.4rem 0 0.4rem 0;
+  padding: 4vw 0 4vw 0;
   color: #333;
   font-size: 0.373rem; }
 
@@ -2440,8 +2440,8 @@ iframe {
 /* end iframe */
 /* start jiekuanjilu */
 .jiekuanjilu .tab-wrap {
-  height: 1.32rem;
-  line-height: 1.32rem; }
+  height: 13.2vw;
+  line-height: 13.2vw; }
 .jiekuanjilu .receipt-list {
   width: 100%;
   height: auto; }
@@ -2449,8 +2449,8 @@ iframe {
     width: 100%; }
     .jiekuanjilu .receipt-list .receipt-item .receipt-content {
       width: 100%;
-      height: 1.12rem;
-      line-height: 1.12rem; }
+      height: 11.2vw;
+      line-height: 11.2vw; }
     .jiekuanjilu .receipt-list .receipt-item .split-line {
       width: 100%;
       height: 1px;
@@ -2460,7 +2460,7 @@ iframe {
 /* start yaoqinghaoyou */
 .yaoqinghaoyou footer {
   width: 100%;
-  height: 1.52rem;
+  height: 15.2vw;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -2471,25 +2471,25 @@ iframe {
   -webkit-align-items: center;
   -webkit-justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.5);
-  padding-left: 0.48rem;
-  padding-right: 0.48rem; }
+  padding-left: 4.8vw;
+  padding-right: 4.8vw; }
   .yaoqinghaoyou footer .share-btn {
-    width: 5.32rem;
-    height: 0.92rem;
+    width: 53.2vw;
+    height: 9.2vw;
     background-color: #f63e3d;
     color: #ffffff;
     text-align: center;
-    font-size: 0.36rem;
-    border-radius: 0.16rem; }
+    font-size: 3.6vw;
+    border-radius: 1.6vw; }
   .yaoqinghaoyou footer .prize-btn {
-    width: 2.96rem;
-    height: 0.92rem;
+    width: 29.6vw;
+    height: 9.2vw;
     border: 1px solid #ffd592;
     background-color: none;
     color: #ffffff;
     text-align: center;
-    font-size: 0.36rem;
-    border-radius: 0.12rem; }
+    font-size: 3.6vw;
+    border-radius: 1.2vw; }
 
 /* end yaoqinghaoyou */
 /* start tip */
@@ -2512,22 +2512,22 @@ iframe {
   -webkit-box-pack: center;
   -webkit-justify-content: center; }
   .shenghetongguo .modal .modal-content, .yifangkuan .modal .modal-content, .shengheweitongguo .modal .modal-content, .shenghezhong .modal .modal-content, .shenqingchenggong .modal .modal-content {
-    width: 8.28rem;
-    height: 5.36rem;
+    width: 82.8vw;
+    height: 53.6vw;
     position: relative;
     z-index: 100;
     background-color: transparent; }
     .shenghetongguo .modal .modal-content .modal-title, .yifangkuan .modal .modal-content .modal-title, .shengheweitongguo .modal .modal-content .modal-title, .shenghezhong .modal .modal-content .modal-title, .shenqingchenggong .modal .modal-content .modal-title {
       width: 100%;
-      height: 1.12rem;
+      height: 11.2vw;
       text-align: center;
-      line-height: 1.12rem;
-      margin-top: 2.8rem;
-      margin-bottom: 0.12rem; }
+      line-height: 11.2vw;
+      margin-top: 28vw;
+      margin-bottom: 1.2vw; }
     .shenghetongguo .modal .modal-content .modal-button, .yifangkuan .modal .modal-content .modal-button, .shengheweitongguo .modal .modal-content .modal-button, .shenghezhong .modal .modal-content .modal-button, .shenqingchenggong .modal .modal-content .modal-button {
       width: 100%;
-      height: 1.32rem;
-      line-height: 1.32rem;
+      height: 13.2vw;
+      line-height: 13.2vw;
       text-align: center;
       border-top: 1px solid #dddddd; }
     .shenghetongguo .modal .modal-content .modal-bg, .yifangkuan .modal .modal-content .modal-bg, .shengheweitongguo .modal .modal-content .modal-bg, .shenghezhong .modal .modal-content .modal-bg, .shenqingchenggong .modal .modal-content .modal-bg {
@@ -2543,7 +2543,7 @@ iframe {
 /* end tip */
 /* start guanyuwomen */
 .guanyuwomen p {
-  line-height: 0.8rem;
+  line-height: 8vw;
   color: #999999; }
 
 /* end guanyuwomen */
