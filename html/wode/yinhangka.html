@@ -19,7 +19,7 @@
         <ul class="list" id="bankList">
 
         </ul>
-        <button class="btn" id="btn" onclick="javascript:create('addcard')">绑定银行卡</button>
+        <button class="btn" id="btn" onclick="javascript:create('add-bank-card')">绑定银行卡</button>
     </div>
     <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -48,12 +48,12 @@
                 tip: '正在发送...',
                 operation: {
                     success: function(data) {
-                       if(data.length){
-                         setLayout(data[data.length-1]);
-                         $api.addCls('btn', 'hide');
-                       }else{
-                         $api.removeCls('btn', 'hide');
-                       }
+                      //  if(data.length){
+                      //    setLayout(data[data.length-1]);
+                      //    $api.addCls('btn', 'hide');
+                      //  }else{
+                      //    $api.removeCls('btn', 'hide');
+                      //  }
                     },
                     fail: function() {
                     }
