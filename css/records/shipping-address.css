@@ -135,6 +135,7 @@ header .compile {
   background: #fff;
   margin: 2.66667vw auto;
   border-radius: 2vw;
+  position: relative;
 }
 
 .content .address-list .noaddress{
@@ -154,21 +155,20 @@ header .compile {
   margin-top: 4vw
 }
 
-.content .address-list li .box .name, .content .address-list li .box .phone {
-  float: left;
-  margin-left: 3.6vw;
-}
 
 .content .address-list li .box .name, .content .address-list li .box .phone {
   font-size: 4.66667vw;
   margin-top: 6.93333vw;
+  float: left;
+  margin-left: 3.6vw;
 }
 
 .content .address-list li .box .address {
   font-size: 4vw;
   margin-top: 4vw;
-  float: left;
-  margin-left: 3.6vw;
+  position: absolute;
+  left: 3.6vw;
+  bottom: 4vw;
 }
 .hide{
   display: none;

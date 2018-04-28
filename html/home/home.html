@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="clear"></div>
-    <button class="phone-btn" onclick="javascript: gotoPage('offer');">马上评估 立即拿钱</button>
+    <button class="phone-btn" onclick="javascript: gotoPage();">马上评估 立即拿钱</button>
   </div>
   <footer class="recycle">
     <p class="recycle-title">回收流程</p>
@@ -88,7 +88,7 @@
 
     function init() {
       render();
-    }
+    };
 
     function render() {
       if (!checkNet()) return;
@@ -105,15 +105,15 @@
           operation: {
             success: function (data) {
               setStatus(data);
-            },
+            }
           }
         });
       }
-    }
+    };
 
-    function gotoPage (goal) {
+    function gotoPage () {
       if (!checkNet() || !checkLogin()) return;
-      create(goal);
+      create(page);
     }
 
     function setUser() {
@@ -124,14 +124,14 @@
 
       if (!User) {
         User = {
-          Status: false, //登录
-          Certification: [false, false, false, false],
-          Phone: '',
+          Status: true, //登录
+          Certification: [true, true, true, true],
+          Phone: '18255193029',
           Archive: {
             Name: null,
             Id: null
           },
-          Card: ''
+          Card: '42115454515122665648'
         };
         $api.setStorage('User', User);
       }
@@ -159,8 +159,8 @@
     }
 
     function setStatus(data) {
-      if (data.ZhuangTai == undefinded) return;
-      switch (data.ZhuangTai) {
+      if (!data.ZhuangTai) return;
+      switch (Number(data.ZhuangTai)) {
         case 0: //待审核
           page = 'recycling-schedule';
           break;
@@ -203,9 +203,6 @@
       }
     }
 
-    function get(params) {
-      
-    }
   </script>
 </body>
 
