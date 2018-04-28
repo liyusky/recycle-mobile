@@ -9,8 +9,8 @@ var productionAppApi = {
   'Certification': 'http://192.168.0.110:8008/JDBService.svc/GetHYXX', // 获取认证状态
   'ShenFenXinXi': 'http://192.168.0.110:8008/JDBService.svc/ShenFenXinXi', // 身份信息
   'GetZhimaAuthInfoUrl': 'http://192.168.0.110:8008/JDBService.svc/ZMFSQ', // 身份信息
-  'PhoneOperatorAuthUrl':'http://192.168.0.110:8008/JDBService.svc/PhoneOperatorAuthUrl', // 身份信息
-  
+  'PhoneOperatorAuthUrl': 'http://192.168.0.110:8008/JDBService.svc/PhoneOperatorAuthUrl', // 身份信息
+  'LianXiRenXinXi':'http://192.168.0.110:8008/JDBService.svc/AddTXL', // 身份信息
   'GetZXJD':'http://192.168.0.110:8008/JDBService.svc/GetZXJD', //  订单进度
   'YinHangKa_STEP1':'http://192.168.0.110:8008/JDBService.svc/YinHangKa_STEP1',
   'AddYHK':'http://192.168.0.110:8008/JDBService.svc/AddYHK',   // 添加银行卡
