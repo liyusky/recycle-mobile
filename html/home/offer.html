@@ -85,14 +85,14 @@
       $api.text('type', api.deviceModel);
       
       request({
-        url: 'PhonePrice',
+        url: 'GetHYJKJL',
         data: {
           phone: User.Phone,
           deviceId: api.deviceId
         },
         operation: {
           success: function (data) {
-            $api.text('money', data.Price + data.FeiYong);
+            $api.text('money', data[0].DaoZhang + data[0].FeiYong+'.00');
           }
         }
       });
@@ -147,8 +147,13 @@
       }
 
       request({
+<<<<<<< HEAD
+        url: 'SubmitApply',
+        'data': {
+=======
         url: 'ShanDianDai',
         data: {
+>>>>>>> 575ab3c32dcfbf273e132fca33ae73ce11599062
           sj: User.Phone,
           deviceId: api.deviceId,
           JinE: 500,
@@ -159,7 +164,7 @@
           ly:'',
           PhoneName: '',
           PhoneModel: api.deviceModel,
-          StorageSpace: '',
+          StorageSpace: '8',
           SerialNumber: '',
           IMEI:'',
           ICCID:'',
@@ -174,6 +179,9 @@
           success: function (data) {
             create('submit-order');
             kill();
+          },
+          fail: function () {
+            create('renzheng');
           },
           default: function () {
             openBtnClick('submit-btn');

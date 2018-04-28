@@ -87,7 +87,7 @@
         </ul>
       </div>
       <div class="clear"></div>
-      <button class="btn">请先完善资料</button>
+      <button class="btn" onclick="javascript:submit()">请先完善资料</button>
     </div>
 
   </div>
@@ -105,6 +105,11 @@
       setListenr();
       init();
     }
+
+
+  function  submit() {
+      create('renzheng');
+  }
 
     function init() {
       if (!checkNet() || !checkLogin()) return;
