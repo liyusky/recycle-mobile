@@ -83,14 +83,14 @@
     function init() {
       if (!checkNet() || !checkLogin()) return;
       request({
-        url: 'PhonePrice',
+        url: 'GetHYJKJL',
         data: {
           phone: User.Phone,
           deviceId: api.deviceId
         },
         operation: {
           success: function (data) {
-            $api.text('money', data.Price + data.FeiYong);
+            $api.text('money', data[0].DaoZhang + data[0].FeiYong+'.00');
           }
         }
       })
@@ -105,7 +105,7 @@
         return;
       }
       request({
-        url: 'ShanDianDai',
+        url: 'SubmitApply',
         'data': {
           sj: User.Phone,
           deviceId: api.deviceId,
@@ -117,7 +117,7 @@
           ly:'',
           PhoneName: '',
           PhoneModel: api.deviceModel,
-          StorageSpace: '',
+          StorageSpace: '8',
           SerialNumber: '',
           IMEI:'',
           ICCID:'',
@@ -132,6 +132,9 @@
           success: function (data) {
             create('submit-order');
             kill();
+          },
+          fail: function () {
+            create('renzheng');
           },
           default: function () {
             openBtnClick('submit-btn');

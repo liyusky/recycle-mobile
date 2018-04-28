@@ -206,23 +206,23 @@
         function sethtml(data) {
             var html = "<li class='order-list'>" +
                 "<ul>" +
-                "<li class='currentstatus mark'>" +'预付款打款成功'+ data.ZhuangTai + "</li>" +
-                "<li class='message'>" + '已打款至尾号 (6589) 银行卡'+data.FangKuanYiJian + "</li>" +
-                "<li class='time'>" + '2018-04-10 12:05:58'+data.FangKuanShiJian + "</li>" +
+                "<li class='currentstatus mark'>"+ data.ZhuangTai + "</li>" +
+                "<li class='message'>" + data.FangKuanYiJian + "</li>" +
+                "<li class='time'>" + data.FangKuanShiJian + "</li>" +
                 "</ul>" +
                 "</li>"+
                 "<li class='order-list'>" +
                 "<ul>" +
-                "<li class='currentstatus mark'>" + '审核中'+data.ZhuangTai + "</li>" +
-                "<li class='message'>" + '请耐心等待10-60分钟'+data.ShenHeYiJian + "</li>" +
-                "<li class='time'>" + '2018-04-10 11:55:58'+data.ShenHeShiJian + "</li>" +
+                "<li class='currentstatus mark'>" +data.ZhuangTai + "</li>" +
+                "<li class='message'>" +data.ShenHeYiJian + "</li>" +
+                "<li class='time'>"+data.ShenHeShiJian + "</li>" +
                 "</ul>" +
                 "</li>"+
                 "<li class='order-list'>" +
                 "<ul>" +
-                "<li class='currentstatus mark'>" +'订单提交'+ data.ZhuangTai + "</li>" +
+                "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
                 "<li class='message'>&nbsp;</li>" +
-                "<li class='time'>" +'2018-04-10 11:54:25'+data.JieKuanShiJian + "</li>" +
+                "<li class='time'>" +data.JieKuanShiJian + "</li>" +
                 "</ul>" +
                 "</li>";
             return html;
@@ -231,7 +231,6 @@
         function renderContent(data) {
             var html = '';
             html += sethtml(data);
-            alert(html)
             $api.html('list', html);
         }
 
@@ -239,28 +238,66 @@
         function cancel() {
             var name = $api.val('name');
             var phone = $api.val('phone');
-            var addressCurrent = $api.val('address-current');
-            var addressDetail = $api.val('address-detail');
-            request({
-                url: 'GetHYJKJL',
-                data: {
-                    'deviceId': api.deviceId,
-                    'Id': '',
-                    'UserPhone': phone,
-                    'Addressee': name,
-                    'AddresseePhone': phone,
-                    'CrrentAddress': addressCurrent,
-                    'DetailAddress': addressDetail
-                },
-                tip: '正在发送...',
-                operation: {
-                    success: function(data) {
-                    },
-                    fail: function() {
+            User = $api.getStorage('User');
+            var mark = false;
+            var status;
+                request({
+                  url: 'ApplyStatus',
+                  data: {
+                    sj: User.Phone,
+                    deviceId: api.deviceId
+                  },
+                  operation: {
+                    success: function (data) {
+                       status = data.ZhuangTai;
                     }
-                }
-            });
-        }
+                  }
+                });
+
+                switch(status){
+                  case 3:
+                  mark = true;
+                  break;
+                  case 4:
+                  mark = true;
+                  break;
+                  case 6:
+                  mark = true;
+                  break;
+                  case 8:
+                  mark = true;
+                  break;
+                  case 10:
+                  mark = true;
+                  break;
+                  case 11:
+                  mark = true;
+                  break;
+                  case 12:
+                  mark = true;
+                  break;
+                };
+            if(mark){
+              request({
+                  url: 'GetHYJKJL',
+                  data: {
+                      'deviceId': api.deviceId,
+                      'Id': '',
+                      'UserPhone': phone,
+                      'Addressee': name,
+                      'AddresseePhone': phone
+                  },
+                  tip: '正在发送...',
+                  operation: {
+                      success: function(data) {
+                        create('refund');
+                      },
+                      fail: function() {
+                      }
+                  }
+              });
+            }
+    }
 
         function confirm() {
             var name = $api.val('name');
@@ -268,7 +305,7 @@
             var addressCurrent = $api.val('address-current');
             var addressDetail = $api.val('address-detail');
             request({
-                url: 'add-address',
+                url: 'GetHYJKJL',
                 data: {
                     'deviceId': api.deviceId,
                     'Id': '',

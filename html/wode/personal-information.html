@@ -114,8 +114,11 @@
       if (!checkNet() || !checkLogin()) return;
       request({
         url: 'Certification',
-        data: {},
-        showMessage: '正在加载...',
+        data: {
+          sj: User.Phone,
+          deviceId: api.deviceId
+        },
+        tip: '正在加载...',
         operation: {
           success: function(data) {
             render(data);
@@ -125,10 +128,12 @@
     }
 
     function render(data) {
-      var stepArr = [];
-      for (var i = 1; i < 5; i++) {
-        stepArr.push(data['Step' + i]);
-      }
+      var stepArr = [false, false, false, false];
+      if (stepArr.IsCertification) stepArr[0] = true;
+      if (stepArr.IsTxl) stepArr[1] = true;
+      if (stepArr.IsZhiMa) stepArr[2] = true;
+      if (stepArr.IsOperator) stepArr[3] = true;
+      
       saveCertification(stepArr);
       var index = false;
 
