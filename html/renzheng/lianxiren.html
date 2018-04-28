@@ -88,9 +88,9 @@
 <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
 <script type="text/javascript">
   var contactlist = [];
 
@@ -241,8 +241,6 @@
   }
 
   function submit() {
-              sendChangeStepEvent();
-    
     if (checkNet() && checkLogin()) {
       var firstName = $api.val('first-contact-name');
       var firstPhone = $api.val('first-contact-phone');
@@ -277,7 +275,7 @@
         }
       });
       if (firstFlag && secondFlag && contactlist.length > 0) {
-        alert(escape(JSON.stringify(contactlist)));
+        // alert(escape(JSON.stringify(contactlist)));
         request({
           url: 'LianXiRenXinXi',
           data: {
@@ -291,7 +289,7 @@
             relationship_2: secondRelationship,
             telList: '' //escape(JSON.stringify(contactlist))
           },
-          showMessage: true,
+          tip: true,
           operation: {
             success: function () {
               var User = $api.getStorage('User');
@@ -301,8 +299,7 @@
             }
           }
         });
-      }
-      else {
+      } else {
         toast('请添加联系人');
       }
     }
@@ -328,9 +325,7 @@
       name: 'OPEN-SELECTOR-EVENT',
       extra: {
         goal: 'relationship',
-        pageParam: {
-          type: type
-        }
+        type: type
       }
     });
   }
@@ -339,8 +334,8 @@
     api.sendEvent({
       name: 'CHANGE-STEP-EVENT',
       extra: {
-        step: 2,
-				goal: 'zhimafen'
+        step: 3,
+        goal: 'zhimafen'
       }
     });
   }

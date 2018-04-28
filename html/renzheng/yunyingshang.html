@@ -39,13 +39,13 @@
       if (checkNetwork() && checkLogin()) {
         request({
           url: 'GetPhoneOperatorAuthInfoUrl',
-          values: {
+          data: {
             deviceId: api.deviceId,
             phone: User.Phone
           },
-          showMessage: true,
-          success: function (data) {
-            if (true) {
+          tip: true,
+          operation: {
+            success: function (data) {
               $api.attr('iframe', 'src', data);
             }
           }
