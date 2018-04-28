@@ -135,6 +135,16 @@
         };
         $api.setStorage('User', User);
       }
+
+      try {
+        Offline = $api.getStorage('Offline');
+      } catch (e) {}
+
+      Offline = {
+        Mark: true
+      };
+
+      $api.setStorage('Offline', Offline);
     }
 
     function setListener() {

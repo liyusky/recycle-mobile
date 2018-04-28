@@ -82,6 +82,8 @@
 
     function init() {
       if (!checkNet() || !checkLogin()) return;
+      $api.text('type', api.deviceModel);
+      
       request({
         url: 'GetHYJKJL',
         data: {
@@ -93,8 +95,27 @@
             $api.text('money', data[0].DaoZhang + data[0].FeiYong+'.00');
           }
         }
-      })
-      $api.text('type', api.deviceModel);
+      });
+
+      request({
+        url: 'Certification',
+        data: {
+          sj: User.Phone,
+          deviceId: api.deviceId
+        },
+        tip: '正在加载...',
+        operation: {
+          success: function (data) {
+            User = $api.getStorage('User');
+            User.Card = data.Card[data.Card.length - 1].KaHao;
+            User.Certification[0] = !!data.IsCertification;
+            User.Certification[1] = !!data.IsTxl;
+            User.Certification[2] = !!data.IsZhiMa;
+            User.Certification[3] = !!data.IsOperator;
+            $api.setStorage('User', User);
+          }
+        }
+      });
     }
 
     function submit() {
@@ -104,9 +125,35 @@
         toast('请同意报价合同!');
         return;
       }
+
+
+            var mark = true;
+      for (let i = 0; i < 4; i++) {
+        if (!User.Certification[i]) mark = false;
+      }
+
+      if (!mark) {
+        toast('请完成认证');
+        create('personal-information');
+        kill();
+        return;
+      }
+
+      if (!User.Card) {
+        toast('请绑定银行卡');
+        create('add-bank-card');
+        kill();
+        return;
+      }
+
       request({
+<<<<<<< HEAD
         url: 'SubmitApply',
         'data': {
+=======
+        url: 'ShanDianDai',
+        data: {
+>>>>>>> 575ab3c32dcfbf273e132fca33ae73ce11599062
           sj: User.Phone,
           deviceId: api.deviceId,
           JinE: 500,

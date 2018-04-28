@@ -102,6 +102,7 @@
     var page = ['gerenxinxi', 'lianxiren', 'zhimafen', 'yunyingshang'];
 
     apiready = function () {
+      setListenr();
       init();
     }
 
@@ -120,7 +121,7 @@
         },
         tip: '正在加载...',
         operation: {
-          success: function(data) {
+          success: function (data) {
             render(data);
           }
         }
@@ -128,20 +129,27 @@
     }
 
     function render(data) {
+      for (let i = 1; i < 5; i++) {
+        try {
+          (function (i) {
+            $api.removeAttr('step-' + i, 'onclick');
+          })(i);
+        } catch (error) {}
+      }
+
       var stepArr = [false, false, false, false];
       if (stepArr.IsCertification) stepArr[0] = true;
       if (stepArr.IsTxl) stepArr[1] = true;
       if (stepArr.IsZhiMa) stepArr[2] = true;
       if (stepArr.IsOperator) stepArr[3] = true;
-      
+
       saveCertification(stepArr);
       var index = false;
 
       for (var i = 0; i < stepArr.length; i++) {
         if (stepArr[i]) {
           $api.text('flag-' + (i + 1), '已认证');
-        }
-        else if (!index) {
+        } else if (!index) {
           index = i + 1;
         }
       }
@@ -164,6 +172,24 @@
       User = $api.getStorage('User');
       User.Certification = data;
       $api.setStorage('User', User);
+    }
+
+    function setListenr() {
+      api.addEventListener({
+          name: 'CLOSE-STEP-EVENT'
+        },
+        function (ret, err) {
+          init();
+        }
+      );
+
+      api.addEventListener({
+          name: 'CHANGE-STEP-EVENT'
+        },
+        function (ret, err) {
+          init();
+        }
+      );
     }
   </script>
 </body>
