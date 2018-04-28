@@ -87,7 +87,7 @@
         </ul>
       </div>
       <div class="clear"></div>
-      <button class="btn">请先完善资料</button>
+      <button class="btn" onclick="javascript:submit()">请先完善资料</button>
     </div>
 
   </div>
@@ -105,6 +105,11 @@
       init();
     }
 
+
+  function  submit() {
+      create('renzheng');
+  }
+
     function init() {
       if (!checkNet() || !checkLogin()) return;
       request({
@@ -121,7 +126,7 @@
         }
       });
     }
-    
+
     function render(data) {
       var stepArr = [false, false, false, false];
       if (stepArr.IsCertification) stepArr[0] = true;
@@ -131,7 +136,7 @@
       
       saveCertification(stepArr);
       var index = false;
-      
+
       for (var i = 0; i < stepArr.length; i++) {
         if (stepArr[i]) {
           $api.text('flag-' + (i + 1), '已认证');
@@ -140,7 +145,7 @@
           index = i + 1;
         }
       }
-      
+
       if (index > 0) {
         goal = page[index - 1];
         $api.attr('step-' + index, 'onclick', 'authentication(\'' + goal + '\')');
