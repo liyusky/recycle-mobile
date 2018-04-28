@@ -100,20 +100,6 @@
       });
     }
 
-    function selectCard() {
-      if ($api.hasCls('card-select', 'selectd')) {
-        $api.removeCls('ali-select', 'selectd');
-        $api.addCls('card-select', 'selectd');
-      }
-    }
-
-    function selectALi() {
-      if ($api.hasCls('ali-select', 'selectd')) {
-        $api.removeCls('card-select', 'selectd');
-        $api.addCls('ali-select', 'selectd');
-      }
-    }
-
     function submit() {
       if (!checkNet() || !checkLogin()) return;
       request({
@@ -121,7 +107,10 @@
         data: {},
         operation: {
           success: function (data) {
-            render(data);
+            create({
+              goal: 'pay',
+              url: data.url
+            })
           },
           default: function () {}
         }

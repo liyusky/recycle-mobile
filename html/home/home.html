@@ -95,7 +95,9 @@
       $api.text('device-model', api.deviceModel);
       User = $api.getStorage('User');
 
-      if (checkLogin({ openLogin: false })) {
+      if (checkLogin({
+          openLogin: false
+        })) {
         request({
           url: 'ApplyStatus',
           data: {
@@ -108,10 +110,34 @@
             }
           }
         });
+        request({
+          url: 'Certification',
+          data: {
+            sj: User.Phone,
+            deviceId: api.deviceId
+          },
+          tip: '正在加载...',
+          operation: {
+            success: function (data) {
+              setLoginStatus(data);
+            }
+          }
+        });
       }
     };
 
-    function gotoPage () {
+    function setLoginStatus(data) {
+      User = $api.getStorage('User');
+      User.Card = data.Card[data.Card.length - 1].KaHao;
+      User.Archive.Name = data.XingMing;
+      User.Certification[0] = !!data.IsCertification;
+      User.Certification[1] = !!data.IsTxl;
+      User.Certification[2] = !!data.IsZhiMa;
+      User.Certification[3] = !!data.IsOperator;
+      $api.setStorage('User', User);
+    }
+
+    function gotoPage() {
       if (!checkNet() || !checkLogin()) return;
       create(page);
     }
@@ -124,14 +150,14 @@
 
       if (!User) {
         User = {
-          Status: true, //登录
-          Certification: [true, true, true, true],
-          Phone: '18255193029',
+          Status: false, //登录
+          Certification: [false, false, false, false],
+          Phone: '',
           Archive: {
             Name: null,
             Id: null
           },
-          Card: '42115454515122665648'
+          Card: ''
         };
         $api.setStorage('User', User);
       }
@@ -158,7 +184,7 @@
     }
 
     function setStatus(data) {
-      if (!data.ZhuangTai) return;
+      if (data.ZhuangTai == undefined) return;
       switch (Number(data.ZhuangTai)) {
         case 0: //待审核
           page = 'recycling-schedule';
@@ -201,7 +227,6 @@
           break;
       }
     }
-
   </script>
 </body>
 

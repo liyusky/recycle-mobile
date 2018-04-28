@@ -88,5 +88,11 @@ window.ROUTER = {
   },
   'offline': {
     path: 'widget://html/tip/offline.html',
-  }
+  },
+  'recycling-schedule': {
+    path: 'widget://html/records/recycling-schedule.html',
+  },
+  'pay': {
+    path: 'widget://html/wode/pay.html',
+  },
 }
