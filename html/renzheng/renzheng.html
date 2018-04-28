@@ -99,8 +99,8 @@
 			},
 			function (ret, err) {
 				if (ret) {
-					progress.go(ret.value.step + 1);
 					openFrame(ret.value.goal);
+					progress.go(ret.value.step);
 				}
 			}
 		);

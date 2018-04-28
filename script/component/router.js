@@ -85,5 +85,8 @@ window.ROUTER = {
   },
   'relationship': {
     path: 'widget://html/selector/relationship.html'
+  },
+  'add-recycle-address':{
+    path: 'widget://html/records/add-recycle-address.html' 
   }
 }

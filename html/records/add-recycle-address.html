@@ -34,44 +34,27 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/check.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
   <script type="text/javascript" charset="utf-8">
-    var address = null;
-
 
     function submit() {
       // if (!checkNet() || !checkLogin()) return;
       var name = $api.val('name');
       var phone = $api.val('phone');
-      var addressDetail = $api.val('city');
-      var detailsAddress = $api.val('address-detail');
-      if (!checkPhone(phone)) return;
       request({
         url: 'EditReceivingAddress',
         data: {
           phone: phone,
           deviceId: api.deviceId,
           Id: '',
-          Addressee: name,
-          address: address,
-          AddresseePhone: phone,
-          CrrentAddress: addressDetail,
-          DetailAddress: detailsAddress
         },
         'tip': '正在发送...',
         operation:{
           success: function (data) {
             kill();
-            create('shiping-address');
         },fail:function(){
         }
         }
       });
     }
-
-    function sendAddAdaressEvent() {
-      api.sendEvent({
-        name: 'ADD-ADRESS-EVENT'
-      });
-    };
   </script>
 </body>
 

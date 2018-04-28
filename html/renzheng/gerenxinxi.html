@@ -52,9 +52,15 @@
 			</div>
 		</div>
 	</section>
+<<<<<<< HEAD
 	<button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" id="submit-btn"
 		onclick="javascript: submit();">立即提交</button>
 	<!-- <button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" id="submit-btn" onclick="javascript: submit();">立即提交</button> -->
+=======
+	<!-- <button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" disabled="disabled" id="submit-btn"
+		onclick="javascript: submit();">立即提交</button> -->
+	<button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" id="submit-btn" onclick="javascript: submit();">立即提交</button>
+>>>>>>> 946e6ab1e29e9ceeae0be95a3b9c052bbf99022d
 	<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
@@ -115,6 +121,7 @@
 				data: {
 					deviceId: api.deviceId,
 					sj: User.Phone,
+<<<<<<< HEAD
 					sfzh: number,
 					scsfz: '',
 					fwmm:'',
@@ -124,14 +131,26 @@
 					czdz:'',
 					xl: '',
 					hy: ''
+=======
+					xm: archive.id_name,
+					sfzh: archive.id_no,
+					xb: archive.flag_sex,
+					sfz: archive.url_frontcard,
+					sfz_b: archive.url_backcard,
+					scsfz: archive.url_photoliving,
+					fwmm: '',
+					xl: '',
+					hy: '',
+					czdz: ''
+>>>>>>> 946e6ab1e29e9ceeae0be95a3b9c052bbf99022d
 				},
-				tip: true,
+				tip: false,
 				operation: {
 					success: function () {
 						User = $api.getStorage('User');
 						User.Archive.Name = archive.id_name;
 						User.Archive.Id = archive.id_no;
-						User.Step[0] = true;
+						User.Certification[0] = true;
 						$api.setStorage('User', User);
 						sendChangeStepEvent();
 					},

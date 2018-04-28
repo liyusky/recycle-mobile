@@ -132,20 +132,24 @@ header .compile {
 .content {
   margin: 4vw auto;
   padding-left: 10vw;
+  font-size: 4.266666666666667vw;
 }
 
 .content ul li{
   padding-top: 5vw;
+  font-size: 4.266666666666667vw;
 }
 
 .content ul li input{
   outline: none;
-  height: 5.33333vw;
-  line-height: 5.33333vw;
+  height: 8.33333vw;
+  line-height: 8.33333vw;
   border:3vw;
   width: 50vw;
   margin-left: 3vw;
   font-size: 3.6vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 
 

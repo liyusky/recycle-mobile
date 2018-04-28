@@ -11,7 +11,7 @@
 
 <body>
     <header class="header">
-        <img src="../../image/common/back.png" alt="" class="back">
+        <img src="../../image/common/back.png" alt="" class="back" onclick="javascript:kill();">
         <p class="header-title">订单详情</p>
     </header>
     <div class="content" id="content">
@@ -277,7 +277,7 @@
                   mark = true;
                   break;
                 };
-            if(mark){
+          if(mark){
               request({
                   url: 'GetHYJKJL',
                   data: {
@@ -300,28 +300,28 @@
     }
 
         function confirm() {
-            var name = $api.val('name');
-            var phone = $api.val('phone');
-            var addressCurrent = $api.val('address-current');
-            var addressDetail = $api.val('address-detail');
-            request({
-                url: 'GetHYJKJL',
-                data: {
-                    'deviceId': api.deviceId,
-                    'Id': '',
-                    'UserPhone': phone,
-                    'Addressee': name,
-                    'AddresseePhone': phone,
-                    'CrrentAddress': addressCurrent,
-                    'DetailAddress': addressDetail
-                },
-                tip: '正在发送...',
-                operation: {
-                    success: function(data) {
-
-                    }
-                }
-            });
+            // var name = $api.val('name');
+            // var phone = $api.val('phone');
+            // var addressCurrent = $api.val('address-current');
+            // var addressDetail = $api.val('address-detail');
+            // request({
+            //     url: 'add-address',
+            //     data: {
+            //         'deviceId': api.deviceId,
+            //         'Id': '',
+            //         'UserPhone': phone,
+            //         'Addressee': name,
+            //         'AddresseePhone': phone,
+            //         'CrrentAddress': addressCurrent,
+            //         'DetailAddress': addressDetail
+            //     },
+            //     tip: '正在发送...',
+            //     operation: {
+            //         success: function(data) {
+                      create('add-recycle-address');
+            //         }
+            //     }
+            // });
         }
     </script>
 </body>
