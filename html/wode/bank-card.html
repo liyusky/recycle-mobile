@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我的银行卡</title>
-  <link rel="stylesheet" href="../../css/wode/yinhangka.css">
-  <link rel="stylesheet" href="../../css/wode/bank-card.css">
+  <link rel="stylesheet" type="text/css" href="../../css/wode/yinhangka.css">
 </head>
 
 <body>
@@ -18,8 +17,8 @@
     <p class="header-title">我的银行卡</p>
   </header>
   <div class="content">
-    <ul class="list">
-      <li>
+    <ul class="list" id="bankList">
+      <!-- <li>
         <img id="bank-image" src="../../image/wode/bank.png">
         <div class="card-message">
           <p class="bank-type" id="bank-name">中国银行</p>
@@ -31,10 +30,9 @@
             <span class="shownum" id="card-tail">5198</span>
           </p>
         </div>
-      </li>
+      </li> -->
     </ul>
     <button class="btn" onclick="javascript:create('add-bank-card')">绑定银行卡</button>
-    <button class="btn" onclick="javascript:create('addcard')">绑定银行卡</button>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -43,80 +41,88 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript">
-    apiready = function () {
-      // setListener();
+  var User = null;
+  apiready = function() {
+      setListener();
       init();
-    }
+  }
 
-    function init() {
-      // if (!checkNet() || !checkLogin()) return;
-      // if(!$api.getStorage('User')) return;
+  function init() {
+      // if (checkNetwork() && checkLogin()) {
       var name = $api.val('name');
       var phone = $api.val('phone');
-      var addressCurrent = $api.val('address-current');
-      var addressDetail = $api.val('address-detail');
+      var User = $api.getStorage('User');
+
       request({
-        url: 'add-address',
-        data: {
-          'deviceId': api.deviceId,
-          'Id':'',
-          'UserPhone':'13476615091',
-          'Addressee': name,
-          'AddresseePhone':phone,
-          'CrrentAddress': addressCurrent,
-          'DetailAddress':addressDetail
-        },
-        tip: '正在发送...',
-        operation:{
-          success:function (data) {
+          url: 'GetHYYHK',
+          data: {
+              'phone': User.Phone,
+              'deviceId': api.deviceId,
+          },
+          tip: '正在发送...',
+          operation: {
+              success: function(data) {
+                 if(data.length){
+                   setLayout(data[data.length-1]);
+                   $api.addCls('btn', 'hide');
+                 }else{
+                   $api.removeCls('btn', 'hide');
+                 }
+              },
+              fail: function() {
+              }
           }
-        }
       });
+  };
+
+
+
+
+  function setLayout(content) {
+      var htmlStr = '';
+      // for (var i = 0; i < content.length; i++) {
+          htmlStr += setBankCardHTML(content);
+      // };
+      $api.html('bankList', htmlStr);
+  };
+
+  var bankval = {
+      '光大': '../../image/wode/bank/gdyh-bg.png',
+      '广发': '../../image/wode/bank/gfyh-bg.png',
+      '工商': '../../image/wode/bank/gsyh-bg.png',
+      '华夏': '../../image/wode/bank/hyyh-bg.png',
+      '建设': '../../image/wode/bank/jsyh-bg.png',
+      '交通': '../../image/wode/bank/jtyh-bg.png',
+      '民生': '../../image/wode/bank/msyh-bg.png',
+      '农业': '../../image/wode/bank/nyyh-bg.png',
+      '平安': '../../image/wode/bank/payh-bg.png',
+      '浦发': '../../image/wode/bank/pfyh-bg.png',
+      '兴业': '../../image/wode/bank/xyyh-bg.png',
+      '邮政': '../../image/wode/bank/yzyh-bg.png',
+      '中国': '../../image/wode/bank/zgyh-bg.png',
+      '招商': '../../image/wode/bank/zsyh-bg.png',
+      '中信': '../../image/wode/bank/zxyh-bg.png'
+  };
+
+  function setBankCardHTML(card) {
+    var src = null;
+    for (var key in bankval) {
+        if (!card.KaiHuHang.indexOf(key)) {
+            src = bankval[key];
+        };
     };
-
-    var bankval = {
-      '光大':'../../image/wode/bank/gdyh-bg.png',
-      '广发':'../../image/wode/bank/gfyh-bg.png',
-      '工商':'../../image/wode/bank/gsyh-bg.png',
-      '华夏':'../../image/wode/bank/hyyh-bg.png',
-      '建设':'../../image/wode/bank/jsyh-bg.png',
-      '交通':'../../image/wode/bank/jtyh-bg.png',
-      '民生':'../../image/wode/bank/msyh-bg.png',
-      '农业':'../../image/wode/bank/nyyh-bg.png',
-      '平安':'../../image/wode/bank/payh-bg.png',
-      '浦发':'../../image/wode/bank/pfyh-bg.png',
-      '兴业':'../../image/wode/bank/xyyh-bg.png',
-      '邮政':'../../image/wode/bank/yzyh-bg.png',
-      '中国':'../../image/wode/bank/zgyh-bg.png',
-      '招商':'../../image/wode/bank/zsyh-bg.png',
-      '中信':'../../image/wode/bank/zxyh-bg.png'
-    };
-
-    function render(data) {
-          for(var key in bankval){
-            if(data.KaiHuHang.indexOf(key) !== -1){
-                $api.attr('bank-image', 'src', bankval[key]);
-            }
-          }
-      request({
-        url: 'GetHYYHK',
-        values: {
-          phone:$api.getStorage('User'),
-          deviceId:api.deviceId
-        },
-        'tip': '正在加载...',
-        success: function (data) {
-          render(data);
-        }
-      });
-    }
-
-    function render(data) {
-      $api.text('bank-name', data.KaiHuHang);
-      $api.text('card-type', '储蓄卡');
-      $api.text('card-tail', data.Weihao);
-    }
-
+      var htmlStr = '<li>' +
+          '<img id="bank-image" src='+src+'>' +
+          '<div class="card-message">' +
+          '<p class="bank-type"></p>' +
+          '	<span class="card-type"></span>' +
+          '	<p class="card-num">' +
+          '<span class="hidenum">****</span> <span class="hidenum">****</span> <span class="hidenum">****</span>' +
+          '			 <span class="shownum">' + card.WeiHao + '</span> </p>' +
+          '</div>' +
+          '</li>';
+      return htmlStr;
+  }
 
     function setListener() {
       api.addEventListener({

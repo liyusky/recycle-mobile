@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -62,16 +62,17 @@
 
     <script type="text/javascript">
         var isv = null;
-
         apiready = function() {
+            // 860716037690344
         }
-
         function isCertification() {
-            var cardId = $api.val('card');
+            var cardId = $api.val('card');      
+            var User = $api.getStorage('User');
+
             request({
                 url: 'YinHangKa_STEP1',
                 'data': {
-                    'sj': '18255193029',
+                    'sj': User.Phone,
                     'deviceId': api.deviceId,
                     'bankcardno': cardId
                 },
@@ -86,12 +87,11 @@
             })
             return isv;
         }
-
         function SendSMS(dom) {
             request({
                 url: 'SendSMS',
                 'data': {
-                    'phone': '18255193029',
+                    'phone': User.Phone,
                     'type': '绑定银行卡'
                 },
                 operation: {
@@ -102,12 +102,11 @@
                     error: function() {}
                 }
             })
-
         }
-
         function submit() {
             // if (!checkNet() || !checkLogin()) return;
             // if(!$api.getStorage('User')) return;
+            var User = $api.getStorage('User');
             var name = $api.val('name');
             var card = $api.val('card');
             var bank = $api.val('bank');
@@ -118,15 +117,11 @@
             if (!checkPhone(phone)) return;
             // if(!checkPhoneVerificationCode(code)) return;
             if (!checkBankCard(card)) return;
-            var name = $api.val('name');
-            var phone = $api.val('phone');
-            var addressCurrent = $api.val('address-current');
-            var addressDetail = $api.val('address-detail');
             if (isCertification()) {
                 request({
                     url: 'AddYHK',
                     'data': {
-                        'Phone': '18255193029',
+                        'Phone': User.Phone,
                         'deviceId': api.deviceId,
                         'kh': card,
                         'yh': bank,
@@ -135,21 +130,16 @@
                     },
                     tip: '正在发送...',
                     operation: {
-                        init: function() {
+                        success: function(data) {
                             create('yinhangka');
                             kill('add-bank-card');
                         },
-                        success: function(data) {
-                            this.init();
-                        },
                         fail: function() {
-
                         }
                     }
                 });
             };
         };
-
         function sendBindCardEvent() {
             api.sendEvent({
                 name: 'BIND-CARD-EVENT'

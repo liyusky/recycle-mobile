@@ -37,6 +37,8 @@
       // if (!checkNet() || !checkLogin()) return;
       var content = $api.val('textarea');
       var account = $api.val('account');
+
+      var User = $api.getStorage('User');
       if(!content){
         toast('请将内容填写完整...');
         return;
@@ -49,7 +51,7 @@
         url: 'FKYJ',
         data: {
           'deviceId': api.deviceId,
-          'sj':'18255193029',
+          'sj':User.Phone,
           'nr':content
         },
         tip: '正在发送...',

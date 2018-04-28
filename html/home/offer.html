@@ -97,50 +97,32 @@
       $api.text('type', api.deviceModel);
     }
 
-
-    function submit(params) {
-      // if (!checkNet() || !checkLogin()) return;
-      request({
-        url: 'ShanDianDai',
-        'data': {
-          sj: '13476615091',
-          deviceId:api.deviceId,
-          jinE:500,
-          QiXian:7,
-          FeiYong:105,
-          RuZhangKa:id,
-          PhoneName:'',
-          PhoneModel:api.deviceModel,
-          StorageSpace:'',
-          SerialNumber:''
-        },
-        'tip': '正在发送...',
-        success:function (data) {
-              create('submit-order');
-        },
-
-    })
-  };
     function submit() {
       if (!checkNet() || !checkLogin()) return;
       var agreement = $api.byId('yes').checked;
       if (!agreement) {
-        toast('请同意注册协议!');
+        toast('请同意报价合同!');
         return;
       }
       request({
         url: 'ShanDianDai',
-        values: {
+        'data': {
           sj: User.Phone,
           deviceId: api.deviceId,
-          jinE: 500,
+          JinE: 500,
           QiXian: 7,
-          FeiYong: 105,
+          FeiYong: 500,
           RuZhangKa: User.Card,
+          txl:'',
+          ly:'',
           PhoneName: '',
           PhoneModel: api.deviceModel,
           StorageSpace: '',
-          SerialNumber: ''
+          SerialNumber: '',
+          IMEI:'',
+          ICCID:'',
+          MEID:'',
+          SEID:''
         },
         tip: '正在发送...',
         operation: {
