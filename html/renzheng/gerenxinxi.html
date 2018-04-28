@@ -17,7 +17,7 @@
 			<div class="aui-col-xs-12">
 				<p class="archive-note aui-text-center text-gray font-size-25">请提交身份证信息，仅用于揽钱审核</p>
 			</div>
-		</div>
+		</div> 
 		<div class="aui-row archive-image-group">
 			<div class="aui-col-xs-4">
 				<img class="archive-image" src="../../image/renzheng/IDcard-back.png" id="ID-front" onclick="javascript: getArchive();">
@@ -107,7 +107,6 @@
 			if (!checkNet() || !checkLogin()) return;
 			var name = $api.val('ID-name');
 			var number = $api.val('ID-number');
-
 			User = $api.getStorage('User');
 			request({
 				url: 'ShenFenXinXi',

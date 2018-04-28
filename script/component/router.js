@@ -29,14 +29,11 @@ window.ROUTER = {
   'add-shipping-address': {
     path: 'widget://html/records/add-shipping-address.html'
   },
-  'addcard': {
+  'add-bank-card': {
     path: 'widget://html/wode/add-bank-card.html'
   },
   'bank-card': {
     path: 'widget://html/wode/bank-card.html'
-  },
-  'yinhangka': {
-    path: 'widget://html/records/bank-card.html'
   },
   'help-center': {
     path: 'widget://html/wode/help-center.html'

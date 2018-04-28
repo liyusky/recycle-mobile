@@ -42,9 +42,9 @@
               <span class="card-type">储蓄卡</span>
             </p>
           </div>
-          <a href="javascript:;" class="select" id="card-select"></a>
+          <img src="../../image/wode/select.png" class="select" id="card-select" onclick="javascript:select(this);">
         </li>
-        <li>
+        <!-- <li>
           <div class="pay-type">
             <img src="../../image/wode/alipay.png" class="alipay">
             <div class="item-content">
@@ -55,7 +55,7 @@
           <div class="selectd select" id="ali-select">
             <img src="../../image/wode/check.png">
           </div>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
@@ -68,10 +68,22 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
+      
+      var onOff = true;
 
     apiready = function () {
       init();
+      var onOff = true;
     }
+
+      function select(obj){
+        if(onOff){
+          obj.src = '../../image/wode/check.png';
+        }else{
+          obj.src = '../../image/wode/select.png';
+        }
+        onOff = !onOff;
+      }
 
     function init() {
       if (!checkNet() || !checkLogin()) return;
@@ -109,6 +121,7 @@
         data: {},
         operation: {
           success: function (data) {
+            render(data);
           },
           default: function () {}
         }
