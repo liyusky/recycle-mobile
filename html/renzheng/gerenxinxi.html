@@ -52,9 +52,9 @@
 			</div>
 		</div>
 	</section>
-	<button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" disabled="disabled" id="submit-btn"
-		onclick="javascript: submit();">立即提交</button>
-	<!-- <button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" id="submit-btn" onclick="javascript: submit();">立即提交</button> -->
+	<!-- <button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" disabled="disabled" id="submit-btn"
+		onclick="javascript: submit();">立即提交</button> -->
+	<button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" id="submit-btn" onclick="javascript: submit();">立即提交</button>
 	<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
@@ -105,21 +105,27 @@
 		}
 
 		function submit() {
+			sendChangeStepEvent();
+			return;
 			if (!checkNet() || !checkLogin()) return;
 			User = $api.getStorage('User');
 			request({
-				url: 'ShenFenXinXin',
+				url: 'ShenFenXinXi',
 				data: {
 					deviceId: api.deviceId,
-					phone: User.Phone,
-					name: archive.id_name,
-					identityCard: archive.id_no,
-					sex: archive.flag_sex,
-					identityCard_front: archive.url_frontcard,
-					identityCard_back: archive.url_backcard,
-					living_photo: archive.url_photoliving
+					sj: User.Phone,
+					xm: archive.id_name,
+					sfzh: archive.id_no,
+					xb: archive.flag_sex,
+					sfz: archive.url_frontcard,
+					sfz_b: archive.url_backcard,
+					scsfz: archive.url_photoliving,
+					fwmm: '',
+					xl: '',
+					hy: '',
+					czdz: ''
 				},
-				tip: true,
+				tip: false,
 				operation: {
 					success: function () {
 						User = $api.getStorage('User');

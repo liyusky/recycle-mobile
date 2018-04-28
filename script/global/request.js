@@ -25,6 +25,7 @@ function request(params) {
   url = productionAppApi[params.url];  //后台测试服务器
   // url = developmentAppApi[params.url];   // 前端独立测试
 
+  // alert(url);
   if (params.tip) {
     switch (typeof params.tip) {
       case 'string':
