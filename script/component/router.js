@@ -86,12 +86,10 @@ window.ROUTER = {
   'relationship': {
     path: 'widget://html/selector/relationship.html'
   },
-<<<<<<< HEAD
   'add-recycle-address':{
-    path: 'widget://html/records/add-recycle-address.html' 
-=======
+    path: 'widget://html/records/add-recycle-address.html'
+  },
   'offline': {
     path: 'widget://html/tip/offline.html',
->>>>>>> 575ab3c32dcfbf273e132fca33ae73ce11599062
   }
 }

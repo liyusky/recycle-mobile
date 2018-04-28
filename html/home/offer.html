@@ -66,130 +66,123 @@
       <label for="yes">我阅读并理解 《手机合同》</label>
     </div>
     <button class="btn" onclick="javascript: submit();">马上拿钱</button>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
-  <script>
-    var User = null;
-    apiready = function () {
-      User = $api.getStorage('User');
-      init();
-    };
+    <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+    <script>
+      var User = null;
+      apiready = function () {
+        User = $api.getStorage('User');
+        init();
+      };
 
-    function init() {
-      if (!checkNet() || !checkLogin()) return;
-      $api.text('type', api.deviceModel);
-      
-      request({
-        url: 'GetHYJKJL',
-        data: {
-          phone: User.Phone,
-          deviceId: api.deviceId
-        },
-        operation: {
-          success: function (data) {
-            $api.text('money', data[0].DaoZhang + data[0].FeiYong+'.00');
-          }
-        }
-      });
+      function init() {
+        if (!checkNet() || !checkLogin()) return;
+        $api.text('type', api.deviceModel);
 
-      request({
-        url: 'Certification',
-        data: {
-          sj: User.Phone,
-          deviceId: api.deviceId
-        },
-        tip: '正在加载...',
-        operation: {
-          success: function (data) {
-            User = $api.getStorage('User');
-            User.Card = data.Card[data.Card.length - 1].KaHao;
-            User.Certification[0] = !!data.IsCertification;
-            User.Certification[1] = !!data.IsTxl;
-            User.Certification[2] = !!data.IsZhiMa;
-            User.Certification[3] = !!data.IsOperator;
-            $api.setStorage('User', User);
-          }
-        }
-      });
-    }
-
-    function submit() {
-      if (!checkNet() || !checkLogin()) return;
-      var agreement = $api.byId('yes').checked;
-      if (!agreement) {
-        toast('请同意报价合同!');
-        return;
-      }
-
-
-            var mark = true;
-      for (let i = 0; i < 4; i++) {
-        if (!User.Certification[i]) mark = false;
-      }
-
-      if (!mark) {
-        toast('请完成认证');
-        create('personal-information');
-        kill();
-        return;
-      }
-
-      if (!User.Card) {
-        toast('请绑定银行卡');
-        create('add-bank-card');
-        kill();
-        return;
-      }
-
-      request({
-<<<<<<< HEAD
-        url: 'SubmitApply',
-        'data': {
-=======
-        url: 'ShanDianDai',
-        data: {
->>>>>>> 575ab3c32dcfbf273e132fca33ae73ce11599062
-          sj: User.Phone,
-          deviceId: api.deviceId,
-          JinE: 500,
-          QiXian: 7,
-          FeiYong: 500,
-          RuZhangKa: User.Card,
-          txl:'',
-          ly:'',
-          PhoneName: '',
-          PhoneModel: api.deviceModel,
-          StorageSpace: '8',
-          SerialNumber: '',
-          IMEI:'',
-          ICCID:'',
-          MEID:'',
-          SEID:''
-        },
-        tip: '正在发送...',
-        operation: {
-          init: function () {
-            closeBtnClick('submit-btn');
+        request({
+          url: 'PhonePrice',
+          data: {
+            phone: User.Phone,
+            deviceId: api.deviceId
           },
-          success: function (data) {
-            create('submit-order');
-            kill();
-          },
-          fail: function () {
-            create('renzheng');
-          },
-          default: function () {
-            openBtnClick('submit-btn');
+          operation: {
+            success: function (data) {
+              $api.text('money', data.Price + data.FeiYong);
+            }
           }
+        });
+        request({
+          url: 'Certification',
+          data: {
+            sj: User.Phone,
+            deviceId: api.deviceId
+          },
+          tip: '正在加载...',
+          operation: {
+            success: function (data) {
+              User = $api.getStorage('User');
+              User.Card = data.Card[data.Card.length - 1].KaHao;
+              User.Certification[0] = !!data.IsCertification;
+              User.Certification[1] = !!data.IsTxl;
+              User.Certification[2] = !!data.IsZhiMa;
+              User.Certification[3] = !!data.IsOperator;
+              $api.setStorage('User', User);
+            }
+          }
+        });
+      }
+
+      function submit() {
+        if (!checkNet() || !checkLogin()) return;
+        var agreement = $api.byId('yes').checked;
+        if (!agreement) {
+          toast('请同意报价合同!');
+          return;
         }
-      });
-    }
-  </script>
+
+        var mark = true;
+        for (let i = 0; i < 4; i++) {
+          if (!User.Certification[i]) mark = false;
+        }
+
+        if (!mark) {
+          toast('请完成认证');
+          create('personal-information');
+          kill();
+          return;
+        }
+
+        if (!User.Card) {
+          toast('请绑定银行卡');
+          create('add-bank-card');
+          kill();
+          return;
+        }
+
+        request({
+          url: 'SubmitApply',
+          'data': {
+            sj: User.Phone,
+            deviceId: api.deviceId,
+            JinE: 500,
+            QiXian: 7,
+            FeiYong: 500,
+            RuZhangKa: User.Card,
+            txl: '',
+            ly: '',
+            PhoneName: '',
+            PhoneModel: api.deviceModel,
+            StorageSpace: '8',
+            SerialNumber: '',
+            IMEI: '',
+            ICCID: '',
+            MEID: '',
+            SEID: ''
+          },
+          tip: '正在发送...',
+          operation: {
+            init: function () {
+              closeBtnClick('submit-btn');
+            },
+            success: function (data) {
+              create('submit-order');
+              kill();
+            },
+            fail: function () {
+              create('renzheng');
+            },
+            default: function () {
+              openBtnClick('submit-btn');
+            }
+          }
+        });
+      }
+    </script>
 
 </body>
 
