@@ -62,13 +62,15 @@
 
     <script type="text/javascript">
         var isv = null;
+        var User = null;
         apiready = function() {
             // 860716037690344
+          User = $api.getStorage('User');
         }
         function isCertification() {
-            var cardId = $api.val('card');      
-            var User = $api.getStorage('User');
+          alert(1)
 
+            var cardId = $api.val('card');
             request({
                 url: 'YinHangKa_STEP1',
                 'data': {

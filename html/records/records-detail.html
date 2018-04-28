@@ -206,23 +206,23 @@
         function sethtml(data) {
             var html = "<li class='order-list'>" +
                 "<ul>" +
-                "<li class='currentstatus mark'>" +'打款成功'+ data.ZhuangTai + "</li>" +
-                "<li class='message'>" + '已打款至尾号(1234)储蓄卡'+data.FangKuanYiJian + "</li>" +
-                "<li class='time'>" + '2018-04-27 14:01:03'+data.FangKuanShiJian + "</li>" +
+                "<li class='currentstatus mark'>" +'预付款打款成功'+ data.ZhuangTai + "</li>" +
+                "<li class='message'>" + '已打款至尾号 (6589) 银行卡'+data.FangKuanYiJian + "</li>" +
+                "<li class='time'>" + '2018-04-10 12:05:58'+data.FangKuanShiJian + "</li>" +
                 "</ul>" +
                 "</li>"+
                 "<li class='order-list'>" +
                 "<ul>" +
-                "<li class='currentstatus mark'>" + '确认订单中'+data.ZhuangTai + "</li>" +
-                "<li class='message'>" + '后台审核通过'+data.ShenHeYiJian + "</li>" +
-                "<li class='time'>" + '2018-04-27 14:01:02'+data.ShenHeShiJian + "</li>" +
+                "<li class='currentstatus mark'>" + '审核中'+data.ZhuangTai + "</li>" +
+                "<li class='message'>" + '请耐心等待10-60分钟'+data.ShenHeYiJian + "</li>" +
+                "<li class='time'>" + '2018-04-10 11:55:58'+data.ShenHeShiJian + "</li>" +
                 "</ul>" +
                 "</li>"+
                 "<li class='order-list'>" +
                 "<ul>" +
-                "<li class='currentstatus mark'>" +'正在等待后台审核'+ data.ZhuangTai + "</li>" +
-                "<li class='message'>您的订单已提交</li>" +
-                "<li class='time'>" +data.JieKuanShiJian + "</li>" +
+                "<li class='currentstatus mark'>" +'订单提交'+ data.ZhuangTai + "</li>" +
+                "<li class='message'>&nbsp;</li>" +
+                "<li class='time'>" +'2018-04-10 11:54:25'+data.JieKuanShiJian + "</li>" +
                 "</ul>" +
                 "</li>";
             return html;
@@ -231,6 +231,7 @@
         function renderContent(data) {
             var html = '';
             html += sethtml(data);
+            alert(html)
             $api.html('list', html);
         }
 
