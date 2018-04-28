@@ -20,15 +20,15 @@
 		</div>
 		<div class="aui-row archive-image-group">
 			<div class="aui-col-xs-4">
-				<img class="archive-image" src="../../image/IDcard-back.png" id="ID-front" onclick="javascript: getArchive();">
+				<img class="archive-image" src="../../image/renzheng/IDcard-back.png" id="ID-front" onclick="javascript: getArchive();">
 				<p class="aui-text-center archive-image-tip font-size-26">身份证人像面</p>
 			</div>
 			<div class="aui-col-xs-4">
-				<img class="archive-image" src="../../image/IDcard-front.png" id="ID-back" onclick="javascript: getArchive();">
+				<img class="archive-image" src="../../image/renzheng/IDcard-front.png" id="ID-back" onclick="javascript: getArchive();">
 				<p class="aui-text-center archive-image-tip font-size-26">身份证国徽面</p>
 			</div>
 			<div class="aui-col-xs-4">
-				<img class="archive-image" src="../../image/facial-recognition.png" id="photo-living" onclick="javascript: getArchive();">
+				<img class="archive-image" src="../../image/renzheng/facial-recognition.png" id="photo-living" onclick="javascript: getArchive();">
 				<p class="aui-text-center archive-image-tip font-size-26">人脸识别</p>
 			</div>
 		</div>
@@ -40,20 +40,19 @@
 		<div class="aui-row">
 			<div class="aui-col-xs-12 detail-group padding-horizontal-15">
 				<div class="detail-name aui-pull-left aui-text-left text-gray">姓名</div>
-				<div class="detail-content aui-pull-right aui-text-right text-black" id="ID-name"></div>
+				<div class="detail-content aui-pull-right aui-text-left text-black" id="ID-name"></div>
 			</div>
 			<div class="aui-col-xs-12 detail-group padding-horizontal-15 margin-top-21">
 				<div class="detail-name aui-pull-left aui-text-left text-gray">身份证号</div>
-				<div class="detail-content aui-pull-right aui-text-right text-black" id="ID-number"></div>
+				<div class="detail-content aui-pull-right aui-text-left text-black " id="ID-number"></div>
 			</div>
 			<div class="aui-col-xs-12 detail-group padding-horizontal-15 margin-top-21">
 				<div class="detail-name aui-pull-left aui-text-left text-gray">有效期</div>
-				<div class="detail-content aui-pull-right aui-text-right text-black" id="ID-validity-term"></div>
+				<div class="detail-content aui-pull-right aui-text-left text-black" id="ID-validity-term"  ></div>
 			</div>
 		</div>
 	</section>
-	<!-- <button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" disabled="disabled" id="submit-btn"
-		onclick="javascript: submit();">立即提交</button> -->
+
 	<button class="aui-btn btn-fillet aui-text-center margin-top-55 font-size-40 disabled" id="submit-btn" onclick="javascript: submit();">立即提交</button>
 	<script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
@@ -106,6 +105,9 @@
 
 		function submit() {
 			if (!checkNet() || !checkLogin()) return;
+			var name = $api.val('ID-name');
+			var number = $api.val('ID-number');
+
 			User = $api.getStorage('User');
 			request({
 				url: 'ShenFenXinXi',
