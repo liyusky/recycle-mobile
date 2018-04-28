@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我的银行卡</title>
   <link rel="stylesheet" href="../../css/wode/yinhangka.css">
-  <link rel="stylesheet" href="../../css/wode/bank-card.css">
 </head>
 
 <body>
@@ -18,8 +17,8 @@
     <p class="header-title">我的银行卡</p>
   </header>
   <div class="content">
-    <ul class="list">
-      <li>
+    <ul class="list" id="bankList">
+      <!-- <li>
         <img id="bank-image" src="../../image/wode/bank.png">
         <div class="card-message">
           <p class="bank-type" id="bank-name">中国银行</p>
@@ -31,7 +30,7 @@
             <span class="shownum" id="card-tail">5198</span>
           </p>
         </div>
-      </li>
+      </li> -->
     </ul>
     <button class="btn" onclick="javascript:create('addcard')">绑定银行卡</button>
   </div>
@@ -52,25 +51,35 @@
       // if(!$api.getStorage('User')) return;
       var name = $api.val('name');
       var phone = $api.val('phone');
-      var addressCurrent = $api.val('address-current');
-      var addressDetail = $api.val('address-detail');
+      var User = $api.getStorage('User');
       request({
-        url: 'add-address',
+        url: 'GetHYYHK',
         data: {
-          'deviceId': api.deviceId,
-          'Id':'',
-          'UserPhone':'13476615091',
-          'Addressee': name,
-          'AddresseePhone':phone,
-          'CrrentAddress': addressCurrent,
-          'DetailAddress':addressDetail
+            'phone': User.Phone,
+            'deviceId': api.deviceId,
         },
         tip: '正在发送...',
         operation:{
           success:function (data) {
+            if(data.length){
+              setLayout(data[data.length-1]);
+              $api.addCls('btn', 'hide');
+            }else{
+              $api.removeCls('btn', 'hide');
+            }
+          },fail:function () {
+
           }
         }
       });
+    };
+
+    function setLayout(content) {
+        var htmlStr = '';
+        // for (var i = 0; i < content.length; i++) {
+            htmlStr += setBankCardHTML(content);
+        // };
+        $api.html('bankList', htmlStr);
     };
 
     var bankval = {
@@ -91,32 +100,25 @@
       '中信':'../../image/wode/bank/zxyh-bg.png'
     };
 
-    function render(data) {
-          for(var key in bankval){
-            if(data.KaiHuHang.indexOf(key) !== -1){
-                $api.attr('bank-image', 'src', bankval[key]);
-            }
-          }
-      request({
-        url: 'GetHYYHK',
-        values: {
-          phone:$api.getStorage('User'),
-          deviceId:api.deviceId
-        },
-        showMessage: '正在加载...',
-        success: function (data) {
-          render(data);
-        }
-      });
+    function setBankCardHTML(card) {
+      var src = null;
+      for (var key in bankval) {
+          if (!card.KaiHuHang.indexOf(key)) {
+              src = bankval[key];
+          };
+      };
+        var htmlStr = '<li>' +
+            '<img id="bank-image" src='+src+'>' +
+            '<div class="card-message">' +
+            '<p class="bank-type"></p>' +
+            '	<span class="card-type"></span>' +
+            '	<p class="card-num">' +
+            '<span class="hidenum">****</span> <span class="hidenum">****</span> <span class="hidenum">****</span>' +
+            '			 <span class="shownum">' + card.WeiHao + '</span> </p>' +
+            '</div>' +
+            '</li>';
+        return htmlStr;
     }
-
-    function render(data) {
-      $api.attr('bank-image', 'src', data.src);
-      $api.text('bank-name', data.KaiHuHang);
-      $api.text('card-type', '储蓄卡');
-      $api.text('card-tail', data.Weihao);
-    }
-
 
     function setListener() {
       api.addEventListener({

@@ -1,13 +1,12 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>ÎÒµÄÒøĞĞ¿¨</title>
-  <link rel="stylesheet" href="../../css/wode/yinhangka.css">
-  <link rel="stylesheet" href="../../css/wode/bank-card.css">
+  <title>æˆ‘çš„é“¶è¡Œå¡</title>
+  <link rel="stylesheet" type="text/css" href="../../css/wode/yinhangka.css">
 </head>
 
 <body>
@@ -15,15 +14,15 @@
 
   <header class="header">
     <img src="../../image/common/back.png"  class="back" onclick="javascript: kill();">
-    <p class="header-title">ÎÒµÄÒøĞĞ¿¨</p>
+    <p class="header-title">æˆ‘çš„é“¶è¡Œå¡</p>
   </header>
   <div class="content">
-    <ul class="list">
-      <li>
+    <ul class="list" id="bankList">
+      <!-- <li>
         <img id="bank-image" src="../../image/wode/bank.png">
         <div class="card-message">
-          <p class="bank-type" id="bank-name">ÖĞ¹úÒøĞĞ</p>
-          <span class="card-type">´¢Ğî¿¨</span>
+          <p class="bank-type" id="bank-name">ä¸­å›½é“¶è¡Œ</p>
+          <span class="card-type">å‚¨è“„å¡</span>
           <p class="card-num">
             <span class="hidenum">****</span>
             <span class="hidenum">****</span>
@@ -31,10 +30,9 @@
             <span class="shownum" id="card-tail">5198</span>
           </p>
         </div>
-      </li>
+      </li> -->
     </ul>
-    <button class="btn" onclick="javascript:create('add-bank-card')">°ó¶¨ÒøĞĞ¿¨</button>
-    <button class="btn" onclick="javascript:create('addcard')">°ó¶¨ÒøĞĞ¿¨</button>
+    <button class="btn" onclick="javascript:create('add-bank-card')">ç»‘å®šé“¶è¡Œå¡</button>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -43,75 +41,89 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript">
-    apiready = function () {
-      // setListener();
+  var User = null;
+  apiready = function() {
+      setListener();
       init();
-    }
-    function init() {
-      // if (!checkNet() || !checkLogin()) return;
-      // if(!$api.getStorage('User')) return;
+  }
+
+  function init() {
+      // if (checkNetwork() && checkLogin()) {
       var name = $api.val('name');
       var phone = $api.val('phone');
-      var addressCurrent = $api.val('address-current');
-      var addressDetail = $api.val('address-detail');
+      var User = $api.getStorage('User');
+
       request({
-        url: 'add-address',
-        data: {
-          'deviceId': api.deviceId,
-          'Id':'',
-          'UserPhone':'13476615091',
-          'Addressee': name,
-          'AddresseePhone':phone,
-          'CrrentAddress': addressCurrent,
-          'DetailAddress':addressDetail
-        },
-        tip: 'ÕıÔÚ·¢ËÍ...',
-        operation:{
-          success:function (data) {
+          url: 'GetHYYHK',
+          data: {
+              'phone': User.Phone,
+              'deviceId': api.deviceId,
+          },
+          tip: 'æ­£åœ¨å‘é€...',
+          operation: {
+              success: function(data) {
+                 if(data.length){
+                   setLayout(data[data.length-1]);
+                   $api.addCls('btn', 'hide');
+                 }else{
+                   $api.removeCls('btn', 'hide');
+                 }
+              },
+              fail: function() {
+              }
           }
-        }
       });
+  };
+
+
+
+
+  function setLayout(content) {
+      var htmlStr = '';
+      // for (var i = 0; i < content.length; i++) {
+          htmlStr += setBankCardHTML(content);
+      // };
+      $api.html('bankList', htmlStr);
+  };
+
+  var bankval = {
+      'å…‰å¤§': '../../image/wode/bank/gdyh-bg.png',
+      'å¹¿å‘': '../../image/wode/bank/gfyh-bg.png',
+      'å·¥å•†': '../../image/wode/bank/gsyh-bg.png',
+      'åå¤': '../../image/wode/bank/hyyh-bg.png',
+      'å»ºè®¾': '../../image/wode/bank/jsyh-bg.png',
+      'äº¤é€š': '../../image/wode/bank/jtyh-bg.png',
+      'æ°‘ç”Ÿ': '../../image/wode/bank/msyh-bg.png',
+      'å†œä¸š': '../../image/wode/bank/nyyh-bg.png',
+      'å¹³å®‰': '../../image/wode/bank/payh-bg.png',
+      'æµ¦å‘': '../../image/wode/bank/pfyh-bg.png',
+      'å…´ä¸š': '../../image/wode/bank/xyyh-bg.png',
+      'é‚®æ”¿': '../../image/wode/bank/yzyh-bg.png',
+      'ä¸­å›½': '../../image/wode/bank/zgyh-bg.png',
+      'æ‹›å•†': '../../image/wode/bank/zsyh-bg.png',
+      'ä¸­ä¿¡': '../../image/wode/bank/zxyh-bg.png'
+  };
+
+  function setBankCardHTML(card) {
+    var src = null;
+    for (var key in bankval) {
+        if (!card.KaiHuHang.indexOf(key)) {
+            src = bankval[key];
+        };
     };
-    var bankval = {
-      '¹â´ó':'../../image/wode/bank/gdyh-bg.png',
-      '¹ã·¢':'../../image/wode/bank/gfyh-bg.png',
-      '¹¤ÉÌ':'../../image/wode/bank/gsyh-bg.png',
-      '»ªÏÄ':'../../image/wode/bank/hyyh-bg.png',
-      '½¨Éè':'../../image/wode/bank/jsyh-bg.png',
-      '½»Í¨':'../../image/wode/bank/jtyh-bg.png',
-      'ÃñÉú':'../../image/wode/bank/msyh-bg.png',
-      'Å©Òµ':'../../image/wode/bank/nyyh-bg.png',
-      'Æ½°²':'../../image/wode/bank/payh-bg.png',
-      'ÆÖ·¢':'../../image/wode/bank/pfyh-bg.png',
-      'ĞËÒµ':'../../image/wode/bank/xyyh-bg.png',
-      'ÓÊÕş':'../../image/wode/bank/yzyh-bg.png',
-      'ÖĞ¹ú':'../../image/wode/bank/zgyh-bg.png',
-      'ÕĞÉÌ':'../../image/wode/bank/zsyh-bg.png',
-      'ÖĞĞÅ':'../../image/wode/bank/zxyh-bg.png'
-    };
-    function render(data) {
-          for(var key in bankval){
-            if(data.KaiHuHang.indexOf(key) !== -1){
-                $api.attr('bank-image', 'src', bankval[key]);
-            }
-          }
-      request({
-        url: 'GetHYYHK',
-        values: {
-          phone:$api.getStorage('User'),
-          deviceId:api.deviceId
-        },
-        'tip': 'ÕıÔÚ¼ÓÔØ...',
-        success: function (data) {
-          render(data);
-        }
-      });
-    }
-    function render(data) {
-      $api.text('bank-name', data.KaiHuHang);
-      $api.text('card-type', '´¢Ğî¿¨');
-      $api.text('card-tail', data.Weihao);
-    }
+      var htmlStr = '<li>' +
+          '<img id="bank-image" src='+src+'>' +
+          '<div class="card-message">' +
+          '<p class="bank-type"></p>' +
+          '	<span class="card-type"></span>' +
+          '	<p class="card-num">' +
+          '<span class="hidenum">****</span> <span class="hidenum">****</span> <span class="hidenum">****</span>' +
+          '			 <span class="shownum">' + card.WeiHao + '</span> </p>' +
+          '</div>' +
+          '</li>';
+      return htmlStr;
+  }
+
     function setListener() {
       api.addEventListener({
           name: 'BIND-CARD-EVENT'

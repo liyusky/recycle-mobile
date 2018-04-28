@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>°ó¶¨ÒøĞĞ¿¨</title>
+    <title>ç»‘å®šé“¶è¡Œå¡</title>
     <link rel="stylesheet" href="../../css/wode/addbank.css">
 </head>
 
@@ -14,43 +14,43 @@
 
     <header class="header">
         <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
-        <p class="header-title">°ó¶¨ÒøĞĞ¿¨</p>
+        <p class="header-title">ç»‘å®šé“¶è¡Œå¡</p>
     </header>
 
     <div class="content">
         <div class="content-head">
-            <p class="title">°ó¿¨Ö»ÏŞÓÚÊµÃûÈÏÖ¤ÃûÏÂµÄÒøĞĞ¿¨°ó¶¨ </p>
+            <p class="title">ç»‘å¡åªé™äºå®åè®¤è¯åä¸‹çš„é“¶è¡Œå¡ç»‘å®š </p>
         </div>
         <ul class="address-list-compile">
             <li>
-                <p>ÕæÊµĞÕÃû:</p>
-                <input id="name" type="username" placeholder="ÇëÊäÈëÕæÊµĞÕÃû" class="name">
+                <p>çœŸå®å§“å:</p>
+                <input id="name" type="username" placeholder="è¯·è¾“å…¥çœŸå®å§“å" class="name">
             </li>
             <li>
-                <p>Éí·İÖ¤ºÅ:</p>
-                <input id="id" type="text" placeholder="ÇëÊäÈëÉí·İÖ¤ºÅ">
+                <p>èº«ä»½è¯å·:</p>
+                <input id="id" type="text" placeholder="è¯·è¾“å…¥èº«ä»½è¯å·">
             </li>
             <li>
-                <p>ÒøĞĞ¿¨ºÅ:</p>
-                <input id="card" type="number" placeholder="ÇëÊäÈëÒøĞĞÕËºÅ">
+                <p>é“¶è¡Œå¡å·:</p>
+                <input id="card" type="number" placeholder="è¯·è¾“å…¥é“¶è¡Œè´¦å·">
             </li>
             <li>
-                <p>¿ª»§ÒøĞĞ:</p>
-                <input id="bank" type="text" placeholder="ÇëÊäÈë¿ª»§ÒøĞĞ">
+                <p>å¼€æˆ·é“¶è¡Œ:</p>
+                <input id="bank" type="text" placeholder="è¯·è¾“å…¥å¼€æˆ·é“¶è¡Œ">
             </li>
             <li>
-                <p class="phone">ÊÖ»úºÅ:</p>
-                <input id="phone" type="number" placeholder="ÇëÊäÈëÊÖ»úºÅ">
+                <p class="phone">æ‰‹æœºå·:</p>
+                <input id="phone" type="number" placeholder="è¯·è¾“å…¥æ‰‹æœºå·">
             </li>
             <li>
-                <p class="code">ÑéÖ¤Âë:</p>
-                <input id="code" type="text" placeholder="ÇëÊäÈëÑéÖ¤Âë">
-                <a class="sendmesg" id="sendmesg" onclick="javascript:SendSMS(this);">·¢ËÍÑéÖ¤Âë</a>
+                <p class="code">éªŒè¯ç :</p>
+                <input id="code" type="text" placeholder="è¯·è¾“å…¥éªŒè¯ç ">
+                <a class="sendmesg" id="sendmesg" onclick="javascript:SendSMS(this);">å‘é€éªŒè¯ç </a>
             </li>
         </ul>
     </div>
 
-    <button onclick="javascript: submit();" class="btn">°ó¶¨ÒøĞĞ¿¨</button>
+    <button onclick="javascript: submit();" class="btn">ç»‘å®šé“¶è¡Œå¡</button>
     <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -66,11 +66,13 @@
             // 860716037690344
         }
         function isCertification() {
-            var cardId = $api.val('card');
+            var cardId = $api.val('card');      
+            var User = $api.getStorage('User');
+
             request({
                 url: 'YinHangKa_STEP1',
                 'data': {
-                    'sj': '18255193029',
+                    'sj': User.Phone,
                     'deviceId': api.deviceId,
                     'bankcardno': cardId
                 },
@@ -89,8 +91,8 @@
             request({
                 url: 'SendSMS',
                 'data': {
-                    'phone': '18255193029',
-                    'type': '°ó¶¨ÒøĞĞ¿¨'
+                    'phone': User.Phone,
+                    'type': 'ç»‘å®šé“¶è¡Œå¡'
                 },
                 operation: {
                     init: function() {
@@ -104,6 +106,7 @@
         function submit() {
             // if (!checkNet() || !checkLogin()) return;
             // if(!$api.getStorage('User')) return;
+            var User = $api.getStorage('User');
             var name = $api.val('name');
             var card = $api.val('card');
             var bank = $api.val('bank');
@@ -114,29 +117,22 @@
             if (!checkPhone(phone)) return;
             // if(!checkPhoneVerificationCode(code)) return;
             if (!checkBankCard(card)) return;
-            var name = $api.val('name');
-            var phone = $api.val('phone');
-            var addressCurrent = $api.val('address-current');
-            var addressDetail = $api.val('address-detail');
             if (isCertification()) {
                 request({
                     url: 'AddYHK',
                     'data': {
-                        'Phone': '18255193029',
+                        'Phone': User.Phone,
                         'deviceId': api.deviceId,
                         'kh': card,
                         'yh': bank,
                         'ylsj': phone,
                         'code': code
                     },
-                    tip: 'ÕıÔÚ·¢ËÍ...',
+                    tip: 'æ­£åœ¨å‘é€...',
                     operation: {
-                        init: function() {
+                        success: function(data) {
                             create('yinhangka');
                             kill('add-bank-card');
-                        },
-                        success: function(data) {
-                            this.init();
                         },
                         fail: function() {
                         }
