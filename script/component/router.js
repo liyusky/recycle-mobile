@@ -35,9 +35,6 @@ window.ROUTER = {
   'bank-card': {
     path: 'widget://html/wode/bank-card.html'
   },
-  'bank-card': {
-    path: 'widget://html/records/bank-card.html'
-  },
   'help-center': {
     path: 'widget://html/wode/help-center.html'
   },
@@ -94,5 +91,8 @@ window.ROUTER = {
   },
   'recycling-schedule': {
     path: 'widget://html/records/recycling-schedule.html',
+  },
+  'pay': {
+    path: 'widget://html/wode/pay.html',
   },
 }

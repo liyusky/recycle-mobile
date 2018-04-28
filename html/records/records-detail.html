@@ -236,68 +236,69 @@
 
 
         function cancel() {
-            var name = $api.val('name');
-            var phone = $api.val('phone');
-            User = $api.getStorage('User');
-            var mark = false;
-            var status;
-                request({
-                  url: 'ApplyStatus',
-                  data: {
-                    sj: User.Phone,
-                    deviceId: api.deviceId
-                  },
-                  operation: {
-                    success: function (data) {
-                       status = data.ZhuangTai;
-                    }
-                  }
-                });
+        create('refund');
+        //     var name = $api.val('name');
+        //     var phone = $api.val('phone');
+        //     User = $api.getStorage('User');
+        //     var mark = false;
+        //     var status;
+        //         request({
+        //           url: 'ApplyStatus',
+        //           data: {
+        //             sj: User.Phone,
+        //             deviceId: api.deviceId
+        //           },
+        //           operation: {
+        //             success: function (data) {
+        //                status = data.ZhuangTai;
+        //             }
+        //           }
+        //         });
 
-                switch(status){
-                  case 3:
-                  mark = true;
-                  break;
-                  case 4:
-                  mark = true;
-                  break;
-                  case 6:
-                  mark = true;
-                  break;
-                  case 8:
-                  mark = true;
-                  break;
-                  case 10:
-                  mark = true;
-                  break;
-                  case 11:
-                  mark = true;
-                  break;
-                  case 12:
-                  mark = true;
-                  break;
-                };
-          if(mark){
-              request({
-                  url: 'GetHYJKJL',
-                  data: {
-                      'deviceId': api.deviceId,
-                      'Id': '',
-                      'UserPhone': phone,
-                      'Addressee': name,
-                      'AddresseePhone': phone
-                  },
-                  tip: '正在发送...',
-                  operation: {
-                      success: function(data) {
-                        create('refund');
-                      },
-                      fail: function() {
-                      }
-                  }
-              });
+        //         switch(status){
+        //           case 3:
+        //           mark = true;
+        //           break;
+        //           case 4:
+        //           mark = true;
+        //           break;
+        //           case 6:
+        //           mark = true;
+        //           break;
+        //           case 8:
+        //           mark = true;
+        //           break;
+        //           case 10:
+        //           mark = true;
+        //           break;
+        //           case 11:
+        //           mark = true;
+        //           break;
+        //           case 12:
+        //           mark = true;
+        //           break;
+        //         };
+        //   if(mark){
+        //       request({
+        //           url: 'GetHYJKJL',
+        //           data: {
+        //               'deviceId': api.deviceId,
+        //               'Id': '',
+        //               'UserPhone': phone,
+        //               'Addressee': name,
+        //               'AddresseePhone': phone
+        //           },
+        //           tip: '正在发送...',
+        //           operation: {
+        //               success: function(data) {
+        //                 create('refund');
+        //               },
+        //               fail: function() {
+        //               }
+        //           }
+        //       });
             }
-    }
+    
 
         function confirm() {
             // var name = $api.val('name');

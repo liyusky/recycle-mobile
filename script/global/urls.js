@@ -23,6 +23,7 @@ var productionAppApi = {
   'IsExistsJT':'http://192.168.0.110:8008/JDBService.svc/IsExistsJT', // 是否存在借条
   'ImageKey':'http://192.168.0.110:8008/JDBService.svc/GenerateKey',  // 获取key
   'ImageCode': 'http://192.168.0.110:8008/JDBService.svc/GrapheCodeImg',
+  'PaymentAmount':'http://192.168.0.200:4201/PaymentAmount.json'
 };
 
 var developmentAppApi = {

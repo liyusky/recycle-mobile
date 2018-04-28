@@ -150,14 +150,14 @@
 
       if (!User) {
         User = {
-          Status: true, //登录
-          Certification: [true, true, true, true],
-          Phone: '18255193029',
+          Status: false, //登录
+          Certification: [false, false, false, false],
+          Phone: '',
           Archive: {
             Name: null,
             Id: null
           },
-          Card: '1234567890'
+          Card: ''
         };
         $api.setStorage('User', User);
       }
