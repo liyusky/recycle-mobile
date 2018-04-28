@@ -6,8 +6,8 @@ var productionAppApi = {
   'UserLogin': 'http://192.168.0.110:8008/JDBService.svc/UserLogin', // login 用户登陆
   'FindPassword':'http://192.168.0.110:8008/JDBService.svc/FindPass', // 找回密码
   'SendSMS':'http://192.168.0.110:8008/JDBService.svc/SendTemplateSMS_XJFD', // 发送短信
+  'Certification':'http://192.168.0.110:8008/JDBService.svc/GetHYXX', // 获取认证状态
   'GetZXJD':'http://192.168.0.110:8008/JDBService.svc/GetZXJD', //  订单进度
-  'ShenFenXinXi':'http://192.168.0.110:8008/JDBService.svc/GetZXJD', // 身份验证
   'YinHangKa_STEP1':'http://192.168.0.110:8008/JDBService.svc/YinHangKa_STEP1',
   'AddYHK':'http://192.168.0.110:8008/JDBService.svc/AddYHK',   // 添加银行卡
   'GetHYYHK':'http://192.168.0.110:8008/JDBService.svc/GetHYYHK',    // 获取银行卡列表
