@@ -1,6 +1,6 @@
 var productionAppApi = {
   'ApplyStatus': 'http://192.168.0.110:8008/JDBService.svc/GetZXJD', // home 申请状态
-  'PhonePrice': 'http://192.168.0.110:8008/JDBService.svc/GetZXJD', // offer 申请状态
+  'PhonePrice': 'http://192.168.0.110:8008/JDBService.svc/GetPhonePrice', // offer 申请状态
   'SubmitApply': 'http://192.168.0.110:8008/JDBService.svc/ShanDianDai', // offer 提交定胆
   'UserRegister': 'http://192.168.0.110:8008/JDBService.svc/UserRegister', // register 用户注册
   'UserLogin': 'http://192.168.0.110:8008/JDBService.svc/UserLogin', // login 用户登陆
