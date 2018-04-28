@@ -18,7 +18,7 @@
   </header>
   <div class="content">
     <ul class="address-list" id="list">
-      <li>
+      <!-- <li>
         <div class="box">
           <p class="name">张三丰</p>
           <p class="phone">
@@ -28,7 +28,11 @@
           </p>
           <p class="address">浙江省杭州市西湖区一秀小区2幢4单元202室</p>
         </div>
-      </li>
+      </li> -->
+      <div class="noaddress" id="noaddress">
+        <img src="../../image/records/noaddress.png">
+        <p class="noText">暂无收货地址</p>
+      </div>
     </ul>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -44,16 +48,22 @@
 
     function init() {
       // if (checkNet() && checkLogin()) {
+      var User = $api.getStorage('User');
         request({
           url: 'GetRA',
           data: {
             'deviceId': api.deviceId,
-            'phone':'13476615091'
+            'phone':User.Phone
           },
           tip: '正在发送...',
           operation:{
             success:function (data) {
-              render(data[0]);
+              if(data.length){
+                render(data[0]);
+                $api.addCls('noaddress', 'hide');
+              }else{
+                $api.removeCls('noaddress', 'hide');
+              }
             },
             fail:function () {
 
