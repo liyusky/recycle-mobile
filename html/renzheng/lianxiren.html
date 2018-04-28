@@ -287,19 +287,20 @@
             name_2: secondName,
             phone_2: secondPhone,
             relationship_2: secondRelationship,
-            telList: '' //escape(JSON.stringify(contactlist))
+            txl: escape(JSON.stringify(contactlist))
           },
           tip: true,
           operation: {
             success: function () {
               var User = $api.getStorage('User');
-              User.Step[1] = true;
+              User.Certification[1] = true;
               $api.setStorage('User', User);
               sendChangeStepEvent();
             }
           }
         });
-      } else {
+      }
+      else {
         toast('请添加联系人');
       }
     }

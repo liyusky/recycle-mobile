@@ -105,8 +105,6 @@
 		}
 
 		function submit() {
-			sendChangeStepEvent();
-			return;
 			if (!checkNet() || !checkLogin()) return;
 			User = $api.getStorage('User');
 			request({
@@ -131,7 +129,7 @@
 						User = $api.getStorage('User');
 						User.Archive.Name = archive.id_name;
 						User.Archive.Id = archive.id_no;
-						User.Step[0] = true;
+						User.Certification[0] = true;
 						$api.setStorage('User', User);
 						sendChangeStepEvent();
 					},

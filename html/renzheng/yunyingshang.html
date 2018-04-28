@@ -36,21 +36,22 @@
     }
 
     function init() {
-      if (checkNetwork() && checkLogin()) {
-        request({
-          url: 'GetPhoneOperatorAuthInfoUrl',
-          data: {
-            deviceId: api.deviceId,
-            phone: User.Phone
-          },
-          tip: true,
-          operation: {
-            success: function (data) {
-              $api.attr('iframe', 'src', data);
-            }
+      if (!checkNet() && !checkLogin()) return;
+      request({
+        url: 'PhoneOperatorAuthUrl',
+        data: {
+          deviceId: api.deviceId,
+          phone: User.Phone,
+          ShenFenZheng: User.Archive.Id,
+          XingMing: User.Archive.Name
+        },
+        tip: false,
+        operation: {
+          success: function (data) {
+            $api.attr('iframe', 'src', data);
           }
-        });
-      }
+        }
+      });
     }
 
     function setListener() {
@@ -58,21 +59,30 @@
         index++;
         if (index === 2) {
           setTimeout(function () {
-            if (checkNetwork() && checkLogin()) {
-              request({
-                url: 'GetCurrentStep',
-                values: {
-                  deviceId: api.deviceId,
-                  phone: User.Phone
-                },
-                success: function (data) {
+            if (!checkNet() && !checkLogin()) return;
+            request({
+              success: function (data) {
+                User = $api.getStorage('User');
+                User.Certification[3] = true;
+                $api.setStorage('User', User);
+                if (data.Step4) sendChangeStepEvent();
+              }
+            });
+            request({
+              url: 'Certification',
+              data: {
+                deviceId: api.deviceId,
+                sj: User.Phone
+              },
+              success: function (data) {
+                if (data.IsOperator) {
                   User = $api.getStorage('User');
-                  User.Step[3] = true;
-                  $api.setStorage('User', User);
-                  if (data.Step4) sendChangeStepEvent();
+                  User.Certification[3] = true;
+                  $api.setStorage('User');
+                  sendCloseStepEvent();
                 }
-              });
-            }
+              }
+            });
           }, 3000);
         }
       };
@@ -80,9 +90,9 @@
 
     function sendChangeStepEvent() {
       api.sendEvent({
-        name: 'CHANGE-STEP-EVENT',
+        name: 'CLOSE-STEP-EVENT',
         extra: {
-          step: 2,
+          step: 4,
           goal: 'zhimafen'
         }
       });
