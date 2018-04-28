@@ -103,7 +103,6 @@
             phone: User.Phone
           },
           success: function (data) {
-            alert(data);
             data = formatData(data);
             User = $api.getStorage('User');
             User.Step = data;

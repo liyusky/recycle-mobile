@@ -67,6 +67,7 @@
             var id = $api.val('id');
             var banktype = $api.val('bank');
             var code = $api.val('code');
+            var User = $api.getStorage('User');
             if(!checkBankCard(cardnum)) return;
             if(!checkID(id)) return;
             if(!checkName(name)) return;
@@ -77,7 +78,7 @@
               request({
                   url: 'AddYHK',
                   'data': {
-                      phone: $api.getStorage('User'),
+                      phone: User.Phone,
                       deviceId:api.deviceId,
                       kh:cardnum,
                       yh:banktype,
@@ -103,10 +104,11 @@
 
       function isCertificate() { // 是否认证
       var cardnum = $api.val('cardnum');
+      var User = $api.getStorage('User');
           request({
              url:'YinHangKa_STEP1',
              'data':{
-               sj:$api.getStorage('User'),
+               sj:User.Phone,
                deviceId:api.deviceId,
                bankcardno:cardnum
              },

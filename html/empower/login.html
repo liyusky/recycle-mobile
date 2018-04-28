@@ -39,7 +39,6 @@
       var account = $api.val('account');
       if (!checkPhone(account)) return;
 
-      alert(account)
       request({
         url: 'CheckAccount',
         data: {
