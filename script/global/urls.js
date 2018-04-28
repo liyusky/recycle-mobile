@@ -1,5 +1,5 @@
 var productionAppApi = {
-  'ApplyStatus': 'http://192.168.0.110:8008/JDBService.svc/IsExistsJT', // home 申请状态
+  'ApplyStatus': 'http://192.168.0.110:8008/JDBService.svc/GetZXJD', // home 申请状态
   'PhonePrice': 'http://192.168.0.110:8008/JDBService.svc/GetZXJD', // offer 申请状态
   'SubmitApply': 'http://192.168.0.110:8008/JDBService.svc/ShanDianDai', // offer 提交定胆
   'UserRegister': 'http://192.168.0.110:8008/JDBService.svc/UserRegister', // register 用户注册

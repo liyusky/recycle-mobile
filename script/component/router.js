@@ -29,6 +29,12 @@ window.ROUTER = {
   'add-shipping-address': {
     path: 'widget://html/records/add-shipping-address.html'
   },
+  'add-bank-card': {
+    path: 'widget://html/wode/add-bank-card.html'
+  },
+  'bank-card': {
+    path: 'widget://html/wode/bank-card.html'
+  },
   'yinhangka': {
     path: 'widget://html/wode/yinhangka.html'
   },
@@ -67,9 +73,6 @@ window.ROUTER = {
   },
   'zhimafen': {
     path: 'widget://html/renzheng/zhimafen.html'
-  },
-  'addcard':{
-     path: 'widget://html/records/addcard.html'
   },
   'submit-order':{
     path: 'widget://html/records/submit-order.html'

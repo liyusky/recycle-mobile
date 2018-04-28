@@ -79,7 +79,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript">
     var User = null;
-    var page = null;
+    var page = 'offer';
 
     apiready = function () {
       setUser();
@@ -99,7 +99,7 @@
         request({
           url: 'ApplyStatus',
           data: {
-            phone: User.Phone,
+            sj: User.Phone,
             deviceId: api.deviceId
           },
           operation: {
@@ -148,6 +148,7 @@
     }
 
     function setStatus(data) {
+      if (data.ZhuangTai == undefinded) return;
       switch (data.ZhuangTai) {
         case 0: //待审核
           page = 'recycling-schedule';

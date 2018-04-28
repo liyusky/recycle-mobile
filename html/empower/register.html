@@ -94,6 +94,7 @@
           data: {}
         },
         function (ret, err) {
+          key = ret.Data.Key;
           $api.attr('getImg', 'src', imgurl + '?key=' + ret.Data.Key);
         }
       );
@@ -117,15 +118,12 @@
       request({
         url: 'SendSMS',
         data: {
-          account: account,
+          phone: account,
           type: '注册'
         },
         operation: {
           init: function () {
             readyToResend(dom);
-          },
-          success: function (data) {
-            kill();
           },
           fail: function () {
             toast('注册失败');
@@ -162,8 +160,8 @@
           phone: account,
           mima: password,
           yanzhengma: phoneCode,
-          key: '',
-          imgcode: '',
+          imgcode: imageCode,
+          key: key,
           dezhi: '',
           address: '',
           txl: ''
