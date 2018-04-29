@@ -43,15 +43,15 @@
         data: {
           deviceId: api.deviceId,
           sj: User.Phone,
-          sfz: User.Archive.Id,
-          xm: User.Archive.Name
+          sfz: User.Id,
+          xm: User.Name
         },
         tip: false,
         operation: {
           success: function (data) {
             $api.attr('iframe', 'src', data);
           }
-        }
+        },
       });
     }
 
@@ -61,21 +61,21 @@
         if (index === 3) {
           setTimeout(function () {
             if (!checkNet() && checkLogin()) return;
-                request({
-                  url: 'Certification',
-                  data: {
-                    deviceId: api.deviceId,
-                    sj: User.Phone
-                  },
-                  success: function (data) {
-                    if (data.IsZhiMa) {
-                      User = $api.getStorage('User');
-                      User.Certification[2] = true;
-                      $api.setStorage('User', User);
-                      sendCloseStepEvent();
-                    }
-                  }
-                });
+            request({
+              url: 'Certification',
+              data: {
+                deviceId: api.deviceId,
+                sj: User.Phone
+              },
+              success: function (data) {
+                if (data.IsZhiMa) {
+                  User = $api.getStorage('User');
+                  User.Certification[2] = true;
+                  $api.setStorage('User', User);
+                  sendCloseStepEvent();
+                }
+              }
+            });
           }, 3000);
         }
       };

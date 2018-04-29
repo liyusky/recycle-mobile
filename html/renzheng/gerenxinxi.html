@@ -40,15 +40,15 @@
 		<div class="aui-row">
 			<div class="aui-col-xs-12 detail-group padding-horizontal-15">
 				<div class="detail-name aui-pull-left aui-text-left text-gray">姓名</div>
-				<div class="detail-content aui-pull-right aui-text-left text-black" id="ID-name"></div>
+				<div class="detail-content aui-pull-right aui-text-right text-black" id="ID-name"></div>
 			</div>
 			<div class="aui-col-xs-12 detail-group padding-horizontal-15 margin-top-21">
 				<div class="detail-name aui-pull-left aui-text-left text-gray">身份证号</div>
-				<div class="detail-content aui-pull-right aui-text-left text-black " id="ID-number"></div>
+				<div class="detail-content aui-pull-right aui-text-right text-black " id="ID-number"></div>
 			</div>
 			<div class="aui-col-xs-12 detail-group padding-horizontal-15 margin-top-21">
 				<div class="detail-name aui-pull-left aui-text-left text-gray">有效期</div>
-				<div class="detail-content aui-pull-right aui-text-left text-black" id="ID-validity-term"  ></div>
+				<div class="detail-content aui-pull-right aui-text-right text-black" id="ID-validity-term"  ></div>
 			</div>
 		</div>
 	</section>
@@ -94,8 +94,8 @@
 						$api.removeCls('submit-btn', 'disabled');
 						$api.removeAttr('submit-btn', 'disabled');
 						User = $api.getStorage('User');
-						User.Archive.Name = ret.id_name;
-						User.Archive.Id = ret.id_no;
+						User.Name = ret.id_name;
+						User.Id = ret.id_no;
 						$api.setStorage('User', User);
 					}
 					if (err) {}
@@ -117,7 +117,7 @@
 					sfzh: archive.id_no,
 					xb: archive.flag_sex,
 					sfz: archive.url_frontcard,
-					sfz_b: archive.url_backcard,
+					sfzb: archive.url_backcard,
 					scsfz: archive.url_photoliving,
 					fwmm: '',
 					xl: '',
@@ -128,8 +128,8 @@
 				operation: {
 					success: function () {
 						User = $api.getStorage('User');
-						User.Archive.Name = archive.id_name;
-						User.Archive.Id = archive.id_no;
+						User.Name = archive.id_name;
+						User.Id = archive.id_no;
 						User.Certification[0] = true;
 						$api.setStorage('User', User);
 						sendChangeStepEvent();

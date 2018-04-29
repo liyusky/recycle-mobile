@@ -115,7 +115,7 @@
         tip: '正在加载...',
         operation: {
           success: function (data) {
-            render(data);
+            render(data.HYXX);
           }
         }
       });
@@ -131,18 +131,19 @@
       }
 
       var stepArr = [false, false, false, false];
-      if (stepArr.IsCertification) stepArr[0] = true;
-      if (stepArr.IsTxl) stepArr[1] = true;
-      if (stepArr.IsZhiMa) stepArr[2] = true;
-      if (stepArr.IsOperator) stepArr[3] = true;
+      if (!!(data.IsCertification * 1)) stepArr[0] = true;
+      if (!!(data.IsTxl * 1)) stepArr[1] = true;
+      if (!!(data.IsZhiMa * 1)) stepArr[2] = true;
+      if (!!(data.IsOperator * 1)) stepArr[3] = true;
 
       saveCertification(stepArr);
       var index = false;
 
-      for (var i = 0; i < stepArr.length; i++) {
+      for (var i = 0; i < 4; i++) {
         if (stepArr[i]) {
           $api.text('flag-' + (i + 1), '已认证');
-        } else if (!index) {
+        }
+        else if (!index) {
           index = i + 1;
         }
       }
