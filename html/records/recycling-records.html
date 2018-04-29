@@ -39,7 +39,11 @@
         tip: '正在发送...',
         operation:{
           success: function (data) {
+            if(data.length){
               render(data[0]);
+            }else{
+              toast('暂无记录');
+            }
           }
         }
       });

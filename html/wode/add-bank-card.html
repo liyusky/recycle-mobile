@@ -118,6 +118,7 @@
             // if(!checkPhoneVerificationCode(code)) return;
             if (!checkBankCard(card)) return;
             if (isCertification()) {
+                alert(User.Phone+'==='+api.deviceId+'===='+card+'===='+bank+'==='+phone+'==='+code)
                 request({
                     url: 'AddYHK',
                     'data': {
@@ -131,10 +132,12 @@
                     tip: '正在发送...',
                     operation: {
                         success: function(data) {
-                            create('yinhangka');
-                            kill('add-bank-card');
+                            create('bank-card');
+                            kill('');
+                            sendBindCardEvent();
                         },
                         fail: function() {
+                            toast('银行卡绑定失败');
                         }
                     }
                 });
