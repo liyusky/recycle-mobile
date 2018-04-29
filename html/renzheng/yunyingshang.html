@@ -65,22 +65,24 @@
             request({
               url: 'Certification',
               data: {
-                deviceId: api.deviceId,
-                sj: User.Phone
+                sj: User.Phone,
+                deviceId: api.deviceId
               },
-              success: function (data) {
-                if (data.HYXX.IsOperator) {
-                  User = $api.getStorage('User');
-                  User.Certification[3] = true;
-                  $api.setStorage('User');
-                  sendCloseStepEvent();
+              tip: false,
+              operation: {
+                success: function (data) {
+                  // alert(JSON.stringify(data));
+                  // alert(JSON.stringify(data.HYXX.IsOperator));
+                  if (!!(data.HYXX.IsOperator * 1)) {
+                    User = $api.getStorage('User');
+                    User.Certification[3] = true;
+                    $api.setStorage('User');
+                    sendCloseStepEvent();
+                  }
+                  else {
+                    toast('认证失败');
+                  }
                 }
-                else {
-                toast('认证失败');
-                }
-              },
-              fail: function () {
-                toast('认证失败');
               }
             });
           }, 3000);

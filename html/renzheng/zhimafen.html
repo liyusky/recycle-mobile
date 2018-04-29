@@ -64,15 +64,20 @@
             request({
               url: 'Certification',
               data: {
-                deviceId: api.deviceId,
-                sj: User.Phone
+                sj: User.Phone,
+                deviceId: api.deviceId
               },
-              success: function (data) {
-                if (data.HYXX.IsZhiMa) {
-                  User = $api.getStorage('User');
-                  User.Certification[2] = true;
-                  $api.setStorage('User', User);
-                  sendCloseStepEvent();
+              tip: '正在加载...',
+              operation: {
+                success: function (data) {
+                  // alert(JSON.stringify(data));
+                  // alert(JSON.stringify(data.HYXX.IsZhiMa));
+                  if (!!(data.HYXX.IsZhiMa * 1)) {
+                    User = $api.getStorage('User');
+                    User.Certification[2] = true;
+                    $api.setStorage('User', User);
+                    sendChangeStepEvent();
+                  }
                 }
               }
             });
@@ -81,7 +86,7 @@
       };
     }
 
-    function sendCloseStepEvent() {
+    function sendChangeStepEvent() {
       api.sendEvent({
         name: 'CHANGE-STEP-EVENT',
         extra: {

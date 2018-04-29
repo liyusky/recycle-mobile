@@ -1,154 +1,157 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>绑定银行卡</title>
-    <link rel="stylesheet" href="../../css/wode/addbank.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绑定银行卡</title>
+  <link rel="stylesheet" href="../../css/wode/addbank.css">
 </head>
 
 <body>
 
 
-    <header class="header">
-        <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
-        <p class="header-title">绑定银行卡</p>
-    </header>
+  <header class="header">
+    <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
+    <p class="header-title">绑定银行卡</p>
+  </header>
 
-    <div class="content">
-        <div class="content-head">
-            <p class="title">绑卡只限于实名认证名下的银行卡绑定 </p>
-        </div>
-        <ul class="address-list-compile">
-            <li>
-                <p>真实姓名:</p>
-                <input id="name" type="username" placeholder="请输入真实姓名" class="name">
-            </li>
-            <li>
-                <p>身份证号:</p>
-                <input id="id" type="text" placeholder="请输入身份证号">
-            </li>
-            <li>
-                <p>银行卡号:</p>
-                <input id="card" type="number" placeholder="请输入银行账号">
-            </li>
-            <li>
-                <p>开户银行:</p>
-                <input id="bank" type="text" placeholder="请输入开户银行">
-            </li>
-            <li>
-                <p class="phone">手机号:</p>
-                <input id="phone" type="number" placeholder="请输入手机号">
-            </li>
-            <li>
-                <p class="code">验证码:</p>
-                <input id="code" type="text" placeholder="请输入验证码">
-                <a class="sendmesg" id="sendmesg" onclick="javascript:SendSMS(this);">发送验证码</a>
-            </li>
-        </ul>
+  <div class="content">
+    <div class="content-head">
+      <p class="title">绑卡只限于实名认证名下的银行卡绑定 </p>
     </div>
+    <ul class="address-list-compile">
+      <li>
+        <p>真实姓名:</p>
+        <input id="name" type="username" placeholder="请输入真实姓名" class="name">
+      </li>
+      <li>
+        <p>身份证号:</p>
+        <input id="id" type="text" placeholder="请输入身份证号">
+      </li>
+      <li>
+        <p>银行卡号:</p>
+        <input id="card" type="number" placeholder="请输入银行账号">
+      </li>
+      <li>
+        <p>开户银行:</p>
+        <input id="bank" type="text" placeholder="请输入开户银行">
+      </li>
+      <li>
+        <p class="phone">手机号:</p>
+        <input id="phone" type="number" placeholder="请输入手机号">
+      </li>
+      <li>
+        <p class="code">验证码:</p>
+        <input id="code" type="text" placeholder="请输入验证码">
+        <a class="sendmesg" id="sendmesg" onclick="javascript:SendSMS(this);">发送验证码</a>
+      </li>
+    </ul>
+  </div>
 
-    <button onclick="javascript: submit();" class="btn">绑定银行卡</button>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/check.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/other/readyToResend.js"></script>
+  <button onclick="javascript: submit();" class="btn">绑定银行卡</button>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/readyToResend.js"></script>
 
-    <script type="text/javascript">
-        var isv = null;
-        var User = null;
-        apiready = function() {
-            // 860716037690344
-          User = $api.getStorage('User');
-        }
-        function isCertification() {
+  <script type="text/javascript">
+    var isv = null;
+    var User = null;
+    apiready = function () {
+      // 860716037690344
+      User = $api.getStorage('User');
+    }
 
-            var cardId = $api.val('card');
-            request({
-                url: 'YinHangKa_STEP1',
-                'data': {
-                    'sj': User.Phone,
-                    'deviceId': api.deviceId,
-                    'bankcardno': cardId
-                },
-                operation: {
-                    success: function(data) {
-                        isv = true;
-                    },
-                    error: function() {
-                        isv = false;
-                    }
-                }
-            })
-            return isv;
+    function isCertification() {
+
+      var cardId = $api.val('card');
+      request({
+        url: 'YinHangKa_STEP1',
+        'data': {
+          'sj': User.Phone,
+          'deviceId': api.deviceId,
+          'bankcardno': cardId
+        },
+        operation: {
+          success: function (data) {
+            isv = true;
+          },
+          error: function () {
+            isv = false;
+          }
         }
-        function SendSMS(dom) {
-            request({
-                url: 'SendSMS',
-                'data': {
-                    'phone': User.Phone,
-                    'type': '绑定银行卡'
-                },
-                operation: {
-                    init: function() {
-                        readyToResend('sendmesg');
-                    },
-                    success: function(data) {},
-                    error: function() {}
-                }
-            })
+      })
+      return isv;
+    }
+
+    function SendSMS(dom) {
+      request({
+        url: 'SendSMS',
+        'data': {
+          'phone': User.Phone,
+          'type': '绑定银行卡'
+        },
+        operation: {
+          init: function () {
+            readyToResend('sendmesg');
+          },
+          success: function (data) { },
+          error: function () { }
         }
-        function submit() {
-            if (!checkNet() || !checkLogin()) return;
-            var User = $api.getStorage('User');
-            var name = $api.val('name');
-            var card = $api.val('card');
-            var bank = $api.val('bank');
-            var phone = $api.val('phone');
-            var code = $api.val('code');
-            if (!bank) return;
-            if (!checkName(name)) return;
-            if (!checkPhone(phone)) return;
-            // if(!checkPhoneVerificationCode(code)) return;
-            if (!checkBankCard(card)) return;
-            if (isCertification()) {
-                alert(User.Phone+'==='+api.deviceId+'===='+card+'===='+bank+'==='+phone+'==='+code)
-                request({
-                    url: 'AddYHK',
-                    'data': {
-                        'Phone': User.Phone,
-                        'deviceId': api.deviceId,
-                        'kh': card,
-                        'yh': bank,
-                        'ylsj': phone,
-                        'code': code
-                    },
-                    tip: '正在发送...',
-                    operation: {
-                        success: function(data) {
-                            create('bank-card');
-                            kill('');
-                            sendBindCardEvent();
-                        },
-                        fail: function() {
-                            toast('银行卡绑定失败');
-                        }
-                    }
-                });
-            };
-        };
-        function sendBindCardEvent() {
-            api.sendEvent({
-                name: 'BIND-CARD-EVENT'
-            });
-        }
-    </script>
+      })
+    }
+
+    function submit() {
+      if (!checkNet() || !checkLogin()) return;
+      var User = $api.getStorage('User');
+      var name = $api.val('name');
+      var card = $api.val('card');
+      var bank = $api.val('bank');
+      var phone = $api.val('phone');
+      var code = $api.val('code');
+      if (!bank) return;
+      if (!checkName(name)) return;
+      if (!checkPhone(phone)) return;
+      // if(!checkPhoneVerificationCode(code)) return;
+      if (!checkBankCard(card)) return;
+      if (isCertification()) {
+        alert(User.Phone + '===' + api.deviceId + '====' + card + '====' + bank + '===' + phone + '===' + code)
+        request({
+          url: 'AddYHK',
+          'data': {
+            'Phone': User.Phone,
+            'deviceId': api.deviceId,
+            'kh': card,
+            'yh': bank,
+            'ylsj': phone,
+            'code': code
+          },
+          tip: '正在发送...',
+          operation: {
+            success: function (data) {
+              sendBindCardEvent();
+              kill();
+            },
+            fail: function () {
+              toast('银行卡绑定失败');
+            }
+          }
+        });
+      };
+    };
+
+    function sendBindCardEvent() {
+      api.sendEvent({
+        name: 'BIND-CARD-EVENT'
+      });
+    }
+  </script>
 </body>
 
 </html>
