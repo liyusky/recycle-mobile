@@ -94,6 +94,7 @@
 	}
 
 	function setListenr() {
+      alert(3);		
 		api.addEventListener({
 				name: 'CHANGE-STEP-EVENT'
 			},
@@ -108,7 +109,7 @@
 				name: 'CLOSE-STEP-EVENT'
 			},
 			function (ret, err) {
-				if (ret) kill();
+				kill();
 			}
 		);
 

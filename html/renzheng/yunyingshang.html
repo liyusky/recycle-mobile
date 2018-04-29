@@ -48,7 +48,9 @@
         tip: false,
         operation: {
           success: function (data) {
-            $api.attr('iframe', 'src', data.postURL); 
+            $api.attr('iframe', 'src', data.postURL);
+          },
+          fail: function () {
           }
         }
       });
@@ -61,25 +63,25 @@
           setTimeout(function () {
             if (!checkNet() && !checkLogin()) return;
             request({
-              success: function (data) {
-                User = $api.getStorage('User');
-                User.Certification[3] = true;
-                $api.setStorage('User', User);
-                if (data.Step4) sendChangeStepEvent();
-              }
-            });
-            request({
               url: 'Certification',
               data: {
-                deviceId: api.deviceId,
-                sj: User.Phone
+                sj: User.Phone,
+                deviceId: api.deviceId
               },
-              success: function (data) {
-                if (data.IsOperator) {
-                  User = $api.getStorage('User');
-                  User.Certification[3] = true;
-                  $api.setStorage('User');
-                  sendCloseStepEvent();
+              tip: false,
+              operation: {
+                success: function (data) {
+                  // alert(JSON.stringify(data));
+                  // alert(JSON.stringify(data.HYXX.IsOperator));
+                  if (!!(data.HYXX.IsOperator * 1)) {
+                    User = $api.getStorage('User');
+                    User.Certification[3] = true;
+                    $api.setStorage('User');
+                    sendCloseStepEvent();
+                  }
+                  else {
+                    toast('认证失败');
+                  }
                 }
               }
             });
@@ -88,14 +90,8 @@
       };
     }
 
-    function sendChangeStepEvent() {
-      api.sendEvent({
-        name: 'CLOSE-STEP-EVENT',
-        extra: {
-          step: 4,
-          goal: 'zhimafen'
-        }
-      });
+    function sendCloseStepEvent() {
+      api.sendEvent({ name: 'CLOSE-STEP-EVENT' });
     }
   </script>
 </body>
