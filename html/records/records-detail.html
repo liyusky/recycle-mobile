@@ -68,13 +68,12 @@
 
         function setHtmltitle(data) {
             day = data.DaoQiTianShu;
-            
             var html = "<li class='recycle'>" +
             "<img src='../../image/records/recycle.png' class='recycle'>" +
             "<div class='message'>" +
             "<p class='phonetype'>" +
             " <span>手机型号</span>" +
-            "<span id='phone-type'>" + 'api.deviceModel' + "</span>" +
+            "<span id='phone-type'>" + api.deviceModel + "</span>" +
             "  </p>" +
             "</div>" +
             "<div class='price'>" +
@@ -137,23 +136,23 @@
             ' <ul id="list">' +
             ' <li class="order-list">' +
             '  <ul>' +
-            '<li class="currentstatus mark">' + 'data.ZhuangTai' + '</li>' +
-            '<li class="message">' + ' data.FangKuanYiJian' + '</li>' +
-            '<li class="time">' + 'data.FangKuanShiJian' + '</li>' +
+            '<li class="currentstatus mark">' + data.ZhuangTai + '</li>' +
+            '<li class="message">' +  data.FangKuanYiJian + '</li>' +
+            '<li class="time">' + data.FangKuanShiJian + '</li>' +
             ' </ul>' +
             ' </li>' +
             '<li class="order-list">' +
             '<ul>' +
-            ' <li class="currentstatus">' + 'data.ZhuangTai' + '</li>' +
-            ' <li class="message">' + 'data.ShenHeYiJian' + '</li>' +
-            '  <li class="time">' + 'data.ShenHeShiJian' + '</li>' +
+            ' <li class="currentstatus">' + data.ZhuangTai + '</li>' +
+            ' <li class="message">' + data.ShenHeYiJian + '</li>' +
+            '  <li class="time">' + data.ShenHeShiJian + '</li>' +
             '</ul>' +
             ' </li>' +
             '<li class="order-list bodrenone">' +
             '<ul>' +
-            '<li class="currentstatus">' + 'data.ZhuangTai' + '</li>' +
+            '<li class="currentstatus">' + data.ZhuangTai + '</li>' +
             '<li class="message">您的订单已提交</li>' +
-            '<li class="time">' + 'data.JieKuanShiJian' + '</li>' +
+            '<li class="time">' + data.JieKuanShiJian + '</li>' +
             ' </ul>' +
             '</li>' +
             ' </ul>' +

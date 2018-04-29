@@ -134,7 +134,6 @@
             // if(!checkPhoneVerificationCode(code)) return;
             if (!checkBankCard(card)) return;
             if (isCertification()) {
-                alert(User.Phone+'==='+api.deviceId+'===='+card+'===='+bank+'==='+phone+'==='+code)
                 request({
                     url: 'AddYHK',
                     'data': {

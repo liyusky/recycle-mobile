@@ -40,5 +40,5 @@ var developmentAppApi = {
   'lianxiren':'http://192.168.0.200:4201/Certification1.json',
   'zhimafen':'http://192.168.0.200:4201/Certification2.json',
   'yunyingshang':'http://192.168.0.200:4201/Certification3.json',
-  'renzheng':'  http://192.168.0.200:4201/Certification.json'
+  'renzheng':'  http://192.168.0.200:4201/Certification4.json'
 };

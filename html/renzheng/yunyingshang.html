@@ -48,7 +48,7 @@
         tip: false,
         operation: {
           success: function (data) {
-            $api.attr('iframe', 'src', data);
+            $api.attr('iframe', 'src', data.postURL); 
           }
         }
       });

@@ -109,6 +109,7 @@
             }
           }
         });
+
         request({
           url: 'Certification',
           data: {
@@ -132,7 +133,7 @@
         User.Card = card.KaHao;
       }
       User.Name = message.XingMing;
-      User.Id = message.ShenFenZheng;
+      User.Id = message.ShenFenZheng; 
       User.Certification[0] = !!(message.IsCertification * 1);
       User.Certification[1] = !!(message.IsTxl * 1);
       User.Certification[2] = !!(message.IsZhiMa * 1);
@@ -152,7 +153,7 @@
         User = {
           Status: false, //登录
           Certification: [false, false, false, false],
-          Phone: null,
+          Phone: '',
           Name: null,
           Id: null,
           Card: null
