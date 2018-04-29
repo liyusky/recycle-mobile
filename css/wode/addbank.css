@@ -180,6 +180,12 @@ header .compile {
   border-bottom: none;
 }
 
+.content .address-list-compile li #bank{
+  height: 11.33333vw;
+  outline: none;
+  width: 70vw;
+}
+
 .btn {
   width: 86.66667vw;
   height: 10.66667vw;

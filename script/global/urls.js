@@ -36,5 +36,10 @@ var developmentAppApi = {
   'UserRegister': 'http://192.168.0.109:8080/UserRegister.json',
   'ShenFenXinXin': 'http://192.168.0.109:8080/ShenFenXinXin.json',
   'LianXiRenXinXi': 'http://192.168.0.109:8080/LianXiRenXinXi.json',
+  'geren':'http://192.168.0.200:4201/Certification.json',
+  'lianxiren':'http://192.168.0.200:4201/Certification1.json',
+  'zhimafen':'http://192.168.0.200:4201/Certification2.json',
+  'yunyingshang':'http://192.168.0.200:4201/Certification3.json',
+  'renzheng':'  http://192.168.0.200:4201/Certification4.json',
   'ApplyStatus': 'http://192.168.0.109:8080/ApplyStatus.json',
 };
