@@ -48,7 +48,9 @@
         tip: false,
         operation: {
           success: function (data) {
-            $api.attr('iframe', 'src', data);
+            $api.attr('iframe', 'src', data.postURL);
+          },
+          fail: function () {
           }
         }
       });
@@ -61,26 +63,24 @@
           setTimeout(function () {
             if (!checkNet() && !checkLogin()) return;
             request({
-              success: function (data) {
-                User = $api.getStorage('User');
-                User.Certification[3] = true;
-                $api.setStorage('User', User);
-                if (data.Step4) sendChangeStepEvent();
-              }
-            });
-            request({
               url: 'Certification',
               data: {
                 deviceId: api.deviceId,
                 sj: User.Phone
               },
               success: function (data) {
-                if (data.IsOperator) {
+                if (data.HYXX.IsOperator) {
                   User = $api.getStorage('User');
                   User.Certification[3] = true;
                   $api.setStorage('User');
                   sendCloseStepEvent();
                 }
+                else {
+                toast('认证失败');
+                }
+              },
+              fail: function () {
+                toast('认证失败');
               }
             });
           }, 3000);
@@ -88,14 +88,8 @@
       };
     }
 
-    function sendChangeStepEvent() {
-      api.sendEvent({
-        name: 'CLOSE-STEP-EVENT',
-        extra: {
-          step: 4,
-          goal: 'zhimafen'
-        }
-      });
+    function sendCloseStepEvent() {
+      api.sendEvent({ name: 'CLOSE-STEP-EVENT' });
     }
   </script>
 </body>

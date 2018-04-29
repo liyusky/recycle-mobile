@@ -68,7 +68,7 @@
                 sj: User.Phone
               },
               success: function (data) {
-                if (data.IsZhiMa) {
+                if (data.HYXX.IsZhiMa) {
                   User = $api.getStorage('User');
                   User.Certification[2] = true;
                   $api.setStorage('User', User);
