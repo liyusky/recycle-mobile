@@ -19,7 +19,7 @@
   <div class="content">
     <div class="money">
       <p class="sum">应退金额</p>
-      <span class="price" id="price">800.00</span>
+      <span class="price" id="price"></span>
       <a href="javascript:;" class="explain">
         <img src="../../image/wode/help.png">
         <span class="explain-text">说明</span>
@@ -38,7 +38,7 @@
               <span class="pass">****</span>
               <span class="pass">****</span>
               <span class="pass">****</span>
-              <span class="num" id="card-tail">5925</span>
+              <span class="num" id="card-tail"></span>
               <span class="card-type">储蓄卡</span>
             </p>
           </div>
@@ -60,7 +60,7 @@
     </div>
   </div>
   </div>
-  <button class="btn">确认退款</button>
+  <button class="btn" onclick="javascript: submit();">确认退款</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -69,11 +69,13 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
       
-      var onOff = true;
+    var onOff = true;
+    var User = null;
 
     apiready = function () {
+      User = $api.getStorage('User');
+      onOff = true;
       init();
-      var onOff = true;
     }
 
       function select(obj){
@@ -89,7 +91,10 @@
       if (!checkNet() || !checkLogin()) return;
       request({
         url: 'PaymentAmount',
-        data: {},
+        data: {
+          sj: User.Phone,
+          deviceId: api.deviceId
+        },
         operation: {
           success: function (data) {
             data = formatData(data);
@@ -102,19 +107,7 @@
 
     function submit() {
       if (!checkNet() || !checkLogin()) return;
-      request({
-        url: 'PaymentAmount',
-        data: {},
-        operation: {
-          success: function (data) {
-            create({
-              goal: 'pay',
-              url: data.url
-            })
-          },
-          default: function () {}
-        }
-      });
+      create('pay');
     }
 
     function render(data) {
@@ -123,9 +116,8 @@
     }
 
     function formatData(data) {
-      User = $api.getStorage('User');
       return {
-        data: data.ZongJinE - data.YiJieFeiYong,
+        price: data.JinE,
         tail: User.Card.substr(-4)
       }
     }
