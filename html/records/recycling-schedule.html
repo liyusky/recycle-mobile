@@ -26,9 +26,9 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script>
-    var qx = null;
+    var qx = '';
     apiready = function () {
-      var qx = null;
+      var qx = '';
       if (!checkNet() || !checkLogin()) return;
       init();
       initList();
@@ -63,7 +63,7 @@
     function renderHtml(data) {
       var htmlStr = '';
       htmlStr += setHtmltitle(data[0])
-      $api.html('content', html);
+      $api.html('content', htmlStr);
     };
 
     function setHtmltitle(data) {
@@ -104,6 +104,7 @@
     function initList() {
       if (!checkNet() || !checkLogin()) return;
       if (!$api.getStorage('User')) return;
+
       var User = $api.getStorage('User');
       request({
         url: 'GetZXJD',
@@ -125,12 +126,13 @@
 
     function renderListHtml(data) {
       var htmlStr = '';
-      htmlStr += renderList(data[0])
-      $api.html('contentList', html);
+      htmlStr += renderList(data)
+      $api.html('contentList', htmlStr);
     }
 
 
     function renderList(data) {
+
       var html = ' <div class="status">' +
         ' <div class="list">' +
         ' <ul id="list">' +
