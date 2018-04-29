@@ -22,8 +22,8 @@ var statusCode = {
  * @datetime    2017-10-11T10:35:54+080
  */
 function AppStatusHandle(ret, err, operation) {
-  // alert(JSON.stringify(ret));
-  // alert(JSON.stringify(err));
+  alert(JSON.stringify(ret));
+  alert(JSON.stringify(err));
 
   if (typeof operation == 'function') {
     operation(ret, err);
@@ -37,15 +37,21 @@ function AppStatusHandle(ret, err, operation) {
   if (ret) {
     if (ret.Msg) toast(ret.Msg);
     switch (ret.Code) {
+      case 0:
+        try {
+          operation.fail(ret.Msg);
+        } catch (e) {}
+        break;
       case 1:
         try {
           operation.success(ret.Data);
         } catch (e) {}
         break;
-      case 401:
+      case 22:
         try {
-          operation.fail(ret.Msg);
-        } catch (e) {}
+          create('personal-information');
+          kill();
+        } catch (e) { }
         break;
     }
   }

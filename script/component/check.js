@@ -14,9 +14,9 @@ function check(params) {
   } catch (e) {}
 
   var flag = true;
-
-  for (var key in params) {
-    var value = params[type];
+  var data = params.data;
+  for (var key in data) {
+    var value = data[key];
     if (value instanceof Array) {
       value.map(function (item) {
         evalFunction(key);

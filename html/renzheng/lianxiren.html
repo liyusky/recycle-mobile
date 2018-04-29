@@ -91,10 +91,13 @@
 <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/component/check.js"></script>
 <script type="text/javascript">
   var contactlist = [];
+  var User = null;
 
   apiready = function () {
+    User = $api.getStorage('User');
     setListener();
     setTimeout(init, 1000);
   }
@@ -171,18 +174,10 @@
             phone = phone.replace(/[ ]/g, "");
             phone = phone.replace("+86", "");
             phone = phone.replace(/-/g, '');
-            if (check({
-                data: {
-                  name: ret.fullName
-                }
-              })) {
+            if (checkName(ret.fullName)) {
               name = ret.fullName;
             }
-            if (check({
-                data: {
-                  phone: phone
-                }
-              })) {
+            if (checkPhone(phone)) {
               $api.val(position + '-contact-name', name);
               $api.val(position + '-contact-phone', phone);
             }
@@ -256,7 +251,7 @@
         toast('请不要填写相同的联系人号码');
         return false;
       }
-      var firstFlag = checkFormat({
+      var firstFlag = check({
         data: {
           phone: firstPhone,
           name: firstName
@@ -265,7 +260,7 @@
           toast('第一联系人认证失败，请重试！');
         }
       });
-      var secondFlag = checkFormat({
+      var secondFlag = check({
         data: {
           phone: secondPhone,
           name: secondName
@@ -280,14 +275,14 @@
           url: 'LianXiRenXinXi',
           data: {
             deviceId: api.deviceId,
-            phone: User.Phone,
-            name_1: firstName,
-            phone_1: firstPhone,
-            relationship_1: firstRelationship,
-            name_2: secondName,
-            phone_2: secondPhone,
-            relationship_2: secondRelationship,
-            txl: escape(JSON.stringify(contactlist))
+            sj: User.Phone,
+            xm1: firstName,
+            sj1: firstPhone,
+            gx1: firstRelationship,
+            xm2: secondName,
+            sj2: secondPhone,
+            gx2: secondRelationship,
+            txl: JSON.stringify(contactlist)
           },
           tip: true,
           operation: {
