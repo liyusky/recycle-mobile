@@ -11,84 +11,14 @@
 
 <body>
   <header class="header">
-    <img src="../../image/common/back.png" alt="" class="back">
+    <img src="../../image/common/back.png" alt="" class="back" onclick="javascript:kill();">
     <p class="header-title">回收进度</p>
   </header>
   <div class="content" id="content">
-    <!-- <div class="recycle">
-      <img src="../../image/records/recycle.png" alt="" class="recycle">
-      <div class="message">
-        <p class="phonetype">
-          <span>手机型号</span>
-          <span id="phone-type">iphone 6s</span>
-        </p>
-      </div>
-      <div class="price">
-        <ul>
-          <li>
-            <p>手机估价</p>
-            <span id="capital">1200.00元</span>
-          </li>
-          <li>
-            <p>定金+预付款</p>
-            <span id="interest">900.00元</span>
-          </li>
-          <li>
-            <p>履约期</p>
-            <span id="time">7</span>
-            <span>天</span>
-            <img src="../../image/records/help.png" alt="" class="help">
-          </li>
-        </ul>
-      </div>
-    </div> -->
   </div>
-  <div class="status">
-    <div class="list">
-      <ul id="list">
-        <!-- <li class="order-list">
-          <ul>
-            <li class="currentstatus mark">1</li>
-            <li class="message">1</li>
-            <li class="time">1</li>
-          </ul>
-        </li>
-        <li class="order-list">
-          <ul>
-            <li class="currentstatus">1</li>
-            <li class="message">1</li>
-            <li class="time">1</li>
-          </ul>
-        </li>
-        <li class="order-list bodrenone">
-          <ul>
-            <li class="currentstatus">1</li>
-            <li class="message">您的订单已提交</li>
-            <li class="time">2018-04-10 11:54:25</li>
-          </ul>
-        </li> -->
-      </ul>
-    </div>
-    <div class="schedule">
-      <ul>
-        <li class="statusicon">
-          <img src="../../image/records/success.png" alt="">
-        </li>
-        <li class="connect">
-          <img src="../../image/records/connect.png" alt="">
-        </li>
-        <li class="statusicon">
-          <img src="../../image/records/currentstatus.png" alt="">
-        </li>
-        <li class="connect">
-          <img src="../../image/records/connect.png" alt="">
-        </li>
-        <li class="statusicon">
-          <img src="../../image/records/currentstatus.png" alt="">
-        </li>
-      </ul>
-    </div>
-  </div>
+
+  <div id="contentList"></div>
+
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -96,79 +26,80 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script>
-  var qx = null;
-  apiready = function () {
     var qx = null;
-    init();
-    initList();
-  }
+    apiready = function () {
+      var qx = null;
+      if (!checkNet() || !checkLogin()) return;
+      init();
+      initList();
+    }
 
- // 获取记录
- function init() {
-   var User = $api.getStorage('User');
-     request({
-         url: 'GetHYJKJL',
-         data: {
-             'deviceId': api.deviceId,
-             'phone': User.Phone
-         },
-         tip: '正在发送...',
-         operation: {
-             success: function(data) {
-                 renderHtml(data);
-             },
-             fail: function(data) {
+    // 获取记录
+    function init() {
+      var User = $api.getStorage('User');
+      request({
+        url: 'GetHYJKJL',
+        data: {
+          'deviceId': api.deviceId,
+          'phone': User.Phone
+        },
+        tip: '正在发送...',
+        operation: {
+          success: function (data) {
+            renderHtml(data);
+          },
+          fail: function (data) {
 
-             }
-         }
-     });
- };
-
-
- function renderHtml(data) {
-     var htmlStr = '';
-     htmlStr += setHtmltitle(data[0])
-     $api.html('content', htmlStr);
- }
-
- function setHtmltitle(data) {
-     var html = '';
-     qx =  data.DaoQiTianShu;
-     html += "<li class='recycle'>" +
-         "<img src='../../image/records/recycle.png' class='recycle'>" +
-         "<div class='message'>" +
-         "<p class='phonetype'>" +
-         " <span>手机型号</span>" +
-         "<span id='phone-type'>" + api.deviceModel + "</span>" +
-         "  </p>" +
-         "</div>" +
-         "<div class='price'>" +
-         "<ul>" +
-         "  <li>" +
-         "<p>手机估价 </p>" +
-         "<span>500.00元</span>" +
-         "</li>" +
-         "<li>" +
-         "<p>定金+预付款</p>" +
-         "<span>" + (data.DaoZhang + data.FeiYong) + "元</span>" +
-         "</li>" +
-         "<li>" +
-         "  <p>履约期</p>" +
-         "<span>" + data.QiXian + "</span>" +
-         "<span>天</span>" +
-         "  <img src='../../image/records/help.png' class='help'>" +
-         "  </li>" +
-         "</ul>" +
-         "  </div>" +
-         "  </li>";
-     return html;
- }
+          }
+        }
+      });
+    };
 
 
-   // 获取进度
+    function renderHtml(data) {
+      var htmlStr = '';
+      htmlStr += setHtmltitle(data[0])
+      $api.html('content', html);
+    };
+
+    function setHtmltitle(data) {
+      var html = '';
+      qx = data.DaoQiTianShu;
+      html += "<li class='recycle'>" +
+        "<img src='../../image/records/recycle.png' class='recycle'>" +
+        "<div class='message'>" +
+        "<p class='phonetype'>" +
+        " <span>手机型号</span>" +
+        "<span id='phone-type'>" + api.deviceModel + "</span>" +
+        "  </p>" +
+        "</div>" +
+        "<div class='price'>" +
+        "<ul>" +
+        "  <li>" +
+        "<p>手机估价 </p>" +
+        "<span>500.00元</span>" +
+        "</li>" +
+        "<li>" +
+        "<p>定金+预付款</p>" +
+        "<span>" + (data.DaoZhang + data.FeiYong) + "元</span>" +
+        "</li>" +
+        "<li>" +
+        "  <p>履约期</p>" +
+        "<span>" + data.QiXian + "</span>" +
+        "<span>天</span>" +
+        "  <img src='../../image/records/help.png' class='help'>" +
+        "  </li>" +
+        "</ul>" +
+        "  </div>" +
+        "  </li>";
+      return html;
+    }
+
+
+    // 获取进度
     function initList() {
-      // if (!checkNet() || !checkLogin()) return;
-      // if(!$api.getStorage('User')) return;
+      if (!checkNet() || !checkLogin()) return;
+      if (!$api.getStorage('User')) return;
       var User = $api.getStorage('User');
       request({
         url: 'GetZXJD',
@@ -177,62 +108,63 @@
           deviceId: api.deviceId
         },
         'tip': '正在发送...',
-        operation:{
+        operation: {
           success: function (data) {
-              renderList(data);
+            renderListHtml(data);
           },
-          error:function () {
+          error: function () {
 
           }
         }
-    });
-  }
+      });
+    };
 
-      function renderList(data) {
-        var html = '  <li class="order-list">'+
-                '  <ul>'+
-                  '  <li class="currentstatus mark">'+data.ZhuangTai+'</li>'+
-                  '  <li class="message">'+data.FangKuanYiJian+'</li>'+
-                '    <li class="time">'+data.FangKuanShiJian+'</li>'+
-                '  </ul>'+
-              '  </li>'+
-                '<li class="order-list">'+
-                '  <ul>'+
-                  '  <li class="currentstatus">'+data.ZhuangTai+'</li>'+
-                  '  <li class="message">'+data.ShenHeYiJian+'</li>'+
-                '    <li class="time">'+data.ShenHeShiJian+'</li>'+
-              '    </ul>'+
-              '  </li>'+
-              '  <li class="order-list bodrenone">'+
-              '    <ul>'+
-                '    <li class="currentstatus">'+data.ZhuangTai+'</li>'+
-                '    <li class="message">&nbsp</li>'+
-                '    <li class="time">'+data.FenPeiShiJian+'</li>'+
-                '  </ul>'+
-                '</li>';
-        $api.html('list', html);
-      }
-    function setListhtml(data) {
-      var html = "<li class='order-list'>" +
-        "<ul>" +
-        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
-        "<li class='message'>" + data.FangKuanYiJian + "</li>" +
-        "<li class='time'>" + data.FangKuanShiJian + "</li>" +
-        "</ul>" +
-        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
-        "<li class='message'>" + data.ShenHeYiJian + "</li>" +
-        "<li class='time'>" + data.ShenHeShiJian + "</li>" +
-        "</ul>" +
-        "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
-        "<li class='message'>您的订单已提交</li>" +
-        "<li class='time'>" + data.JieKuanShiJian + "</li>" +
-        "</ul>" +
-        "</li>";
-      return html;
+    function renderListHtml(data) {
+      var htmlStr = '';
+      htmlStr += renderList(data[0])
+      $api.html('contentList', html);
     }
 
 
-
+    function renderList(data) {
+      var html = ' <div class="status">' +
+        ' <div class="list">' +
+        ' <ul id="list">' +
+        ' <li class="order-list">' +
+        '  <ul>' +
+        '<li class="currentstatus mark">' + data.ZhuangTai + '</li>' +
+        '<li class="message">' + data.FangKuanYiJian + '</li>' +
+        '<li class="time">' + data.FangKuanShiJian + '</li>' +
+        ' </ul>' +
+        ' </li>' +
+        '<li class="order-list">' +
+        '<ul>' +
+        ' <li class="currentstatus">' + data.ZhuangTai + '</li>' +
+        ' <li class="message">' + data.ShenHeYiJian + '</li>' +
+        '  <li class="time">' + data.ShenHeShiJian + '</li>' +
+        '</ul>' +
+        ' </li>' +
+        '<li class="order-list bodrenone">' +
+        '<ul>' +
+        '<li class="currentstatus">' + data.ZhuangTai + '</li>' +
+        '<li class="message">您的订单已提交</li>' +
+        '<li class="time">' + data.JieKuanShiJian + '</li>' +
+        ' </ul>' +
+        '</li>' +
+        ' </ul>' +
+        '</div>' +
+        '<div class="schedule">' +
+        '<ul>' +
+        '<li class="statusicon"><img src="../../image/records/success.png" alt=""></li>' +
+        '<li class="connect"><img src="../../image/records/connect.png" alt=""></li>' +
+        '<li class="statusicon"><img src="../../image/records/currentstatus.png" alt=""></li>' +
+        '<li class="connect"><img src="../../image/records/connect.png" alt=""></li>' +
+        '<li class="statusicon"><img src="../../image/records/currentstatus.png" alt=""></li>' +
+        '</ul>' +
+        '</div>' +
+        '</div>';
+      return html;
+    }
   </script>
 </body>
 

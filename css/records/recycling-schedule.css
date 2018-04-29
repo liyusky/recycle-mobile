@@ -189,6 +189,7 @@ header .header-title {
   width: 100vw;
   height: 72vw;
   background: #fff;
+  position: relative;
 }
 
 .status .list .bodrenone {
@@ -224,8 +225,13 @@ header .header-title {
   font-size: 3.2vw;
 }
 
+.status .list{
+width: 100%;
+height: 100%;
+}
+
 .status .schedule {
-  position: relative;
+  position: absolute;
   top: 5vw;
 }
 

@@ -81,17 +81,18 @@
         $api.text('count', dom.value.length);
     }
 
-    var switchs = document.querySelectorAll('.switch');
-    for (var i = 0; i < switchs.length; i++) {
-        switchs[i].onoff = false;
-        switchs[i].onclick = function () {
-            var details = this.parentNode.getElementsByClassName('details')[0];
+    var list = document.querySelectorAll('li');
+    for (var i = 0; i < list.length; i++) {
+        list[i].onoff = false;
+        list[i].onclick = function () {
+            var details = this.getElementsByClassName('details')[0];
+            var switchs = this.getElementsByClassName('switch')[0];
             if (this.onoff) {
-                this.src = "../../image/wode/top.png";
+                switchs.src = "../../image/wode/top.png";
                 details ? details.style.display = "none" : delete details;
             } else {
                 details ? details.style.display = "block" : delete details;
-                this.src = "../../image/wode/bottom.png";
+                switchs.src = "../../image/wode/bottom.png";
             }
             this.onoff = !this.onoff;
         }

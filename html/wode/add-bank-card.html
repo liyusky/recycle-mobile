@@ -105,8 +105,7 @@
             })
         }
         function submit() {
-            // if (!checkNet() || !checkLogin()) return;
-            // if(!$api.getStorage('User')) return;
+            if (!checkNet() || !checkLogin()) return;
             var User = $api.getStorage('User');
             var name = $api.val('name');
             var card = $api.val('card');
