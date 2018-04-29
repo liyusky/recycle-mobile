@@ -3,107 +3,23 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
+    />
     <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
     <title>订单详情</title>
     <link rel="stylesheet" type="text/css" href="../../css/records/records-detail.css">
 </head>
 
-<body>
+<body id="body">
     <header class="header">
         <img src="../../image/common/back.png" alt="" class="back" onclick="javascript:kill();">
         <p class="header-title">订单详情</p>
     </header>
     <div class="content" id="content">
-
-        <!-- <div class="recycle">
-      <img src="../../image/records/recycle.png" alt="" class="recycle">
-      <div class="message">
-        <p class="phonetype">
-          <span>手机型号</span>
-          <span id="phone-type">iphone 6s</span>
-        </p>
-      </div>
-      <div class="price">
-        <ul>
-          <li>
-            <p>手机估价 </p>
-            <span id="capital">1200.00元</span>
-          </li>
-          <li>
-            <p>定金+预付款</p>
-            <span id="interest">900.00元</span>
-          </li>
-          <li>
-            <p>履约期</p>
-            <span id="time">7</span>
-            <span>天</span>
-            <img src="../../image/records/help.png" alt="" class="help">
-          </li>
-        </ul>
-      </div>
-    </div> -->
     </div>
+    <div id="contentList"></div>
+    <div id="footer"></div>
 
-    <div class="status">
-        <div class="list">
-            <ul id="list">
-                <!-- <li class="order-list">
-                    <ul>
-                        <li class="currentstatus mark">预付款打款成功</li>
-                        <li class="message">已打款至尾号 (6589) 银行卡</li>
-                        <li class="time">2018-04-10 12:05:58</li>
-                    </ul>
-                </li>
-                <li class="order-list">
-                    <ul>
-                        <li class="currentstatus">审核中</li>
-                        <li class="message">请耐心等待10-60分钟</li>
-                        <li class="time">2018-04-10 11:55:58</li>
-                    </ul>
-                </li>
-                <li class="order-list">
-                    <ul>
-                        <li class="currentstatus">订单提交</li>
-                        <li class="message">&nbsp;</li>
-                        <li class="time">2018-04-10 11:54:25</li>
-                    </ul>
-                </li> -->
-            </ul>
-        </div>
-        <div class="schedule">
-            <ul>
-                <li class="statusicon">
-                    <img src="../../image/records/success.png" alt="">
-                </li>
-                <li class="connect">
-                    <img src="../../image/records/connect.png" alt="">
-                </li>
-                <li class="statusicon">
-                    <img src="../../image/records/currentstatus.png" alt="">
-                </li>
-                <li class="connect">
-                    <img src="../../image/records/connect.png" alt="">
-                </li>
-                <li class="statusicon">
-                    <img src="../../image/records/currentstatus.png" alt="">
-                </li>
-            </ul>
-        </div>
-        <div class="clear"></div>
-        <div class="honour">
-            <div class="time">
-                <img src="../../image/records/time.png" alt="">
-                <p>
-                    <span>履约期</span>
-                    <span id="overdue">6</span>
-                    <span>天</span>
-                </p>
-            </div>
-            <a href="javascript:;" class="btn" onclick="javascript:cancel();">不卖了</a>
-            <a href="javascript:;" class="btn" onclick="javascript:confirm();">确定卖出填写寄回信息</a>
-        </div>
-    </div>
     <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -111,15 +27,16 @@
     <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
     <script type="text/javascript" charset="utf-8">
-       var day = null;
-        apiready = function() {
-           var day = null;
+        var day = null;
+        apiready = function () {
+            var day = null;            
+            if (!checkNet() || !checkLogin()) return;
             init();
             initList();
         }
 
         function init() {
-          var User = $api.getStorage('User');
+            var User = $api.getStorage('User');
             request({
                 url: 'GetHYJKJL',
                 data: {
@@ -128,10 +45,14 @@
                 },
                 tip: '正在发送...',
                 operation: {
-                    success: function(data) {
-                        renderHtml(data);
+                    success: function (data) {
+                        if(data.length){
+                            renderHtml(data);
+                        }else{
+                            toast('暂无详情');
+                        }
                     },
-                    fail: function(data) {
+                    fail: function (data) {
 
                     }
                 }
@@ -141,40 +62,40 @@
 
         function renderHtml(data) {
             var htmlStr = '';
-            htmlStr += setHtmltitle(data[0])
+            htmlStr += setHtmltitle(data[0]);
             $api.html('content', htmlStr);
         }
 
         function setHtmltitle(data) {
-            var html = '';
-            $api.text('overdue', data.QiXian);
-            html += "<li class='recycle'>" +
-                "<img src='../../image/records/recycle.png' class='recycle'>" +
-                "<div class='message'>" +
-                "<p class='phonetype'>" +
-                " <span>手机型号</span>" +
-                "<span id='phone-type'>" + api.deviceModel + "</span>" +
-                "  </p>" +
-                "</div>" +
-                "<div class='price'>" +
-                "<ul>" +
-                "  <li>" +
-                "<p>手机估价 </p>" +
-                "<span>500.00元</span>" +
-                "</li>" +
-                "<li>" +
-                "<p>定金+预付款</p>" +
-                "<span>" + (data.DaoZhang + data.FeiYong) + "元</span>" +
-                "</li>" +
-                "<li>" +
-                "  <p>履约期</p>" +
-                "<span>" + data.QiXian + "</span>" +
-                "<span>天</span>" +
-                "  <img src='../../image/records/help.png' class='help'>" +
-                "  </li>" +
-                "</ul>" +
-                "  </div>" +
-                "  </li>";
+            day = data.DaoQiTianShu;
+            
+            var html = "<li class='recycle'>" +
+            "<img src='../../image/records/recycle.png' class='recycle'>" +
+            "<div class='message'>" +
+            "<p class='phonetype'>" +
+            " <span>手机型号</span>" +
+            "<span id='phone-type'>" + 'api.deviceModel' + "</span>" +
+            "  </p>" +
+            "</div>" +
+            "<div class='price'>" +
+            "<ul>" +
+            "  <li>" +
+            "<p>手机估价 </p>" +
+            "<span>500.00元</span>" +
+            "</li>" +
+            "<li>" +
+            "<p>定金+预付款</p>" +
+            "<span>"+(data.DaoZhang + data.FeiYong)+"元</span>" +
+            "</li>" +
+            "<li>" +
+            "  <p>履约期</p>" +
+            "<span>" + data.QiXian+ "</span>" +
+            "<span>天</span>" +
+            "  <img src='../../image/records/help.png' class='help'>" +
+            "  </li>" +
+            "</ul>" +
+            "  </div>" +
+            "  </li>";
             return html;
         }
 
@@ -193,112 +114,146 @@
                 },
                 'tip': '正在发送...',
                 operation: {
-                    success: function(data) {
+                    success: function (data) {
                         renderContent(data);
                     },
-                    error: function() {
+                    error: function () {
 
                     }
                 }
             });
+        };
+
+         function renderContent(data) {
+            var html = '';         
+            html += sethtml(data);
+            $api.html('contentList', html);
         }
 
         function sethtml(data) {
-            var html = "<li class='order-list'>" +
-                "<ul>" +
-                "<li class='currentstatus mark'>"+ data.ZhuangTai + "</li>" +
-                "<li class='message'>" + data.FangKuanYiJian + "</li>" +
-                "<li class='time'>" + data.FangKuanShiJian + "</li>" +
-                "</ul>" +
-                "</li>"+
-                "<li class='order-list'>" +
-                "<ul>" +
-                "<li class='currentstatus mark'>" +data.ZhuangTai + "</li>" +
-                "<li class='message'>" +data.ShenHeYiJian + "</li>" +
-                "<li class='time'>"+data.ShenHeShiJian + "</li>" +
-                "</ul>" +
-                "</li>"+
-                "<li class='order-list'>" +
-                "<ul>" +
-                "<li class='currentstatus mark'>" + data.ZhuangTai + "</li>" +
-                "<li class='message'>&nbsp;</li>" +
-                "<li class='time'>" +data.JieKuanShiJian + "</li>" +
-                "</ul>" +
-                "</li>";
+
+            var html = '<div class="status">' +
+            ' <div class="list">' +
+            ' <ul id="list">' +
+            ' <li class="order-list">' +
+            '  <ul>' +
+            '<li class="currentstatus mark">' + 'data.ZhuangTai' + '</li>' +
+            '<li class="message">' + ' data.FangKuanYiJian' + '</li>' +
+            '<li class="time">' + 'data.FangKuanShiJian' + '</li>' +
+            ' </ul>' +
+            ' </li>' +
+            '<li class="order-list">' +
+            '<ul>' +
+            ' <li class="currentstatus">' + 'data.ZhuangTai' + '</li>' +
+            ' <li class="message">' + 'data.ShenHeYiJian' + '</li>' +
+            '  <li class="time">' + 'data.ShenHeShiJian' + '</li>' +
+            '</ul>' +
+            ' </li>' +
+            '<li class="order-list bodrenone">' +
+            '<ul>' +
+            '<li class="currentstatus">' + 'data.ZhuangTai' + '</li>' +
+            '<li class="message">您的订单已提交</li>' +
+            '<li class="time">' + 'data.JieKuanShiJian' + '</li>' +
+            ' </ul>' +
+            '</li>' +
+            ' </ul>' +
+            '</div>' +
+            '<div class="schedule">' +
+            '<ul>' +
+            '<li class="statusicon"><img src="../../image/records/success.png" alt=""></li>' +
+            '<li class="connect"><img src="../../image/records/connect.png" alt=""></li>' +
+            '<li class="statusicon"><img src="../../image/records/currentstatus.png" alt=""></li>' +
+            '<li class="connect"><img src="../../image/records/connect.png" alt=""></li>' +
+            '<li class="statusicon"><img src="../../image/records/currentstatus.png" alt=""></li>' +
+            '</ul>' +
+            '</div>' +
+            '</div>' +
+            '<div class="clear"></div>' +
+            '</div>';
+            footHtml();
+
             return html;
+        };
+
+        function footHtml(){
+
+            var foot =  '<div class="honour">' +
+            '<div class="time">' +
+            '<img src="../../image/records/time.png" alt="">' +
+            '<p>履约期'+day+'天</p>' +
+            '</div>' +
+            '<button  class="btn" onclick="javascript:cancel();">不卖了</button>' +
+            '<button  class="btn" onclick="javascript:confirm();">确定卖出填写寄回信息</button>' +
+            '</div>';
+            $api.html('footer', foot);
         }
 
-        function renderContent(data) {
-            var html = '';
-            html += sethtml(data);
-            $api.html('list', html);
-        }
 
 
         function cancel() {
-        create('refund');
-        //     var name = $api.val('name');
-        //     var phone = $api.val('phone');
-        //     User = $api.getStorage('User');
-        //     var mark = false;
-        //     var status;
-        //         request({
-        //           url: 'ApplyStatus',
-        //           data: {
-        //             sj: User.Phone,
-        //             deviceId: api.deviceId
-        //           },
-        //           operation: {
-        //             success: function (data) {
-        //                status = data.ZhuangTai;
-        //             }
-        //           }
-        //         });
+            create('refund');
+            //     var name = $api.val('name');
+            //     var phone = $api.val('phone');
+            //     User = $api.getStorage('User');
+            //     var mark = false;
+            //     var status;
+            //         request({
+            //           url: 'ApplyStatus',
+            //           data: {
+            //             sj: User.Phone,
+            //             deviceId: api.deviceId
+            //           },
+            //           operation: {
+            //             success: function (data) {
+            //                status = data.ZhuangTai;
+            //             }
+            //           }
+            //         });
 
-        //         switch(status){
-        //           case 3:
-        //           mark = true;
-        //           break;
-        //           case 4:
-        //           mark = true;
-        //           break;
-        //           case 6:
-        //           mark = true;
-        //           break;
-        //           case 8:
-        //           mark = true;
-        //           break;
-        //           case 10:
-        //           mark = true;
-        //           break;
-        //           case 11:
-        //           mark = true;
-        //           break;
-        //           case 12:
-        //           mark = true;
-        //           break;
-        //         };
-        //   if(mark){
-        //       request({
-        //           url: 'GetHYJKJL',
-        //           data: {
-        //               'deviceId': api.deviceId,
-        //               'Id': '',
-        //               'UserPhone': phone,
-        //               'Addressee': name,
-        //               'AddresseePhone': phone
-        //           },
-        //           tip: '正在发送...',
-        //           operation: {
-        //               success: function(data) {
-        //                 create('refund');
-        //               },
-        //               fail: function() {
-        //               }
-        //           }
-        //       });
-            }
-    
+            //         switch(status){
+            //           case 3:
+            //           mark = true;
+            //           break;
+            //           case 4:
+            //           mark = true;
+            //           break;
+            //           case 6:
+            //           mark = true;
+            //           break;
+            //           case 8:
+            //           mark = true;
+            //           break;
+            //           case 10:
+            //           mark = true;
+            //           break;
+            //           case 11:
+            //           mark = true;
+            //           break;
+            //           case 12:
+            //           mark = true;
+            //           break;
+            //         };
+            //   if(mark){
+            //       request({
+            //           url: 'GetHYJKJL',
+            //           data: {
+            //               'deviceId': api.deviceId,
+            //               'Id': '',
+            //               'UserPhone': phone,
+            //               'Addressee': name,
+            //               'AddresseePhone': phone
+            //           },
+            //           tip: '正在发送...',
+            //           operation: {
+            //               success: function(data) {
+            //                 create('refund');
+            //               },
+            //               fail: function() {
+            //               }
+            //           }
+            //       });
+        }
+
 
         function confirm() {
             // var name = $api.val('name');
@@ -319,7 +274,7 @@
             //     tip: '正在发送...',
             //     operation: {
             //         success: function(data) {
-                      create('add-recycle-address');
+            create('add-recycle-address');
             //         }
             //     }
             // });

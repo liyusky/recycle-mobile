@@ -19,11 +19,12 @@
       <span>*</span>请描述您遇到的问题</p>
     <textarea class="txt" id="textarea"></textarea>
     <p class="number">
-      <span>0</span>
+      <span id="min">0</span>
       <span>/</span>
-      <span>200</span>
+      <span id="max">200</span>
     </p>
   </div>
+  <p id="msg" class="hide">您的字数已超过200</p>
   <input type="text" placeholder="手机号/邮箱 (选填, 方便我们联系您)" class="information" id="account">
   <button class="btn" onclick="javascript:submit();">提交</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -33,8 +34,24 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script>
+
+          var content = $api.byId('textarea');
+          var text = $api.text('max');
+          content.onkeydown = function(){
+            if(this.value.length > text){
+              this.value = this.value.substring(0, text);
+              $api.removeCls('msg','hide');
+              $api.text('min',this.value.length);
+            }else{
+              $api.addCls('msg','hide');
+              $api.text('min',this.value.length);
+            }
+          
+          }
+
+
     function submit() {
-      // if (!checkNet() || !checkLogin()) return;
+      if (!checkNet() || !checkLogin()) return;
       var content = $api.val('textarea');
       var account = $api.val('account');
 

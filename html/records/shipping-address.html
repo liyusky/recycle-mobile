@@ -18,17 +18,6 @@
   </header>
   <div class="content">
     <ul class="address-list" id="list">
-      <!-- <li>
-        <div class="box">
-          <p class="name">张三丰</p>
-          <p class="phone">
-            <span id="phone-head">185</span>
-            <span>****</span>
-            <span id="phone-tail">9898</span>
-          </p>
-          <p class="address">浙江省杭州市西湖区一秀小区2幢4单元202室</p>
-        </div>
-      </li> -->
       <div class="noaddress" id="noaddress">
         <img src="../../image/records/noaddress.png">
         <p class="noText">暂无收货地址</p>
@@ -47,7 +36,7 @@
     }
 
     function init() {
-      // if (checkNet() && checkLogin()) {
+      if (!checkNet() || !checkLogin()) return;
       var User = $api.getStorage('User');
         request({
           url: 'GetRA',

@@ -18,21 +18,8 @@
   </header>
   <div class="content">
     <ul class="list" id="bankList">
-      <!-- <li>
-        <img id="bank-image" src="../../image/wode/bank.png">
-        <div class="card-message">
-          <p class="bank-type" id="bank-name">中国银行</p>
-          <span class="card-type">储蓄卡</span>
-          <p class="card-num">
-            <span class="hidenum">****</span>
-            <span class="hidenum">****</span>
-            <span class="hidenum">****</span>
-            <span class="shownum" id="card-tail">5198</span>
-          </p>
-        </div>
-      </li> -->
     </ul>
-    <button class="btn" onclick="javascript:create('add-bank-card')">绑定银行卡</button>
+    <button class="btn" id="btn" onclick="javascript:create('add-bank-card')">绑定银行卡</button>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -49,8 +36,6 @@
 
     function init() {
       if (!checkNet() && !checkLogin()) return;
-      var name = $api.val('name');
-      var phone = $api.val('phone');
       var User = $api.getStorage('User');
 
       request({
