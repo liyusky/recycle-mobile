@@ -20,8 +20,8 @@ function DataBase(params) {
           path: this.path
         },
         function (ret, err) {
-          alert(JSON.stringify(ret))
-          alert(JSON.stringify(err))
+          // alert(JSON.stringify(ret))
+          // alert(JSON.stringify(err))
           self.operation(ret, err, params.operation);
         }
       );

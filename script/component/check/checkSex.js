@@ -13,12 +13,12 @@
 function checkVerificationCode(verificationCode) {
   var result = true;
   if (!verificationCode) {
-    alertMsg('请输入验证码');
+    toast('请输入验证码');
     result = false;
   } else {
     var pat = new RegExp('^[0-9]{6}$', 'i');
     if (!pat.test(verificationCode)) {
-      alertMsg('验证码格式错误');
+      toast('验证码格式错误');
       result = false;
     }
   }
@@ -104,12 +104,12 @@ function checkName(name) {
 function checkCard(card) {
   var result = true;
   if (!card) {
-    alertMsg('银行卡不能为空');
+    toast('银行卡不能为空');
     result = false;
   } else {
     var reg = /^\d{16,19}$/;
     if (!reg.test(card)) {
-      alertMsg('储蓄卡格式错误');
+      toast('储蓄卡格式错误');
       result = false;
     }
   }
