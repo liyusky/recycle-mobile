@@ -22,6 +22,7 @@ var statusCode = {
  * @datetime    2017-10-11T10:35:54+080
  */
 function AppStatusHandle(ret, err, operation) {
+
   // alert(JSON.stringify(ret));
   // alert(JSON.stringify(err));
 

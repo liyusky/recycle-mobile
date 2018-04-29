@@ -142,7 +142,19 @@
     }
     function gotoPage() {
       if (!checkNet() || !checkLogin()) return;
-      create(page);
+      request({
+        url: 'ApplyStatus',
+        data: {
+          sj: User.Phone,
+          deviceId: api.deviceId
+        },
+        operation: {
+          success: function (data) {
+            setStatus(data);
+            create(page);
+          }
+        }
+      });
     }
     function setUser() {
       // $api.rmStorage('User');
