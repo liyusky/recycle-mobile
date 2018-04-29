@@ -36,4 +36,5 @@ var developmentAppApi = {
   'UserRegister': 'http://192.168.0.109:8080/UserRegister.json',
   'ShenFenXinXin': 'http://192.168.0.109:8080/ShenFenXinXin.json',
   'LianXiRenXinXi': 'http://192.168.0.109:8080/LianXiRenXinXi.json',
+  'ApplyStatus': 'http://192.168.0.109:8080/ApplyStatus.json',
 };

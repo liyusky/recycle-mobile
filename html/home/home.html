@@ -99,18 +99,6 @@
           openLogin: false
         })) {
         request({
-          url: 'ApplyStatus',
-          data: {
-            sj: User.Phone,
-            deviceId: api.deviceId
-          },
-          operation: {
-            success: function (data) {
-              setStatus(data);
-            }
-          }
-        });
-        request({
           url: 'Certification',
           data: {
             sj: User.Phone,
@@ -144,7 +132,19 @@
 
     function gotoPage() {
       if (!checkNet() || !checkLogin()) return;
-      create(page);
+      request({
+        url: 'ApplyStatus',
+        data: {
+          sj: User.Phone,
+          deviceId: api.deviceId
+        },
+        operation: {
+          success: function (data) {
+            setStatus(data);
+            create(page);
+          }
+        }
+      });
     }
 
     function setUser() {

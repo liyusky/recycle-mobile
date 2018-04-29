@@ -108,6 +108,8 @@
 			var name = $api.val('ID-name');
 			var number = $api.val('ID-number');
 			User = $api.getStorage('User');
+			console.log(JSON.stringify(archive));
+			
 			request({
 				url: 'ShenFenXinXi',
 				data: {
