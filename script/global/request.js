@@ -27,7 +27,7 @@ function request(params) {
 
 
   // console.log(params.url);
-  // console.log('=======================');
+  console.log('=======================');
 
   // alert(url);
   if (params.tip) {
@@ -41,7 +41,9 @@ function request(params) {
     }
   }
 
-  // console.log(JSON.stringify(params.data));
+  console.log(JSON.stringify(params.data));
+  console.log('=======================');
+  
 
   api.ajax({
       url: url,
