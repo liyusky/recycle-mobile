@@ -15,34 +15,6 @@
     <p class="header-title">回收记录</p>
   </header>
   <ul class="content" id="content">
-    <!-- <li class="recycle">
-      <img src="../../image/records/recycle.png" alt="" class="recycle">
-      <div class="message">
-        <p class="phonetype">
-          <span>手机型号</span>
-          <span id="phone-type">iphone 6s</span>
-        </p>
-        <a href="javascript:;" onclick="javascript:create('details');">查看详情></a>
-      </div>
-      <div class="price">
-        <ul>
-          <li>
-            <p>手机估价 </p>
-            <span>1200.00元</span>
-          </li>
-          <li>
-            <p>定金+预付款</p>
-            <span>900.00元</span>
-          </li>
-          <li>
-            <p>履约期</p>
-            <span>7</span>
-            <span>天</span>
-            <img src="../../image/records/help.png" class="help">
-          </li>
-        </ul>
-      </div>
-    </li> -->
   </ul>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
@@ -56,7 +28,7 @@
     }
 
     function init() {
-      // if (!checkNet() || !checkLogin()) return;
+      if (!checkNet() || !checkLogin()) return;
       var User = $api.getStorage('User');
       request({
         url: 'GetHYJKJL',
@@ -67,7 +39,11 @@
         tip: '正在发送...',
         operation:{
           success: function (data) {
+            if(data.length){
               render(data[0]);
+            }else{
+              toast('暂无记录');
+            }
           }
         }
       });

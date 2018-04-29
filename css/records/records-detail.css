@@ -188,10 +188,13 @@ header .header-title {
   display: inline-block;
 }
 
+#contentList{
+  background: #fff;
+}
+
 .status {
   margin: 9.33333vw auto;
   width: 100vw;
-  background: #fff;
 }
 
 .status .list .bodrenone {
@@ -202,7 +205,6 @@ header .header-title {
   width: 87.73333vw;
   height: 24vw;
   float: right;
-  background: #fff;
   border-bottom: 0.33333vw solid #ccc;
   padding-top: 3.33333vw;
   color: #666;
@@ -256,16 +258,16 @@ header .header-title {
   top: -1vw;
 }
 
-.status .honour {
+.honour {
   margin: 8vw auto 2.66667vw;
   text-align: center;
 }
 
-.status .honour .time {
+.honour .time {
   display: inline-block;
 }
 
-.status .honour .time img {
+.honour .time img {
   width: 4vw;
   height: 4vw;
   float: left;
@@ -273,18 +275,18 @@ header .header-title {
   margin-right: 1vw
 }
 
-.status .honour .time p {
+ .honour .time p {
   float: left;
   font-size: 5.06667vw;
 }
 
 
-.status .honour .time p span{
+ .honour .time p span{
   float: left;
   display: inline-block;
 }
 
-.status .honour .btn {
+ .honour .btn {
   display: block;
   width: 86.66667vw;
   height: 12.66667vw;
