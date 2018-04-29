@@ -94,7 +94,6 @@
       if (!checkNet()) return;
       $api.text('device-model', api.deviceModel);
       User = $api.getStorage('User');
-
       if (checkLogin({
           openLogin: false
         })) {
@@ -125,7 +124,6 @@
         });
       }
     };
-
     function setLoginStatus(data) {
       var message = data.HYXX;
       var card = data.YHK;
@@ -141,18 +139,15 @@
       User.Certification[3] = !!(message.IsOperator * 1);
       $api.setStorage('User', User);
     }
-
     function gotoPage() {
       if (!checkNet() || !checkLogin()) return;
       create(page);
     }
-
     function setUser() {
       // $api.rmStorage('User');
       try {
         User = $api.getStorage('User');
       } catch (e) {}
-
       if (!User) {
         User = {
           Status: false, //登录
@@ -164,18 +159,14 @@
         };
         $api.setStorage('User', User);
       }
-
       try {
         Offline = $api.getStorage('Offline');
       } catch (e) {}
-
       Offline = {
         Mark: true
       };
-
       $api.setStorage('Offline', Offline);
     }
-
     function setListener() {
       api.addEventListener({
           name: 'LOGIN-EVENT'
@@ -185,7 +176,6 @@
         }
       );
     }
-
     function setStatus(data) {
       if (data.ZhuangTai == undefined) return;
       switch (Number(data.ZhuangTai)) {

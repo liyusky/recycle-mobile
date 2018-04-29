@@ -36,7 +36,23 @@
             </li>
             <li>
                 <p>开户银行:</p>
-                <input id="bank" type="text" placeholder="请输入开户银行">
+                <select id="bank">
+                    <option value="0">光大银行</option>
+                    <option value="1">广发银行</option>
+                    <option value="2">工商银行</option>
+                    <option value="3">华夏银行</option>
+                    <option value="4">建设银行</option>
+                    <option value="5">交通银行</option>
+                    <option value="6">民生银行</option>
+                    <option value="7">农业银行</option>
+                    <option value="8">平安银行</option>
+                    <option value="9">浦发银行</option>
+                    <option value="10">兴业银行</option>
+                    <option value="11">邮政银行</option>
+                    <option value="12">中国银行</option>
+                    <option value="13">招商银行</option>
+                    <option value="14">中信银行</option>
+                </select>
             </li>
             <li>
                 <p class="phone">手机号:</p>
@@ -132,9 +148,8 @@
                     tip: '正在发送...',
                     operation: {
                         success: function(data) {
-                            create('bank-card');
-                            kill('');
                             sendBindCardEvent();
+                            kill('');
                         },
                         fail: function() {
                             toast('银行卡绑定失败');
