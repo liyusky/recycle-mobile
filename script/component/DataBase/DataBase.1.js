@@ -264,10 +264,10 @@ function DataBase() {
         } catch (e) {}
       },
       fail: function () {
-        alertMsg('修改失败');
+        toast('修改失败');
       },
       error: function () {
-        alertMsg('修改失败');
+        toast('修改失败');
       }
     });
   };

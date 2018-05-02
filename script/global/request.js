@@ -14,20 +14,20 @@ function request(params) {
   } catch (e) {}
 
 
-  var url = null;
+  // var url = null;
   // var url = api.loadSecureValue({ //生产环境
   //   sync: true,
   //   key: params.url
   // });
 
 
-  // var url = RequestProductURL[params.url]; //生产环境
-  url = productionAppApi[params.url]; //后台测试服务器
+  var url = RequestProductURL[params.url]; //生产环境
+  // url = productionAppApi[params.url]; //后台测试服务器
   // url = developmentAppApi[params.url];   // 前端独立测试
 
 
-  // console.log(params.url);
-  // console.log('=======================');
+  console.log(url);
+  console.log('=======================');
 
   // alert(url);
   if (params.tip) {
@@ -41,7 +41,9 @@ function request(params) {
     }
   }
 
-  // console.log(JSON.stringify(params.data));
+  console.log(JSON.stringify(params.data));
+  console.log('=======================');
+
 
   api.ajax({
       url: url,

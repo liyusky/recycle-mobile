@@ -11,7 +11,7 @@
 function checkBankCard(card) {
   var result = true;
   if (!card) {
-    alertMsg('银行卡不能为空');
+    toast('银行卡不能为空');
     result = false;
   } else {
     var reg = /^\d{16,19}$/;

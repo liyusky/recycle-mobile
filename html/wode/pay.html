@@ -11,11 +11,16 @@
   <script src="../../script/flexible.js" charset="utf-8"></script>
   <script type="text/javascript" src="../../script/api.js"></script>
   <title>支付</title>
+  <link rel="stylesheet" type="text/css" href="../../css/wode/help.css">
   <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui.css">
   <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui-extends.css">
 </head>
 
 <body class="zhimafen">
+  <header class="header">
+    <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
+    <p class="header-title">还款</p>
+  </header>
   <iframe id="iframe"></iframe>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
@@ -27,13 +32,14 @@
     var User = null;
     var index = 0;
     apiready = function () {
-      setListener();
       init();
     }
 
     function init() {
       if (!checkNet() && !checkLogin()) return;
-      $api.attr('iframe', 'src', api.pageParam.url);
+      User = $api.getStorage('User');
+      var url = RequestProductURL['Refund'] + "?sj=" + User.Phone + "&&yhk=" + User.Card;
+      $api.attr('iframe', 'src', url);
     }
   </script>
 </body>
