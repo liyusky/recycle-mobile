@@ -62,13 +62,7 @@
 
         function renderHtml(data) {
             var htmlStr = '';
-            if(data.length>1){
-                for(var i=0;i<data.length;i++){
-                    htmlStr += setHtmltitle(data[i]);
-                }
-            }else{
-                htmlStr += setHtmltitle(data);
-            }
+                htmlStr += setHtmltitle(data[0]);
             $api.html('content', htmlStr);
         }
 
@@ -104,11 +98,9 @@
             return html;
         }
 
-
-
         function initList() {
-            // if (!checkNet() || !checkLogin()) return;
-            // if(!$api.getStorage('User')) return;
+            if (!checkNet() || !checkLogin()) return;
+            if(!$api.getStorage('User')) return;
 
             var User = $api.getStorage('User');
             request({
@@ -130,7 +122,7 @@
         };
 
          function renderContent(data) {
-            var html = '';         
+            var html = '';
             html += sethtml(data);
             $api.html('contentList', html);
         }
@@ -176,20 +168,19 @@
             '<div class="clear"></div>' +
             '</div>';
             footHtml();
-
-            return html;
+          return html;
         };
 
         function footHtml(){
-
-            var foot =  '<div class="honour">' +
+            var foot = '<div class="honour">' +
             '<div class="time">' +
-            '<img src="../../image/records/time.png" alt="">' +
-            '<p>履约期'+day+'天</p>' +
+            '<img src="../../image/records/time.png">' +
+            '<p>'+'履约期'+(day?day:0)+'天'+'</p>' +
             '</div>' +
             '<button  class="btn" onclick="javascript:cancel();">不卖了</button>' +
             '<button  class="btn" onclick="javascript:confirm();">确定卖出填写寄回信息</button>' +
             '</div>';
+
             $api.html('footer', foot);
         }
 

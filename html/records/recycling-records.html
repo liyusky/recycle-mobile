@@ -57,14 +57,14 @@
 
       function setHtml(data) {
 
-        return htmlStr = "<li class='recycle'>" +
+        return htmlStr = "<li class='recycle' onclick=javascript:create('details');>" +
           "<img src='../../image/records/recycle.png'  class='recycle'>" +
           "<div class='message'>" +
           "<p class='phonetype'>" +
           "<span>手机型号</span>" +
           "<span id='phone-type'>" + api.deviceModel + "</span>" +
           "</p>" +
-          "<span onclick=javascript:create('details');>查看详情></span>"+
+          "<span onclick=javascript:create('details'); class='details'>查看详情></span>"+
           "</div>" +
           "<div class='price'>" +
           "<ul>" +

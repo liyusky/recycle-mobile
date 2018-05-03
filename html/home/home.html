@@ -8,66 +8,69 @@
     <link rel="stylesheet" href="../../css/home/home.css">
 </head>
 <body>
-    
+
             <header class="header">
-                    <img src="../../image//home/person.png" alt="" class="person" onclick="javascript: create('personal-center');">
+                    <img src="../../image/home/person.png" alt="" class="person" onclick="javascript: create('personal-center');">
                     <p class="h-title">借条大师白卡</p>
                     <img src="../../image/home/remind.png" alt=""class="remind">
            </header>
-           <div class="clear"></div>
     <!-- <div class="message">
             <img src="./img/trumpet.png" alt="" class="trumpet">
             <p class="m-list">用户尾号860刚刚卖出一部iphone 6s获得1500元</p>
     </div> -->
-<div class="container">
-    <div class="banner">
-            <img src="../../image/home/banner.png" class="bannerimg">
-            <div class="bannerText">
-                <img src="../../image/home/safe.png" class="safe">
-                <p class="order">在线下单 借款无需等待</p>
-            </div>
-    </div>
-        <div class="content">
-            <div class="phone-type">
-                <div class="left-mark"></div>
-                <img src="../../image/home/type.png" alt="" class="left-markimg">
-                <p class="head-title"> 您的手机型号</p>
-                <img src="../../image/home/type.png" alt="" class="right-markimg">
-                <div class="right-mark left-mark"></div>
-            </div>
-            <div class="phone-content">
-                <img src="../../image/home/phone.png" alt="" class="phoneimg">
-                <div class="phone-message">
-                    <p class="messagelist">iphone 6s</p>
-                    <p class="messagelist">内存: 16G</p>
-                    <p class="messagelist"><span  class="max">最高回收:</span>￥5000</p>
+    <div class="container">
+        <div class="banner">
+                <img src="../../image/home/banner.png" class="banner-img">
+                <div class="bannerText">
+                    <img src="../../image/home/safe.png" class="safe">
+                    <p class="order">在线下单 借款无需等待</p>
                 </div>
+        </div>
+        <div class="clear"></div>
+            <div class="content">
+                <div class="phone-type">
+                    <div class="left-mark"></div>
+                    <img src="../../image/home/type.png" alt="" class="left-markimg">
+                    <p class="head-title"> 您的手机型号</p>
+                    <img src="../../image/home/type.png" alt="" class="right-markimg">
+                    <div class="right-mark left-mark"></div>
+                </div>
+                <div class="phone-content">
+                    <img src="../../image/home/phone.png" alt="" class="phone-img">
+                    <div class="phone-message">
+                        <p class="messagelist" id="device-model">iphone 6s</p>
+                        <!-- <p class="messagelist">内存: 16G</p> -->
+                        <p class="messagelist"><span  class="max">最高回收:</span>￥5000</p>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <button class="phone-btn" onclick="javascript: gotoPage();">马上评估 立即拿钱</button>
+        </div>
+        <footer class="recycle">
+                <p class="recycle-title">回收流程</p>
+                <div class="recycleicon">
+                    <div class="recyclebox">
+                <div class="evaluate w100">
+                        <img src="../../image/home/evaluate.png" alt="">
+                        <p class="recycle-text">旧机估价</p>
+                </div>
+                <img src="../../image/home/than.png" alt="" class="than">
+                <div class="order w100">
+                    <img src="../../image/home/order.png" alt="">
+                    <p class="recycle-text">在线下单</p></div>
+                    <img src="../../image/home/than.png" alt="" class="than">
+                <div class="loan w100">
+                    <img src="../../image/home/icon.png" alt="">
+                    <p class="recycle-text">急速结款</p></div>
+                    <img src="../../image/home/than.png" alt="" class="than">
+                <div class="quality w100">
+                    <img src="../../image/home/checkout.png" alt="">
+                    <p class="recycle-text">质检入库</p></div>
+                </div>
+                <div class="clear"></div>
             </div>
-            <div class="clear"></div>
-            <button class="phone-btn" onclick="javascript: gotoPage();">马上评估 立即拿钱</button>
+        </footer>
     </div>
-    <footer class="recycle">
-            <p class="recycle-title">回收流程</p>
-            <div class="recycleicon">
-            <div class="evaluate w100">
-              <img src="../../image/home/evaluate.png">
-              <p class="recycle-text">旧机估价</p>
-            </div>
-            <img src="../../image/home/than.png" alt="" class="than">
-            <div class="order w100">
-                <img src="../../image/home/order.png" alt="">
-                <p class="recycle-text">在线下单</p></div>
-                <img src="../../image/home/than.png" alt="" class="than">
-            <div class="loan w100">
-                <img src="../../image/home/icon.png" alt="">
-                <p class="recycle-text">急速结款</p></div>
-                <img src="../../image/home/than.png" alt="" class="than">
-            <div class="quality w100">
-                <img src="../../image/home/checkout.png" alt="">
-                <p class="recycle-text">质检入库</p></div>
-            </div>
-    </footer>
-</div>
 <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
@@ -75,70 +78,22 @@
 <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
 <script type="text/javascript">
-  var User = null;
-  var page = 'offer';
-
-  apiready = function () {
-    setUser();
-    init();
-  }
-
-  function init() {
-    render();
-  };
-
-  function render() {
-    if (!checkNet()) return;
-    $api.text('device-model', api.deviceModel);
-    User = $api.getStorage('User');
-    if (checkLogin({
-        openLogin: false
-      })) {
-      request({
-        url: 'ApplyStatus',
-        data: {
-          sj: User.Phone,
-          deviceId: api.deviceId
-        },
-        operation: {
-          success: function (data) {
-            setStatus(data);
-          }
-        }
-      });
-
-      request({
-       url: 'Certification',
-        data: {
-          sj: User.Phone,
-          deviceId: api.deviceId
-        },
-        tip: '正在加载...',
-        operation: {
-          success: function (data) {
-            setLoginStatus(data);
-          }
-        }
-      });
-    }
-  };
-  function setLoginStatus(data) {
-    var message = data.HYXX;
-    var card = data.YHK;
-    User = $api.getStorage('User');
-    if (card) {
-      User.Card = card.KaHao;
-    }
-    User.Name = message.XingMing;
-    User.Id = message.ShenFenZheng; 
-    User.Certification[0] = !!(message.IsCertification * 1);
-    User.Certification[1] = !!(message.IsTxl * 1);
-    User.Certification[2] = !!(message.IsZhiMa * 1);
-    User.Certification[3] = !!(message.IsOperator * 1);
-    $api.setStorage('User', User);
-  }
-  function gotoPage() {
-    if (!checkNet() || !checkLogin()) return;
+var User = null;
+var page = 'offer';
+apiready = function () {
+  setUser();
+  init();
+}
+function init() {
+  render();
+};
+function render() {
+  if (!checkNet()) return;
+  $api.text('device-model', api.deviceModel);
+  User = $api.getStorage('User');
+  if (checkLogin({
+      openLogin: false
+    })) {
     request({
       url: 'ApplyStatus',
       data: {
@@ -148,88 +103,132 @@
       operation: {
         success: function (data) {
           setStatus(data);
-          create(page);
+        }
+      }
+    });
+    request({
+     url: 'Certification',
+      data: {
+        sj: User.Phone,
+        deviceId: api.deviceId
+      },
+      tip: '正在加载...',
+      operation: {
+        success: function (data) {
+          setLoginStatus(data);
         }
       }
     });
   }
-  function setUser() {
-    $api.rmStorage('User');
-    try {
-      User = $api.getStorage('User');
-    } catch (e) {}
-    if (!User) {
-      User = {
-        Status: false, //登录
-        Certification: [false, false, false, false],
-        Phone: '',
-        Name: null,
-        Id: null,
-        Card: null
-      };
-      $api.setStorage('User', User);
-    }
-    try {
-      Offline = $api.getStorage('Offline');
-    } catch (e) {}
-    Offline = {
-      Mark: true
-    };
-    $api.setStorage('Offline', Offline);
+};
+function setLoginStatus(data) {
+  var message = data.HYXX;
+  var card = data.YHK;
+  User = $api.getStorage('User');
+  if (card) {
+    User.Card = card.KaHao;
   }
-  function setListener() {
-    api.addEventListener({
-        name: 'LOGIN-EVENT'
-      },
-      function (ret, err) {
-        render();
+  User.Name = message.XingMing;
+  User.Id = message.ShenFenZheng;
+  User.Certification[0] = !!(message.IsCertification * 1);
+  User.Certification[1] = !!(message.IsTxl * 1);
+  User.Certification[2] = !!(message.IsZhiMa * 1);
+  User.Certification[3] = !!(message.IsOperator * 1);
+  $api.setStorage('User', User);
+}
+function gotoPage() {
+  if (!checkNet() || !checkLogin()) return;
+  request({
+    url: 'ApplyStatus',
+    data: {
+      sj: User.Phone,
+      deviceId: api.deviceId
+    },
+    operation: {
+      success: function (data) {
+        setStatus(data);
+        create(page);
       }
-    );
-  }
-  function setStatus(data) {
-    if (data.ZhuangTai == undefined) return;
-    switch (Number(data.ZhuangTai)) {
-      case 0: //待审核
-        page = 'recycling-schedule';
-        break;
-      case 1: //审核不通过
-        page = 'offer';
-        break;
-      case 2: //待放款
-        page = 'recycling-schedule';
-        break;
-      case 3: //已放款
-        page = 'refund';
-        break;
-      case 4: //已逾期
-        page = 'refund';
-        break;
-      case 5: //已还款
-        page = 'offer';
-        break;
-      case 6: //已交催收
-        page = 'refund';
-        break;
-      case 7: //交催收已还
-        page = 'offer';
-        break;
-      case 8: //交催收未还
-        page = 'refund';
-        break;
-      case 9: //初审通过
-        page = 'recycling-schedule';
-        break;
-      case 10: //交催收延期
-        page = 'refund';
-        break;
-      case 11: //未还清
-        page = 'refund';
-        break;
-      case 12: //交催收未还清
-        page = 'refund';
-        break;
     }
+  });
+}
+function setUser() {
+  $api.rmStorage('User');
+  try {
+    User = $api.getStorage('User');
+  } catch (e) {}
+  if (!User) {
+    User = {
+      Status: false, //登录
+      Certification: [false, false, false, false],
+      Phone: '',
+      Name: null,
+      Id: null,
+      Card: null
+    };
+    $api.setStorage('User', User);
   }
+  try {
+    Offline = $api.getStorage('Offline');
+  } catch (e) {}
+  Offline = {
+    Mark: true
+  };
+  $api.setStorage('Offline', Offline);
+}
+function setListener() {
+  api.addEventListener({
+      name: 'LOGIN-EVENT'
+    },
+    function (ret, err) {
+      render();
+    }
+  );
+}
+function setStatus(data) {
+  if (data.ZhuangTai == undefined) return;
+  switch (Number(data.ZhuangTai)) {
+    case 0: //待审核
+      page = 'recycling-schedule';
+      break;
+    case 1: //审核不通过
+      page = 'offer';
+      break;
+    case 2: //待放款
+      page = 'recycling-schedule';
+      break;
+    case 3: //已放款
+      page = 'refund';
+      break;
+    case 4: //已逾期
+      page = 'refund';
+      break;
+    case 5: //已还款
+      page = 'offer';
+      break;
+    case 6: //已交催收
+      page = 'refund';
+      break;
+    case 7: //交催收已还
+      page = 'offer';
+      break;
+    case 8: //交催收未还
+      page = 'refund';
+      break;
+    case 9: //初审通过
+      page = 'recycling-schedule';
+      break;
+    case 10: //交催收延期
+      page = 'refund';
+      break;
+    case 11: //未还清
+      page = 'refund';
+      break;
+    case 12: //交催收未还清
+      page = 'refund';
+      break;
+  }
+}
 </script>
 </body>
 

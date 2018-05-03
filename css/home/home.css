@@ -23,7 +23,26 @@ a {
 }
 
 ol,
-ul, li {
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul,
+li {
   list-style: none;
 }
 
@@ -141,29 +160,58 @@ header .remind {
   height: 3.33333vh;
 }
 
-
-.container .banner {
-  position: relative;
-  height:17.666666666666664vh;
+.container {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: flex-start;
+  -webkit-box-pack: flex-start;
+  -webkit-justify-content: flex-start;
 }
 
-.container .banner .bannerimg {
+.container .banner {
+  width: 100vw;
+  height: 38.98051vw;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.container .banner .banner-img {
   width: 100%;
-  height: 17.666666666666664vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
 }
 
 .container .banner .bannerText {
   text-align: center;
   color: #fff;
   position: absolute;
-  left: 50%;
-  margin-left: -26vw;
+  left: 14.91754vh;
   top: 0;
 }
 
 .container .banner .bannerText .safe {
-  margin-top: 2.5vh;
+  margin-top: 4.16667vh;
   width: 46.8vw;
+  height: 4.58333vh;
 }
 
 .container .banner .bannerText .order {
@@ -173,11 +221,9 @@ header .remind {
 
 .container .content {
   width: 89.33333vw;
-  margin: 2.66667vw auto 2.66667vw auto;
   background: #fff;
   border-radius: 0.4vw;
   text-align: center;
-  height: 48.833333333333336vh;
 }
 
 .container .content .phone-type {
@@ -211,17 +257,16 @@ header .remind {
   float: right;
 }
 
-.container .content .phone-content .phoneimg {
+.container .content .phone-content .phone-img {
   margin-left: 10vh;
   margin-top: 5.33333vh;
   width: 17.06667vw;
-  height: 19.91667vh;
   float: left;
 }
 
 .container .content .phone-content .phone-message {
   float: left;
-  margin-left: 6.666666666666666vw;
+  margin-left: 3.5vw;
   margin-top: 10vh;
   line-height: 4.16667vh;
   font-size: 4vw;
@@ -234,34 +279,29 @@ header .remind {
 
 .container .content .phone-btn {
   width: 78.66667vw;
-  height: 7.91667vh;
-  margin: 0 auto;
   background: #1990fe;
   font-size: 5.06667vw;
   border-radius: 1.06667vw;
   line-height: 7.91667vh;
   color: #fff;
-  margin-top: 2.83333vh;
-  margin-bottom: 4.58333vh;
+  margin-top: 1.83333vh;
+  margin-bottom: 1.58333vh;
   outline: none;
   border: none;
 }
 
 .container .recycle {
-  margin-bottom: 2.66667vw;
   border-radius: 0.4vw;
   width: 89.33333vw;
-  height: 22.91667vh;
   background: #fff;
-  margin: 5.6vw auto 2.66667vw;
+  margin: 3vw auto;
 }
 
 .container .recycle .recycle-title {
   text-align: center;
-  line-height: 8.33333vh;
-  margin-bottom: 2.5vh;
-  margin-top: 1.66667vh;
   font-size: 5.06667vw;
+  margin-bottom: 2vw;
+  margin-top: 2vw;
 }
 
 .container .recycle .recycle-text {
@@ -277,6 +317,10 @@ header .remind {
 
 .container .recycle .recycleicon {
   padding-left: 1vw;
+}
+
+.container .recycle .recycleicon .recyclebox {
+  height: 22vw;
 }
 
 .container .recycle .w100 {
