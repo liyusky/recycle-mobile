@@ -93,10 +93,10 @@
             "<span>"+(data.DaoZhang + data.FeiYong)+"元</span>" +
             "</li>" +
             "<li>" +
+            "<img src='../../image/records/help.png' class='help'>"+
             "  <p>履约期</p>" +
             "<span>" + data.QiXian+ "</span>" +
             "<span>天</span>" +
-            "  <img src='../../image/records/help.png' class='help'>" +
             "  </li>" +
             "</ul>" +
             "  </div>" +
@@ -132,7 +132,6 @@
             html += sethtml(data);
             $api.html('contentList', html);
         }
-
         function sethtml(data) {
 
             var html = '<div class="status">' +
@@ -173,20 +172,19 @@
             '</div>' +
             '<div class="clear"></div>' +
             '</div>';
-            footHtml();
+          footHtml();
           return html;
         };
-
+footHtml()
         function footHtml(){
             var foot = '<div class="honour">' +
             '<div class="time">' +
             '<img src="../../image/records/time.png">' +
-            '<p>'+'履约期'+(day?day:0)+'天'+'</p>' +
+            '<span>'+'履约期'+(day?day:0)+'天'+'</span>' +
             '</div>' +
             '<button  class="btn" onclick="javascript:cancel();">不卖了</button>' +
             '<button  class="btn" onclick="javascript:confirm();">确定卖出填写寄回信息</button>' +
             '</div>';
-
             $api.html('footer', foot);
         }
 
