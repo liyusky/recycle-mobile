@@ -28,8 +28,10 @@
     <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
     <script type="text/javascript" charset="utf-8">
         var day = '';
+        var id = '';
         apiready = function () {
-            var day = '';
+          id = api.pageParam.id;
+          day = '';
             if (!checkNet() || !checkLogin()) return;
             init();
             initList();
@@ -41,16 +43,12 @@
                 url: 'GetHYJKJL',
                 data: {
                     'deviceId': api.deviceId,
-                    'phone': User.Phone
+                    'phone': User.Phone,
                 },
                 tip: '正在发送...',
                 operation: {
                     success: function (data) {
-                        if(data.length){
-                            renderHtml(data);
-                        }else{
-                            toast('暂无详情');
-                        }
+                      renderHtml(data);
                     },
                     fail: function (data) {
 
@@ -61,8 +59,16 @@
 
 
         function renderHtml(data) {
-            var htmlStr = '';
-                htmlStr += setHtmltitle(data[0]);
+          var htmlStr = '';
+          for(var i=0;i<data.length;i++){
+              for(var key in data[i]){
+                if(id == data[i][key]){
+                htmlStr += setHtmltitle(data[i]);
+                }else{
+                    toast('暂无订单详情');
+                }
+              }
+          }
             $api.html('content', htmlStr);
         }
 
@@ -72,7 +78,7 @@
             "<img src='../../image/records/recycle.png' class='recycle'>" +
             "<div class='message'>" +
             "<p class='phonetype'>" +
-            " <span>手机型号</span>" +
+            " <span class='type'>手机型号</span>" +
             "<span id='phone-type'>" + api.deviceModel + "</span>" +
             "  </p>" +
             "</div>" +

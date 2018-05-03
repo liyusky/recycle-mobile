@@ -152,14 +152,19 @@ header .header-title {
   float: left;
   font-size: 4.26667vw;
 }
-
-
-.content .recycle .message span {
+.content .recycle .message .phonetype .type{
+  float: left;
+  font-size: 3.46667vw;
+  color:#333
+}
+.content .recycle .message #phone-type {
   color: #666;
-  float: right;
+  float: left;
   font-size: 3.46667vw;
   display: inline-block;
 }
+
+
 
 .content .recycle .price {
   position: absolute;
