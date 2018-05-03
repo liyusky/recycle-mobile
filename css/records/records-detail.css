@@ -141,30 +141,18 @@ header .header-title {
   padding-top: 4vw;
   width: 100%;
 }
-.content .recycle .message .details{
-  float: right;
-  color: #666;
-  margin-right: 3.2vw;
-  font-size: 3.46667vw;
-}
 
 .content .recycle .message .phonetype {
   float: left;
   font-size: 4.26667vw;
 }
-.content .recycle .message .phonetype .type{
-  float: left;
-  font-size: 3.46667vw;
-  color:#333
-}
-.content .recycle .message #phone-type {
+
+.content .recycle .message a {
   color: #666;
-  float: left;
+  float: right;
+  margin-right: 3.2vw;
   font-size: 3.46667vw;
-  display: inline-block;
 }
-
-
 
 .content .recycle .price {
   position: absolute;
@@ -286,7 +274,7 @@ header .header-title {
   float: left;
   margin-top: 0.66667vw;
   margin-right: 1vw;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
  .honour .time p {
