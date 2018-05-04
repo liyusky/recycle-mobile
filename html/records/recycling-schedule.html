@@ -46,10 +46,10 @@
         tip: '正在发送...',
         operation: {
           success: function (data) {
-            if(data.length){
+            if(data.length>1){
               renderHtml(data);
             }else{
-              toast('暂无进度');
+              renderHtml(data[0]);
             }
           },
           fail: function (data) {
@@ -62,7 +62,9 @@
 
     function renderHtml(data) {
       var htmlStr = '';
-      htmlStr += setHtmltitle(data[0])
+      for(var i=0;i<data.length;i++){
+        htmlStr += setHtmltitle(data[i])
+      }
       $api.html('content', htmlStr);
     };
 
@@ -138,21 +140,21 @@
         ' <ul id="list">' +
         ' <li class="order-list">' +
         '  <ul>' +
-        '<li class="currentstatus mark">' + data.ZhuangTai + '</li>' +
+        '<li class="currentstatus mark">' + data.ZT + '</li>' +
         '<li class="message">' + data.FangKuanYiJian + '</li>' +
         '<li class="time">' + data.FangKuanShiJian + '</li>' +
-        ' </ul>' +
-        ' </li>' +
+        '</ul>' +
+        '</li>' +
         '<li class="order-list">' +
         '<ul>' +
-        ' <li class="currentstatus">' + data.ZhuangTai + '</li>' +
-        ' <li class="message">' + data.ShenHeYiJian + '</li>' +
-        '  <li class="time">' + data.ShenHeShiJian + '</li>' +
+        '<li class="currentstatus">' + data.ZT + '</li>' +
+        '<li class="message">' + data.ShenHeYiJian + '</li>' +
+        '<li class="time">' + data.ShenHeShiJian + '</li>' +
         '</ul>' +
         ' </li>' +
         '<li class="order-list bodrenone">' +
         '<ul>' +
-        '<li class="currentstatus">' + data.ZhuangTai + '</li>' +
+        '<li class="currentstatus">' + data.ZT + '</li>' +
         '<li class="message">您的订单已提交</li>' +
         '<li class="time">' + data.JieKuanShiJian + '</li>' +
         ' </ul>' +
