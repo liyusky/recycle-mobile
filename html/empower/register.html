@@ -24,7 +24,7 @@
       <li class="setleft">
         <p class="text">图片验证码</p>
         <input type="text" placeholder="请输入图片验证码" id="image-code">
-        <img src="" onclick="javascript: getImageCode(this);" id="getImg">
+        <img src="" onclick="javascript: getkey();" id="getImg">
       </li>
       <li class="setleft-three">
         <p class="text">验证码</p>
@@ -88,10 +88,10 @@
     }
 
     function getkey() {
-      var imgurl = productionAppApi['ImageCode'];
+      var imgurl = RequestProductURL['ImageCode'];
       api.ajax(
         {
-          url: productionAppApi['ImageKey'],
+          url: RequestProductURL['ImageKey'],
           method: 'GET',
           data: {}
         },
@@ -101,12 +101,6 @@
         }
       );
     };
-
-    function getImageCode(_this) {
-      getkey();
-      var url = productionAppApi['ImageCode'] + '?key=' + key;
-      $api.attr(_this, 'src', url);
-    }
 
     function sendSMS(dom) {
       if (!checkNet()) return;
@@ -154,7 +148,6 @@
 
       var password = $api.val('password');
       if (!checkPassword(password)) return;
-
       request({
         url: 'UserRegister',
         data: {

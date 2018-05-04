@@ -33,7 +33,7 @@
           <span class="status" id="flag-1">待认证</span>
         </li>
         <li id="step-2">
-            <img src="../../image/wode/communication.png" class="icon">
+          <img src="../../image/wode/communication.png" class="icon">
           <div class="box">
             <h5 class="title">上传通讯录</h6>
               <p class="list-text">个人通信录信息</p>
@@ -96,84 +96,88 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script>
-  var goal, User;
-  var page = ['gerenxinxi', 'lianxiren', 'zhimafen', 'yunyingshang'];
-  apiready = function () {
-    setListenr();
-    init();
-  }
-  function init() {
-    if (!checkNet() || !checkLogin()) return;
-    request({
-      url: 'Certification',
-      data: {
-        sj: User.Phone,
-        deviceId: api.deviceId
-      },
-      tip: '正在加载...',
-      operation: {
-        success: function (data) {
-          render(data.HYXX);
+    var goal, User;
+    var page = ['gerenxinxi', 'lianxiren', 'zhimafen', 'yunyingshang'];
+    apiready = function () {
+      setListenr();
+      init();
+    }
+
+    function init() {
+      if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'Certification',
+        data: {
+          sj: User.Phone,
+          deviceId: api.deviceId
+        },
+        tip: '正在加载...',
+        operation: {
+          success: function (data) {
+            render(data.HYXX);
+          }
+        }
+      });
+    }
+
+    function render(data) {
+      for (let i = 1; i < 5; i++) {
+        try {
+          (function (i) {
+            $api.removeAttr('step-' + i, 'onclick');
+          })(i);
+        } catch (error) {}
+      }
+      var stepArr = [false, false, false, false];
+      if (!!(data.IsCertification * 1)) stepArr[0] = true;
+      if (!!(data.IsTxl * 1)) stepArr[1] = true;
+      if (!!(data.IsZhiMa * 1)) stepArr[2] = true;
+      if (!!(data.IsOperator * 1)) stepArr[3] = true;
+      saveCertification(stepArr);
+      var index = false;
+      for (var i = 0; i < 4; i++) {
+        if (stepArr[i]) {
+          $api.text('flag-' + (i + 1), '已认证');
+        } else if (!index) {
+          index = i + 1;
         }
       }
-    });
-  }
-  function render(data) {
-    for (let i = 1; i < 5; i++) {
-      try {
-        (function (i) {
-          $api.removeAttr('step-' + i, 'onclick');
-        })(i);
-      } catch (error) {}
-    }
-    var stepArr = [false, false, false, false];
-    if (!!(data.IsCertification * 1)) stepArr[0] = true;
-    if (!!(data.IsTxl * 1)) stepArr[1] = true;
-    if (!!(data.IsZhiMa * 1)) stepArr[2] = true;
-    if (!!(data.IsOperator * 1)) stepArr[3] = true;
-    saveCertification(stepArr);
-    var index = false;
-    for (var i = 0; i < 4; i++) {
-      if (stepArr[i]) {
-        $api.text('flag-' + (i + 1), '已认证');
-      }
-      else if (!index) {
-        index = i + 1;
+      if (index > 0) {
+        goal = page[index - 1];
+        $api.attr('step-' + index, 'onclick', 'authentication(\'' + goal + '\')');
       }
     }
-    if (index > 0) {
-      goal = page[index - 1];
-      $api.attr('step-' + index, 'onclick', 'authentication(\'' + goal + '\')');
+
+    function authentication(goal) {
+      create({
+        goal: 'renzheng',
+        aim: goal,
+        step: page.indexOf(goal) + 1
+      });
     }
-  }
-  function authentication (goal) {
-    create({
-      goal: 'renzheng',
-      aim: goal,
-      step: page.indexOf(goal) + 1
-    });
-  }
-  function saveCertification(data) {
-    User = $api.getStorage('User');
-    User.Certification = data;
-    $api.setStorage('User', User);
-  }
-  function setListenr() {
-    api.addEventListener({
-        name: 'CLOSE-STEP-EVENT'
-      },
-      function (ret, err) {
-        init();
-      }
-    );
-    api.addEventListener({
-        name: 'CHANGE-STEP-EVENT'
-      },
-      function (ret, err) {
-        init();
-      }
-    );
-  }
+
+    function saveCertification(data) {
+      User = $api.getStorage('User');
+      User.Certification = data;
+      $api.setStorage('User', User);
+    }
+
+    function setListenr() {
+      api.addEventListener({
+          name: 'CLOSE-STEP-EVENT'
+        },
+        function (ret, err) {
+          init();
+        }
+      );
+      api.addEventListener({
+          name: 'CHANGE-STEP-EVENT'
+        },
+        function (ret, err) {
+          init();
+        }
+      );
+    }
   </script>
 </body>
 
