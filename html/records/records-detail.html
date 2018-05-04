@@ -28,8 +28,10 @@
     <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
     <script type="text/javascript" charset="utf-8">
         var day = '';
+        var id = '';
         apiready = function () {
-            var day = '';
+          id = api.pageParam.id;
+          day = '';
             if (!checkNet() || !checkLogin()) return;
             init();
             initList();
@@ -41,16 +43,12 @@
                 url: 'GetHYJKJL',
                 data: {
                     'deviceId': api.deviceId,
-                    'phone': User.Phone
+                    'phone': User.Phone,
                 },
                 tip: '正在发送...',
                 operation: {
                     success: function (data) {
-                        if(data.length){
-                            renderHtml(data);
-                        }else{
-                            toast('暂无详情');
-                        }
+                      renderHtml(data);
                     },
                     fail: function (data) {
 
@@ -61,8 +59,16 @@
 
 
         function renderHtml(data) {
-            var htmlStr = '';
-            htmlStr += setHtmltitle(data[0]);
+          var htmlStr = '';
+          for(var i=0;i<data.length;i++){
+              for(var key in data[i]){
+                if(id == data[i][key]){
+                htmlStr += setHtmltitle(data[i]);
+                }else{
+                    toast('暂无订单详情');
+                }
+              }
+          }
             $api.html('content', htmlStr);
         }
 
@@ -72,7 +78,7 @@
             "<img src='../../image/records/recycle.png' class='recycle'>" +
             "<div class='message'>" +
             "<p class='phonetype'>" +
-            " <span>手机型号</span>" +
+            " <span class='type'>手机型号</span>" +
             "<span id='phone-type'>" + api.deviceModel + "</span>" +
             "  </p>" +
             "</div>" +
@@ -87,10 +93,10 @@
             "<span>"+(data.DaoZhang + data.FeiYong)+"元</span>" +
             "</li>" +
             "<li>" +
+            "<img src='../../image/records/help.png' class='help'>"+
             "  <p>履约期</p>" +
             "<span>" + data.QiXian+ "</span>" +
             "<span>天</span>" +
-            "  <img src='../../image/records/help.png' class='help'>" +
             "  </li>" +
             "</ul>" +
             "  </div>" +
@@ -98,11 +104,9 @@
             return html;
         }
 
-
-
         function initList() {
-            // if (!checkNet() || !checkLogin()) return;
-            // if(!$api.getStorage('User')) return;
+            if (!checkNet() || !checkLogin()) return;
+            if(!$api.getStorage('User')) return;
 
             var User = $api.getStorage('User');
             request({
@@ -124,11 +128,10 @@
         };
 
          function renderContent(data) {
-            var html = '';         
+            var html = '';
             html += sethtml(data);
             $api.html('contentList', html);
         }
-
         function sethtml(data) {
 
             var html = '<div class="status">' +
@@ -169,25 +172,20 @@
             '</div>' +
             '<div class="clear"></div>' +
             '</div>';
-            footHtml();
-
-            return html;
+          footHtml();
+          return html;
         };
-
         function footHtml(){
-
-            var foot =  '<div class="honour">' +
+            var foot = '<div class="honour">' +
             '<div class="time">' +
-            '<img src="../../image/records/time.png" alt="">' +
-            '<p>履约期'+day+'天</p>' +
+            '<img src="../../image/records/time.png">' +
+            '<span>'+'履约期'+(day?day:0)+'天'+'</span>' +
             '</div>' +
             '<button  class="btn" onclick="javascript:cancel();">不卖了</button>' +
             '<button  class="btn" onclick="javascript:confirm();">确定卖出填写寄回信息</button>' +
             '</div>';
             $api.html('footer', foot);
         }
-
-
 
         function cancel() {
             create('refund');

@@ -23,7 +23,26 @@ a {
 }
 
 ol,
-ul, li {
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+ol,
+ul,
+li {
   list-style: none;
 }
 
@@ -114,8 +133,8 @@ body {
 
 header {
   background: #fff;
-  height: 12vw;
-  line-height: 12vw;
+  height: 7.5vh;
+  line-height: 7.5vh;
   text-align: center;
   color: #fff;
 }
@@ -124,7 +143,7 @@ header .person {
   float: left;
   margin-top: 3.33333vw;
   width: 4.66667vw;
-  height: 5.46667vw;
+  height: 3.41667vh;
 }
 
 header .h-title {
@@ -136,67 +155,97 @@ header .h-title {
 
 header .remind {
   float: right;
-  margin-top: 3.33333vw;
+  margin-top: 2.08333vh;
   width: 5.33333vw;
-  height: 5.33333vw;
+  height: 3.33333vh;
 }
 
-.banner {
+.container {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: flex-start;
+  -webkit-box-pack: flex-start;
+  -webkit-justify-content: flex-start;
+}
+
+.container .banner {
+  width: 100vw;
+  height: 38.98051vw;
   position: relative;
+  z-index: 1;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
 }
 
-.banner .bannerimg {
+.container .banner .banner-img {
   width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
 }
 
-.banner .bannerText {
+.container .banner .bannerText {
   text-align: center;
   color: #fff;
   position: absolute;
-  left: 50%;
-  margin-left: -26vw;
+  left: 14.91754vh;
   top: 0;
 }
 
-.banner .bannerText .safe {
-  margin-top: 6.66667vw;
+.container .banner .bannerText .safe {
+  margin-top: 4.16667vh;
   width: 46.8vw;
-  height: 7.33333vw;
+  height: 4.58333vh;
 }
 
-.banner .bannerText .order {
-  margin-top: 2.66667vw;
+.container .banner .bannerText .order {
+  margin-top: 1.66667vh;
   font-size: 4vw;
 }
 
-.content {
+.container .content {
   width: 89.33333vw;
-  height: 100%;
-  margin: 2.66667vw auto;
   background: #fff;
   border-radius: 0.4vw;
+  text-align: center;
 }
 
-.content .phone-type {
+.container .content .phone-type {
   padding-left: 8vw;
   padding-right: 8vw;
   text-align: center;
 }
 
-.content .phone-type .left-mark {
+.container .content .phone-type .left-mark {
   width: 11.33333vw;
-  height: 0.4vw;
+  height: 0.25vh;
   background: #0486ff;
   float: left;
   margin-top: 10.4vw;
 }
 
-.content .phone-type .left-markimg {
+.container .content .phone-type .left-markimg {
   margin-top: 9.33333vw;
   margin-left: 1.06667vw;
 }
 
-.content .phone-type .head-title {
+.container .content .phone-type .head-title {
   color: #111;
   display: inline;
   font-size: 5.06667vw;
@@ -204,99 +253,95 @@ header .remind {
   margin-right: 4.13333vw;
 }
 
-.content .phone-type .right-mark {
+.container .content .phone-type .right-mark {
   float: right;
 }
 
-.content .phone-content .phoneimg {
-  margin-left: 16vw;
-  margin-top: 8.53333vw;
+.container .content .phone-content .phone-img {
+  margin-left: 10vh;
+  margin-top: 5.33333vh;
+  width: 17.06667vw;
   float: left;
 }
 
-.content .phone-content .phone-message {
+.container .content .phone-content .phone-message {
   float: left;
-  margin-left: 4vw;
-  margin-top: 16vw;
-  line-height: 6.66667vw;
+  margin-left: 3.5vw;
+  margin-top: 10vh;
+  line-height: 4.16667vh;
   font-size: 4vw;
+  text-align: left;
 }
 
-.content .phone-content .phone-message .max {
+.container .content .phone-content .phone-message .max {
   color: #fb560a;
 }
 
-.content .phone-btn {
+.container .content .phone-btn {
   width: 78.66667vw;
-  height: 12.66667vw;
-  margin: 0 auto;
   background: #1990fe;
   font-size: 5.06667vw;
-  display: block;
   border-radius: 1.06667vw;
-  text-align: center;
-  line-height: 12.66667vw;
+  line-height: 7.91667vh;
   color: #fff;
-  margin-top: 4.53333vw;
-  margin-bottom: 7.33333vw;
+  margin-top: 1.83333vh;
+  margin-bottom: 1.58333vh;
   outline: none;
   border: none;
 }
 
-.recycle {
-  margin-bottom: 2.66667vw;
+.container .recycle {
   border-radius: 0.4vw;
   width: 89.33333vw;
-  height: 36.66667vw;
   background: #fff;
-  margin: 5.6vw auto 2.66667vw;
+  margin: 3vw auto;
 }
 
-.recycle .recycle-title {
+.container .recycle .recycle-title {
   text-align: center;
-  line-height: 13.33333vw;
-  margin-bottom: 4vw;
-  margin-top: 2.66667vw;
   font-size: 5.06667vw;
+  margin-bottom: 2vw;
+  margin-top: 2vw;
 }
 
-.recycle .recycle-text {
+.container .recycle .recycle-text {
   font-size: 3.33333vw;
-  margin-top: 3.33333vw;
-  margin-left: -0.4vw;
+  margin-top: 2.08333vh;
+  margin-left: -0.25vh;
 }
 
-.recycle .loan img {
+.container .recycle .loan img {
   width: 6vw;
-  height: 5.33333vw;
+  height: 3.33333vh;
 }
 
-.recycle .recycleicon {
-    padding-left: 2vw;
-    padding-right: 3vw;
-    width: 100%;
-    height: 100%;
+.container .recycle .recycleicon {
+  padding-left: 1vw;
 }
 
-.recycle .w100 {
-  height: 12.53333vw;
+.container .recycle .recycleicon .recyclebox {
+  height: 22vw;
+}
+
+.container .recycle .w100 {
+  height: 7.83333vh;
   float: left;
   background: #e0f2fe;
   border-radius: 50%;
   text-align: center;
+  margin-right: 2vw;
   margin-left: 2.66667vw;
 }
 
-.recycle .w100 img {
+.container .recycle .w100 img {
   margin-top: 3.33333vw;
   width: 6vw;
-  height: 6vw;
+  height: 3.75vh;
 }
 
-.recycle .than {
+.container .recycle .than {
   width: 3.33333vw;
-      height: 4.93333vw;
-      float: left;
-      margin-top: 3.33333vw;
-      margin-left: 3vw;
+  height: 3.08333vh;
+  float: left;
+  margin-top: 2.08333vh;
 }
