@@ -26,9 +26,6 @@ function request(params) {
   // url = developmentAppApi[params.url];   // 前端独立测试
 
 
-  console.log(url);
-  console.log('=======================');
-
   // alert(url);
   if (params.tip) {
     switch (typeof params.tip) {
