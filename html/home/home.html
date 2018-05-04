@@ -109,6 +109,7 @@
             deviceId: api.deviceId
           },
           operation: {
+            toast: false,
             success: function (data) {
               setStatus(data);
             }
@@ -122,6 +123,7 @@
           },
           tip: '正在加载...',
           operation: {
+            toast: false,
             success: function (data) {
               setLoginStatus(data);
             }
@@ -155,6 +157,7 @@
           deviceId: api.deviceId
         },
         operation: {
+          toast: false,
           success: function (data) {
             setStatus(data);
             create(page);

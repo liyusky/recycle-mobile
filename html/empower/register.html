@@ -19,7 +19,7 @@
     <ul>
       <li class="setleft-three">
         <p class="text">用户名</p>
-        <input type="text" placeholder="请输入手机号" id="account">
+        <input type="text" placeholder="请输入手机号" id="account" maxlength="11">
       </li>
       <li class="setleft">
         <p class="text">图片验证码</p>
@@ -28,12 +28,12 @@
       </li>
       <li class="setleft-three">
         <p class="text">验证码</p>
-        <input type="text" placeholder="请输入验证码" id="phone-code">
+        <input type="text" placeholder="请输入验证码" id="phone-code" maxlength="6">
         <button class="sendMsg" id="send-SMS-btn" onclick="javascript: sendSMS(this);">发送验证码</button>
       </li>
       <li class="setpass-left">
         <p class="text">设置密码</p>
-        <input type="password" placeholder="请设置6-12位数字和字母" id="password">
+        <input type="password" placeholder="请设置6-12位数字和字母" id="password" maxlength="12" minlength="6">
         <img src="../../image/common/switch.png" alt="" class="switch">
         <img src="../../image/common/clear.png" alt="" class="clear">
       </li>
