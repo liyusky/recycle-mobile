@@ -62,8 +62,13 @@
       </div>
     </div>
     <div class="affirm">
-      <input type="checkbox" id="yes">
-      <label for="yes">我阅读并理解 《手机合同》</label>
+        <p class="protocol">
+            <input type="checkbox" id="checkbox">
+            <label for="checkbox" value='√'>
+              <span class="icon">✔</span>
+              我阅读并理解 《手机合同》
+            </label>
+          </p>
     </div>
     <button class="btn" onclick="javascript: submit();">马上拿钱</button>
     <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -90,7 +95,8 @@
             phone: User.Phone,
             deviceId: api.deviceId,
             DeviceModel: api.deviceModel
-          },
+          },     
+          toast: false,
           operation: {
             success: function (data) {
               $api.text('money', data.Price);
@@ -103,7 +109,7 @@
             sj: User.Phone,
             deviceId: api.deviceId
           },
-          tip: '正在加载...',
+          toast: false,
           operation: {
             success: function (data) {
               var message = data.HYXX;
@@ -126,7 +132,7 @@
 
       function submit() {
         if (!checkNet() || !checkLogin()) return;
-        var agreement = $api.byId('yes').checked;
+        var agreement = $api.byId('checkbox').checked;
         if (!agreement) {
           toast('请同意报价合同!');
           return;

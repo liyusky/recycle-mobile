@@ -129,7 +129,7 @@ header .header-title {
 .content .recycle {
   width: 92.13333vw;
   height: 38.4vw;
-  margin: 3.86667vw auto;
+  margin: 1.86667vw auto;
   position: relative;
 }
 
@@ -193,7 +193,7 @@ header .header-title {
 }
 
 .status {
-  margin: 9.33333vw auto;
+  margin: 5.33333vw auto;
   width: 100vw;
 }
 
@@ -259,7 +259,7 @@ header .header-title {
 }
 
 .honour {
-  margin: 8vw auto 2.66667vw;
+  margin: 2vw auto 0;
   text-align: center;
 
 }
@@ -283,22 +283,20 @@ header .header-title {
 }
 
  .honour .time p span{
-  float: left;
   display: inline-block;
 }
 
  .honour .btn {
   display: block;
   width: 86.66667vw;
-  height: 12.66667vw;
+  height: 10.66667vw;
   font-size: 5.06667vw;
   text-align: center;
   background: #1990fe;
-  margin: 4vw auto 4vw;
-  line-height: 12.66667vw;
+  margin: 3vw auto 0;
+  line-height: 10.66667vw;
   color: #fff;
   border-radius: 3vw;
   outline: none;
   border: none;
-  margin-bottom: 4vw
 }

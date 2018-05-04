@@ -33,7 +33,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/check.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
   <script>
 
           var content = $api.byId('textarea');
@@ -47,7 +47,6 @@
               $api.addCls('msg','hide');
               $api.text('min',this.value.length);
             }
-          
           }
 
 
@@ -64,7 +63,8 @@
       if(!account){
         toast('请将联系方式填写完整...');
         return;
-      }
+      };
+      if(!checkPhone(account)){return;};
       request({
         url: 'FKYJ',
         data: {
