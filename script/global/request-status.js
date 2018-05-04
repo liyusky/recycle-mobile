@@ -41,7 +41,7 @@ function AppStatusHandle(ret, err, operation) {
   } catch (e) {}
 
   if (ret) {
-    if (ret.Msg && toastAllow) toast(ret.Msg);
+    if (ret.Msg && (toastAllow || ret.Code != 0)) toast(ret.Msg);
     switch (ret.Code) {
       case 0:
         try {
