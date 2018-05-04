@@ -85,7 +85,6 @@
 
     function render() {
       User = $api.getStorage('User');
-      alert(JSON.stringify(User));
       if (User.Status) {
         hide('empower-btns');
         show('account');
