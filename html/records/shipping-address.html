@@ -48,7 +48,7 @@
           operation:{
             success:function (data) {
               if(data.length){
-                render(data[0]);
+                render(data[data.length-1]);
                 $api.addCls('noaddress', 'hide');
               }else{
                 $api.removeCls('noaddress', 'hide');

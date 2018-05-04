@@ -261,25 +261,26 @@ header .header-title {
 .honour {
   margin: 8vw auto 2.66667vw;
   text-align: center;
+
 }
 
 .honour .time {
-  display: inline-block;
+  display: block;
+  text-align: center;
 }
 
 .honour .time img {
   width: 4vw;
   height: 4vw;
-  float: left;
-  margin-top: 0.66667vw;
-  margin-right: 1vw
+  margin-right: 1vw;
+  display: inline-block;
 }
 
- .honour .time p {
-  float: left;
+ .honour .time span {
   font-size: 5.06667vw;
-}
+  margin-top:-1vw;
 
+}
 
  .honour .time p span{
   float: left;

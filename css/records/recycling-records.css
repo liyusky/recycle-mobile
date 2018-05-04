@@ -147,7 +147,7 @@ header .header-title {
   font-size: 4.26667vw;
 }
 
-.content .recycle .message a {
+.content .recycle .message .details {
   color: #666;
   float: right;
   margin-right: 3.2vw;

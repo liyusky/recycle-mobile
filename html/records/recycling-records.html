@@ -28,43 +28,48 @@
     }
 
     function init() {
-      if (!checkNet() || !checkLogin()) return;
-      var User = $api.getStorage('User');
-      request({
-        url: 'GetHYJKJL',
-        'data': {
-          phone:User.Phone,
-          deviceId: api.deviceId
-        },
-        tip: '正在发送...',
-        operation:{
-          success: function (data) {
-            if(data.length){
-              render(data[0]);
-            }else{
-              toast('暂无记录');
+        var User = $api.getStorage('User');
+        request({
+            url: 'GetHYJKJL',
+            data: {
+                'deviceId': api.deviceId,
+                'phone': User.Phone,
+            },
+            tip: '正在发送...',
+            operation: {
+                success: function (data) {
+                  if(data.length){
+                    renderHtml(data);
+                  }else{
+                    toast('暂时还没有回收记录');
+                  }
+                },
+                fail: function (data) {
+
+                }
             }
-          }
-        }
-      });
+        });
+    };
 
 
-      function render(data) {
-        var htmlStr = '';
-        htmlStr += setHtml(data);
-        $api.html('content', htmlStr);
+    function renderHtml(data) {
+      var htmlStr = '';
+      for(var i=0;i<data.length;i++){
+            htmlStr += setHtmltitle(data[i]);
       }
+        $api.html('content', htmlStr);
+    }
 
-      function setHtml(data) {
+      function setHtmltitle(data) {
 
-        return htmlStr = "<li class='recycle'>" +
+        return htmlStr = "<li class='recycle' onclick=javascript:openDetails("+data.JieKuanDanHao+");>" +
           "<img src='../../image/records/recycle.png'  class='recycle'>" +
           "<div class='message'>" +
           "<p class='phonetype'>" +
-          "<span>手机型号</span>" +
+          "<span class='type'>手机型号</span>" +
           "<span id='phone-type'>" + api.deviceModel + "</span>" +
           "</p>" +
-          "<a href='javascript:;' onclick=javascript:create('details');>查看详情></a>"+
+          "<span onclick=javascript:openDetails("+data.JieKuanDanHao+"); class='details'>查看详情></span>"+
           "</div>" +
           "<div class='price'>" +
           "<ul>" +
@@ -87,7 +92,15 @@
           "</li>";
       }
 
+
+
+    function openDetails(data) {
+      create({
+        goal: 'details',
+        id: data
+      });
     }
+
   </script>
 </body>
 
