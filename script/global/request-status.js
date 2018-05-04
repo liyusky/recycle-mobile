@@ -25,9 +25,15 @@ function AppStatusHandle(ret, err, operation) {
   // alert(JSON.stringify(ret));
   // alert(JSON.stringify(err));
 
+  var toastAllow = true;
+
   if (typeof operation == 'function') {
     operation(ret, err);
     return;
+  }
+
+  if (operation.hasOwnProperty(toast)) {
+    toastAllow = operation.toast;
   }
 
   try {
@@ -35,7 +41,7 @@ function AppStatusHandle(ret, err, operation) {
   } catch (e) {}
 
   if (ret) {
-    if (ret.Msg) toast(ret.Msg);
+    if (ret.Msg && toastAllow) toast(ret.Msg);
     switch (ret.Code) {
       case 0:
         try {
