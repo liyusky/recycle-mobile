@@ -11,7 +11,7 @@
 
 <body>
   <header class="header">
-    <img src="../../image/common/back.png" alt="" class="back" onclick="javascript:kill();">
+    <img src="../../image/common/back.png"  class="back" onclick="javascript:kill();">
     <p class="header-title">回收进度</p>
   </header>
   <div class="content" id="content">
@@ -46,11 +46,7 @@
         tip: '正在发送...',
         operation: {
           success: function (data) {
-            if(data.length>1){
-              renderHtml(data);
-            }else{
               renderHtml(data[0]);
-            }
           },
           fail: function (data) {
 
@@ -62,9 +58,9 @@
 
     function renderHtml(data) {
       var htmlStr = '';
-      for(var i=0;i<data.length;i++){
-        htmlStr += setHtmltitle(data[i])
-      }
+      // for(var i=0;i<data.length;i++){
+        htmlStr += setHtmltitle(data)
+      // }
       $api.html('content', htmlStr);
     };
 

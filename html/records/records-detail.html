@@ -70,7 +70,7 @@
               }
           }
             $api.html('content', htmlStr);
-        }
+        };
 
         function setHtmltitle(data) {
             day = data.DaoQiTianShu;
@@ -139,21 +139,21 @@
             ' <ul id="list">' +
             ' <li class="order-list">' +
             '  <ul>' +
-            '<li class="currentstatus mark">' + data.ZhuangTai + '</li>' +
+            '<li class="currentstatus mark">' + data.ZT + '</li>' +
             '<li class="message">' +  data.FangKuanYiJian + '</li>' +
             '<li class="time">' + data.FangKuanShiJian + '</li>' +
             ' </ul>' +
             ' </li>' +
             '<li class="order-list">' +
-            '<ul>' +
-            ' <li class="currentstatus">' + data.ZhuangTai + '</li>' +
+            '<ul>' +   
+            ' <li class="currentstatus">' + data.ZT + '</li>' +
             ' <li class="message">' + data.ShenHeYiJian + '</li>' +
             '  <li class="time">' + data.ShenHeShiJian + '</li>' +
             '</ul>' +
             ' </li>' +
             '<li class="order-list bodrenone">' +
             '<ul>' +
-            '<li class="currentstatus">' + data.ZhuangTai + '</li>' +
+            '<li class="currentstatus">' + data.ZT + '</li>' +
             '<li class="message">您的订单已提交</li>' +
             '<li class="time">' + data.JieKuanShiJian + '</li>' +
             ' </ul>' +
@@ -172,7 +172,7 @@
             '</div>' +
             '<div class="clear"></div>' +
             '</div>';
-          footHtml();
+           footHtml();
           return html;
         };
         function footHtml(){
