@@ -17,7 +17,7 @@
     <p class="header-title">我的收货地址</p>
   </header>
   <div class="content">
-    <ul class="address-list-compile"> 
+    <ul class="address-list-compile">
       <li>
         收件人:
         <input id="name" type="text" placeholder="请填写收件人姓名" class="name">
@@ -26,7 +26,7 @@
         电话号码:
         <input id="phone" type="number" placeholder="请填写手机号码">
       </li>
-      <li>
+      <li onclick="javascript: selectCity();">
         当前住址:
         <input type="text" placeholder="请选择省、市、区" id="city" readonly="readonly">
         <img src="../../image/records/more.png" class="more" id="more">
@@ -51,8 +51,8 @@
   <script type="text/javascript" charset="utf-8">
     var address = null;
 
-    $api.byId('more').onclick = function () {
-      var citySelector = api.require('citySelector');
+    function selectCity() {
+ var citySelector = api.require('citySelector');
       citySelector.open({
         y: api.frameHeight / 1.5,
         fixedOn: api.frameName
