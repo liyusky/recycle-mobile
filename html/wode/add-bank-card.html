@@ -17,25 +17,25 @@
     <p class="header-title">绑定银行卡</p>
   </header>
 
-    <div class="content">
-        <div class="content-head">
-            <p class="title">绑卡只限于实名认证名下的银行卡绑定 </p>
+    <div class="addbank">
+        <div class="addbank-head">
+            <p class="addbank-head-title">绑卡只限于实名认证名下的银行卡绑定 </p>
         </div>
-        <ul class="address-list-compile">
-            <li>
-                <p>真实姓名:</p>
+        <ul class="bank-list-compile">
+            <li class="item-add-bankcontent">
+                <p class="item-addbank-msg">真实姓名:</p>
                 <input id="name" type="username" placeholder="请输入真实姓名" class="name">
             </li>
-            <li>
-                <p>身份证号:</p>
+            <li class="item-add-bankcontent">
+                <p class="item-addbank-msg">身份证号:</p>
                 <input id="id" type="text" placeholder="请输入身份证号">
             </li>
-            <li>
-                <p>银行卡号:</p>
+            <li class="item-add-bankcontent">
+                <p class="item-addbank-msg">银行卡号:</p>
                 <input id="card" type="number" placeholder="请输入银行账号">
             </li>
-            <li>
-                <p>开户银行:</p>
+            <li class="item-add-bankcontent">
+                <p class="item-addbank-msg">开户银行:</p>
                 <select id="bank">
                     <option value="0">光大银行</option>
                     <option value="1">广发银行</option>
@@ -54,44 +54,17 @@
                     <option value="14">中信银行</option>
                 </select>
             </li>
-            <li>
-                <p class="phone">手机号:</p>
+            <li class="item-add-bankcontent">
+                <p class="phone item-addbank-msg">手机号:</p>
                 <input id="phone" type="number" placeholder="请输入手机号">
             </li>
-            <li>
-                <p class="code">验证码:</p>
+            <li class="item-add-bankcontent">
+                <p class="code item-addbank-msg">验证码:</p>
                 <input id="code" type="text" placeholder="请输入验证码">
                 <a class="sendmesg" id="sendmesg" onclick="javascript:SendSMS(this);">发送验证码</a>
             </li>
         </ul>
     </div>
-    <ul class="address-list-compile">
-      <li>
-        <p>真实姓名:</p>
-        <input id="name" type="username" placeholder="请输入真实姓名" class="name">
-      </li>
-      <li>
-        <p>身份证号:</p>
-        <input id="id" type="text" placeholder="请输入身份证号">
-      </li>
-      <li>
-        <p>银行卡号:</p>
-        <input id="card" type="number" placeholder="请输入银行账号">
-      </li>
-      <li>
-        <p>开户银行:</p>
-        <input id="bank" type="text" placeholder="请输入开户银行">
-      </li>
-      <li>
-        <p class="phone">手机号:</p>
-        <input id="phone" type="number" placeholder="请输入手机号">
-      </li>
-      <li>
-        <p class="code">验证码:</p>
-        <input id="code" type="text" placeholder="请输入验证码">
-        <a class="sendmesg" id="sendmesg" onclick="javascript:SendSMS(this);">发送验证码</a>
-      </li>
-    </ul>
   </div>
 
   <button onclick="javascript: submit();" class="btn">绑定银行卡</button>

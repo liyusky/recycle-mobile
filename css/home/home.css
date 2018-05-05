@@ -15,42 +15,6 @@ a {
   color: none;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-}
-
-ol,
-ul,
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: none;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-}
-
-ol,
-ul,
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: none;
-}
-
 .header {
   width: 100%;
   height: 17.2vw;
@@ -117,13 +81,6 @@ a {
 
 body {
   padding-top: 17.2vw;
-}
-
-a {
-  text-decoration: none;
-}
-
-body {
   background: #f4f4f4;
 }
 
@@ -227,9 +184,10 @@ header .remind {
 }
 
 .container .content .phone-type {
-  padding-left: 8vw;
-  padding-right: 8vw;
   text-align: center;
+  line-height: 20vw;
+  height: 20vw;
+  position: relative;
 }
 
 .container .content .phone-type .left-mark {
@@ -238,6 +196,18 @@ header .remind {
   background: #0486ff;
   float: left;
   margin-top: 10.4vw;
+}
+
+.container .content .phone-type .left-box{
+  position: absolute;
+  left: 11.466666666666667vw;
+}
+
+
+.container .content .phone-type .right-box{
+  position: absolute;
+  right: 11.466666666666667vw;
+  top: 0
 }
 
 .container .content .phone-type .left-markimg {
@@ -249,17 +219,19 @@ header .remind {
   color: #111;
   display: inline;
   font-size: 5.06667vw;
-  margin-left: 4.13333vw;
-  margin-right: 4.13333vw;
 }
 
 .container .content .phone-type .right-mark {
   float: right;
 }
 
+.container .content .phone-type .right-markimg {
+  margin-right: 1vw;
+}
+
 .container .content .phone-content .phone-img {
   margin-left: 10vh;
-  margin-top: 5.33333vh;
+  margin-top: 5.33333vw;
   width: 17.06667vw;
   float: left;
 }
@@ -292,9 +264,9 @@ header .remind {
 
 .container .recycle {
   border-radius: 0.4vw;
-  width: 89.33333vw;
+  width: 90vw;
   background: #fff;
-  margin: 3vw auto;
+  margin: 4.8vw auto 0;
 }
 
 .container .recycle .recycle-title {
@@ -306,8 +278,8 @@ header .remind {
 
 .container .recycle .recycle-text {
   font-size: 3.33333vw;
-  margin-left: -0.5vh;    
-  padding-top: 4vw;
+  margin-top: 2.6666666666666665vw;
+  margin-left: -0.25vh;
 }
 
 .container .recycle .loan img {
@@ -323,14 +295,36 @@ header .remind {
   height: 22vw;
 }
 
-.container .recycle .w100 {
-  width: 7.83333vh;
-  height: 7.83333vh;
-  float: left;
-  background: #e0f2fe;
-  border-radius: 50%;
-  margin-right: 2vw;
-  margin-left: 2.66667vw;
+.container .recycle .recycleicon .recycle-list {
+  padding-left: 3vw;
+  padding-right: 3vw;
+  height: 22vw;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.container .recycle .recycleicon .recycle-list .list-item {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.container .recycle .recycleicon .recycle-list .list-item .item-bg {
   display: flex;
   display: -webkit-box;
   display: -webkit-flex;
@@ -340,13 +334,70 @@ header .remind {
   justify-content: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-  flex-flow: wrap;
+  width: 8.7vw;
+  height: 8.7vw;
+  background-color: #e0f2fe;
+  border-radius: 50%;
+}
+
+.container .recycle .recycleicon .recycle-list .list-item .item-bg img {
+  height: 4vw;
+}
+
+.container .recycle .recycleicon .recycle-list .list-item .item-message {
+  font-size: 2.5vw;
+  margin-top: 2.7vw;
+}
+
+.container .recycle .recycleicon .recycle-list .list-item:nth-of-type(1) .item-bg img {
+  width: 2.8vw;
+}
+
+.container .recycle .recycleicon .recycle-list .list-item:nth-of-type(2) .item-bg img {
+  width: 3.5vw;
+}
+
+.container .recycle .recycleicon .recycle-list .list-item:nth-of-type(3) .item-bg img {
+  width: 4.5vw;
+}
+
+.container .recycle .recycleicon .recycle-list .list-item:nth-of-type(4) .item-bg img {
+  width: 4vw;
+}
+
+.container .recycle .recycleicon .recycle-list .list-arrow{
+  margin-top: -6vw;
+  float: left;
+}
+
+.container .recycle .recycleicon .recycle-list .list-arrow img {
+  width: 2.5vw;
+  height: 3.7vw;
+}
+
+.container .recycle .w100 {
+  height: 7.83333vh;
+  float: left;
+  background: #e0f2fe;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 2vw;
+  margin-left: 2.66667vw;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: column;
+  -webkit-box-align: column;
+  -webkit-align-items: column;
+  justify-content: column;
+  -webkit-box-pack: column;
+  -webkit-justify-content: column;
 }
 
 .container .recycle .w100 img {
+  margin-top: 3.33333vw;
   width: 6vw;
   height: 3.75vh;
-  margin-top: 4vw;
 }
 
 .container .recycle .than {

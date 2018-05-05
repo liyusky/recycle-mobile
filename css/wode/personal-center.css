@@ -32,14 +32,6 @@ a {
   color: none;
 }
 
-.hide {
-  display: none !important;
-}
-
-body{
-  background: #fff;
-}
-
 .header {
   width: 100%;
   height: 17.2vw;
@@ -105,17 +97,17 @@ header .banner {
 
 header .head-content {
   text-align: center;
+  height: 12vw;
+  line-height: 12vw;
   width: 100%;
   position: absolute;
-  height: 17.2vw;
-  padding-top: 5.6vw;
-  padding-left: 4.8vw;
-  padding-right: 4.8vw;
-  font-size: 4.8vw;
 }
 
 header .head-content .back {
+  margin-left: 4.93333vw;
+  margin-top: 4vw;
   float: left;
+  width: 5.33333vw;
   width: 5.33333vw;
 }
 
@@ -126,110 +118,132 @@ header .head-content .head-title {
 }
 
 header .head-content .manage {
+  margin-right: 4vw;
   float: right;
+  margin-top: 4vw;
   width: 5.33333vw;
   width: 5.33333vw;
 }
 
 header .login-dialog {
-  width: 43vw;
-  position: absolute;
-  left: 24.66667vw;
-  top: 20vw;
   text-align: center;
-  color: #fff;
+  position: absolute;
+  left: 26.66667vw;
+  top: 20vw;
 }
 
 header .login-dialog .person-img {
   width: 21.33333vw;
   height: 21.33333vw;
-  display: block;
-  margin: 0 auto;
 }
 
-header .login-dialog .loginbtn{
-  float: left;
-}
-
-header .login-dialog .loginbtn a {
-  width: 20vw;
-  height: 8vw;
+header .login-dialog a {
+  width: 20.66667vw;
+  height: 8.66667vw;
+  display: inline-block;
   background: #80c5ff;
   border-radius: 1.33333vw;
   color: #fff;
   text-align: center;
   line-height: 8.66667vw;
   margin-top: 4vw;
-  font-size: 4.66667vw;
-  float: left;
-}
-
-header .login-dialog .loginbtn a.register{
-  margin-left: 3vw;
-}
-
-
-header .login-dialog #account{
-  margin-top: 5vw;
+  margin-right: 4.26667vw;
   font-size: 4.66667vw;
 }
 
-.content .list {
-  width: 91.33333vw;
-  margin: 0 auto;
+.content .list .item-list {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
-.content .list li {
-  border-bottom: 1px solid #efefef;
+.content .list .icon {
+  position: absolute;
+}
+
+.content .list .item-list:nth-of-type(1) .icon {
+  left: 5.06667vw;
+  width: 4.66667vw;
+  height: 4.93333vw;
+}
+
+.content .list .item-list:nth-of-type(2) .icon {
+  width: 4.66667vw;
+  height: 4.93333vw;
+  left: 5.06667vw;
+}
+
+.content .list .item-list:nth-of-type(3) .icon {
+  width: 5.73333vw;
+  height: 3.86667vw;
+  left: 4.53333vw;
+}
+
+.content .list .item-list:nth-of-type(4) .icon {
+  width: 4.26667vw;
+  height: 5.2vw;
+  left: 5.46667vw;
+}
+
+.content .list .item-list:nth-of-type(5) .icon {
+  width: 4.13333vw;
+  height: 5.73333vw;
+  left: 5.33333vw;
+}
+
+.content .list .item-list:nth-of-type(6) .icon {
+  width: 4.4vw;
+  height: 4.26667vw;
+  left: 5.2vw;
+}
+
+.content .list .item-list {
   line-height: 14.4vw;
   height: 14.4vw;
+  width: 100%;
 }
 
-.content .list li .icon {
+.content .list .item-list .item-content {
+  border-bottom: 1px solid #ddd;
+  float: left;
+  margin-left: 13.06667vw;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.content .list .item-list .icon {
   width: 4.66667vw;
   height: 4.93333vw;
   float: left;
   margin-top: 5.33333vw;
 }
-.content .list li  .card{
-  width: 5.733333333333333vw;
-  height: 3.8666666666666667vw;
-}
 
-.content .list li .address{
-  width: 4.266666666666667vw;
-  height: 5.2vw;
-}
-
-.content .list li .help{
-  width: 4vw;
-  height: 5.733333333333333vw;
-}
-
-.content .list li .feedback{
-  width: 4.266666666666667vw;
-  height: 4.266666666666667vw;
-}
-
-.content .list li p {
+.content .list .item-list p {
   display: inline-block;
-  margin-left: 3.06667vw;
   font-size: 4.66667vw;
-  margin-top: 1.33333vw;
 }
 
-.content .list li .more {
-  float: right;
-  margin-top: 6.66667vw;
+.content .list .item-list .more {
   width: 2.13333vw;
   height: 3.46667vw;
+  line-height: 3.46667vw;
+  margin-right: 4vw;
 }
 
 footer {
   height: 30.66667vw;
   background: #f4f4f4;
   position: absolute;
-  bottom: -30vw;
+  bottom: -40vw;
   left: 0;
   width: 100%;
   font-size: 4vw;

@@ -14,7 +14,6 @@
   <header class="header">
     <img src="../../image/home/person.png" alt="" class="person" onclick="javascript: create('personal-center');">
     <p class="h-title">借条大师白卡</p>
-    <img src="../../image/home/remind.png" alt="" class="remind">
   </header>
   <!-- <div class="message">
             <img src="./img/trumpet.png" alt="" class="trumpet">
@@ -25,17 +24,21 @@
       <img src="../../image/home/banner.png" class="banner-img">
       <div class="bannerText">
         <img src="../../image/home/safe.png" class="safe">
-        <p class="order">在线下单 借款无需等待</p>
+        <p class="order-text">在线下单 借款无需等待</p>
       </div>
     </div>
     <div class="clear"></div>
     <div class="content">
       <div class="phone-type">
-        <div class="left-mark"></div>
-        <img src="../../image/home/type.png" alt="" class="left-markimg">
+        <div class="left-box">
+            <div class="left-mark"></div>
+            <img src="../../image/home/type.png" alt="" class="left-markimg">
+        </div>
         <p class="head-title"> 您的手机型号</p>
-        <img src="../../image/home/type.png" alt="" class="right-markimg">
-        <div class="right-mark left-mark"></div>
+        <div class="right-box">
+            <img src="../../image/home/type.png" alt="" class="right-markimg left-markimg">
+            <div class="right-mark left-mark"></div>
+        </div>
       </div>
       <div class="phone-content">
         <img src="../../image/home/phone.png" alt="" class="phone-img">
@@ -43,7 +46,7 @@
           <p class="messagelist" id="device-model">iphone 6s</p>
           <!-- <p class="messagelist">内存: 16G</p> -->
           <p class="messagelist">
-            <span class="max">最高回收:</span>￥5000</p>
+            <span class="MaxBackPrice">最高回收:</span>￥5000</p>
         </div>
       </div>
       <div class="clear"></div>
@@ -52,28 +55,41 @@
     <footer class="recycle">
       <p class="recycle-title">回收流程</p>
       <div class="recycleicon">
-        <div class="recyclebox">
-          <div class="evaluate w100">
-            <img src="../../image/home/evaluate.png" alt="">
-            <p class="recycle-text">旧机估价</p>
-          </div>
-          <img src="../../image/home/than.png" alt="" class="than">
-          <div class="order w100">
-            <img src="../../image/home/order.png" alt="">
-            <p class="recycle-text">在线下单</p>
-          </div>
-          <img src="../../image/home/than.png" alt="" class="than">
-          <div class="loan w100">
-            <img src="../../image/home/icon.png" alt="">
-            <p class="recycle-text">急速结款</p>
-          </div>
-          <img src="../../image/home/than.png" alt="" class="than">
-          <div class="quality w100">
-            <img src="../../image/home/checkout.png" alt="">
-            <p class="recycle-text">质检入库</p>
-          </div>
-        </div>
-        <div class="clear"></div>
+        <ul class="recycle-list">
+          <li class="list-item">
+            <div class="item-bg">
+              <img src="../../image/home/evaluate.png">
+            </div>
+            <p class="item-message">旧机估价</p>
+          </li>
+          <li class="list-arrow">
+            <img src="../../image/home/than.png" class="arrow">
+          </li>
+          <li class="list-item">
+            <div class="item-bg">
+              <img src="../../image/home/order.png">
+            </div>
+            <p class="item-message">在线下单</p>
+          </li>
+          <li class="list-arrow">
+            <img src="../../image/home/than.png" class="arrow">
+          </li>
+          <li class="list-item">
+            <div class="item-bg">
+              <img src="../../image/home/icon.png">
+            </div>
+            <p class="item-message">急速结款</p>
+          </li>
+          <li class="list-arrow">
+            <img src="../../image/home/than.png" class="arrow">
+          </li>
+          <li class="list-item">
+            <div class="item-bg">
+              <img src="../../image/home/checkout.png">
+            </div>
+            <p class="item-message">质检入库</p>
+          </li>
+        </ul>
       </div>
     </footer>
   </div>
@@ -111,6 +127,7 @@
           operation: {
             toast: false,
             success: function (data) {
+              kill(['login','input-password']);
               setStatus(data);
             }
           }
@@ -167,7 +184,7 @@
     }
 
     function setUser() {
-      $api.rmStorage('User');
+      // $api.rmStorage('User');
       try {
         User = $api.getStorage('User');
       } catch (e) {}
@@ -175,7 +192,7 @@
         User = {
           Status: true, //登录
           Certification: [false, false, false, false],
-          Phone: '15921769360',
+          Phone: '13476615091',
           Name: null,
           Id: null,
           Card: null

@@ -135,13 +135,13 @@ header .header-title {
 
 .register ul li {
   height: 15.2vw;
-  line-height: 15.2vw;
+  line-height: 15.2vw; 
   width: 94.66667vw;
   margin-left: 5.33333vw;
-  border-bottom: 0.4vw solid #efefef;
+  border-bottom: 1px solid #efefef;
 }
 
-.register ul li .text {
+.register ul li .item-input-Name {
   float: left;
   font-size: 4vw;
   padding-right: 8vw;
@@ -156,15 +156,15 @@ header .header-title {
   float: left;
   padding-left: 0.66667vw;
   padding-right: 0.66667vw;
+  margin-left: 8vw;
 }
 
-.register ul li .switch {
+.register ul li .control-input-switch .switch {
   width: 4.93333vw;
   height: 2.26667vw;
-  margin-left: 10.13333vw;
 }
 
-.register ul li .clear {
+.register ul li .control-input-switch .clear {
   width: 4vw;
   height: 4vw;
   float: right;
@@ -178,16 +178,13 @@ header .header-title {
 
 .register ul .setleft input {
   width: 33.33333vw;
+  margin: 0
 }
 
-.register ul .setleft img {
-  width: 17.33333vw;
-  height: 6.66667vw;
-  margin-right: 6.8vw;
-  display: inline-block;
-  margin-top: 4vw;
-  float: right;
+.register ul .setleft-setting  input{
+ margin-left: 4vw
 }
+
 
 .register ul .setleft-three .text {
   padding-right: 12vw;
@@ -197,10 +194,9 @@ header .header-title {
   width: 32vw;
 }
 
-.register ul .setleft-three .sendMsg {
+.register ul .item-input .sendMsg {
   font-size: 3.2vw;
   color: #1990fe;
-  margin-left: 15vw;
   background: #fff;
   outline: none;
   border: none;
@@ -240,7 +236,8 @@ header .header-title {
   width: 4vw;
   height: 4vw;
   opacity: 0;
-  display: inline-block
+  display: inline-block;
+  -webkit-appearance:button;
 }
 
 .protocol label {
@@ -272,7 +269,8 @@ header .header-title {
 }
 
 .protocol input[type='checkbox']:checked+label .icon{
-  opacity: 1
+  opacity: 1;
+  color: #fff;
 }
 
 .protocol input[type='checkbox']:checked+label:before {

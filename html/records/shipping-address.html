@@ -16,12 +16,12 @@
     <p class="header-title">我的收货地址</p>
     <span class="compile" onclick="javascript: create('add-shipping-address');">编辑</span>
   </header>
-  <div class="content">
-    <ul class="address-list" id="list">
-      <div class="noaddress" id="noaddress">
-        <img src="../../image/records/noaddress.png">
-        <p class="noText">暂无收货地址</p>
-      </div>
+  <div class="shipping-address">
+    <ul class="address-list" id="address-list">
+          <div class="noaddress" id="noaddress">
+            <img src="../../image/records/noaddress.png">
+            <p class="noText">暂无收货地址</p>
+          </div>
     </ul>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -67,16 +67,17 @@
       $api.html('list', htmlStr);
     }
 
+ $api.html('address-list', setHtml());
     function setHtml(data) {
-      return htmlStr = '<li data-id="' + data.Id + '">' +
-        '<div class="box">' +
-        '<p class="name">' + data.Addressee + '</p>' +
-        '<p class="phone">' +
-        '<span id="phone-head">' + data.AddresseePhone.substr(0, 3) + '</span>'+
+      return htmlStr = '<li data-id="' + 'data.Id' + '">' +
+        '<div class="address-item">' +
+        '<p class="Receiving-name">' + '王伟' + '</p>' + // data.Addressee
+        '<p class="Receiving-phone">' +
+        '<span id="Receiving-phone-head">' + '1113' + '</span>'+ // data.AddresseePhone.substr(0, 3)
        '<span>****</span>' +
-       '<span id="phone-tail">' + data.AddresseePhone.substr(-4) + '</span>' +
+       '<span id="Receiving-phone-tail">' + '1234 '+ '</span>' + // data.AddresseePhone.substr(-4)
         '</p>' +
-        '<p class="address">' + data.CurrentAddress + data.DetailAddress + '</p>' +
+        '<p class="DetailAddress">' + ' 安徽省合肥市爱时代收费为个人各' + '</p>' + // data.CurrentAddress + data.DetailAddress
         '</div>' +
         '</li>';
     }

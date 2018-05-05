@@ -21,22 +21,25 @@
         <span>您的手机</span>
         <span id="type">iphone 6s</span>
         <span>估价</span>
-      </p>
+      </p>  
       <h3 class="money">
         <span>￥</span>
         <span id="money">500</span>
       </h3>
-      <a href="javascript:;" class="anew">重新估价></a>
+      <a href="javascript:;" class="anew" id="valuation">重新估价></a>
     </div>
+  </div>
+  <div class="load hide" id="loading">
+      <img src="../../image/home/load.gif" class="load-img">
   </div>
   <div class="details">
     <div class="rules">
       <div class="ruleshead">
         <img src="../../image/home/flow.png">
-        <p class="title">反悔/撤销</p>
+        <p class="rules-title">反悔/撤销</p>
         <div class="clear"></div>
       </div>
-      <div class="text">
+      <div class="rules-text">
         用户根据手机实际状况填写确认手机检测评估信息后， 根据平台提供的报价决定是否进行出售;若用户确定出手的,用户需根据 平台要求替换手机iCloud账号并与平台签订相关交易文本,用户操作完成后, 平台即刻向用户支付一定比例的定金及预付款;待平台实际收到用户手机并
         验收通过后向用户支付尾款部分。
       </div>
@@ -44,20 +47,20 @@
     <div class="rules">
       <div class="ruleshead">
         <img src="../../image/home/repeal.png" alt="">
-        <p class="title">出售流程</p>
+        <p class="rules-title">出售流程</p>
       </div>
       <div class="clear"></div>
-      <div class="text">
+      <div class="rules-text">
         用户在与平台签订《手机回收合同》并收到平台支付款项后拥有7个 自然日的履约期,履约期内用户可选择撤销出售手机,解除原合同, 但应向平台退回预付款并双倍返还定金。
       </div>
     </div>
     <div class="rules">
       <div class="ruleshead">
         <img src="../../image/home/contract.png" alt="">
-        <p class="title"> 重新签约</p>
+        <p class="rules-title"> 重新签约</p>
       </div>
       <div class="clear"></div>
-      <div class="text">
+      <div class="rules-text">
         用户在撤销出售手机(解除愿《手机回收合同》)后，亦可选择将该手机 再次向平台出售手机,仅需签订相关交易文本,无需进行其他流程。
       </div>
     </div>
@@ -85,6 +88,10 @@
         init();
       };
 
+      $api.byId('valuation').onclick = function(){
+        $api.removeCls('loading','hide');
+      }
+
       function init() {
         if (!checkNet() || !checkLogin()) return;
         $api.text('type', api.deviceModel);
@@ -95,11 +102,12 @@
             phone: User.Phone,
             deviceId: api.deviceId,
             DeviceModel: api.deviceModel
-          },     
-          toast: false,
+          },
           operation: {
+            toast: false,
             success: function (data) {
               $api.text('money', data.Price);
+              $api.addCls('loading','hide');
             }
           }
         });
@@ -109,8 +117,8 @@
             sj: User.Phone,
             deviceId: api.deviceId
           },
-          toast: false,
           operation: {
+            toast: false,
             success: function (data) {
               var message = data.HYXX;
               var card = data.YHK;

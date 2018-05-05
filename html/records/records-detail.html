@@ -10,14 +10,14 @@
     <link rel="stylesheet" type="text/css" href="../../css/records/records-detail.css">
 </head>
 
-<body id="body">
+<body>
     <header class="header">
         <img src="../../image/common/back.png" alt="" class="back" onclick="javascript:kill();">
         <p class="header-title">订单详情</p>
     </header>
-    <div class="content" id="content">
+    <div class="order-list" id="order-list">
     </div>
-    <div id="contentList"></div>
+    <div id="scheduleList"></div>
     <div id="footer"></div>
 
     <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -68,9 +68,10 @@
                     toast('暂无订单详情');
                 }
               }
-          }
-            $api.html('content', htmlStr);
+          };
+            $api.html('order-list',htmlStr);
         };
+
 
         function setHtmltitle(data) {
             day = data.DaoQiTianShu;
@@ -82,7 +83,7 @@
             "<span id='phone-type'>" + api.deviceModel + "</span>" +
             "  </p>" +
             "</div>" +
-            "<div class='price'>" +
+            "<div class='phone-price'>" +
             "<ul>" +
             "  <li>" +
             "<p>手机估价 </p>" +
@@ -130,28 +131,29 @@
          function renderContent(data) {
             var html = '';
             html += sethtml(data);
-            $api.html('contentList', html);
-        }
+            $api.html('scheduleList',html);
+        };
+
         function sethtml(data) {
 
-            var html = '<div class="status">' +
-            ' <div class="list">' +
-            ' <ul id="list">' +
-            ' <li class="order-list">' +
+            var html = '<div class="records-details-status">' +
+            ' <div class="order-content">' +
+            ' <ul id="order-list">' +
+            ' <li class="order-list-item">' +
             '  <ul>' +
             '<li class="currentstatus mark">' + data.ZT + '</li>' +
             '<li class="message">' +  data.FangKuanYiJian + '</li>' +
             '<li class="time">' + data.FangKuanShiJian + '</li>' +
             ' </ul>' +
             ' </li>' +
-            '<li class="order-list">' +
+            '<li class="order-list-item">' +
             '<ul>' +   
             ' <li class="currentstatus">' + data.ZT + '</li>' +
             ' <li class="message">' + data.ShenHeYiJian + '</li>' +
             '  <li class="time">' + data.ShenHeShiJian + '</li>' +
             '</ul>' +
             ' </li>' +
-            '<li class="order-list bodrenone">' +
+            '<li class="order-list-item bodrenone">' +
             '<ul>' +
             '<li class="currentstatus">' + data.ZT + '</li>' +
             '<li class="message">您的订单已提交</li>' +
@@ -160,13 +162,13 @@
             '</li>' +
             ' </ul>' +
             '</div>' +
-            '<div class="schedule">' +
+            '<div class="schedule-icon">' +
             '<ul>' +
-            '<li class="statusicon"><img src="../../image/records/success.png" alt=""></li>' +
-            '<li class="connect"><img src="../../image/records/connect.png" alt=""></li>' +
-            '<li class="statusicon"><img src="../../image/records/currentstatus.png" alt=""></li>' +
-            '<li class="connect"><img src="../../image/records/connect.png" alt=""></li>' +
-            '<li class="statusicon"><img src="../../image/records/currentstatus.png" alt=""></li>' +
+            '<li class="schedule-item status-success"><img src="../../image/records/success.png" alt=""></li>' +
+            '<li class="schedule-item status-connect"><img src="../../image/records/connect.png" alt=""></li>' +
+            '<li class="schedule-item status-success"><img src="../../image/records/currentstatus.png" alt=""></li>' +
+            '<li class="schedule-item status-connect"><img src="../../image/records/connect.png" alt=""></li>' +
+            '<li class="schedule-item status-success"><img src="../../image/records/currentstatus.png" alt=""></li>' +
             '</ul>' +
             '</div>' +
             '</div>' +

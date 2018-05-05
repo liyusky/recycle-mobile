@@ -157,6 +157,21 @@ header .header-title {
   margin-top: 4vw;
   display: inline-block;
 }
+.load{
+  position: absolute;
+  left: 50%;
+  top: 40vw;
+  z-index: 1;
+}
+
+.hide{
+  display: none;
+}
+
+.load .load-img{
+  width: 4.266666666666667vw;
+  height: 4.266666666666667vw;
+}
 
 .details {
   padding-left: 5.33333vw;
@@ -167,7 +182,7 @@ header .header-title {
   margin: 8vw auto;
 }
 
-.details .rules .title {
+.details .rules .rules-title {
   float: left;
   margin-left: 2.66667vw;
   color: #333;
@@ -180,7 +195,7 @@ header .header-title {
   float: left;
 }
 
-.details .rules .text {
+.details .rules .rules-text {
   font-size: 3.33333vw;
   color: #666;
   margin: 4vw auto;
@@ -263,7 +278,9 @@ header .header-title {
   width: 4vw;
   height: 4vw;
   opacity: 0;
-  display: inline-block
+  display: inline-block;
+  -webkit-appearance: none;
+  border: none;
 }
 
 .details  .affirm .protocol label {
