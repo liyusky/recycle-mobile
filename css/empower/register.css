@@ -135,7 +135,7 @@ header .header-title {
 
 .register ul li {
   height: 15.2vw;
-  line-height: 15.2vw; 
+  line-height: 15.2vw;
   width: 94.66667vw;
   margin-left: 5.33333vw;
   border-bottom: 1px solid #efefef;
@@ -238,6 +238,7 @@ header .header-title {
   opacity: 0;
   display: inline-block;
   -webkit-appearance:button;
+  outline: none;
 }
 
 .protocol label {

@@ -90,10 +90,10 @@
     }
 
     function getkey() {
-      var imgurl = productionAppApi['ImageCode'];
+      var imgurl = RequestProductURL['ImageCode'];
       api.ajax(
         {
-          url: productionAppApi['ImageKey'],
+          url: RequestProductURL['ImageKey'],
           method: 'GET',
           data: {}
         },
@@ -103,12 +103,6 @@
         }
       );
     };
-
-    function getImageCode(_this) {
-      getkey();
-      var url = productionAppApi['ImageCode'] + '?key=' + key;
-      $api.attr(_this, 'src', url);
-    }
 
     function sendSMS(dom) {
       if (!checkNet()) return;
@@ -156,7 +150,6 @@
 
       var password = $api.val('password');
       if (!checkPassword(password)) return;
-
       request({
         url: 'UserRegister',
         data: {

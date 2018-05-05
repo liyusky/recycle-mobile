@@ -22,8 +22,8 @@ var statusCode = {
  * @datetime    2017-10-11T10:35:54+080
  */
 function AppStatusHandle(ret, err, operation) {
-  // alert(JSON.stringify(ret));
-  // alert(JSON.stringify(err));
+  alert(JSON.stringify(ret));
+  alert(JSON.stringify(err));
 
   var toastAllow = true;
 
@@ -40,7 +40,7 @@ function AppStatusHandle(ret, err, operation) {
   } catch (e) {}
 
   if (ret) {
-    if (ret.Msg && toastAllow) toast(ret.Msg);
+    if (ret.Msg && (toastAllow || ret.Code != 0)) toast(ret.Msg);
     switch (ret.Code) {
       case 0:
         try {

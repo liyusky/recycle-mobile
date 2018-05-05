@@ -7,77 +7,102 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>个人中心</title>
   <link rel="stylesheet" type="text/css" href="../../css/wode/personal-center.css">
+  <script src="../../iconfont/iconfont.js"></script>
+
   <style>
   </style>
 </head>
 
 <body>
+
   <header>
-    <img src="../../image/wode/banner.png" alt="" class="banner">
+    <img src="../../image/wode/banner.png" class="banner">
     <div class="head-content">
-      <img src="../../image/common/back.png" alt="" class="back" onclick="javascript: kill();">
-      <p class="head-title">个人中心</p>
-      <img src="../../image/wode/manage.png" alt="" class="manage" onclick="javascript: create('setting');">
+      <img src="../../image/common/back.png" class="back" onclick="javascript:kill();">
+      <span class="head-title">个人中心</span>
+      <img src="../../image/wode/manage.png" class="manage">
     </div>
     <div class="login-dialog">
       <img src="../../image/wode/person.png" class="person-img">
-      <div class="loginbtn" id="empower-btns">
-        <a href="javascript:;" class="login" onclick="javascript: gotoPage('login');">登陆</a>
-        <a href="javascript:;" class="register" onclick="javascript: gotoPage('register');">注册</a>
+      <div class="btn-group" id="btn-group">
+        <button onclick="javascript: gotoPage('login');">登陆</button>
+        <button onclick="javascript: gotoPage('register');">注册</button>
       </div>
       <p id="account"></p>
     </div>
   </header>
-  <div class="person-center">
-    <ul class="person-center-list">
-      <li onclick="javascript: gotoPage('personal-information');">
-        <div class="item-list">
-          <img src="../../image/wode/data.png" class="icon">
-          <p class="item-list-title">我的资料</p>
-          <img src="../../image/wode/more.png" alt="" class="more">
-        </div>
-      </li>
-      <li onclick="javascript: gotoPage('recycling-records');">
-        <div class="item-list">
-          <img src="../../image/wode/record.png" class="icon">
-          <p class="item-list-title">回收记录</p>
-          <img src="../../image/wode/more.png" alt="" class="more">
-        </div>
-      </li>
-      <li onclick="javascript: gotoPage('bank-card');">
-        <div class="item-list">
-          <img src="../../image/wode/card.png" class="icon card">
-          <p class="item-list-title">我的银行卡</p>
-          <img src="../../image/wode/more.png" alt="" class="more">
-        </div>
-      </li>
-      <li onclick="javascript: gotoPage('shipping-address');">
-        <div class="item-list">
-          <img src="../../image/wode/address.png" class="icon address">
-          <p class="item-list-title">我的收货地址</p>
-          <img src="../../image/wode/more.png" alt="" class="more">
-        </div>
-      </li>
-      <li onclick="javascript: gotoPage('help-center');">
-        <div class="item-list">
-          <img src="../../image/wode/help.png" class="icon help">
-          <p class="item-list-title">帮助中心</p>
-          <img src="../../image/wode/more.png" alt="" class="more">
-        </div>
-      </li>
-      <li onclick="javascript: gotoPage('feedback');">
-        <div class="item-list">
-          <img src="../../image/wode/feedback.png" class="icon feedback">
-          <p class="item-list-title">意见反馈</p>
-          <img src="../../image/wode/more.png" class="more">
-        </div>
-      </li>
-    </ul>
-  </div>
-  <footer class="person-center-footer">
-    <p class="call-center">客服电话: 400-078-8866</p>
+  <footer>
+    <p class="tel">客服电话: 400-078-8866</p>
     <p class="time">服务时间:9:00-21:00</p>
   </footer>
+  <ul class="list">
+    <li class="list-item" onclick="javascript: gotoPage('personal-information');">
+      <div class="list-icon">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-detail"></use>
+        </svg>
+      </div>
+      <div class="list-message">
+        <p class="item-content">我的资料</p>
+        <img src="../../image/wode/more.png" class="more">
+      </div>
+    </li>
+    <li class="list-item" onclick="javascript: gotoPage('recycling-records');">
+      <div class="list-icon">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-recycle-record"></use>
+        </svg>
+      </div>
+      <div class="list-message">
+        <p class="item-content">回收记录</p>
+        <img src="../../image/wode/more.png" class="more">
+      </div>
+    </li>
+    <li class="list-item" onclick="javascript: gotoPage('bank-card');">
+      <div class="list-icon">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-bank-card"></use>
+        </svg>
+      </div>
+      <div class="list-message">
+        <p class="item-content">我的银行卡</p>
+        <img src="../../image/wode/more.png" class="more">
+      </div>
+    </li>
+    <li class="list-item" onclick="javascript: gotoPage('shipping-address');">
+      <div class="list-icon">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-address"></use>
+        </svg>
+      </div>
+      <div class="list-message">
+        <p class="item-content">我的收货地址</p>
+        <img src="../../image/wode/more.png" class="more">
+      </div>
+    </li>
+    <li class="list-item" onclick="javascript: gotoPage('help-center');">
+      <div class="list-icon">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-question"></use>
+        </svg>
+      </div>
+      <div class="list-message">
+        <p class="item-content">帮助中心</p>
+        <img src="../../image/wode/more.png" class="more">
+      </div>
+    </li>
+    <li class="list-item" onclick="javascript: gotoPage('feedback');">
+      <div class="list-icon">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-feedback"></use>
+        </svg>
+      </div>
+      <div class="list-message">
+        <p class="item-content">意见反馈</p>
+        <img src="../../image/wode/more.png" class="more">
+      </div>
+    </li>
+  </ul>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
@@ -90,17 +115,18 @@
     }
 
     function init() {
-      if (!checkNet() || !checkLogin()) return;
+      // if (!checkNet() || !checkLogin()) return;
       render();
     }
 
     function render() {
+
       User = $api.getStorage('User');
       if (User.Status) {
-        hide('empower-btns');
+        hide('btn-group');
         show('account');
       } else {
-        show('empower-btns');
+        show('btn-group');
         hide('account');
       }
 

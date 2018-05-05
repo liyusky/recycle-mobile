@@ -13,7 +13,7 @@ function checkLogin(params) {
   var openLogin = true;
   try {
     if (typeof params.openLogin === 'boolean') openLogin = params.openLogin;
-  } catch (e) { }
+  } catch (e) {}
 
   User = $api.getStorage('User');
   if (User.Status) {

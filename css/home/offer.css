@@ -156,6 +156,8 @@ header .header-title {
   font-size: 4vw;
   margin-top: 4vw;
   display: inline-block;
+  -webkit-appearance:none;
+  outline:none;
 }
 .load{
   position: absolute;
