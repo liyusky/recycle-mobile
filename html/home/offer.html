@@ -139,11 +139,9 @@
         }
 
         var mark = true;
-        User.Certification = [true, true, true, true]
         for (let i = 0; i < 4; i++) {
           if (!User.Certification[i]) mark = false;
         }
-
         if (!mark) {
           toast('请完成认证');
           create('personal-information');
