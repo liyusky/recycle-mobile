@@ -16,6 +16,7 @@ function checkLogin(params) {
   } catch (e) { }
 
   User = $api.getStorage('User');
+  alert(User.Status)
   if (User.Status) {
     try {
       params.success(flag);
