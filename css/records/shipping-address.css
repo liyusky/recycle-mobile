@@ -129,47 +129,38 @@ header .compile {
   color: #333;
 }
 
-.content .address-list li {
+.shipping-address .address-list li {
   width: 92vw;
   height: 24.66667vw;
   background: #fff;
   margin: 2.66667vw auto;
   border-radius: 2vw;
-  position: relative;
 }
 
-.content .address-list .noaddress{
-  width: 37.333333333333336vw;
-  height: 33.333333333333336vw;
-  margin: 26.666666666666664vw auto;
-}
-
-.content .address-list .noaddress img{
-  width: 33.0666666666666vw;
-  height: 23.599999999999998vw;
-}
-
-.content .address-list .noaddress p {
-  font-size: 5.066666666666667vw;
-  text-align: center;
-  margin-top: 4vw
-}
-
-
-.content .address-list li .box .name, .content .address-list li .box .phone {
-  font-size: 4.66667vw;
-  margin-top: 6.93333vw;
+.shipping-address .address-list li .address-item .Receiving-name, .shipping-address .address-list li .address-item .Receiving-phone, .shipping-address .address-list li .box .address {
   float: left;
   margin-left: 3.6vw;
 }
 
-.content .address-list li .box .address {
+.shipping-address .address-list li .address-item .Receiving-name, .shipping-address .address-list li .address-item .Receiving-phone {
+  font-size: 4.66667vw;
+  margin-top: 6.93333vw;
+}
+
+.shipping-address .address-list li .address-item .DetailAddress {
   font-size: 4vw;
   margin-top: 4vw;
-  position: absolute;
-  left: 3.6vw;
-  bottom: 4vw;
+  float: left;
+  margin-left: 3.6vw;
 }
-.hide{
-  display: none;
+
+.shipping-address .noaddress {
+  display: block;
+  margin: 12.93333vw auto;
+  text-align: center;
+}
+
+.shipping-address .noaddress .message {
+  margin-top: 4vw;
+  font-size: 5.06667vw;
 }

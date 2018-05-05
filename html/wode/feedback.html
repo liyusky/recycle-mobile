@@ -15,14 +15,20 @@
     <p class="header-title">意见反馈</p>
   </header>
   <div class="describe">
-    <p class="message">
-      <span>*</span>请描述您遇到的问题</p>
-    <textarea class="txt" id="textarea"></textarea>
-    <p class="number">
-      <span id="min">0</span>
-      <span>/</span>
-      <span id="max">200</span>
-    </p>
+    <div class="describe-title">
+        <p class="describe-message">
+            <span>*</span>请描述您遇到的问题
+          </p>
+    </div>
+
+    <textarea class="describe-content" id="textarea"></textarea>
+    <div class="quantity">
+      <p class="quantity-number">
+        <span id="quantity-min">0</span>
+        <span>/</span>
+        <span id="quantity-max">200</span>
+      </p>
+  </div>
   </div>
   <p id="msg" class="hide">您的字数已超过200</p>
   <input type="text" placeholder="手机号/邮箱 (选填, 方便我们联系您)" class="information" id="account">
@@ -36,16 +42,22 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
   <script>
 
+      var User;
+      apiready = function () {
+        User = $api.getStorage('User');
+        $api.val('account', User.Phone);
+      }
+
           var content = $api.byId('textarea');
-          var text = $api.text('max');
+          var text = $api.text('quantity-max');
           content.onkeydown = function(){
             if(this.value.length > text){
               this.value = this.value.substring(0, text);
               $api.removeCls('msg','hide');
-              $api.text('min',this.value.length);
+              $api.text('quantity-min',this.value.length);
             }else{
               $api.addCls('msg','hide');
-              $api.text('min',this.value.length);
+              $api.text('quantity-min',this.value.length);
             }
           }
 
@@ -60,11 +72,6 @@
         toast('请将内容填写完整...');
         return;
       }
-      if(!account){
-        toast('请将联系方式填写完整...');
-        return;
-      };
-      if(!checkPhone(account)){return;};
       request({
         url: 'FKYJ',
         data: {

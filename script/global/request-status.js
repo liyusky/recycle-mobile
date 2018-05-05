@@ -31,7 +31,6 @@ function AppStatusHandle(ret, err, operation) {
     operation(ret, err);
     return;
   }
-
   if (operation.hasOwnProperty(toast)) {
     toastAllow = operation.toast;
   }

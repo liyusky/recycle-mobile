@@ -15,54 +15,33 @@ a {
   color: none;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-}
-
-ol,
-ul, li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: none;
-}
-
-.hide {
-  display: none !important;
-}
-
 body{
   background: #fff;
 }
 
-.header {
+header {
+  height: 61.6vw;
   width: 100%;
-  height: 17.2vw;
-  padding-top: 5.6vw;
-  padding-left: 4.8vw;
-  padding-right: 4.8vw;
-  line-height: 11.6vw;
-  font-size: 4.8vw;
   position: relative;
+  z-index: 1;
 }
 
-.header .sign {
+header .banner {
+  position: absolute;
   width: 100%;
   height: 100%;
-  background: none;
-  position: absolute;
-  padding-top: 5.6vw;
-  padding-left: 4.8vw;
-  padding-right: 4.8vw;
+  z-index: -1;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 20;
+}
+
+header .head-content {
+  height: 18.8vw;
+  width: 100%;
+  padding-left: 2.8vw;
+  padding-right: 4.8vw;
+  padding-top: 5.6vw;
   display: flex;
   display: -webkit-box;
   display: -webkit-flex;
@@ -74,14 +53,66 @@ body{
   -webkit-justify-content: space-between;
 }
 
-.header .sign div {
-  width: auto;
-  height: 100%;
+header .head-content .back {
+  margin-left: 4.93333vw;
+  float: left;
+  width: 5.33333vw;
 }
 
-.header .title {
+header .head-content .head-title {
+  color: #fff;
+  font-size: 4.8vw;
+}
+
+header .head-content .manage {
+  width: 5.33333vw;
+  width: 5.33333vw;
+}
+
+header .login-dialog {
   width: 100%;
-  height: 100%;
+  height: 42.8vw;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  padding-top: 2.8vw;
+  padding-bottom: 3.2vw;
+}
+
+header .login-dialog img {
+  width: 21.33333vw;
+  height: 21.33333vw;
+}
+
+header .login-dialog .btn-group {
+  width: 45.6vw;
+  height: 8.66667vw;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+}
+
+header .login-dialog .btn-group button {
+  width: 20.66667vw;
+  height: 8.66667vw;
+  background: #80c5ff;
+  border-radius: 1.6vw;
+  color: #fff;
+  font-size: 4.8vw;
   display: flex;
   display: -webkit-box;
   display: -webkit-flex;
@@ -91,145 +122,99 @@ body{
   justify-content: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
+  float: left;
+  outline: none;
+  border: none;
 }
 
-header {
-  height: 61.6vw;
-  position: relative;
-}
-
-header .banner {
-  position: absolute;
+.list {
   width: 100%;
+  padding-left: 2.8vw;
 }
 
-header .head-content {
-  text-align: center;
+.list .list-item {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  height: 13.6vw;
+}
+
+.list .list-item .list-icon {
+  width: 8vw;
+  height: 100%;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: flex-start;
+  -webkit-box-pack: flex-start;
+  -webkit-justify-content: flex-start;
+}
+
+.list .list-item .list-message {
   width: 100%;
-  position: absolute;
-  height: 17.2vw;
-  padding-top: 5.6vw;
-  padding-left: 4.8vw;
-  padding-right: 4.8vw;
-  font-size: 4.8vw;
-}
-
-header .head-content .back {
-  float: left;
-  width: 5.33333vw;
-}
-
-header .head-content .head-title {
-  display: inline-block;
-  color: #fff;
-  font-size: 4.66667vw;
-}
-
-header .head-content .manage {
-  float: right;
-  width: 5.33333vw;
-  width: 5.33333vw;
-}
-
-header .login-dialog {
-  width: 43vw;
-  position: absolute;
-  left: 24.66667vw;
-  top: 20vw;
-  text-align: center;
-  color: #fff;
-}
-
-header .login-dialog .person-img {
-  width: 21.33333vw;
-  height: 21.33333vw;
-  display: block;
-  margin: 0 auto;
-}
-
-header .login-dialog .loginbtn{
-  float: left;
-}
-
-header .login-dialog .loginbtn a {
-  width: 20vw;
-  height: 8vw;
-  background: #80c5ff;
-  border-radius: 1.33333vw;
-  color: #fff;
-  text-align: center;
-  line-height: 8.66667vw;
-  margin-top: 4vw;
-  font-size: 4.66667vw;
-  float: left;
-}
-
-header .login-dialog .loginbtn a.register{
-  margin-left: 3vw;
-}
-
-
-header .login-dialog #account{
-  margin-top: 5vw;
-  font-size: 4.66667vw;
-}
-
-.content .list {
-  width: 91.33333vw;
-  margin: 0 auto;
-}
-
-.content .list li {
+  height: 100%;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
   border-bottom: 1px solid #efefef;
-  line-height: 14.4vw;
-  height: 14.4vw;
+  padding-right: 4vw;
 }
 
-.content .list li .icon {
+.list .list-item .list-message img {
+  width: 2.13333vw;
+  height: 3.46667vw;
+}
+
+.list .list-item:nth-of-type(1) .list-icon svg {
   width: 4.66667vw;
   height: 4.93333vw;
-  float: left;
-  margin-top: 5.33333vw;
-}
-.content .list li  .card{
-  width: 5.733333333333333vw;
-  height: 3.8666666666666667vw;
 }
 
-.content .list li .address{
-  width: 4.266666666666667vw;
+.list .list-item:nth-of-type(2) .list-icon svg {
+  width: 4.66667vw;
+  height: 4.93333vw;
+}
+
+.list .list-item:nth-of-type(3) .list-icon svg {
+  width: 5.73333vw;
+  height: 3.86667vw;
+}
+
+.list .list-item:nth-of-type(4) .list-icon svg {
+  width: 4.26667vw;
   height: 5.2vw;
 }
 
-.content .list li .help{
-  width: 4vw;
-  height: 5.733333333333333vw;
+.list .list-item:nth-of-type(5) .list-icon svg {
+  width: 4.13333vw;
+  height: 5.73333vw;
 }
 
-.content .list li .feedback{
-  width: 4.266666666666667vw;
-  height: 4.266666666666667vw;
-}
-
-.content .list li p {
-  display: inline-block;
-  margin-left: 3.06667vw;
-  font-size: 4.66667vw;
-  margin-top: 1.33333vw;
-}
-
-.content .list li .more {
-  float: right;
-  margin-top: 6.66667vw;
-  width: 2.13333vw;
-  height: 3.46667vw;
+.list .list-item:nth-of-type(6) .list-icon svg {
+  width: 4.4vw;
+  height: 4.26667vw;
 }
 
 footer {
   height: 30.66667vw;
   background: #f4f4f4;
   position: absolute;
-  bottom: -30vw;
+  bottom: -40vw;
   left: 0;
   width: 100%;
   font-size: 4vw;

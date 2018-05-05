@@ -135,7 +135,7 @@ header .compile {
 }
 
 .help-content ul li {
-  border-bottom: 0.4vw solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .help-content ul li .faq {
