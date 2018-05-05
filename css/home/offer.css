@@ -317,7 +317,8 @@ header .header-title {
 }
 
 .details  .affirm .protocol input[type='checkbox']:checked+label .icon{
-  opacity: 1
+  opacity: 1;
+  color: #fff;
 }
 
 .details  .affirm .protocol input[type='checkbox']:checked+label:before {

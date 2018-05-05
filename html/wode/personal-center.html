@@ -20,7 +20,7 @@
     <div class="head-content">
       <img src="../../image/common/back.png" class="back" onclick="javascript:kill();">
       <span class="head-title">个人中心</span>
-      <img src="../../image/wode/manage.png" class="manage">
+      <img src="../../image/wode/manage.png" class="manage" onclick="javascript:create('setting');">
     </div>
     <div class="login-dialog">
       <img src="../../image/wode/person.png" class="person-img">
@@ -117,7 +117,7 @@
     function init() {
       // if (!checkNet() || !checkLogin()) return;
       render();
-    }
+    };
 
     function render() {
 

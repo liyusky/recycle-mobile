@@ -57,7 +57,7 @@
     function render(data) {
       if (data.length) {
         setLocalStorage(data[data.length - 1]);
-        $api.html('bankList', setBankCardHTML(data[data.length - 1]));
+        $api.html('my-bank-list', setBankCardHTML(data[data.length - 1]));
         $api.addCls('btn', 'hide');
       } else {
         $api.removeCls('btn', 'hide');

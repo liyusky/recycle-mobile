@@ -48,7 +48,7 @@
           operation:{
             success:function (data) {
               if(data.length){
-                render(data[data.length-1]);
+                render(data[0]);
                 $api.addCls('noaddress', 'hide');
               }else{
                 $api.removeCls('noaddress', 'hide');
@@ -64,20 +64,19 @@
     function render(data) {
       var htmlStr = '';
       htmlStr += setHtml(data);
-      $api.html('list', htmlStr);
+      $api.html('address-list', htmlStr);
     }
-
- $api.html('address-list', setHtml());
+    
     function setHtml(data) {
-      return htmlStr = '<li data-id="' + 'data.Id' + '">' +
+      return htmlStr = '<li data-id="' + data.Id + '">' + 
         '<div class="address-item">' +
-        '<p class="Receiving-name">' + '王伟' + '</p>' + // data.Addressee
+        '<p class="Receiving-name">' + data.Addressee + '</p>' + 
         '<p class="Receiving-phone">' +
-        '<span id="Receiving-phone-head">' + '1113' + '</span>'+ // data.AddresseePhone.substr(0, 3)
+        '<span id="Receiving-phone-head">' + data.AddresseePhone.substr(0, 3) + '</span>'+  
        '<span>****</span>' +
-       '<span id="Receiving-phone-tail">' + '1234 '+ '</span>' + // data.AddresseePhone.substr(-4)
+       '<span id="Receiving-phone-tail">' + data.AddresseePhone.substr(-4)+ '</span>' +  
         '</p>' +
-        '<p class="DetailAddress">' + ' 安徽省合肥市爱时代收费为个人各' + '</p>' + // data.CurrentAddress + data.DetailAddress
+        '<p class="DetailAddress">' +data.CurrentAddress + data.DetailAddress + '</p>' + 
         '</div>' +
         '</li>';
     }
