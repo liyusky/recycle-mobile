@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>绑定银行卡</title>
-  <link rel="stylesheet" href="../../css/wode/addbank.css">
+<link rel="stylesheet" href="../../css/wode/add-bank-card.css">
 </head>
 
 <body>
@@ -14,52 +14,18 @@
     <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
     <p class="header-title">绑定银行卡</p>
   </header>
-
     <div class="addbank">
         <div class="addbank-head">
-            <p class="addbank-head-title">绑卡只限于实名认证名下的银行卡绑定 </p>
+            <p class="addbank-head-title">绑卡只限于实名认证名下的银行卡绑定</p>
         </div>
         <ul class="bank-list-compile">
-            <li class="item-add-bankcontent">
-                <p class="item-addbank-msg">真实姓名:</p>
-                <input id="name" type="username" placeholder="请输入真实姓名" class="name">
-            </li>
-            <li class="item-add-bankcontent">
-                <p class="item-addbank-msg">身份证号:</p>
-                <input id="id" type="text" placeholder="请输入身份证号">
-            </li>
             <li class="item-add-bankcontent">
                 <p class="item-addbank-msg">银行卡号:</p>
                 <input id="card" type="number" placeholder="请输入银行账号">
             </li>
             <li class="item-add-bankcontent">
-                <p class="item-addbank-msg">开户银行:</p>
-                <select id="bank">
-                    <option value="光大银行">光大银行</option>
-                    <option value="广发银行">广发银行</option>
-                    <option value="工商银行">工商银行</option>
-                    <option value="华夏银行">华夏银行</option>
-                    <option value="建设银行">建设银行</option>
-                    <option value="交通银行">交通银行</option>
-                    <option value="民生银行">民生银行</option>
-                    <option value="农业银行">农业银行</option>
-                    <option value="平安银行">平安银行</option>
-                    <option value="浦发银行">浦发银行</option>
-                    <option value="兴业银行">兴业银行</option>
-                    <option value="邮政银行">邮政银行</option>
-                    <option value="中国银行">中国银行</option>
-                    <option value="招商银行">招商银行</option>
-                    <option value="中信银行">中信银行</option>
-                </select>
-            </li>
-            <li class="item-add-bankcontent">
                 <p class="phone item-addbank-msg">手机号:</p>
                 <input id="phone" type="number" placeholder="请输入手机号">
-            </li>
-            <li class="item-add-bankcontent">
-                <p class="code item-addbank-msg">验证码:</p>
-                <input id="code" type="text" placeholder="请输入验证码">
-                <a class="sendmesg" id="sendmesg" onclick="javascript:SendSMS(this);">发送验证码</a>
             </li>
         </ul>
     </div>
