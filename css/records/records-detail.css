@@ -205,7 +205,7 @@ header .header-title {
   width: 87.73333vw;
   height: 24vw;
   float: right;
-  border-bottom: 0.33333vw solid #ccc;
+  border-bottom:1px solid #ccc;
   padding-top: 3.33333vw;
   color: #666;
 }

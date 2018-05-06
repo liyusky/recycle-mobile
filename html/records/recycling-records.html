@@ -28,69 +28,74 @@
     }
 
     function init() {
-        var User = $api.getStorage('User');
-        request({
-            url: 'GetHYJKJL',
-            data: {
-                'deviceId': api.deviceId,
-                'phone': User.Phone,
-            },
-            tip: '正在发送...',
-            operation: {
-                success: function (data) {
-                  if(data.length){
-                    renderHtml(data);
-                  }else{
-                    toast('暂时还没有回收记录');
-                  }
-                },
-                fail: function (data) {
-
-                }
+      var User = $api.getStorage('User');
+      request({
+        url: 'GetHYJKJL',
+        data: {
+          'deviceId': api.deviceId,
+          'phone': User.Phone,
+        },
+        tip: '正在发送...',
+        operation: {
+          success: function (data) {
+            if (data.length) {
+              renderHtml(data);
+            } else {
+              toast('暂时还没有回收记录');
             }
-        });
+          },
+          fail: function (data) {
+
+          }
+        }
+      });
     };
 
 
     function renderHtml(data) {
       var htmlStr = '';
-      for(var i=0;i<data.length;i++){
-            htmlStr += setHtmltitle(data[i]);
+      if (data.length > 1) {
+        for (var i = 0; i < data.length; i++) {
+          htmlStr += setHtmltitle(data[i]);
+        }
+      } else {
+        htmlStr += setHtmltitle(data[0]);
       }
-        $api.html('order-list', htmlStr);
+
+      $api.html('order-list', htmlStr);
     }
 
-      function setHtmltitle(data) {
+    function setHtmltitle(data) {
 
-        return htmlStr = "<li class='recycle' onclick=javascript:openDetails("+data.JieKuanDanHao+");>" +
-          "<img src='../../image/records/recycle.png'  class='recycle'>" +
-          "<div class='message'>" +
-          "<p class='phonetype'>" +
-          "<span class='type'>手机型号</span>" +
-          "<span id='phone-type'>" + api.deviceModel + "</span>" +
-          "</p>" +
-          "<span onclick=javascript:openDetails("+data.JieKuanDanHao+"); class='details'>查看详情></span>"+
-          "</div>" +
-          "<div class='price'>" +
-          "<ul>" +
-          "<li>" +
-          "<p>手机估价</p>" +
-          "<span>500.00元</span>" +
-          "</li>" +
-          "<li>" +
-          "<p>定金+预付款</p>" +
-          "<span>" + (data.DaoZhang + data.FeiYong) + "元</span>" +
-          "</li>" +
-          "<li>" +
-          "<p>履约期</p>" +
-          "<span>7</span>" +
-          "<span>天</span>" +
-          "<img src='../../image/records/help.png' class='help'>" +
-          "</li>" +
-          "</ul>" +
-          "</div>" +
-          "</li>";
-      }
+      return htmlStr = "<li class='recycle' onclick=javascript:openDetails(" + data.JieKuanDanHao + ");>" +
+        "<img src='../../image/records/recycle.png'  class='recycle'>" +
+        "<div class='message'>" +
+        "<p class='phonetype'>" +
+        "<span class='type'>手机型号</span>" +
+        "<span id='phone-type'>" + api.deviceModel + "</span>" +
+        "</p>" +
+        "<span onclick=javascript:openDetails(" + data.JieKuanDanHao + "); class='details'>查看详情></span>" +
+        "</div>" +
+        "<div class='price'>" +
+        "<ul>" +
+        "<li>" +
+        "<p>手机估价</p>" +
+        "<span>500.00元</span>" +
+        "</li>" +
+        "<li>" +
+        "<p>定金+预付款</p>" +
+        "<span>" + (data.DaoZhang + data.FeiYong) + "元</span>" +
+        "</li>" +
+        "<li>" +
+        "<p>履约期</p>" +
+        "<span>7</span>" +
+        "<span>天</span>" +
+        "<img src='../../image/records/help.png' class='help'>" +
+        "</li>" +
+        "</ul>" +
+        "</div>" +
+        "</li>";
+    }
 
 
 
@@ -100,7 +105,6 @@
         id: data
       });
     }
-
   </script>
 </body>
 

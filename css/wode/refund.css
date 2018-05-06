@@ -124,7 +124,7 @@ header .header-title {
 
 .content .money {
   height: 13.2vw;
-  border-bottom: 0.13333vw solid #efefef;
+  border-bottom: 1px solid #efefef;
   background: #fff;
   margin-top: 4vw;
   line-height: 13.2vw;
@@ -174,7 +174,7 @@ header .header-title {
 .content .bank .banklist li {
   padding-left: 4vw;
   height: 17.33333vw;
-  border-bottom: 0.4vw solid #efefef;
+  border-bottom: 1px solid #efefef;
   background: #fff;
   display: flex;
   display: -webkit-box;

@@ -140,7 +140,7 @@ header .compile {
 .content .setting li {
   width: 96vw;
   height: 13.33333vw;
-  border-bottom: 0.4vw solid #efefef;
+  border-bottom: 1px solid #efefef;
   margin-left: 4vw;
   line-height: 13.33333vw;
 }

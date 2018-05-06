@@ -71,7 +71,9 @@
 
 		function openAutoRecognizer() {
 			var udcreditRecognizer = api.require('udcreditRecognizer');
+
 			User = $api.getStorage('User');
+
 			udcreditRecognizer.simpleFaceAuthentication({
 					authKey: 'e1cf6813-3e90-4562-ad47-7223718e6c8e',
 					outOrderId: User.Phone + '-' + api.deviceId + '-' + new Date().getTime()
