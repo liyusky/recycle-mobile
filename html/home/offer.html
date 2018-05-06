@@ -26,7 +26,7 @@
         <span>￥</span>
         <span id="money">500</span>
       </h3>
-      <span class="anew" id="valuation">重新估价></span>
+      <span class="anew" id="valuation" onclick="reevaluate()">重新估价></span>
     </div>
   </div>
   <div class="load hide" id="loading">
@@ -88,9 +88,10 @@
         init();
       };
 
-      $api.byId('valuation').onclick = function(){
+      function reevaluate(){
         $api.removeCls('loading','hide');
       }
+
 
       function init() {
         if (!checkNet() || !checkLogin()) return;

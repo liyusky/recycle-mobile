@@ -20,7 +20,7 @@
     <div class="head-content">
       <img src="../../image/common/back.png" class="back" onclick="javascript:kill();">
       <span class="head-title">个人中心</span>
-      <img src="../../image/wode/manage.png" class="manage">
+      <img src="../../image/wode/manage.png" class="manage" onclick="javascript:create('setting');">
     </div>
     <div class="login-dialog">
       <img src="../../image/wode/person.png" class="person-img">
@@ -28,7 +28,7 @@
         <button onclick="javascript: gotoPage('login');">登陆</button>
         <button onclick="javascript: gotoPage('register');">注册</button>
       </div>
-      <p id="account"></p>
+      <p class="hide" id="account"></p>
     </div>
   </header>
   <footer>
@@ -120,14 +120,13 @@
     };
 
     function render() {
-
       User = $api.getStorage('User');
       if (User.Status) {
-        hide('btn-group');
-        show('account');
+        $api.addCls('btn-group', 'hide');
+        $api.removeCls('account', 'hide');
       } else {
-        show('btn-group');
-        hide('account');
+        $api.removeCls('btn-group', 'hide');
+        $api.addCls('account', 'hide');
       }
 
       $api.text('account', User.Phone);

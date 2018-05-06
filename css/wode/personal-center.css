@@ -54,7 +54,7 @@ header .head-content {
 }
 
 header .head-content .back {
-  margin-left: 4.93333vw;
+  margin-left: 2.93333vw;
   float: left;
   width: 5.33333vw;
 }
@@ -130,6 +130,11 @@ header .login-dialog .btn-group button {
 .list {
   width: 100%;
   padding-left: 2.8vw;
+}
+
+#account{
+  color: #fff;
+  font-size: 4.8vw;
 }
 
 .list .list-item {
@@ -222,6 +227,10 @@ footer {
 
 footer p {
   text-align: center;
+}
+
+.hide {
+  display: none!important;
 }
 
 footer .tel {
