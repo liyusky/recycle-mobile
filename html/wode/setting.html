@@ -21,10 +21,10 @@
         <p class="setlist">关于我们</p>
         <img src="../../image/wode/more.png" alt="">
       </li>
-      <li>
+      <!-- <li onclick="javascript:create('modify-password')">
         <p class="setlist">修改登录密码</p>
         <img src="../../image/wode/more.png" alt="">
-      </li>
+      </li> -->
     </ul>
   </div>
   <button class="exit" onclick="javascript: logout();">退出</button>
@@ -38,7 +38,7 @@
       setLogoutStatus();
       sendLogoutEvent();
     }
-    
+
     function setLogoutStatus() {
       User = $api.getStorage('User');
       User.Status = false;

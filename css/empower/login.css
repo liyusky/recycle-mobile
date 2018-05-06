@@ -152,7 +152,7 @@ header .header-title {
 .login {
   height: 12.66667vw;
   margin: 23.06667vw auto;
-  border-bottom: 0.4vw solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
   width: 96vw;
   margin-left: 4vw;
 }
@@ -162,7 +162,7 @@ header .header-title {
   height: 10.66667vw;
   text-align: center;
   line-height: 10.66667vw;
-  border-right: 0.4vw solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
   float: left;
 }
 

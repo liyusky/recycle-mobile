@@ -14,10 +14,9 @@
     <img src="../../image/common/back.png"  class="back" onclick="javascript:kill();">
     <p class="header-title">回收进度</p>
   </header>
-  <div class="content" id="content">
+  <div class="order-list" id="order-list">
   </div>
-
-  <div id="contentList"></div>
+  <div id="scheduleList"></div>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -61,13 +60,13 @@
       // for(var i=0;i<data.length;i++){
         htmlStr += setHtmltitle(data)
       // }
-      $api.html('content', htmlStr);
+      $api.html('order-list', htmlStr);
     };
 
     function setHtmltitle(data) {
       var html = '';
       qx = data.DaoQiTianShu;
-      html += "<li class='recycle'>" +
+      html += "<li class='recycle-list-item'>" +
         "<img src='../../image/records/recycle.png' class='recycle'>" +
         "<div class='message'>" +
         "<p class='phonetype'>" +
@@ -75,17 +74,17 @@
         "<span id='phone-type'>" + api.deviceModel + "</span>" +
         "  </p>" +
         "</div>" +
-        "<div class='price'>" +
+        "<div class='recycle-phoneprice'>" +
         "<ul>" +
         "  <li>" +
         "<p>手机估价 </p>" +
         "<span>500.00元</span>" +
         "</li>" +
-        "<li>" +
+        "<li class='recycle-list-item'>" +
         "<p>定金+预付款</p>" +
         "<span>" + (data.DaoZhang + data.FeiYong) + "元</span>" +
         "</li>" +
-        "<li>" +
+        "<li class='recycle-list-item'>" +
         "  <p>履约期</p>" +
         "<span>" + data.QiXian + "</span>" +
         "<span>天</span>" +
@@ -93,7 +92,7 @@
         "  </li>" +
         "</ul>" +
         "  </div>" +
-        "  </li>";
+        "  </li>"; 
       return html;
     }
 
@@ -125,7 +124,7 @@
     function renderListHtml(data) {
       var htmlStr = '';
       htmlStr += renderList(data)
-      $api.html('contentList', htmlStr);
+      $api.html('scheduleList', htmlStr);
     }
 
 

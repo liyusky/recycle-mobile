@@ -17,25 +17,27 @@
   </header>
   <div class="register">
     <ul>
-      <li class="setleft-three">
-        <p class="text">用户名</p>
-        <input type="text" placeholder="请输入手机号" id="account" maxlength="11">
+      <li class="item-input">
+        <p class="item-input-Name">用户名</p>
+        <input type="number" placeholder="请输入手机号" id="account" maxlength="11">
       </li>
-      <li class="setleft">
-        <p class="text">图片验证码</p>
-        <input type="text" placeholder="请输入图片验证码" id="image-code">
-        <img src="" onclick="javascript: getkey();" id="getImg">
+      <li class="item-input setleft">
+        <p class="item-input-Name">图片验证码</p>
+        <input type="text" placeholder="请输入图片验证码" id="image-code" maxlength="4">
+        <img src="" onclick="javascript: getImageCode(this);" id="getImg">
       </li>
-      <li class="setleft-three">
-        <p class="text">验证码</p>
-        <input type="text" placeholder="请输入验证码" id="phone-code" maxlength="6">
+      <li class="item-input">
+        <p class="item-input-Name">验证码</p>
+        <input type="number" placeholder="请输入验证码" id="phone-code" maxlength="6">
         <button class="sendMsg" id="send-SMS-btn" onclick="javascript: sendSMS(this);">发送验证码</button>
       </li>
-      <li class="setpass-left">
-        <p class="text">设置密码</p>
+      <li class="item-input setleft-setting">
+        <p class="item-input-Name">设置密码</p>
         <input type="password" placeholder="请设置6-12位数字和字母" id="password" maxlength="12" minlength="6">
+        <div class="control-input-switch">
         <img src="../../image/common/switch.png" alt="" class="switch">
         <img src="../../image/common/clear.png" alt="" class="clear">
+      </div>
       </li>
     </ul>
     <div class="register-explain">
@@ -73,9 +75,9 @@
     $switch.onOff = true;
     $switch.onclick = function () {
       if (this.onOff) {
-        this.parentNode.getElementsByTagName('input')[0].type = 'text';
+        this.parentNode.parentNode.getElementsByTagName('input')[0].type = 'text';
       } else {
-        this.parentNode.getElementsByTagName('input')[0].type = 'password';
+        this.parentNode.parentNode.getElementsByTagName('input')[0].type = 'password';
       }
       this.onOff = !this.onOff;
     }

@@ -129,7 +129,7 @@ header .compile {
   color: #333;
 }
 
-.content .content-head {
+.addbank .addbank-head {
   height: 17.33333vw;
   display: flex;
   display: -webkit-box;
@@ -143,44 +143,44 @@ header .compile {
   padding-left: 3.46667vw;
 }
 
-.content .content-head .title {
+.addbank .addbank-head .addbank-head-title {
   font-size: 3.6vw;
 }
 
-.content .address-list-compile li {
+.addbank .bank-list-compile li {
   height: 13.33333vw;
   line-height: 13.33333vw;
   background: #fff;
-  border-bottom: 0.4vw solid #9a9a9a;
+  border-bottom: 1px solid #9a9a9a;
   padding-left: 5.86667vw;
 }
 
-.content .address-list-compile li p {
+.addbank .bank-list-compile .item-add-bankcontent .item-addbank-msg {
   font-size: 4.26667vw;
   display: inline;
   padding-right: 2.66667vw;
 }
 
-.content .address-list-compile li .code, .content .address-list-compile li .phone {
+.addbank .bank-list-compile .item-add-bankcontent .code, .addbank .bank-list-compile .item-add-bankcontent .phone {
   padding-right: 6.66667vw;
 }
 
-.content .address-list-compile li input {
+.addbank .bank-list-compile .item-add-bankcontent input {
   outline: none;
   border: none;
   font-size: 3.6vw;
 }
 
-.content .address-list-compile li .sendmesg {
+.addbank .bank-list-compile .item-add-bankcontent .sendmesg {
   color: #1990fe;
   font-size: 3.6vw;
 }
 
-.content .address-list-compile li:last-child {
+.addbank .bank-list-compile .item-add-bankcontent:last-child {
   border-bottom: none;
 }
 
-.content .address-list-compile li #bank{
+.addbank .bank-list-compile .item-add-bankcontent #bank{
   height: 11.33333vw;
   outline: none;
   width: 70vw;

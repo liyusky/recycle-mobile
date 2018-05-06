@@ -122,43 +122,43 @@ header .header-title {
   font-size: 4.66667vw;
 }
 
-.content .list li {
+.my-bank-card .my-bank-list li {
   width: 100%;
   position: relative;
   color: #fff;
 }
 
-.content .list li img {
+.my-bank-card .my-bank-list li img {
   width: 91.73333vw;
   height: 28.26667vw;
   display: block;
   margin: 4vw auto;
 }
 
-.content .list .hidenum {
+.my-bank-card .my-bank-list .hidenum {
   font-size: 6.26667vw;
 }
 
-.content .list .shownum {
+.my-bank-card .my-bank-list .shownum {
   font-size: 7.46667vw;
 }
 
-.content .list .card-message {
+.my-bank-card .my-bank-list .card-message {
   position: absolute;
   left: 20vw;
   top: 3.33333vw;
 }
 
-.content .list .bank-type {
+.my-bank-card .my-bank-list .bank-type {
   font-size: 4.26667vw;
 }
 
-.content .list .card-type {
+.my-bank-card .my-bank-list .card-type {
   margin-top: 4.93333vw;
   font-size: 3.06667vw;
 }
 
-.content .list .card-num {
+.my-bank-card .my-bank-list .card-num {
   font-size: 3.46667vw;
   margin-top: 12.066666666666667vw;
 }
