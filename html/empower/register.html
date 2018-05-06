@@ -76,8 +76,10 @@
     $switch.onclick = function () {
       if (this.onOff) {
         this.parentNode.parentNode.getElementsByTagName('input')[0].type = 'text';
+        this.src = '../../image/common/show.png';
       } else {
-        this.parentNode.parentNode.getElementsByTagName('input')[0].type = 'password';
+        this.parentNode.parentNode.getElementsByTagName('input')[0].type = 'password';        
+        this.src = '../../image/common/switch.png';
       }
       this.onOff = !this.onOff;
     }

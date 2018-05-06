@@ -138,6 +138,11 @@ header .header-title {
   width: 100%;
 }
 
+.order-list .recycle-list-item img {
+ width: 92vw;
+ height: 38.4vw;
+}
+
 .order-list .recycle-list-item .message .phonetype {
   float: left;
   font-size: 4.26667vw;
