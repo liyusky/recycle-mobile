@@ -210,3 +210,8 @@ header .compile {
   border: none;
   outline: none;
 }
+
+.disabled {
+  background-color: #999 !important;
+  color: #fff !important;
+}

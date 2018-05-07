@@ -19,7 +19,7 @@
   <div class="my-bank-card">
     <ul class="my-bank-list" id="my-bank-list">
     </ul>
-    <div class="btn" id="btn" onclick="javascript:create('add-bank-card')">绑定银行卡</div>
+<button class="btn disabled" id="btn" onclick="javascript:create('add-bank-card')" disabled="disabled">请完善资料</button>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -31,6 +31,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript">
     var User = null;
+    var mark = true;
     apiready = function () {
       setListener();
       init();
@@ -39,7 +40,6 @@
     function init() {
       if (!checkNet() && !checkLogin()) return;
       var User = $api.getStorage('User');
-
       request({
         url: 'GetHYYHK',
         data: {
@@ -48,13 +48,53 @@
         },
         tip: '正在发送...',
         operation: {
+          toast: false,
           success: function (data) {
             render(data);
           },
           fail: function () {}
         }
       });
+      request({
+        url: 'Certification',
+        data: {
+          sj: User.Phone,
+          deviceId: api.deviceId
+        },
+        tip: '正在加载...',
+        operation: {
+          toast: false,
+          success: function (data) {
+            setLoginStatus(data);
+            allowTarget();
+          }
+        }
+      });
     };
+
+    function setLoginStatus(data) {
+      var message = data.HYXX;
+      var card = data.YHK;
+      User = $api.getStorage('User');
+      if (card) User.Card = card.KaHao;
+      User.Name = message.XingMing;
+      User.Id = message.ShenFenZheng;
+      User.Certification[0] = !!(message.IsCertification * 1);
+      User.Certification[1] = !!(message.IsTxl * 1);
+      User.Certification[2] = !!(message.IsZhiMa * 1);
+      User.Certification[3] = !!(message.IsOperator * 1);
+      for (let i = 0; i < 4; i++) {
+        if (!User.Certification[i]) mark = false;
+      }
+      $api.setStorage('User', User);
+    }
+
+    function allowTarget() {
+      if (!mark) return;
+      $api.removeCls('btn', 'disabled');
+      $api.removeAttr('btn', 'disabled');
+      $api.text('btn', '绑定银行卡');
+    }
 
     function render(data) {
       if (data.length) {

@@ -57,9 +57,8 @@ function AppStatusHandle(ret, err, operation) {
         kill();
         break;
       case 100:
-        // sendLogoutEvent();
+        sendLogoutEvent();
         create('login');
-        kill();
         break;
     }
   }

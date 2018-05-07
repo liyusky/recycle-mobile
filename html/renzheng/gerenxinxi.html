@@ -84,7 +84,7 @@
 							toast('认证未通过');
 							return;
 						}
-						if (ret.risk_tag == 0) {
+						if (ret.risk_tag == 1) {
 							toast('认证失败，存在活体攻击');
 							return;
 						}

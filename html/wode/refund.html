@@ -8,6 +8,7 @@
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
   <title>退款</title>
   <link rel="stylesheet" type="text/css" href="../../css/wode/refund.css">
+  <script type="text/javascript" src="../../bankfont/iconfont.js"></script>
 </head>
 
 <body>
@@ -32,13 +33,15 @@
       <ul class="banklist">
         <li>
           <div class="pay-type">
-            <img src="../../image/wode/chinabank.png" class="chinabank">
-            <p class="bank-name">中国银行</p>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-GDB" id="bankIcon"></use>
+            </svg>
+            <p class="bank-name" id="bank-name">中国银行</p>
             <p class="cardnum">
               <span class="pass">****</span>
               <span class="pass">****</span>
               <span class="pass">****</span>
-              <span class="num" id="card-tail"></span>
+              <span class="num" id="card-tail">1234</span>
               <span class="card-type">储蓄卡</span>
             </p>
           </div>
@@ -89,7 +92,6 @@
 
     function init() {
       User = $api.getStorage('User');
-      onOff = true;
       if (!checkNet() || !checkLogin()) return;
       request({
         url: 'PaymentAmount',
@@ -105,6 +107,50 @@
           default: function () {}
         }
       });
+      request({
+        url: 'GetHYYHK',
+        data: {
+          phone: User.Phone,
+          deviceId: api.deviceId
+        },
+        operation: {
+          success: function (data) {
+            renderbankType(data);
+          },
+          default: function () {}
+        }
+      });
+    };
+
+     var bankImg = {
+      '广东发展银行': '#icon-GDB',
+      '浦发银行':'#icon-SPDB',
+      '农村信用合作社':'#icon-nongcunxinyonghezuoshe',
+      '民生银行':'#icon-CMBC',
+      '交通银行':'#icon-BOCOM',
+      '中信银行':'#icon-CCITICB',
+      '恒丰银行':'#icon-EGB',
+      '华夏银行':'#icon-HXB',
+      '工商银行':'#icon-ICBC',
+      '中国建设银行':'#icon-CCB',
+      '招商银行':'#icon-CMB',
+      '中国光大银行':'#icon-CEB',
+      '兴业银行':'#icon-RHB',
+      '中国银行':'#icon-BoC',
+      '农业银行':'#icon-ABC',
+      '邮政储蓄银行':'#icon-PSBC',
+      '平安银行':'#icon-PABC',
+      '农商银行':'#icon-OCB'
+     }
+
+    function renderbankType(data){
+      $api.text('card-tail',data[0].WeiHao);
+      $api.text('bank-name',data[0].KaiHuHang);
+      for(var key in bankImg){
+         if(key == data[0].KaiHuHang){
+          $api.attr('bankIcon','xlink:href',bankImg[key]);
+         }
+      }
     }
 
     function submit() {
@@ -114,7 +160,6 @@
 
     function render(data) {
       $api.text('price', data.price);
-      $api.text('card-tail', data.tail);
     }
 
     function formatData(data) {

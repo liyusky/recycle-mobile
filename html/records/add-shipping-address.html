@@ -99,8 +99,8 @@
         'tip': '正在发送...',
         operation: {
           success: function (data) {
-            create('shiping-address');
-            kill('');
+            sendAddAdaressEvent();
+            kill();
           },
           fail: function () {}
         }

@@ -192,3 +192,8 @@ header .header-title {
 .hide {
   display: none;
 }
+
+.disabled {
+  background-color: #999 !important;
+  color: #fff !important;
+}

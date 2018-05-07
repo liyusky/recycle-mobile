@@ -18,10 +18,10 @@
   </header>
   <div class="shipping-address">
     <ul class="address-list" id="address-list">
-          <div class="noaddress" id="noaddress">
-            <img src="../../image/records/noaddress.png">
-            <p class="noText">暂无收货地址</p>
-          </div>
+      <div class="noaddress" id="noaddress">
+        <img src="../../image/records/noaddress.png">
+        <p class="noText">暂无收货地址</p>
+      </div>
     </ul>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -32,33 +32,34 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
     apiready = function () {
-        init();
+      setListener();
+      init()
     }
 
     function init() {
       if (!checkNet() || !checkLogin()) return;
       var User = $api.getStorage('User');
-        request({
-          url: 'GetRA',
-          data: {
-            'deviceId': api.deviceId,
-            'phone':User.Phone
-          },
-          tip: '正在发送...',
-          operation:{
-            success:function (data) {
-              if(data.length){
-                render(data[0]);
-                $api.addCls('noaddress', 'hide');
-              }else{
-                $api.removeCls('noaddress', 'hide');
-              }
-            },
-            fail:function () {
-
+      request({
+        url: 'GetRA',
+        data: {
+          'deviceId': api.deviceId,
+          'phone': User.Phone
+        },
+        tip: '正在发送...',
+        operation: {
+          success: function (data) {
+            if (data.length) {
+              render(data[0]);
+              $api.addCls('noaddress', 'hide');
+            } else {
+              $api.removeCls('noaddress', 'hide');
             }
+          },
+          fail: function () {
+
           }
-        });
+        }
+      });
     }
 
     function render(data) {
@@ -66,17 +67,17 @@
       htmlStr += setHtml(data);
       $api.html('address-list', htmlStr);
     }
-    
+
     function setHtml(data) {
-      return htmlStr = '<li data-id="' + data.Id + '">' + 
+      return htmlStr = '<li data-id="' + data.Id + '">' +
         '<div class="address-item">' +
-        '<p class="Receiving-name">' + data.Addressee + '</p>' + 
+        '<p class="Receiving-name">' + data.Addressee + '</p>' +
         '<p class="Receiving-phone">' +
-        '<span id="Receiving-phone-head">' + data.AddresseePhone.substr(0, 3) + '</span>'+  
-       '<span>****</span>' +
-       '<span id="Receiving-phone-tail">' + data.AddresseePhone.substr(-4)+ '</span>' +  
+        '<span id="Receiving-phone-head">' + data.AddresseePhone.substr(0, 3) + '</span>' +
+        '<span>****</span>' +
+        '<span id="Receiving-phone-tail">' + data.AddresseePhone.substr(-4) + '</span>' +
         '</p>' +
-        '<p class="DetailAddress">' +data.CurrentAddress + data.DetailAddress + '</p>' + 
+        '<p class="DetailAddress">' + data.CurrentAddress + data.DetailAddress + '</p>' +
         '</div>' +
         '</li>';
     }
@@ -86,7 +87,7 @@
       api.addEventListener({
           name: 'ADD-ADRESS-EVENT'
         },
-        function (ret, err) {
+        function () {
           init();
         }
       );

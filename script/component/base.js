@@ -49,6 +49,8 @@ function checkLogin(params) {
  */
 function checkNet(params) {
   var flag = true;
+  var openOffline = true;
+  
   try {
     if (typeof params.openOffline === 'boolean') openOffline = params.openOffline;
   } catch (e) {}
