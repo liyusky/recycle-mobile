@@ -22,8 +22,8 @@ var statusCode = {
  * @datetime    2017-10-11T10:35:54+080
  */
 function AppStatusHandle(ret, err, operation) {
-  // alert(JSON.stringify(ret));
-  // alert(JSON.stringify(err));
+  alert(JSON.stringify(ret));
+  alert(JSON.stringify(err));
 
   var toastAllow = true;
 
@@ -53,10 +53,13 @@ function AppStatusHandle(ret, err, operation) {
         } catch (e) {}
         break;
       case 22:
-        try {
-          create('personal-information');
-          kill();
-        } catch (e) { }
+        create('personal-information');
+        kill();
+        break;
+      case 100:
+        // sendLogoutEvent();
+        create('login');
+        kill();
         break;
     }
   }

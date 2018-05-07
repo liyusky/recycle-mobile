@@ -17,7 +17,7 @@
     <p class="header-title">我的收货地址</p>
   </header>
   <div class="content">
-    <ul class="address-list-compile"> 
+    <ul class="address-list-compile">
       <li class="address-list-item">
         收件人:
         <input id="name" type="text" placeholder="请填写收件人姓名" class="name">
@@ -52,7 +52,7 @@
     var address = null;
 
     function selectCity() {
- var citySelector = api.require('citySelector');
+      var citySelector = api.require('citySelector');
       citySelector.open({
         y: api.frameHeight / 1.5,
         fixedOn: api.frameName

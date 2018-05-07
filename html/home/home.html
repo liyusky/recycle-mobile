@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>趣回收</title>
+  <title>趣回收</title>
   <link rel="stylesheet" href="../../css/home/home.css">
 </head>
 
@@ -31,13 +31,13 @@
     <div class="content">
       <div class="phone-type">
         <div class="left-box">
-            <div class="left-mark"></div>
-            <img src="../../image/home/type.png" alt="" class="left-markimg">
+          <div class="left-mark"></div>
+          <img src="../../image/home/type.png" alt="" class="left-markimg">
         </div>
         <p class="head-title"> 您的手机型号</p>
         <div class="right-box">
-            <img src="../../image/home/type.png" alt="" class="right-markimg left-markimg">
-            <div class="right-mark left-mark"></div>
+          <img src="../../image/home/type.png" alt="" class="right-markimg left-markimg">
+          <div class="right-mark left-mark"></div>
         </div>
       </div>
       <div class="phone-content">
@@ -94,6 +94,8 @@
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -102,15 +104,12 @@
     var User = null;
     var page = 'offer';
     apiready = function () {
+      setListener();
       setUser();
       init();
     }
 
     function init() {
-      render();
-    };
-
-    function render() {
       if (!checkNet()) return;
       $api.text('device-model', api.deviceModel);
       User = $api.getStorage('User');
@@ -126,7 +125,6 @@
           operation: {
             toast: false,
             success: function (data) {
-              kill(['login','input-password']);
               setStatus(data);
             }
           }
@@ -152,9 +150,7 @@
       var message = data.HYXX;
       var card = data.YHK;
       User = $api.getStorage('User');
-      if (card) {
-        User.Card = card.KaHao;
-      }
+      if (card) User.Card = card.KaHao;
       User.Name = message.XingMing;
       User.Id = message.ShenFenZheng;
       User.Certification[0] = !!(message.IsCertification * 1);
@@ -207,13 +203,8 @@
     }
 
     function setListener() {
-      api.addEventListener({
-          name: 'LOGIN-EVENT'
-        },
-        function (ret, err) {
-          render();
-        }
-      );
+      loginEventListener();
+      logoutEventListener();
     }
 
     function setStatus(data) {

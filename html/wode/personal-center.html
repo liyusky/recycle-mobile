@@ -104,6 +104,9 @@
     </li>
   </ul>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleShow.js"></script>
@@ -115,16 +118,12 @@
     }
 
     function init() {
-      // if (!checkNet() || !checkLogin()) return;
-      render();
-    };
-
-    function render() {
       User = $api.getStorage('User');
       if (User.Status) {
         $api.addCls('btn-group', 'hide');
         $api.removeCls('account', 'hide');
-      } else {
+      }
+      else {
         $api.removeCls('btn-group', 'hide');
         $api.addCls('account', 'hide');
       }
@@ -134,26 +133,11 @@
     }
 
     function setListener() {
-      api.addEventListener({
-          name: 'LOGIN-EVENT'
-        },
-        function (ret, err) {
-          render();
-        }
-      );
-      api.addEventListener({
-          name: 'LOGOUT-EVENT'
-        },
-        function (ret, err) {
-          render();
-        }
-      );
+      loginEventListener();
+      logoutEventListener();
     }
 
     function gotoPage(goal) {
-      console.log(User.Status);
-
-      // alert(User.Status);
       if (goal == 'login' || goal == 'register') {
         if (!checkNet()) return;
       } else if (!checkNet() || !checkLogin()) {

@@ -35,9 +35,9 @@
         <p class="item-input-Name">设置密码</p>
         <input type="password" placeholder="请设置6-12位数字和字母" id="password" maxlength="12" minlength="6">
         <div class="control-input-switch">
-        <img src="../../image/common/switch.png" alt="" class="switch">
-        <img src="../../image/common/clear.png" alt="" class="clear">
-      </div>
+          <img src="../../image/common/switch.png" alt="" class="switch">
+          <img src="../../image/common/clear.png" alt="" class="clear">
+        </div>
       </li>
     </ul>
     <div class="register-explain">
@@ -49,8 +49,8 @@
           <span class="mark">《用户注册协议》</span>
         </label>
       </p>
-      </div>
     </div>
+  </div>
   <button class="btn" onclick="javascript: submit()">注册</button>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -91,8 +91,7 @@
 
     function getkey() {
       var imgurl = RequestProductURL['ImageCode'];
-      api.ajax(
-        {
+      api.ajax({
           url: RequestProductURL['ImageKey'],
           method: 'GET',
           data: {}
@@ -185,8 +184,14 @@
 
     function setLoginStatus(phone) {
       User = $api.getStorage('User');
-      User.Status = true;
-      User.Phone = phone;
+      User = {
+        Status: true, //登录
+        Certification: [false, false, false, false],
+        Phone: phone,
+        Name: null,
+        Id: null,
+        Card: null
+      };
       $api.setStorage('User', User);
     }
 

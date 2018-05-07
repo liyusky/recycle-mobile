@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="load hide" id="loading">
-      <img src="../../image/home/load.gif" class="load-img">
+    <img src="../../image/home/load.gif" class="load-img">
   </div>
   <div class="details">
     <div class="rules">
@@ -65,18 +65,20 @@
       </div>
     </div>
     <div class="affirm">
-        <p class="protocol">
-            <input type="checkbox" id="checkbox">
-            <label for="checkbox" value='√'>
-              <span class="icon">✔</span>
-              我阅读并理解 《手机合同》
-            </label>
-          </p>
+      <p class="protocol">
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox" value='√'>
+          <span class="icon">✔</span>
+          我阅读并理解 《手机合同》
+        </label>
+      </p>
     </div>
     <button class="btn" onclick="javascript: submit();">马上拿钱</button>
     <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
@@ -84,19 +86,19 @@
     <script>
       var User = null;
       apiready = function () {
-        User = $api.getStorage('User');
+        setListener();
         init();
       };
 
-      function reevaluate(){
-        $api.removeCls('loading','hide');
+      function reevaluate() {
+        $api.removeCls('loading', 'hide');
       }
 
 
       function init() {
         if (!checkNet() || !checkLogin()) return;
+        User = $api.getStorage('User');
         $api.text('type', api.deviceModel);
-
         request({
           url: 'PhonePrice',
           data: {
@@ -108,7 +110,7 @@
             toast: false,
             success: function (data) {
               $api.text('money', data.Price);
-              $api.addCls('loading','hide');
+              $api.addCls('loading', 'hide');
             }
           }
         });
@@ -124,9 +126,7 @@
               var message = data.HYXX;
               var card = data.YHK;
               User = $api.getStorage('User');
-              if (card) {
-                User.Card = card.KaHao;
-              }
+              if (card) User.Card = card.KaHao;
               User.Name = message.XingMing;
               User.Id = message.ShenFenZheng;
               User.Certification[0] = !!(message.IsCertification * 1);
@@ -198,6 +198,15 @@
             }
           }
         });
+      }
+
+      function setListener() {
+        loginEventListener();
+        logoutEventListener(
+          function () {
+            kill();
+          }
+        );
       }
     </script>
 

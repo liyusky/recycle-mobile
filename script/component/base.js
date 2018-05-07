@@ -19,9 +19,8 @@ function checkLogin(params) {
   if (User.Status) {
     try {
       params.success(flag);
-    } catch (e) { }
-  }
-  else {
+    } catch (e) {}
+  } else {
     flag = false;
     if (openLogin) {
       toast('请先登录');
@@ -29,12 +28,12 @@ function checkLogin(params) {
     }
     try {
       params.fail(flag);
-    } catch (e) { }
+    } catch (e) {}
   }
 
   try {
     params.default(flag);
-  } catch (e) { }
+  } catch (e) {}
 
   return flag;
 }
@@ -52,24 +51,23 @@ function checkNet(params) {
   var flag = true;
   try {
     if (typeof params.openOffline === 'boolean') openOffline = params.openOffline;
-  } catch (e) { }
+  } catch (e) {}
 
   if (api.connectionType !== 'none') {
     try {
       params.success(flag);
-    } catch (e) { }
-  }
-  else {
+    } catch (e) {}
+  } else {
     flag = false;
     if (openOffline) create('offline');
     try {
       params.fail(flag);
-    } catch (e) { }
+    } catch (e) {}
   }
 
   try {
     params.default(flag);
-  } catch (e) { }
+  } catch (e) {}
   return flag;
 }
 /**
@@ -130,8 +128,7 @@ function kill(goal) {
     goal.forEach(function (element) {
       closeWin(element);
     });
-  }
-  else {
+  } else {
     closeWin(goal);
   }
 
@@ -171,4 +168,18 @@ function toast(msg) {
     duration: 2000,
     location: 'middle'
   });
+}
+
+
+function clearUser() {
+  User = $api.getStorage('User');
+  User = {
+    Status: false, //登录
+    Certification: [false, false, false, false],
+    Phone: '',
+    Name: null,
+    Id: null,
+    Card: null
+  };
+  $api.setStorage('User', User);
 }
