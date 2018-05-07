@@ -108,11 +108,15 @@
           data: {}
         },
         function (ret, err) {
-          key = ret.Data.Key;
           $api.attr('getImg', 'src', imgurl + '?key=' + ret.Data.Key);
         }
       );
     };
+
+    function getImageCode(obj){
+      var imgurl = RequestProductURL['ImageCode'];
+      obj.src = imgurl+'&'+Math.random(); 
+    }
 
     function sendSMS(dom) {
       if (!checkNet()) return;

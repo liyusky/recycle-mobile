@@ -50,7 +50,7 @@
     </ul>
   </div>
   </div>
-  <button onclick="javascript: submit();" class="btn disabled" id="submit-btn" disabled="disabled">请完善资料</button>
+  <button onclick="javascript: submit();" class="btn disabled" id="submit-btn" disabled="disabled">请先完善资料</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -105,7 +105,10 @@
     }
 
     function render() {
-      if (!mark) return;
+      if (!mark){
+        create('renzheng');
+        return;
+      };
       $api.removeCls('submit-btn', 'disabled');
       $api.removeAttr('submit-btn', 'disabled');
       $api.text('submit-btn', '绑定银行卡');
@@ -118,7 +121,6 @@
       var phone = $api.val('phone');
       if (!checkPhone(phone)) return;
       if (!checkBankCard(card)) return;
-      if(isauthen()){
         request({
           url: 'AddYHK',
           data: {
@@ -138,36 +140,7 @@
             }
           }
         });
-      }else{
-        toast('你还没有认证资料,请先认证资料');
-        create('renzheng');
-        kill('');
-      }
     };
-
-
-    function isauthen(){      
-      var card = $api.val('card');
-      request({
-        url: 'YinHangKa_STEP1',
-        data: {
-          sj: User.Phone,
-          deviceId: api.deviceId,
-          bankcardno: card
-        },
-        tip: '正在发送...',
-        operation: {
-          success: function () {
-            authentication = true;
-          },
-          fail: function () {
-            authentication = false;
-          }
-        }
-      });
-      return authentication;
-    }
-
 
 
     function sendBindCardEvent() {
