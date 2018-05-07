@@ -69,12 +69,14 @@
 
 <script type="text/javascript" charset="utf-8">
 	var progress = null;
+	var User = null;
 	apiready = function () {
 		setListenr();
 		init();
 	}
 
 	function init() {
+ 		User = $api.getStorage('User');
 		progress = new Progress(api.pageParam.step);
 		openFrame(api.pageParam.aim);
 	}
