@@ -85,6 +85,8 @@
     <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
     <script>
       var User = null;
+      var price = null;
+      var outlay = null;
       apiready = function () {
         setListener();
         init();
@@ -105,6 +107,8 @@
           operation: {
             toast: false,
             success: function (data) {
+              price = data.Price;
+              outlay = data.FeiYong;
               $api.text('money', data.Price);
               $api.addCls('loading', 'hide');
             }
@@ -159,15 +163,15 @@
           create('add-bank-card');
           kill();
           return;
-        }
+        };
         request({
           url: 'SubmitApply',
           'data': {
             sj: User.Phone,
             deviceId: api.deviceId,
-            JinE: 1000,
+            JinE: price,
             QiXian: 14,
-            FeiYong: 105,
+            FeiYong: outlay,
             RuZhangKa: User.Card,
             txl: '',
             ly: '0',

@@ -43,7 +43,7 @@
                 url: 'GetHYJKJL',
                 data: {
                     'deviceId': api.deviceId,
-                    'phone': User.Phone,
+                    'phone': User.Phone
                 },
                 tip: '正在发送...',
                 operation: {
@@ -86,11 +86,11 @@
             "<ul>" +
             "  <li>" +
             "<p>手机估价 </p>" +
-            "<span>500.00元</span>" +
+            "<span>"+data.DaoZhang+".00元</span>" +
             "</li>" +
             "<li>" +
             "<p>定金+预付款</p>" +
-            "<span>"+(data.DaoZhang + data.FeiYong)+"元</span>" +
+            "<span>"+(data.DaoZhang + data.FeiYong)+".00元</span>" +
             "</li>" +
             "<li>" +
             "<img src='../../image/records/help.png' class='help'>"+
