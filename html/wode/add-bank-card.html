@@ -24,13 +24,33 @@
         <input id="card" type="number" placeholder="请输入银行账号">
       </li>
       <li class="item-add-bankcontent">
+        <p class="item-addbank-msg">开户银行:</p>
+        <select id="bank">
+          <option value="光大银行">光大银行</option>
+          <option value="广发银行">广发银行</option>
+          <option value="工商银行">工商银行</option>
+          <option value="华夏银行">华夏银行</option>
+          <option value="建设银行">建设银行</option>
+          <option value="交通银行">交通银行</option>
+          <option value="民生银行">民生银行</option>
+          <option value="农业银行">农业银行</option>
+          <option value="平安银行">平安银行</option>
+          <option value="浦发银行">浦发银行</option>
+          <option value="兴业银行">兴业银行</option>
+          <option value="邮政银行">邮政银行</option>
+          <option value="中国银行">中国银行</option>
+          <option value="招商银行">招商银行</option>
+          <option value="中信银行">中信银行</option>
+        </select>
+      </li>
+      <li class="item-add-bankcontent">
         <p class="phone item-addbank-msg">手机号:</p>
-        <input id="phone" type="number" placeholder="请输入手机号">
+        <input id="phone" type="number" placeholder="请输入手机号" maxlength="11">
       </li>
     </ul>
   </div>
   </div>
-  <button onclick="javascript: submit();" class="btn disabled" id="submit-btn" disabled="disabled">请完善资料</button>
+  <button onclick="javascript: submit();" class="btn disabled" id="submit-btn" disabled="disabled">请先完善资料</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -85,7 +105,10 @@
     }
 
     function render() {
-      if (!mark) return;
+      if (!mark){
+        create('renzheng');
+        return;
+      };
       $api.removeCls('submit-btn', 'disabled');
       $api.removeAttr('submit-btn', 'disabled');
       $api.text('submit-btn', '绑定银行卡');
@@ -98,26 +121,27 @@
       var phone = $api.val('phone');
       if (!checkPhone(phone)) return;
       if (!checkBankCard(card)) return;
-      request({
-        url: 'AddYHK',
-        data: {
-          Phone: User.Phone,
-          deviceId: api.deviceId,
-          kh: card,
-          ylsj: phone
-        },
-        tip: '正在发送...',
-        operation: {
-          success: function (data) {
-            sendBindCardEvent();
-            kill('');
+        request({
+          url: 'AddYHK',
+          data: {
+            Phone: User.Phone,
+            deviceId: api.deviceId,
+            kh: card,
+            ylsj: phone
           },
-          fail: function () {
-            toast('银行卡绑定失败');
+          tip: '正在发送...',
+          operation: {
+            success: function (data) {
+              sendBindCardEvent();
+              kill('');
+            },
+            fail: function () {
+              toast('银行卡绑定失败');
+            }
           }
-        }
-      });
+        });
     };
+
 
     function sendBindCardEvent() {
       api.sendEvent({

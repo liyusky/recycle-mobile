@@ -124,6 +124,7 @@ header .login-dialog .btn-group div {
   -webkit-justify-content: center;
   outline: none;
   border: none;
+  text-align: center;
 }
 
 .list {
@@ -131,7 +132,7 @@ header .login-dialog .btn-group div {
   padding-left: 2.8vw;
 }
 
-#account{
+.account{
   color: #fff;
   font-size: 4.8vw;
 }
@@ -223,7 +224,6 @@ footer {
   left: 0;
   right: 0;
   font-size: 4vw;
-  background-color: #fff;
 }
 
 footer p {
