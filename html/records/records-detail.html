@@ -16,7 +16,7 @@
         <p class="header-title">订单详情</p>
     </header>
     <div class="order-list" id="order-list">
-    </div>
+    </div> 
     <div id="scheduleList"></div>
     <div id="footer"></div>
 
@@ -43,7 +43,7 @@
                 url: 'GetHYJKJL',
                 data: {
                     'deviceId': api.deviceId,
-                    'phone': User.Phone,
+                    'phone': User.Phone
                 },
                 tip: '正在发送...',
                 operation: {
@@ -86,11 +86,11 @@
             "<ul>" +
             "  <li>" +
             "<p>手机估价 </p>" +
-            "<span>500.00元</span>" +
+            "<span>"+data.DaoZhang+".00元</span>" +
             "</li>" +
             "<li>" +
             "<p>定金+预付款</p>" +
-            "<span>"+(data.DaoZhang + data.FeiYong)+"元</span>" +
+            "<span>"+(data.DaoZhang + data.FeiYong)+".00元</span>" +
             "</li>" +
             "<li>" +
             "<img src='../../image/records/help.png' class='help'>"+
@@ -106,8 +106,6 @@
 
         function initList() {
             if (!checkNet() || !checkLogin()) return;
-            if(!$api.getStorage('User')) return;
-
             var User = $api.getStorage('User');
             request({
                 url: 'GetZXJD',
@@ -132,9 +130,7 @@
             html += sethtml(data);
             $api.html('scheduleList',html);
         };
-
         function sethtml(data) {
-
             var html = '<div class="records-details-status">' +
             ' <div class="order-content">' +
             ' <ul id="order-list">' +
@@ -182,8 +178,8 @@
             '<img src="../../image/records/time.png">' +
             '<span>'+'履约期'+(day?day:0)+'天'+'</span>' +
             '</div>' +
-            '<button  class="btn" onclick="javascript:cancel();">不卖了</button>' +
-            '<button  class="btn" onclick="javascript:confirm();">确定卖出填写寄回信息</button>' +
+            '<div  class="btn" onclick="javascript:cancel();">不卖了</div>' +
+            '<div  class="btn" onclick="javascript:confirm();">确定卖出填写寄回信息</div>' +
             '</div>';
             $api.html('footer', foot);
         }

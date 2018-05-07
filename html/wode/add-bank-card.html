@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>绑定银行卡</title>
-<link rel="stylesheet" href="../../css/wode/add-bank-card.css">
+  <link rel="stylesheet" href="../../css/wode/add-bank-card.css">
 </head>
 
 <body>
@@ -14,43 +14,43 @@
     <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
     <p class="header-title">绑定银行卡</p>
   </header>
-    <div class="addbank">
-        <div class="addbank-head">
-            <p class="addbank-head-title">绑卡只限于实名认证名下的银行卡绑定</p>
-        </div>
-        <ul class="bank-list-compile">
-            <li class="item-add-bankcontent">
-                <p class="item-addbank-msg">银行卡号:</p>
-                <input id="card" type="number" placeholder="请输入银行账号">
-            </li>
-            <li class="item-add-bankcontent">
-                <p class="item-addbank-msg">开户银行:</p>
-                <select id="bank"> 
-                    <option value="光大银行">光大银行</option>
-                    <option value="广发银行">广发银行</option>
-                    <option value="工商银行">工商银行</option>
-                    <option value="华夏银行">华夏银行</option>
-                    <option value="建设银行">建设银行</option>
-                    <option value="交通银行">交通银行</option>
-                    <option value="民生银行">民生银行</option>
-                    <option value="农业银行">农业银行</option>
-                    <option value="平安银行">平安银行</option>
-                    <option value="浦发银行">浦发银行</option>
-                    <option value="兴业银行">兴业银行</option>
-                    <option value="邮政银行">邮政银行</option>
-                    <option value="中国银行">中国银行</option>
-                    <option value="招商银行">招商银行</option>
-                    <option value="中信银行">中信银行</option>
-                </select>
-            </li>
-            <li class="item-add-bankcontent">
-                <p class="phone item-addbank-msg">手机号:</p>
-                <input id="phone" type="number" placeholder="请输入手机号" maxlength="11">
-            </li>
-        </ul>
+  <div class="addbank">
+    <div class="addbank-head">
+      <p class="addbank-head-title">绑卡只限于实名认证名下的银行卡绑定</p>
     </div>
+    <ul class="bank-list-compile">
+      <li class="item-add-bankcontent">
+        <p class="item-addbank-msg">银行卡号:</p>
+        <input id="card" type="number" placeholder="请输入银行账号">
+      </li>
+      <li class="item-add-bankcontent">
+        <p class="item-addbank-msg">开户银行:</p>
+        <select id="bank">
+          <option value="光大银行">光大银行</option>
+          <option value="广发银行">广发银行</option>
+          <option value="工商银行">工商银行</option>
+          <option value="华夏银行">华夏银行</option>
+          <option value="建设银行">建设银行</option>
+          <option value="交通银行">交通银行</option>
+          <option value="民生银行">民生银行</option>
+          <option value="农业银行">农业银行</option>
+          <option value="平安银行">平安银行</option>
+          <option value="浦发银行">浦发银行</option>
+          <option value="兴业银行">兴业银行</option>
+          <option value="邮政银行">邮政银行</option>
+          <option value="中国银行">中国银行</option>
+          <option value="招商银行">招商银行</option>
+          <option value="中信银行">中信银行</option>
+        </select>
+      </li>
+      <li class="item-add-bankcontent">
+        <p class="phone item-addbank-msg">手机号:</p>
+        <input id="phone" type="number" placeholder="请输入手机号" maxlength="11">
+      </li>
+    </ul>
   </div>
-  <button onclick="javascript: submit();" class="btn">绑定银行卡</button>
+  </div>
+  <button onclick="javascript: submit();" class="btn disabled" id="submit-btn" disabled="disabled">请完善资料</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -62,8 +62,53 @@
 
   <script type="text/javascript">
     var User = null;
+    var mark = true;
     apiready = function () {
+      init();
+    }
+
+    function init() {
+      if (!checkNet() || !checkLogin()) return;
       User = $api.getStorage('User');
+      request({
+        url: 'Certification',
+        data: {
+          sj: User.Phone,
+          deviceId: api.deviceId
+        },
+        tip: '正在加载...',
+        operation: {
+          toast: false,
+          success: function (data) {
+            setLoginStatus(data);
+            render();
+          }
+        }
+      });
+    }
+
+    function setLoginStatus(data) {
+      var message = data.HYXX;
+      var card = data.YHK;
+      User = $api.getStorage('User');
+      if (card) User.Card = card.KaHao;
+      User.Name = message.XingMing;
+      User.Id = message.ShenFenZheng;
+      User.Certification[0] = !!(message.IsCertification * 1);
+      User.Certification[1] = !!(message.IsTxl * 1);
+      User.Certification[2] = !!(message.IsZhiMa * 1);
+      User.Certification[3] = !!(message.IsOperator * 1);
+      for (let i = 0; i < 4; i++) {
+        if (!User.Certification[i]) mark = false;
+      }
+      $api.setStorage('User', User);
+    }
+
+    function render() {
+      if (!mark) return;
+      $api.removeCls('submit-btn', 'disabled');
+      $api.removeAttr('submit-btn', 'disabled');
+      $api.text('submit-btn', '绑定银行卡');
     }
 
     function submit() {
@@ -73,26 +118,57 @@
       var phone = $api.val('phone');
       if (!checkPhone(phone)) return;
       if (!checkBankCard(card)) return;
+      if(isauthen()){
+        request({
+          url: 'AddYHK',
+          data: {
+            Phone: User.Phone,
+            deviceId: api.deviceId,
+            kh: card,
+            ylsj: phone
+          },
+          tip: '正在发送...',
+          operation: {
+            success: function (data) {
+              sendBindCardEvent();
+              kill('');
+            },
+            fail: function () {
+              toast('银行卡绑定失败');
+            }
+          }
+        });
+      }else{
+        toast('你还没有认证资料,请先认证资料');
+        create('renzheng');
+        kill('');
+      }
+    };
+
+
+    function isauthen(){      
+      var card = $api.val('card');
       request({
-        url: 'AddYHK',
+        url: 'YinHangKa_STEP1',
         data: {
-          Phone: User.Phone,
+          sj: User.Phone,
           deviceId: api.deviceId,
-          kh: card,
-          ylsj: phone
+          bankcardno: card
         },
         tip: '正在发送...',
         operation: {
-          success: function (data) {
-            sendBindCardEvent();
-            kill('');
+          success: function () {
+            authentication = true;
           },
           fail: function () {
-            toast('银行卡绑定失败');
+            authentication = false;
           }
         }
       });
-    };
+      return authentication;
+    }
+
+
 
     function sendBindCardEvent() {
       api.sendEvent({

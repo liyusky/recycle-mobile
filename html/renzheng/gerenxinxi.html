@@ -17,7 +17,7 @@
 			<div class="aui-col-xs-12">
 				<p class="archive-note aui-text-center text-gray font-size-25">请提交身份证信息，仅用于揽钱审核</p>
 			</div>
-		</div> 
+		</div>
 		<div class="aui-row archive-image-group">
 			<div class="aui-col-xs-4">
 				<img class="archive-image" src="../../image/renzheng/IDcard-back.png" id="ID-front" onclick="javascript: getArchive();">
@@ -48,7 +48,7 @@
 			</div>
 			<div class="aui-col-xs-12 detail-group padding-horizontal-15 margin-top-21">
 				<div class="detail-name aui-pull-left aui-text-left text-gray">有效期</div>
-				<div class="detail-content aui-pull-right aui-text-right text-black" id="ID-validity-term"  ></div>
+				<div class="detail-content aui-pull-right aui-text-right text-black" id="ID-validity-term"></div>
 			</div>
 		</div>
 	</section>
@@ -70,11 +70,8 @@
 		}
 
 		function openAutoRecognizer() {
-			alert(2)
 			var udcreditRecognizer = api.require('udcreditRecognizer');
-
 			User = $api.getStorage('User');
-
 			udcreditRecognizer.simpleFaceAuthentication({
 					authKey: 'e1cf6813-3e90-4562-ad47-7223718e6c8e',
 					outOrderId: User.Phone + '-' + api.deviceId + '-' + new Date().getTime()
@@ -83,6 +80,14 @@
 					// console.log(JSON.stringify(ret));
 					// console.log(JSON.stringify(err));
 					if (ret.ret_code + '' == '000000') {
+						if (ret.result_auth == 'F') {
+							toast('认证未通过');
+							return;
+						}
+						if (ret.risk_tag == 1) {
+							toast('认证失败，存在活体攻击');
+							return;
+						}
 						archive = ret;
 						$api.removeAttr('ID-front', 'onclick');
 						$api.removeAttr('ID-back', 'onclick');

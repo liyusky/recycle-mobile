@@ -73,7 +73,7 @@
     };
     function setHtmltitle(data) {
       var html = '';
-      qx = 'data.DaoQiTianShu';
+      qx = data.DaoQiTianShu;
       html += "<li class='recycle-list-item'>" +
         "<img src='../../image/records/recycle.png'  class='recycle'>" +
         "<div class='message'>" +
@@ -86,15 +86,15 @@
         "<ul>" +
         "<li>" +
         "<p>手机估价</p>" +
-        "<span>500.00元</span>" +
+        "<span>"+data.DaoZhang+".00元</span>" +
         "</li>" +
         "<li>" +
         "<p>定金+预付款</p>" +
-        "<span>" + (data.DaoZhang + data.FeiYong) + "元</span>" +
+        "<span>" + (data.DaoZhang + data.FeiYong) + ".00元</span>" +
         "</li>" +
         "<li>" +
         "<p>履约期</p>" +
-        "<span>7</span>" +
+        "<span>"+data.QiXian+"</span>" +
         "<span>天</span>" +
         "<img src='../../image/records/help.png' class='help'>" +
         "</li>" +

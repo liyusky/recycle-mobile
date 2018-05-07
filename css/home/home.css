@@ -6,7 +6,8 @@
 }
 
 ol,
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -162,8 +163,9 @@ header .remind {
   text-align: center;
   color: #fff;
   position: absolute;
-  left: 14.91754vh;
   top: 0;
+  left:50%;
+  margin-left: -20vw;
 }
 
 .container .banner .bannerText .safe {
@@ -172,7 +174,7 @@ header .remind {
   height: 4.58333vh;
 }
 
-.container .banner .bannerText .order {
+.container .banner .bannerText .order-text {
   margin-top: 1.66667vh;
   font-size: 4vw;
 }
@@ -181,48 +183,39 @@ header .remind {
   width: 89.33333vw;
   background: #fff;
   border-radius: 0.4vw;
-  text-align: center;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
 }
 
 .container .content .phone-type {
+  width: 100%;
+  height: 20vw;
   display: flex;
   display: -webkit-box;
   display: -webkit-flex;
   align-items: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
-  justify-content: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  line-height: 20vw;
-  height: 20vw;
-  position: relative;
+  justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
-.container .content .phone-type .left-mark {
-  width: 11.33333vw;
-  height: 0.25vw;
-  background: #0486ff;
-  float: left;
-  margin-top: 10.4vw;
-}
-
-.container .content .phone-type .left-box{
-  position: absolute;
-  left: 11.466666666666667vw;
-  top: 0;
-}
-
-
-.container .content .phone-type .right-box{
-  position: absolute;
-  right: 11.466666666666667vw;
-  top: 0
-}
-
-.container .content .phone-type .left-markimg {
-  margin-top: 9.33333vw;
+.container .content .phone-type .markimg {
   margin-left: 1.06667vw;
+  width: 14vw;
+  height: 1.2vw;
 }
 
 .container .content .phone-type .head-title {
@@ -239,11 +232,23 @@ header .remind {
   margin-right: 1vw;
 }
 
+.container .content .phone-content {
+  width: 70vw;
+  height: 45vw;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+}
+
 .container .content .phone-content .phone-img {
-  margin-left: 10vh;
-  margin-top: 5.33333vw;
   width: 17.06667vw;
-  float: left;
+  height: 31vw;
 }
 
 .container .content .phone-content .phone-message {
@@ -260,6 +265,8 @@ header .remind {
 }
 
 .container .content .phone-btn {
+  width: 78.66667vw;
+  color: #fff;
   display: flex;
   display: -webkit-box;
   display: -webkit-flex;
@@ -269,11 +276,14 @@ header .remind {
   justify-content: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-  width: 78.66667vw;
+  outline: none;
+  border: none;
+  text-align: center;
   background: #1990fe;
   font-size: 5.06667vw;
   border-radius: 1.06667vw;
-  line-height: 7.91667vh;
+  height: 12.666666666666666vw;
+  line-height: 12.666666666666666vw;
   color: #fff;
   margin-top: 2.533333333333333vw;
   margin-bottom: 2.333333333333333vw;
@@ -281,13 +291,14 @@ header .remind {
   border: none;
   margin-left: auto;
   margin-right: auto;
+  
 }
 
 .container .recycle {
   border-radius: 0.4vw;
   width: 90vw;
   background: #fff;
-  margin: 4.8vw auto 0;
+  margin: 4vw auto 0;
 }
 
 .container .recycle .recycle-title {
@@ -366,7 +377,7 @@ header .remind {
 }
 
 .container .recycle .recycleicon .recycle-list .list-item .item-message {
-  font-size: 2.5vw;
+  font-size: 3.4vw;
   margin-top: 2.7vw;
 }
 
@@ -386,7 +397,7 @@ header .remind {
   width: 4vw;
 }
 
-.container .recycle .recycleicon .recycle-list .list-arrow{
+.container .recycle .recycleicon .recycle-list .list-arrow {
   margin-top: -6vw;
   float: left;
 }

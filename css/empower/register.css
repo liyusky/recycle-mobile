@@ -209,6 +209,11 @@ header .header-title {
   float: left;
 }
 
+.input-group img{
+  float: left;
+  margin-top: 2vw;
+}
+
 .input-group .input-control {
   color: #999999;
 }
@@ -237,11 +242,9 @@ header .header-title {
 .register .register-explain #checkbox {
   position: relative;
   float: left;
-}
-
-.checkbox {
-  position: relative;
-  height: 30px;
+  -webkit-appearance:button;
+  outline: none;
+  background: transparent;
 }
 
 .protocol input[type='checkbox'] {
@@ -251,6 +254,7 @@ header .header-title {
   display: inline-block;
   -webkit-appearance:button;
   outline: none;
+  background: transparent;
 }
 
 .protocol label {
@@ -262,9 +266,9 @@ header .header-title {
   position: absolute;
   left: 6.5vw;
   top: 1vw;
-  color: #fff;
   font-size: 3.6vw;
   opacity: 0;
+  color: #fff;
 }
 
 .protocol label:before {
@@ -284,6 +288,13 @@ header .header-title {
 .protocol input[type='checkbox']:checked+label .icon{
   opacity: 1;
   color: #fff;
+  outline: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  background: transparent;
+  -webkit-transform: rotate(20deg);
+  transform: rotate(20deg);
 }
 
 .protocol input[type='checkbox']:checked+label:before {
@@ -307,6 +318,17 @@ header .header-title {
 }
 
  .btn {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   width: 86.66667vw;
   height: 12.66667vw;
   display: block;
@@ -317,4 +339,6 @@ header .header-title {
   border-radius: 1.6vw;
   background: #71b8fa;
   color: #fff;
+  text-align: center;
+
 }

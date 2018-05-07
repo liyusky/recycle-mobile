@@ -51,7 +51,7 @@
     <div class="register-explain">
       <p class="protocol">
         <input type="checkbox" id="checkbox">
-        <label for="checkbox" value='√'>
+        <label for="checkbox">
           <span class="icon">✔</span>
           注册即同意
           <span class="mark">《用户注册协议》</span>
@@ -86,7 +86,7 @@
         this.parentNode.parentNode.getElementsByTagName('input')[0].type = 'text';
         this.src = '../../image/common/show.png';
       } else {
-        this.parentNode.parentNode.getElementsByTagName('input')[0].type = 'password';        
+        this.parentNode.parentNode.getElementsByTagName('input')[0].type = 'password';
         this.src = '../../image/common/switch.png';
       }
       this.onOff = !this.onOff;
