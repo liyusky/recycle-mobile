@@ -74,30 +74,54 @@
       var phone = $api.val('phone');
       if (!checkPhone(phone)) return;
       if (!checkBankCard(card)) return;
-      request({
-        url: 'AddYHK',
-        data: {
-          Phone: User.Phone,
-          deviceId: api.deviceId,
-          kh: card,
-          ylsj: phone
-        },
-        tip: '正在发送...',
-        operation: {
-          success: function (data) {
-            sendBindCardEvent();
-            kill('');
+      if(isauthen()){
+        request({
+          url: 'AddYHK',
+          data: {
+            Phone: User.Phone,
+            deviceId: api.deviceId,
+            kh: card,
+            ylsj: phone
           },
-          fail: function () {
-            toast('银行卡绑定失败');
+          tip: '正在发送...',
+          operation: {
+            success: function (data) {
+              sendBindCardEvent();
+              kill('');
+            },
+            fail: function () {
+              toast('银行卡绑定失败');
+            }
           }
-        }
-      });
+        });
+      }else{
+        toast('你还没有认证资料,请先认证资料');
+        create('renzheng');
+        kill('');
+      }
     };
 
 
-    function isauthen(){
-        
+    function isauthen(){      
+      var card = $api.val('card');
+      request({
+        url: 'YinHangKa_STEP1',
+        data: {
+          sj: User.Phone,
+          deviceId: api.deviceId,
+          bankcardno: card
+        },
+        tip: '正在发送...',
+        operation: {
+          success: function () {
+            authentication = true;
+          },
+          fail: function () {
+            authentication = false;
+          }
+        }
+      });
+      return authentication;
     }
 
 

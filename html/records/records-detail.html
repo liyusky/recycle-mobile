@@ -106,8 +106,6 @@
 
         function initList() {
             if (!checkNet() || !checkLogin()) return;
-            if(!$api.getStorage('User')) return;
-
             var User = $api.getStorage('User');
             request({
                 url: 'GetZXJD',
