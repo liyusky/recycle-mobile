@@ -157,7 +157,7 @@ header .header-title {
 .order-list .recycle .phone-price {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 3vw; 
   width: 100%;
 }
 

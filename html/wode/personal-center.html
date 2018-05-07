@@ -115,9 +115,9 @@
     }
 
     function init() {
-      // if (!checkNet() || !checkLogin()) return;
-      render();
       $api.byId('footer').style.top = $api.byId('header').offsetHeight + $api.byId('list').offsetHeight+'px';
+      if (!checkNet() || !checkLogin()) return;
+      render();
     };
 
     function render() {

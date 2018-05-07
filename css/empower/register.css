@@ -205,6 +205,18 @@ header .header-title {
 .register ul .setpass-left input {
   width: 42.66667vw;
 }
+.input-group{
+  float: left;
+}
+
+.input-group .input-control {
+  color: #999999;
+}
+
+.input-group .input-control .input-control::-webkit-input-placeholder {
+  font-size: 4vw;
+  color: #999999 !important;
+}
 
 .register .register-explain {
   margin: 5.33333vw auto;

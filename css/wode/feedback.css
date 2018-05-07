@@ -185,16 +185,24 @@ header .compile {
 }
 
 .btn {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  margin-top: 10.66667vw;
+  margin-left: auto;
+  margin-right: auto;
   width: 86.66667vw;
   height: 10.66667vw;
-  background: #1990fe;
-  text-align: center;
-  line-height: 10.66667vw;
-  color: #fff;
-  display: block;
-  outline: none;
-  border: none;
-  margin: 10.66667vw auto;
+  background-color: #1990fe;
   border-radius: 2vw;
   font-size: 5.06667vw;
+  color: #ffffff;
+  border: none;
+  outline: none;
 }
