@@ -106,7 +106,7 @@ header .login-dialog .btn-group {
   -webkit-justify-content: space-between;
 }
 
-header .login-dialog .btn-group button {
+header .login-dialog .btn-group div {
   width: 20.66667vw;
   height: 8.66667vw;
   background: #80c5ff;
@@ -122,7 +122,6 @@ header .login-dialog .btn-group button {
   justify-content: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-  float: left;
   outline: none;
   border: none;
   text-align: center;

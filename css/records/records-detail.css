@@ -188,13 +188,14 @@ header .header-title {
   display: inline-block;
 }
 
-#schedule-iconList{
+#scheduleList{
   background: #fff;
 }
 
 .records-details-status {
   margin: 5.33333vw auto;
   width: 100vw;
+  background: #fff;
 }
 
 .records-details-status .order-content .bodrenone {
@@ -207,6 +208,7 @@ header .header-title {
   float: right;
   border-bottom:1px solid #ccc;
   padding-top: 3.33333vw;
+  background: #fff;
   color: #666;
 }
 
@@ -232,6 +234,7 @@ header .header-title {
 .records-details-status .schedule-icon {
   position: relative;
   top: 5vw;
+  
 }
 
 .records-details-status .schedule-icon ul .status-success {

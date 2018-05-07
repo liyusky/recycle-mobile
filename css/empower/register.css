@@ -209,6 +209,11 @@ header .header-title {
   float: left;
 }
 
+.input-group img{
+  float: left;
+  margin-top: 2vw;
+}
+
 .input-group .input-control {
   color: #999999;
 }
@@ -242,11 +247,6 @@ header .header-title {
   background: transparent;
 }
 
-.checkbox {
-  position: relative;
-  height: 30px;
-}
-
 .protocol input[type='checkbox'] {
   width: 4vw;
   height: 4vw;
@@ -260,16 +260,15 @@ header .header-title {
 .protocol label {
   height: 20px;
   line-height: 20px;
-  color: #fff;
 }
 
 .protocol label .icon{
   position: absolute;
   left: 6.5vw;
   top: 1vw;
-  color: #fff;
   font-size: 3.6vw;
   opacity: 0;
+  color: #fff;
 }
 
 .protocol label:before {
@@ -292,6 +291,10 @@ header .header-title {
   outline: none;
   background: transparent;
   border: none;
+  outline: none;
+  background: transparent;
+  -webkit-transform: rotate(20deg);
+  transform: rotate(20deg);
 }
 
 .protocol input[type='checkbox']:checked+label:before {

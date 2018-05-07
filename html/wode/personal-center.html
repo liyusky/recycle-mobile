@@ -8,7 +8,7 @@
   <meta name="format-detection" content="telephone=no">
   <title>个人中心</title>
   <link rel="stylesheet" type="text/css" href="../../css/wode/personal-center.css">
-  <script src="../../iconfont/iconfont.js"></script>
+  <script src="../../iconfonts/iconfont.js"></script>
 
   <style>
   </style>
@@ -26,8 +26,8 @@
     <div class="login-dialog">
       <img src="../../image/wode/person.png" class="person-img">
       <div class="btn-group" id="btn-group">
-        <button onclick="javascript: gotoPage('login');">登陆</button>
-        <button onclick="javascript: gotoPage('register');">注册</button>
+        <div onclick="javascript: gotoPage('login');">登陆</div>
+        <div onclick="javascript: gotoPage('register');">注册</div>
       </div>
       <p class="hide account" id="account"></p>
     </div>
@@ -105,6 +105,9 @@
     <p class="time">服务时间:9:00-21:00</p>
   </footer>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleShow.js"></script>
@@ -116,8 +119,7 @@
     }
 
     function init() {
-      $api.byId('footer').style.top = $api.byId('header').offsetHeight + $api.byId('list').offsetHeight+'px';
-      if (!checkNet() || !checkLogin()) return;
+      $api.byId('footer').style.top = $api.byId('header').offsetHeight + $api.byId('list').offsetHeight + 'px';
       render();
     };
 
@@ -136,26 +138,11 @@
     }
 
     function setListener() {
-      api.addEventListener({
-          name: 'LOGIN-EVENT'
-        },
-        function (ret, err) {
-          render();
-        }
-      );
-      api.addEventListener({
-          name: 'LOGOUT-EVENT'
-        },
-        function (ret, err) {
-          render();
-        }
-      );
+      loginEventListener();
+      logoutEventListener();
     }
 
     function gotoPage(goal) {
-      console.log(User.Status);
-
-      // alert(User.Status);
       if (goal == 'login' || goal == 'register') {
         if (!checkNet()) return;
       } else if (!checkNet() || !checkLogin()) {

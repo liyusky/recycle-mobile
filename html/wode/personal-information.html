@@ -92,6 +92,8 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
@@ -163,17 +165,19 @@
     }
 
     function setListenr() {
-      api.addEventListener({
+      loginEventListener();
+      logoutEventListener();
+      api.addEventListener(
+        {
           name: 'CLOSE-STEP-EVENT'
         },
-        function (ret, err) {
+        function () {
           init();
         }
       );
-      api.addEventListener({
-          name: 'CHANGE-STEP-EVENT'
-        },
-        function (ret, err) {
+      api.addEventListener(
+        { name: 'CHANGE-STEP-EVENT' },
+        function () {
           init();
         }
       );

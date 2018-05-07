@@ -234,6 +234,11 @@ header .header-title {
   float: left;
 }
 
+.content .bank .banklist li .pay-type .cardnum .card-type {
+  margin-top: -0.5vw;
+  margin-left: 1vw;
+}
+
 .content .bank .banklist li .pay-type .message {
   font-size: 3.2vw;
   padding-left: 2.13333vw;

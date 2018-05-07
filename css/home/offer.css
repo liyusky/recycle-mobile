@@ -284,13 +284,13 @@ header .header-title {
 }
 
 .details  .affirm .protocol input[type='checkbox'] {
-  width: 4vw;
-  height: 4vw;
-  opacity: 0;
-  display: inline-block;
-  -webkit-appearance: none;
-  border: none;
-  background: transparent;
+    width: 4vw;
+    height: 4vw;
+    opacity: 0;
+    display: inline-block;
+    -webkit-appearance:button;
+    outline: none;
+    background: transparent;
 }
 
 .details  .affirm .protocol label {
@@ -299,17 +299,14 @@ header .header-title {
   position: relative;
 }
 
+
 .details  .affirm .protocol label .icon{
   position: absolute;
-  left: 6.5vw;
-  top: 1vw;
-  color: #fff;
+  left: 0.8vw;
+  top: -0.5vw;
   font-size: 3.6vw;
   opacity: 0;
-  top: -0.5vw;
-  left: 0.6vw;
-  background: transparent;
-  border: none;
+  color: #fff;
 }
 
 .details  .affirm .protocol label:before {
@@ -329,6 +326,13 @@ header .header-title {
 .details  .affirm .protocol input[type='checkbox']:checked+label .icon{
   opacity: 1;
   color: #fff;
+  outline: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  background: transparent;
+  -webkit-transform: rotate(20deg);
+  transform: rotate(20deg);
 }
 
 .details  .affirm .protocol input[type='checkbox']:checked+label:before {

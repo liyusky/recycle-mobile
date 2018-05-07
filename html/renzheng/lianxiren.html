@@ -174,13 +174,11 @@
             phone = phone.replace(/[ ]/g, "");
             phone = phone.replace("+86", "");
             phone = phone.replace(/-/g, '');
-            if (checkName(ret.fullName)) {
-              name = ret.fullName;
-            }
-            if (checkPhone(phone)) {
-              $api.val(position + '-contact-name', name);
-              $api.val(position + '-contact-phone', phone);
-            }
+            name = ret.fullName.replace(/\s/g, "");
+            if (!checkName(name)) return;
+            if (!checkPhone(phone)) return;
+            $api.val(position + '-contact-name', name);
+            $api.val(position + '-contact-phone', phone);
           } catch (e) {
             toast('请您选择存有号码的用户');
           }
@@ -294,8 +292,7 @@
             }
           }
         });
-      }
-      else {
+      } else {
         toast('请添加联系人');
       }
     }

@@ -53,10 +53,13 @@ function AppStatusHandle(ret, err, operation) {
         } catch (e) {}
         break;
       case 22:
-        try {
-          create('personal-information');
-          kill();
-        } catch (e) { }
+        create('personal-information');
+        kill();
+        break;
+      case 100:
+        // sendLogoutEvent();
+        create('login');
+        kill();
         break;
     }
   }
