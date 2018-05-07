@@ -63,31 +63,33 @@
   <button class="btn" onclick="javascript: submit();">确认退款</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
-
     var onOff = true;
     var User = null;
 
     apiready = function () {
-      User = $api.getStorage('User');
-      onOff = true;
+      setListener();
       init();
     }
 
-      function select(obj){
-        if(onOff){
-          obj.src = '../../image/wode/check.png';
-        }else{
-          obj.src = '../../image/wode/select.png';
-        }
-        onOff = !onOff;
+    function select(obj) {
+      if (onOff) {
+        obj.src = '../../image/wode/check.png';
+      } else {
+        obj.src = '../../image/wode/select.png';
       }
+      onOff = !onOff;
+    }
 
     function init() {
+      User = $api.getStorage('User');
+      onOff = true;
       if (!checkNet() || !checkLogin()) return;
       request({
         url: 'PaymentAmount',
@@ -120,6 +122,13 @@
         price: data.JinE,
         tail: User.Card.substr(-4)
       }
+    }
+
+    function setListener() {
+      loginEventListener();
+      logoutEventListener(function () {
+        kill();
+      });
     }
   </script>
 </body>

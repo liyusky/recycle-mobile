@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>绑定银行卡</title>
-<link rel="stylesheet" href="../../css/wode/add-bank-card.css">
+  <link rel="stylesheet" href="../../css/wode/add-bank-card.css">
 </head>
 
 <body>
@@ -14,23 +14,23 @@
     <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
     <p class="header-title">绑定银行卡</p>
   </header>
-    <div class="addbank">
-        <div class="addbank-head">
-            <p class="addbank-head-title">绑卡只限于实名认证名下的银行卡绑定</p>
-        </div>
-        <ul class="bank-list-compile">
-            <li class="item-add-bankcontent">
-                <p class="item-addbank-msg">银行卡号:</p>
-                <input id="card" type="number" placeholder="请输入银行账号">
-            </li>
-            <li class="item-add-bankcontent">
-                <p class="phone item-addbank-msg">手机号:</p>
-                <input id="phone" type="number" placeholder="请输入手机号">
-            </li>
-        </ul>
+  <div class="addbank">
+    <div class="addbank-head">
+      <p class="addbank-head-title">绑卡只限于实名认证名下的银行卡绑定</p>
     </div>
+    <ul class="bank-list-compile">
+      <li class="item-add-bankcontent">
+        <p class="item-addbank-msg">银行卡号:</p>
+        <input id="card" type="number" placeholder="请输入银行账号">
+      </li>
+      <li class="item-add-bankcontent">
+        <p class="phone item-addbank-msg">手机号:</p>
+        <input id="phone" type="number" placeholder="请输入手机号">
+      </li>
+    </ul>
   </div>
-  <button onclick="javascript: submit();" class="btn">绑定银行卡</button>
+  </div>
+  <div onclick="javascript: submit();" class="btn">绑定银行卡</div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>

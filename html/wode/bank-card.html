@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我的银行卡</title>
-<link rel="stylesheet" type="text/css" href="../../css/wode/bank-card.css">
+  <link rel="stylesheet" type="text/css" href="../../css/wode/bank-card.css">
 </head>
 
 <body>
@@ -24,6 +24,8 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
@@ -110,13 +112,17 @@
           init();
         }
       );
+      loginEventListener();
+      logoutEventListener(function () {
+        kill();
+      });
     }
 
     function setLocalStorage(card) {
-        User = $api.getStorage('User');
-        User.Card = card;
-        $api.setStorage('User', User);
-      }
+      User = $api.getStorage('User');
+      User.Card = card;
+      $api.setStorage('User', User);
+    }
   </script>
 </body>
 
