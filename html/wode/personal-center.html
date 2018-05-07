@@ -5,9 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
   <title>个人中心</title>
   <link rel="stylesheet" type="text/css" href="../../css/wode/personal-center.css">
-  <script src="../../iconfont/iconfont.js"></script>
+  <script src="../../iconfonts/iconfont.js"></script>
 
   <style>
   </style>
@@ -15,7 +16,7 @@
 
 <body>
 
-  <header>
+  <header id="header">
     <img src="../../image/wode/banner.png" class="banner">
     <div class="head-content">
       <img src="../../image/common/back.png" class="back" onclick="javascript:kill();">
@@ -28,14 +29,10 @@
         <div onclick="javascript: gotoPage('login');">登陆</div>
         <div onclick="javascript: gotoPage('register');">注册</div>
       </div>
-      <p class="hide" id="account"></p>
+      <p class="hide account" id="account"></p>
     </div>
   </header>
-  <footer>
-    <p class="tel">客服电话: 400-078-8866</p>
-    <p class="time">服务时间:9:00-21:00</p>
-  </footer>
-  <ul class="list">
+  <ul class="list" id="list">
     <li class="list-item" onclick="javascript: gotoPage('personal-information');">
       <div class="list-icon">
         <svg class="icon" aria-hidden="true">
@@ -103,6 +100,10 @@
       </div>
     </li>
   </ul>
+  <footer id="footer">
+    <p class="tel">客服电话: 400-078-8866</p>
+    <p class="time">服务时间:9:00-21:00</p>
+  </footer>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
@@ -118,6 +119,11 @@
     }
 
     function init() {
+      $api.byId('footer').style.top = $api.byId('header').offsetHeight + $api.byId('list').offsetHeight + 'px';
+      render();
+    };
+
+    function render() {
       User = $api.getStorage('User');
       if (User.Status) {
         $api.addCls('btn-group', 'hide');

@@ -230,8 +230,21 @@ header .header-title {
   margin-right: 2.93333vw;
 }
 
+.content .bank .banklist li .pay-type .icon{
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+
+}
+
 .content .bank .banklist li .pay-type .cardnum span {
   float: left;
+}
+
+.content .bank .banklist li .pay-type .cardnum .card-type {
+
+  margin-left: 1vw;
 }
 
 .content .bank .banklist li .pay-type .message {
@@ -262,10 +275,20 @@ header .header-title {
 }
 
 .btn {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
   width: 86.66667vw;
   height: 12.66667vw;
-  margin: 12vw auto;
-  display: block;
+  margin-top: 12vw;
   border-radius: 2vw;
   background: #1990fe;
   color: #fff;
@@ -273,4 +296,5 @@ header .header-title {
   line-height: 12.66667vw;
   outline: none;
   border: none;
+  text-align: center;
 }

@@ -170,8 +170,9 @@ header .compile {
   height: 12.66667vw;
   background-color: #71b8fa;
   border-radius: 2vw;
-  font-size: 1.33333vw;
+  font-size: 5.06667vw;
   color: #ffffff;
   border: none;
   outline: none;
+  text-align: center;
 }

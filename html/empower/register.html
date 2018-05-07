@@ -19,38 +19,46 @@
     <ul>
       <li class="item-input">
         <p class="item-input-Name">用户名</p>
-        <input type="number" placeholder="请输入手机号" id="account" maxlength="11">
+        <div class="input-group">
+            <input class="input-control pass" id="account" type="number" placeholder="请输入手机号" maxlength="11" minlength="6">
+        </div>
       </li>
       <li class="item-input setleft">
         <p class="item-input-Name">图片验证码</p>
-        <input type="text" placeholder="请输入图片验证码" id="image-code" maxlength="4">
+        <div class="input-group">
+          <input class="input-control" type="text" placeholder="请输入图片验证码" id="image-code" maxlength="4">
+        </div>
         <img src="" onclick="javascript: getImageCode(this);" id="getImg">
       </li>
       <li class="item-input">
         <p class="item-input-Name">验证码</p>
-        <input type="number" placeholder="请输入验证码" id="phone-code" maxlength="6">
+        <div class="input-group">
+        <input class="input-control" type="number" placeholder="请输入验证码" id="phone-code" maxlength="6">
+      </div>
         <button class="sendMsg" id="send-SMS-btn" onclick="javascript: sendSMS(this);">发送验证码</button>
       </li>
       <li class="item-input setleft-setting">
         <p class="item-input-Name">设置密码</p>
-        <input type="password" placeholder="请设置6-12位数字和字母" id="password" maxlength="12" minlength="6">
+        <div class="input-group">
+          <input class="input-control" type="password" placeholder="请设置6-12位数字和字母" id="password" maxlength="12" minlength="6">
+      </div>
         <div class="control-input-switch">
-          <img src="../../image/common/switch.png" alt="" class="switch">
-          <img src="../../image/common/clear.png" alt="" class="clear">
-        </div>
+        <img src="../../image/common/switch.png" alt="" class="switch">
+        <img src="../../image/common/clear.png" alt="" class="clear">
+      </div>
       </li>
     </ul>
     <div class="register-explain">
       <p class="protocol">
         <input type="checkbox" id="checkbox">
-        <label for="checkbox" value='√'>
+        <label for="checkbox">
           <span class="icon">✔</span>
           注册即同意
           <span class="mark">《用户注册协议》</span>
         </label>
       </p>
+      </div>
     </div>
-  </div>
   <button class="btn" onclick="javascript: submit()">注册</button>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -76,8 +84,10 @@
     $switch.onclick = function () {
       if (this.onOff) {
         this.parentNode.parentNode.getElementsByTagName('input')[0].type = 'text';
+        this.src = '../../image/common/show.png';
       } else {
         this.parentNode.parentNode.getElementsByTagName('input')[0].type = 'password';
+        this.src = '../../image/common/switch.png';
       }
       this.onOff = !this.onOff;
     }
@@ -91,7 +101,8 @@
 
     function getkey() {
       var imgurl = RequestProductURL['ImageCode'];
-      api.ajax({
+      api.ajax(
+        {
           url: RequestProductURL['ImageKey'],
           method: 'GET',
           data: {}
@@ -184,14 +195,8 @@
 
     function setLoginStatus(phone) {
       User = $api.getStorage('User');
-      User = {
-        Status: true, //登录
-        Certification: [false, false, false, false],
-        Phone: phone,
-        Name: null,
-        Id: null,
-        Card: null
-      };
+      User.Status = true;
+      User.Phone = phone;
       $api.setStorage('User', User);
     }
 

@@ -61,34 +61,33 @@
       } else {
         htmlStr += setHtmltitle(data[0]);
       }
-
       $api.html('order-list', htmlStr);
     }
 
     function setHtmltitle(data) {
 
-      return htmlStr = "<li class='recycle' onclick=javascript:openDetails(" + data.JieKuanDanHao + ");>" +
+      return htmlStr = "<li class='recycle-list-item' onclick=javascript:openDetails(" + data.JieKuanDanHao + ");>" +
         "<img src='../../image/records/recycle.png'  class='recycle'>" +
         "<div class='message'>" +
         "<p class='phonetype'>" +
         "<span class='type'>手机型号</span>" +
         "<span id='phone-type'>" + api.deviceModel + "</span>" +
-        "</p>" +
+        "</p>" + 
         "<span onclick=javascript:openDetails(" + data.JieKuanDanHao + "); class='details'>查看详情></span>" +
         "</div>" +
         "<div class='price'>" +
         "<ul>" +
         "<li>" +
         "<p>手机估价</p>" +
-        "<span>500.00元</span>" +
+        "<span>"+data.DaoZhang+".00元</span>" +
         "</li>" +
         "<li>" +
         "<p>定金+预付款</p>" +
-        "<span>" + (data.DaoZhang + data.FeiYong) + "元</span>" +
+        "<span>" + (data.DaoZhang + data.FeiYong) + ".00元</span>" +
         "</li>" +
         "<li>" +
         "<p>履约期</p>" +
-        "<span>7</span>" +
+        "<span>"+data.QiXian+"</span>" +
         "<span>天</span>" +
         "<img src='../../image/records/help.png' class='help'>" +
         "</li>" +

@@ -156,6 +156,18 @@ header .header-title {
   width: 96vw;
   margin-left: 4vw;
 }
+.input-group {
+  float: left;
+}
+
+.input-group .input-control {
+  color: #999999;
+}
+
+.input-group .input-control .input-control::-webkit-input-placeholder {
+  font-size: 4vw;
+  color: #999999 !important;
+}
 
 .login .areacode {
   width: 17.33333vw;
@@ -173,18 +185,28 @@ header .header-title {
   border: none;
   padding-left: 6.66667vw;
   float: left;
-  font-size:3.5999999999999996vw;
+  font-size:4.8vw;
 }
 
 .btn {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   width: 86.66667vw;
   height: 12.66667vw;
   background: #1990fe;
-  margin: 0 auto;
-  display: block;
   color: #fff;
   font-size: 5.06667vw;
   border-radius: 2vw;
   outline: none;
   border: none;
+  text-align: center;
 }
