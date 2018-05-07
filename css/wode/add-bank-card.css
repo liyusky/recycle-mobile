@@ -169,6 +169,8 @@ header .compile {
   outline: none;
   border: none;
   font-size: 3.6vw;
+  height: 11.33333vw;
+  line-height: 11.33333vw;
 }
 
 .addbank .bank-list-compile .item-add-bankcontent .sendmesg {
@@ -196,9 +198,9 @@ header .compile {
   justify-content: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-  margin-top: 10.66667vw;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
+  margin-top: 10.66667vw;
   width: 86.66667vw;
   height: 10.66667vw;
   background-color: #1990fe;

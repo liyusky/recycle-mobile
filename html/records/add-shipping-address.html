@@ -37,7 +37,7 @@
       </li>
     </ul>
   </div>
-  <button class="btn" onclick="javascript:submit();">保存</button>
+  <div class="btn" onclick="javascript:submit();">保存</div>
 
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -75,6 +75,15 @@
       var addressDetail = $api.val('city');
       var detailsAddress = $api.val('address-detail');
       if (!checkPhone(phone)) return;
+      if (!name) {
+        toast('收件人不能为空');return;
+      }
+      if (!addressDetail){
+        toast('当前住址不能为空');return;
+      } 
+      if (!detailsAddress){
+        toast('详细地址不能为空');return;
+      } 
       request({
         url: 'EditReceivingAddress',
         data: {

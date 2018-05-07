@@ -24,9 +24,9 @@
       </p>
       <h3 class="money">
         <span>￥</span>
-        <span id="money">500</span>
+        <span id="money">1000</span>
       </h3>
-      <span class="anew" id="valuation" onclick="reevaluate()">重新估价></span>
+      <span class="anew" id="valuation" onclick="init()">重新估价></span>
     </div>
   </div>
   <div class="load hide" id="loading">
@@ -67,13 +67,13 @@
     <div class="affirm">
       <p class="protocol">
         <input type="checkbox" id="checkbox">
-        <label for="checkbox" value='√'>
-          <span class="icon">✔</span>
+        <label for="checkbox">
+          <span class="icon">√</span>
           我阅读并理解 《手机合同》
         </label>
       </p>
     </div>
-    <button class="btn" onclick="javascript: submit();">马上拿钱</button>
+    <div class="btn" onclick="javascript: submit();">马上拿钱</div>
     <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
@@ -85,17 +85,15 @@
     <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
     <script>
       var User = null;
+      var price = null;
+      var outlay = null;
       apiready = function () {
         setListener();
         init();
       };
 
-      function reevaluate() {
-        $api.removeCls('loading', 'hide');
-      }
-
-
       function init() {
+        $api.removeCls('loading','hide');
         if (!checkNet() || !checkLogin()) return;
         User = $api.getStorage('User');
         $api.text('type', api.deviceModel);
@@ -109,6 +107,8 @@
           operation: {
             toast: false,
             success: function (data) {
+              price = data.Price;
+              outlay = data.FeiYong;
               $api.text('money', data.Price);
               $api.addCls('loading', 'hide');
             }
@@ -163,15 +163,15 @@
           create('add-bank-card');
           kill();
           return;
-        }
+        };
         request({
           url: 'SubmitApply',
           'data': {
             sj: User.Phone,
             deviceId: api.deviceId,
-            JinE: 500,
-            QiXian: 7,
-            FeiYong: 105,
+            JinE: price,
+            QiXian: 14,
+            FeiYong: outlay,
             RuZhangKa: User.Card,
             txl: '',
             ly: '0',
