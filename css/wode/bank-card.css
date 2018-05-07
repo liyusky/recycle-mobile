@@ -186,6 +186,7 @@ header .header-title {
   color: #ffffff;
   border: none;
   outline: none;
+  text-align: center;
 }
 
 .hide {

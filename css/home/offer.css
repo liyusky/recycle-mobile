@@ -204,12 +204,19 @@ header .header-title {
 }
 
 .details .btn {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
   width: 86.66667vw;
   height: 12.66667vw;
   background: #1990fe;
-  display: inline-block;
   color: #fff;
-  text-align: center;
   line-height: 12.66667vw;
   border-radius: 2vw;
   margin-bottom: 8vw;
@@ -254,7 +261,7 @@ header .header-title {
 .details  #yes {
   float: left;
   font-size: 4.26667vw;
-  margin-top: 1vw
+  margin-top: 1vw;
 }
 
 .details label {
@@ -283,6 +290,7 @@ header .header-title {
   display: inline-block;
   -webkit-appearance: none;
   border: none;
+  background: transparent;
 }
 
 .details  .affirm .protocol label {
@@ -300,6 +308,8 @@ header .header-title {
   opacity: 0;
   top: -0.5vw;
   left: 0.6vw;
+  background: transparent;
+  border: none;
 }
 
 .details  .affirm .protocol label:before {

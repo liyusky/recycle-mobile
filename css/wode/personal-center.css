@@ -125,6 +125,7 @@ header .login-dialog .btn-group button {
   float: left;
   outline: none;
   border: none;
+  text-align: center;
 }
 
 .list {
