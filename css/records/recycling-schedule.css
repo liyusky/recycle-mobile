@@ -134,8 +134,12 @@ header .header-title {
   left: 0;
   top: 4.4vw;
   padding-left: 6.8vw;
-  padding-top: 4vw;
   width: 100%;
+}
+
+.order-list .recycle-list-item img{
+  width: 92.13333vw;
+  height: 38.4vw;
 }
 
 .order-list .recycle-list-item .message .phonetype {
@@ -143,21 +147,21 @@ header .header-title {
   font-size: 4.26667vw;
 }
 
-.order-list .recycle-list-item .message a {
+.order-list .recycle-list-item .message .details {
   color: #666;
   float: right;
   margin-right: 3.2vw;
   font-size: 3.46667vw;
 }
 
-.order-list .recycle-list-item .recycle-phoneprice {
+.order-list .recycle-list-item .phone-price {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 3vw;
   width: 100%;
 }
 
-.order-list .recycle-list-item .recycle-phoneprice ul li {
+.order-list .recycle-list-item .phone-price ul li {
   width: 29.33333vw;
   height: 13.33333vw;
   float: left;
@@ -165,7 +169,7 @@ header .header-title {
   text-align: center;
 }
 
-.order-list .recycle-list-item .recycle-phoneprice ul li .help {
+.order-list .recycle-list-item .phone-price ul li .help {
   position: absolute;
   width: 4vw;
   height: 4vw;
@@ -173,16 +177,17 @@ header .header-title {
   top: 0;
 }
 
-.order-list .recycle-list-item .recycle-phoneprice ul li p {
+.order-list .recycle-list-item .phone-price ul li p {
   color: #666;
   font-size: 3.73333vw;
 }
 
-.order-list .recycle-list-item .recycle-phoneprice ul li span {
+.order-list .recycle-list-item .phone-price ul li span {
   margin-top: 2.66667vw;
   font-size: 5.06667vw;
   display: inline-block;
 }
+
 
 .status {
   margin: 9.33333vw auto;

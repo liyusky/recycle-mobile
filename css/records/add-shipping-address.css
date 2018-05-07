@@ -150,6 +150,8 @@ header .compile {
   outline: none;
   border: none;
   font-size: 3.6vw;
+  height: 11.8vw;
+  line-height: 11.8vw;
 }
 
 .content .address-list-compile li .more {
@@ -182,4 +184,5 @@ header .compile {
   color: #ffffff;
   border: none;
   outline: none;
+  text-align: center;
 }

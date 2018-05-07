@@ -8,8 +8,6 @@
   />
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
   <meta name="author" content="潘剑">
-  <script src="../../script/flexible.js" charset="utf-8"></script>
-  <script type="text/javascript" src="../../script/api.js"></script>
   <title>支付</title>
   <link rel="stylesheet" type="text/css" href="../../css/wode/help.css">
   <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui.css">
@@ -34,7 +32,6 @@
     apiready = function () {
       init();
     }
-
     function init() {
       if (!checkNet() && !checkLogin()) return;
       User = $api.getStorage('User');

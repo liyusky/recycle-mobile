@@ -157,7 +157,7 @@ header .header-title {
 .order-list .recycle .phone-price {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 3vw; 
   width: 100%;
 }
 
@@ -188,13 +188,14 @@ header .header-title {
   display: inline-block;
 }
 
-#schedule-iconList{
+#scheduleList{
   background: #fff;
 }
 
 .records-details-status {
   margin: 5.33333vw auto;
   width: 100vw;
+  background: #fff;
 }
 
 .records-details-status .order-content .bodrenone {
@@ -207,6 +208,7 @@ header .header-title {
   float: right;
   border-bottom:1px solid #ccc;
   padding-top: 3.33333vw;
+  background: #fff;
   color: #666;
 }
 
@@ -232,6 +234,7 @@ header .header-title {
 .records-details-status .schedule-icon {
   position: relative;
   top: 5vw;
+  
 }
 
 .records-details-status .schedule-icon ul .status-success {
@@ -287,7 +290,15 @@ header .header-title {
 }
 
  .honour .btn {
-  display: block;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
   width: 86.66667vw;
   height: 10.66667vw;
   font-size: 5.06667vw;
@@ -299,4 +310,5 @@ header .header-title {
   border-radius: 3vw;
   outline: none;
   border: none;
+  text-align: center;
 }
