@@ -142,8 +142,7 @@ header .compile {
 
 .content ul li input{
   outline: none;
-  height: 8.33333vw;
-  line-height: 8.33333vw;
+  padding: 4vw;
   border:3vw;
   width: 50vw;
   margin-left: 3vw;

@@ -8,6 +8,7 @@
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
   <title>退款</title>
   <link rel="stylesheet" type="text/css" href="../../css/wode/refund.css">
+  <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
 </head>
 
 <body>
@@ -42,7 +43,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-  <script type="text/javascript" src="../../bankfont/iconfont.js"></script>
+  <script type="text/javascript" src="../../iconfont/iconfont.js"></script>
   <script type="text/javascript" charset="utf-8">
     var User = null;
     var index = null;
@@ -51,13 +52,6 @@
     apiready = function () {
       setListener();
       init();
-    }
-
-    function select(_this) {
-      if (previewDom) $api.attr('select-' + index, 'class', 'iconfont ');
-      index = $api.attr(_this, 'data-index');
-      $api.attr('select-' + index, 'class', 'iconfont icon-selected');
-      previewDom = _this;
     }
 
     function init() {
@@ -109,7 +103,7 @@
       '邮政储蓄银行': '#icon-PSBC',
       '平安银行': '#icon-PABC',
       '农商银行': '#icon-OCB'
-    }
+  }
 
     function render(data) {
       var htmlStr = '';
@@ -117,15 +111,32 @@
         htmlStr += setHtmlStr(data[i], i);
       }
       $api.html('list', htmlStr);
+      var child = $api.byId('list').children;
+      for(var i=0;i<child.length;i++){
+        child[i].onOff = true;
+        child[i].onclick = function(){
+          index = $api.attr(this, 'data-index');
+          for(var i=0;i<child.length;i++){
+            var useicons = child[i].getElementsByTagName('use')[1];
+            $api.attr(useicons, 'xlink:href', '#icon-btn-selected');
+          }
+          var useicon = this.getElementsByTagName('use')[1];
+          $api.attr(useicon, 'xlink:href', '#icon-checkbox-selected');
+        }
+      }
     }
-
+  
     function submit() {
       if (!checkNet() || !checkLogin()) return;
-      create({
-        goal: 'pay',
-        card: User.Card[index].KaHao,
-        phone: User.Card[index].YlShouJiHao
-      });
+       if(typeof index == 'object'){
+         toast('请选择银行卡');
+       }else{
+         create({
+           goal: 'pay',
+           card: User.Card[index].KaHao,
+           phone: User.Card[index].YlShouJiHao
+         });
+       }
     }
 
     function setListener() {
@@ -136,10 +147,10 @@
     }
 
     function setHtmlStr(card, i) {
-      return '<li data-index="' + i + '" onclick="javascript: select(this);">' +
+      return '<li data-index="' + i + '">' +
         '<div class="pay-type">' +
         '<svg class="icon" aria-hidden="true">' +
-        '<use xlink:href="' + bankImg[card.KaiHuHang] + '"></use>' +
+        '<use xlink:href= ' + bankImg[card.KaiHuHang] + '></use>' +
         '</svg>' +
         '<p class="bank-name">' + card.KaiHuHang + '</p>' +
         '<p class="cardnum">' +
@@ -150,8 +161,10 @@
         '<span class="card-type">储蓄卡</span>' +
         '</p>' +
         '</div>' +
-        '<i class="iconfont " class="select" id="select-' + i + '">' +
-        '</li>';
+        '<svg class="icon" aria-hidden="true">' +
+        '<use xlink:href="#icon-btn-selected" id="select-' + i + '"></use>' +
+        '</svg>' +
+        '</li>' ;
     }
 
     function saveCard(data) {

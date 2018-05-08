@@ -59,14 +59,19 @@
           htmlStr += setHtmltitle(data[i]);
         }
       } else {
-        htmlStr += setHtmltitle(data[0]);
+        htmlStr += setHtmltitle(data[data.length-1]);
       }
       $api.html('order-list', htmlStr);
     }
 
     function setHtmltitle(data) {
-
-      return htmlStr = "<li class='recycle-list-item' onclick=javascript:openDetails(" + data.JieKuanDanHao + ");>" +
+      var price = null;
+      if(data.ZhuangTai == 0){
+        price = data.ShenQingJine;
+      }else{
+        price = data.DaoZhang;
+      }
+      return "<li class='recycle-list-item' onclick=javascript:openDetails(" + data.JieKuanDanHao + ");>" +
         "<img src='../../image/records/recycle.png'  class='recycle'>" +
         "<div class='message'>" +
         "<p class='phonetype'>" +
@@ -79,11 +84,11 @@
         "<ul>" +
         "<li>" +
         "<p>手机估价</p>" +
-        "<span>" + data.DaoZhang + ".00元</span>" +
+        "<span>"+price+"元</span>" +
         "</li>" +
         "<li>" +
         "<p>定金+预付款</p>" +
-        "<span>" + (data.DaoZhang + data.FeiYong) + ".00元</span>" +
+        "<span>" + (price + data.FeiYong) + ".00元</span>" +
         "</li>" +
         "<li>" +
         "<p>履约期</p>" +
@@ -95,7 +100,6 @@
         "</div>" +
         "</li>";
     }
-
 
 
     function openDetails(data) {

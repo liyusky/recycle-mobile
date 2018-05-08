@@ -230,12 +230,13 @@ header .header-title {
   margin-right: 2.93333vw;
 }
 
-.content .bank .banklist li .pay-type .icon{
-    width: 1em; height: 1em;
+.content .bank .banklist li .icon{
+    width: 4vw; 
+    height: 4vw;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
-
+    margin-right: 4vw
 }
 
 .content .bank .banklist li .pay-type .cardnum span {

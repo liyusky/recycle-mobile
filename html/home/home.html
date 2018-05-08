@@ -253,6 +253,9 @@
           page = 'refund';
           text = '不卖了';
           break;
+        default:
+          page = 'offer';
+          break;
       }
       $api.text('phone-btn', text);
     }
