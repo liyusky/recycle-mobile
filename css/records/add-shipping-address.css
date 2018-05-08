@@ -137,30 +137,35 @@ header .compile {
   height: 13.33333vw;
   line-height: 13.33333vw;
   background: #fff;
-  border-bottom: 1px solid #9a9a9a;
+  border-bottom: 1px solid #cbcbcb;
   padding-left: 5.86667vw;
   font-size: 4.5vw;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: flex-start;
+  -webkit-box-pack: flex-start;
+  -webkit-justify-content: flex-start;
 }
 
 .content .address-list-compile li .name {
-  padding-left: 3.67vw;
+  padding-left: 7.17vw;
 }
 
 .content .address-list-compile li input {
   outline: none;
   border: none;
   font-size: 3.6vw;
-  height: 11.8vw;
-  line-height: 11.8vw;
+  padding: 3vw;
 }
 
 .content .address-list-compile li .more {
   width: 2.13333vw;
   height: 3.6vw;
-  float: right;
-  margin-right: 4.26667vw;
   display: inline-block;
-  margin-top: 4.93333vw;
 }
 
 .btn {

@@ -29,6 +29,7 @@
         <div onclick="javascript: gotoPage('login');">登陆</div>
         <div onclick="javascript: gotoPage('register');">注册</div>
       </div>
+      <p class="hide account" id="phone"></p>
       <p class="hide account" id="account"></p>
     </div>
   </header>
@@ -129,13 +130,16 @@
       if (User.Status) {
         $api.addCls('btn-group', 'hide');
         $api.removeCls('account', 'hide');
+        $api.removeCls('phone', 'hide');
       } else {
         $api.removeCls('btn-group', 'hide');
         $api.addCls('account', 'hide');
+        $api.addCls('phone', 'hide');
       }
 
       $api.text('account', User.Phone);
       if (User.Name) $api.text('account', User.Name);
+      if (User.Phone) $api.text('phone', User.Phone);
     }
 
     function setListener() {

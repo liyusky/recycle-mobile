@@ -67,7 +67,7 @@
     <div class="affirm">
       <p class="protocol">
         <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-btn_selected_n_" id="select"></use>
+          <use xlink:href="#icon-btn-selected" id="select"></use>
         </svg>
         <input type="checkbox" id="checkbox">
         <label for="checkbox" onclick="javascript:changeSrc()">
@@ -125,9 +125,9 @@
             toast: false,
             success: function (data) {
               var message = data.HYXX;
-              var card = data.YHK[0];
+              var card = data.YHK;
               User = $api.getStorage('User');
-              if (card) User.Card = card.KaHao;
+              if (card) User.Card = card;
               User.Name = message.XingMing;
               User.Id = message.ShenFenZheng;
               User.Certification[0] = !!(message.IsCertification * 1);
@@ -140,12 +140,11 @@
         });
       }
 
-
-      function changeSrc() {
-        if ($api.byId('checkbox').checked) {
-          $api.attr('select', 'xlink:href', '#icon-btn_selected_n_');
-        } else {
-          $api.attr('select', 'xlink:href', '#icon-Checkbox_Selected');
+      function changeSrc(){
+        if($api.byId('checkbox').checked){
+          $api.attr('select','xlink:href','#icon-btn-selected');
+        }else{
+          $api.attr('select','xlink:href','#icon-checkbox-selected');
         }
       }
 
@@ -168,12 +167,13 @@
           return;
         }
 
-        // if (!User.Card) {
-        //   toast('请绑定银行卡');
-        //   create('add-bank-card');
-        //   kill();
-        //   return;
-        // };
+        if (!User.Card) {
+          toast('请绑定银行卡');
+          create('add-bank-card');
+          kill();
+          return;
+        };
+        
         request({
           url: 'SubmitApply',
           'data': {

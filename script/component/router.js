@@ -50,10 +50,7 @@ window.ROUTER = {
   'offer': {
     path: 'widget://html/home/offer.html'
   },
-  'records': {
-    path: 'widget://html/records/recycling-records.html'
-  },
-  'details':{
+  'records-detail': {
     path: 'widget://html/records/records-detail.html'
   },
   'renzheng': {

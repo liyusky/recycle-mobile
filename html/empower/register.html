@@ -30,7 +30,7 @@
         </div>
         <img src="" onclick="javascript: getImageCode(this);" id="getImg">
       </li>
-      <li class="item-input">
+      <li class="item-input setleft-code">
         <p class="item-input-Name">验证码</p>
         <div class="input-group">
         <input class="input-control" type="number" placeholder="请输入验证码" id="phone-code" maxlength="6">
@@ -51,7 +51,7 @@
     <div class="register-explain">
         <p class="protocol">
             <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-btn_selected_n_" id="select"></use>
+                <use xlink:href="#icon-btn-selected" id="select"></use>
               </svg>
           <input type="checkbox" id="checkbox">
             <label for="checkbox" onclick="javascript:changeSrc()">    
@@ -121,9 +121,9 @@
 
       function changeSrc(){
         if($api.byId('checkbox').checked){
-          $api.attr('select','xlink:href','#icon-btn_selected_n_');
+          $api.attr('select','xlink:href','#icon-btn-selected');
         }else{
-          $api.attr('select','xlink:href','#icon-Checkbox_Selected');
+          $api.attr('select','xlink:href','#icon-checkbox-selected');
         }
       }
 

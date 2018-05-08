@@ -77,7 +77,7 @@
         "<p class='phonetype'>" +
         "<span class='type'>手机型号</span>" +
         "<span id='phone-type'>" + api.deviceModel + "</span>" +
-        "</p>" + 
+        "</p>" +
         "<span onclick=javascript:openDetails(" + data.JieKuanDanHao + "); class='details'>查看详情></span>" +
         "</div>" +
         "<div class='price'>" +
@@ -92,7 +92,7 @@
         "</li>" +
         "<li>" +
         "<p>履约期</p>" +
-        "<span>"+data.QiXian+"</span>" +
+        "<span>" + data.QiXian + "</span>" +
         "<span>天</span>" +
         "<img src='../../image/records/help.png' class='help'>" +
         "</li>" +
@@ -102,10 +102,9 @@
     }
 
 
-
     function openDetails(data) {
       create({
-        goal: 'details',
+        goal: 'records-detail',
         id: data
       });
     }

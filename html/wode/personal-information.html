@@ -20,7 +20,6 @@
       <span class="required">必填</span>
       <p class="full">请完整填写以下信息</p>
     </div>
-
     <div class="ullist">
       <ul>
         <li id="step-1">
@@ -61,7 +60,37 @@
         </li>
       </ul>
     </div>
-    <div class="selectable">
+    <div class="selectable hide">
+      <div class="selecthead">
+        <img src="../../image/wode/border.png" class="border">
+        <p class="select">可选认证</p>
+        <span class="fullmessage">请完整填写以下信息</span>
+      </div>
+    </div>
+    <div class="ullist">
+      <ul>
+        <li id="step-5">
+          <img src="../../image/wode/alipay.png" class="icon">
+          <div class="box">
+            <h5 class="title">支付宝</h6>
+              <p class="list-text">支付宝认证</p>
+          </div>
+          <img src="../../image/wode/more.png" class="more">
+          <span class="status" id="flag-5">待认证</span>
+        </li>
+        <li id="step-6">
+          <img src="../../image/wode/jdlogo.png" class="icon">
+          <div class="box">
+            <h5 class="title">京东</h6>
+              <p class="list-text">京东认证</p>
+          </div>
+          <img src="../../image/wode/more.png" class="more">
+          <span class="status" id="flag-6">待认证</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- <div class="selectable hide">
       <div class="selecthead">
         <img src="../../image/wode/border.png" class="border">
         <p class="select">可选认证</p>
@@ -87,7 +116,7 @@
         </ul>
       </div>
       <div class="clear"></div>
-    </div>
+    </div> -->
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -167,16 +196,16 @@
     function setListenr() {
       loginEventListener();
       logoutEventListener();
-      api.addEventListener(
-        {
+      api.addEventListener({
           name: 'CLOSE-STEP-EVENT'
         },
         function () {
           init();
         }
       );
-      api.addEventListener(
-        { name: 'CHANGE-STEP-EVENT' },
+      api.addEventListener({
+          name: 'CHANGE-STEP-EVENT'
+        },
         function () {
           init();
         }

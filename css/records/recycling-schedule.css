@@ -192,6 +192,9 @@ header .header-title {
   background: #fff;
 }
 
+.hide{
+  display: none!important;
+}
 
 .records-details-status {
   margin: 5.33333vw auto;
@@ -265,3 +268,60 @@ header .header-title {
   left: 5.46667vw;
   top: -1vw;
 }
+
+.honour {
+  margin: 2vw auto 0;
+  text-align: center;
+
+}
+
+.honour .time {
+  display: block;
+  text-align: center;
+}
+
+.honour .time img {
+  width: 4vw;
+  height: 4vw;
+  margin-right: 1vw;
+  display: inline-block;
+}
+
+ .honour .time span {
+  font-size: 5.06667vw;
+  margin-top:-1vw;
+
+}
+
+ .honour .time p span{
+  display: inline-block;
+}
+
+.hide{
+  display: none!important;
+}
+
+ .honour .btn {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  width: 86.66667vw;
+  height: 10.66667vw;
+  font-size: 5.06667vw;
+  text-align: center;
+  background: #1990fe;
+  margin: 3vw auto 0;
+  line-height: 10.66667vw;
+  color: #fff;
+  border-radius: 3vw;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+

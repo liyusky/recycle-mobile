@@ -42,7 +42,7 @@
             <span class="MaxBackPrice">最高回收:</span>￥5000</p>
         </div>
       </div>
-      <div class="phone-btn" onclick="javascript: gotoPage();">马上评估 立即拿钱</div>
+      <div class="phone-btn" id="phone-btn" onclick="javascript: gotoPage();">马上评估 立即拿钱</div>
     </div>
     <footer class="recycle">
       <p class="recycle-title">回收流程</p>
@@ -143,7 +143,7 @@
       var message = data.HYXX;
       var card = data.YHK;
       User = $api.getStorage('User');
-      if (card) User.Card = card.KaHao;
+      if (card) User.Card = card;
       User.Name = message.XingMing;
       User.Id = message.ShenFenZheng;
       User.Certification[0] = !!(message.IsCertification * 1);
@@ -202,51 +202,62 @@
 
     function setStatus(data) {
       if (data.ZhuangTai == undefined) return;
+      var text = '马上评估 立即拿钱';
       switch (Number(data.ZhuangTai)) {
         case 0: //待审核
           page = 'recycling-schedule';
+          text = '查看详情';
           break;
         case 1: //审核不通过
           page = 'offer';
           break;
         case 2: //待放款
-          page = 'recycling-schedule'; // recycling-schedule
+          page = 'recycling-schedule';
+          text = '查看详情';
           break;
         case 3: //已放款
           page = 'refund';
+          text = '不卖了';
           break;
         case 4: //已逾期
           page = 'refund';
+          text = '不卖了';
           break;
         case 5: //已还款
           page = 'offer';
           break;
         case 6: //已交催收
           page = 'refund';
+          text = '不卖了';
           break;
         case 7: //交催收已还
           page = 'offer';
           break;
         case 8: //交催收未还
           page = 'refund';
+          text = '不卖了';
           break;
         case 9: //初审通过
           page = 'recycling-schedule';
+          text = '查看详情';
           break;
         case 10: //交催收延期
           page = 'refund';
+          text = '不卖了';
           break;
         case 11: //未还清
           page = 'refund';
+          text = '不卖了';
           break;
         case 12: //交催收未还清
           page = 'refund';
+          text = '不卖了';
           break;
         default:
           page = 'offer';
           break;
-
       }
+      $api.text('phone-btn', text);
     }
   </script>
 </body>

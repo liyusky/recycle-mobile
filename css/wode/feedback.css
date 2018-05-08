@@ -162,7 +162,7 @@ header .compile {
 
 .information {
   width: 92vw;
-  height: 13.33333vw;
+  padding: 4vw;
   margin: 4vw auto 0;
   display: block;
   background: #f4f4f4;
@@ -172,6 +172,16 @@ header .compile {
   outline: none;
   border: none;
   border-radius: 2vw;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  
 }
 
 #msg{
