@@ -69,9 +69,7 @@
 
     function setLoginStatus(data) {
       var message = data.HYXX;
-      var card = data.YHK;
       User = $api.getStorage('User');
-      if (card) User.Card = card.KaHao;
       User.Name = message.XingMing;
       User.Id = message.ShenFenZheng;
       User.Certification[0] = !!(message.IsCertification * 1);

@@ -19,7 +19,7 @@
   <div class="my-bank-card">
     <ul class="my-bank-list" id="my-bank-list">
     </ul>
-<button class="btn disabled" id="btn" onclick="javascript:create('add-bank-card')" disabled="disabled">请完善资料</button>
+    <button class="btn disabled" id="btn" onclick="javascript:create('add-bank-card')" disabled="disabled">请完善资料</button>
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -74,9 +74,7 @@
 
     function setLoginStatus(data) {
       var message = data.HYXX;
-      var card = data.YHK;
       User = $api.getStorage('User');
-      if (card) User.Card = card.KaHao;
       User.Name = message.XingMing;
       User.Id = message.ShenFenZheng;
       User.Certification[0] = !!(message.IsCertification * 1);
@@ -96,14 +94,14 @@
       $api.text('btn', '绑定银行卡');
     }
 
+    // 渲染银行卡列表
     function render(data) {
-      if (data.length) {
-        setLocalStorage(data[data.length - 1]);
-        $api.html('my-bank-list', setBankCardHTML(data[data.length - 1]));
-        $api.addCls('btn', 'hide');
-      } else {
-        $api.removeCls('btn', 'hide');
+      setLocalStorage(data);
+      var htmlStr = '';
+      for (let i = 0; i < data.length; i++) {
+        htmlStr += setBankCardHTML(data[i])
       }
+      $api.html('my-bank-list', htmlStr);
     };
 
     var bankval = {
@@ -125,23 +123,16 @@
     };
 
     function setBankCardHTML(card) {
-      var src = null;
-      for (var key in bankval) {
-        if (!card.KaiHuHang.indexOf(key)) {
-          src = bankval[key];
-        };
-      };
-      var htmlStr = '<li>' +
-        '<img id="bank-image" src=' + src + '>' +
+      return '<li>' +
+      '<img id="bank-image" src=' + bankval[card.KaiHuHang] + '>' +
         '<div class="card-message">' +
         '<p class="bank-type"></p>' +
-        '	<span class="card-type"></span>' +
-        '	<p class="card-num">' +
+        '<span class="card-type"></span>' +
+        '<p class="card-num">' +
         '<span class="hidenum">****</span> <span class="hidenum">****</span> <span class="hidenum">****</span>' +
-        '			 <span class="shownum">' + card.WeiHao + '</span> </p>' +
+        '<span class="shownum">' + card.WeiHao + '</span></p>' +
         '</div>' +
         '</li>';
-      return htmlStr;
     }
 
     function setListener() {

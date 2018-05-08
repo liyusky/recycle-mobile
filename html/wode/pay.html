@@ -32,10 +32,10 @@
     apiready = function () {
       init();
     }
+
     function init() {
       if (!checkNet() && !checkLogin()) return;
-      User = $api.getStorage('User');
-      var url = RequestProductURL['Refund'] + "?sj=" + User.Phone + "&&yhk=" + User.Card;
+      var url = RequestProductURL['Refund'] + "?sj=" + api.pageParam.phone + "&&yhk=" + api.pageParam.card;
       $api.attr('iframe', 'src', url);
     }
   </script>
