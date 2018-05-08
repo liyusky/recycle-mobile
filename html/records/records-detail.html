@@ -73,7 +73,7 @@
           if (id == data[i][key]) {
             htmlStr += setHtmltitle(data[i]);
           } else {
-            toast('暂无订单详情');
+            htmlStr += setHtmltitle(data[data.length-1]);
           }
         }
       };
