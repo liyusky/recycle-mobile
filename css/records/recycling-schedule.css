@@ -188,75 +188,77 @@ header .header-title {
   display: inline-block;
 }
 
-
-.status {
-  margin: 9.33333vw auto;
-  width: 100vw;
-  height: 72vw;
+#scheduleList{
   background: #fff;
+}
+
+
+.records-details-status {
+  margin: 5.33333vw auto;
+  width: 100vw;
   position: relative;
 }
 
-.status .list .bodrenone {
+.records-details-status .order-content .bodrenone {
   border-bottom: 0 !important;
 }
 
-.status .list .order-list {
+.records-details-status .order-content .order-list-item {
   width: 87.73333vw;
   height: 24vw;
   float: right;
-  background: #fff;
   border-bottom:1px solid #ccc;
   padding-top: 3.33333vw;
+  background: #fff;
   color: #666;
 }
 
-.status .list .order-list .mark {
+.records-details-status .order-content .order-list-item .mark {
   color: #333;
 }
 
-.status .list .order-list .currentstatus {
+.records-details-status .order-content .order-list-item .currentrecords-details-status {
   font-size: 4vw;
   line-height: 6.66667vw;
 }
 
-.status .list .order-list .message {
+.records-details-status .order-content .order-list-item .message {
   font-size: 3.33333vw;
   line-height: 6.66667vw;
 }
 
-.status .list .order-list .time {
-  padding-bottom: 1.86667vw;
+.records-details-status .order-content .order-list-item .time {
   font-size: 3.2vw;
+  padding-bottom: 1.86667vw;
 }
 
-.status .list{
-width: 100%;
-height: 100%;
-}
-
-.status .schedule {
+.records-details-status .schedule-icon {
   position: absolute;
   top: 5vw;
+  
 }
 
-.status .schedule ul .statusicon {
+.records-details-status .schedule-icon ul .status-success {
   position: relative;
   z-index: 2;
   left: 2.4vw;
   display: inline-block;
 }
 
-.status .schedule ul .statusicon img {
+.records-details-status .schedule-icon ul .records-details-statusicon img {
   height: 6vw;
   width: 6vw;
 }
 
-.status .schedule ul .connect {
+.records-details-status .schedule-icon ul .status-connect {
   height: 17.33333vw;
 }
 
-.status .schedule ul .connect img {
+.clear{
+  clear: both;
+}
+
+.records-details-status .schedule-icon ul .status-connect img {
   width: 0.26667vw;
   height: 18.93333vw;
   position: relative;

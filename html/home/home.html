@@ -29,7 +29,7 @@
     </div>
     <div class="content">
       <div class="phone-type">
-        <img src="../../image/home/lefticon.png"  class="markimg">
+        <img src="../../image/home/lefticon.png" class="markimg">
         <p class="head-title"> 您的手机型号</p>
         <img src="../../image/home/righticon.png" class="markimg">
       </div>
@@ -210,7 +210,7 @@
           page = 'offer';
           break;
         case 2: //待放款
-          page = 'recycling-schedule';
+          page = 'recycling-schedule'; // recycling-schedule
           break;
         case 3: //已放款
           page = 'refund';
@@ -242,6 +242,10 @@
         case 12: //交催收未还清
           page = 'refund';
           break;
+        default:
+          page = 'offer';
+          break;
+
       }
     }
   </script>

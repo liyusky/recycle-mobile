@@ -289,6 +289,10 @@ header .header-title {
   display: inline-block;
 }
 
+.hide{
+  display: none!important;
+}
+
  .honour .btn {
   display: flex;
   display: -webkit-box;

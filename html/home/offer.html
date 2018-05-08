@@ -66,9 +66,11 @@
     </div>
     <div class="affirm">
       <p class="protocol">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-btn_selected_n_" id="select"></use>
+        </svg>
         <input type="checkbox" id="checkbox">
-        <label for="checkbox">
-          <span class="icon">√</span>
+        <label for="checkbox" onclick="javascript:changeSrc()">
           我阅读并理解 《手机合同》
         </label>
       </p>
@@ -83,6 +85,7 @@
     <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+    <script src="../../iconfont/iconfont.js"></script>
     <script>
       var User = null;
       var price = null;
@@ -93,7 +96,7 @@
       };
 
       function init() {
-        $api.removeCls('loading','hide');
+        $api.removeCls('loading', 'hide');
         if (!checkNet() || !checkLogin()) return;
         User = $api.getStorage('User');
         $api.text('type', api.deviceModel);
@@ -107,8 +110,6 @@
           operation: {
             toast: false,
             success: function (data) {
-              price = data.Price;
-              outlay = data.FeiYong;
               $api.text('money', data.Price);
               $api.addCls('loading', 'hide');
             }
@@ -124,7 +125,7 @@
             toast: false,
             success: function (data) {
               var message = data.HYXX;
-              var card = data.YHK;
+              var card = data.YHK[0];
               User = $api.getStorage('User');
               if (card) User.Card = card.KaHao;
               User.Name = message.XingMing;
@@ -137,6 +138,15 @@
             }
           }
         });
+      }
+
+
+      function changeSrc() {
+        if ($api.byId('checkbox').checked) {
+          $api.attr('select', 'xlink:href', '#icon-btn_selected_n_');
+        } else {
+          $api.attr('select', 'xlink:href', '#icon-Checkbox_Selected');
+        }
       }
 
       function submit() {
@@ -158,23 +168,23 @@
           return;
         }
 
-        if (!User.Card) {
-          toast('请绑定银行卡');
-          create('add-bank-card');
-          kill();
-          return;
-        };
+        // if (!User.Card) {
+        //   toast('请绑定银行卡');
+        //   create('add-bank-card');
+        //   kill();
+        //   return;
+        // };
         request({
           url: 'SubmitApply',
           'data': {
             sj: User.Phone,
             deviceId: api.deviceId,
-            JinE: price,
-            QiXian: 14,
-            FeiYong: outlay,
+            JinE: '',
+            QiXian: '',
+            FeiYong: '',
             RuZhangKa: User.Card,
             txl: '',
-            ly: '0',
+            ly: '',
             PhoneName: '',
             PhoneModel: api.deviceModel,
             StorageSpace: '8',

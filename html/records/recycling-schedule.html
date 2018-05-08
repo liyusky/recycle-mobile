@@ -61,36 +61,36 @@
 
     function renderHtml(data) {
       var htmlStr = '';
-      if (data.length > 1) {
-        for (var i = 0; i < data.length; i++) {
-          htmlStr += setHtmltitle(data[i]);
-        }
-      } else {
-        htmlStr += setHtmltitle(data[0]);
-      }
-      
-      $api.html('order-list', htmlStr);
-    };
+         htmlStr += setHtmltitle(data[0]);
+         $api.html('order-list', htmlStr);
+  }
+
     function setHtmltitle(data) {
       var html = '';
       qx = data.DaoQiTianShu;
+      var price = null;
+      if(data.ZhuangTai == 0){
+        price = data.ShenQingJine;
+      }else{
+        price = data.DaoZhang;
+      }
       html += "<li class='recycle-list-item'>" +
         "<img src='../../image/records/recycle.png'  class='recycle'>" +
         "<div class='message'>" +
         "<p class='phonetype'>" +
         "<span class='type'>手机型号</span>" +
         "<span id='phone-type'>" + api.deviceModel + "</span>" +
-        "</p>" + 
+        "</p>" +
         "</div>" +
         "<div class='phone-price'> " +
         "<ul>" +
         "<li>" +
         "<p>手机估价</p>" +
-        "<span>"+data.DaoZhang+".00元</span>" +
+        "<span>"+price+"元</span>" +
         "</li>" +
         "<li>" +
         "<p>定金+预付款</p>" +
-        "<span>" + (data.DaoZhang + data.FeiYong) + ".00元</span>" +
+        "<span>" + (price + data.FeiYong) + ".00元</span>" +
         "</li>" +
         "<li>" +
         "<p>履约期</p>" +
@@ -135,46 +135,27 @@
       $api.html('scheduleList', htmlStr);
     }
 
-
     function renderList(data) {
-
-      var html = ' <div class="status">' +
-        ' <div class="list">' +
-        ' <ul id="list">' +
-        ' <li class="order-list">' +
-        '  <ul>' +
-        '<li class="currentstatus mark">' + data.ZT + '</li>' +
-        '<li class="message">' + data.FangKuanYiJian + '</li>' +
-        '<li class="time">' + data.FangKuanShiJian + '</li>' +
-        '</ul>' +
-        '</li>' +
-        '<li class="order-list">' +
-        '<ul>' +
-        '<li class="currentstatus">' + data.ZT + '</li>' +
-        '<li class="message">' + data.ShenHeYiJian + '</li>' +
-        '<li class="time">' + data.ShenHeShiJian + '</li>' +
-        '</ul>' +
-        ' </li>' +
-        '<li class="order-list bodrenone">' +
-        '<ul>' +
-        '<li class="currentstatus">' + data.ZT + '</li>' +
-        '<li class="message">您的订单已提交</li>' +
-        '<li class="time">' + data.JieKuanShiJian + '</li>' +
-        ' </ul>' +
-        '</li>' +
-        ' </ul>' +
-        '</div>' +
-        '<div class="schedule">' +
-        '<ul>' +
-        '<li class="statusicon"><img src="../../image/records/success.png" alt=""></li>' +
-        '<li class="connect"><img src="../../image/records/connect.png" alt=""></li>' +
-        '<li class="statusicon"><img src="../../image/records/currentstatus.png" alt=""></li>' +
-        '<li class="connect"><img src="../../image/records/connect.png" alt=""></li>' +
-        '<li class="statusicon"><img src="../../image/records/currentstatus.png" alt=""></li>' +
-        '</ul>' +
-        '</div>' +
-        '</div>';
-      return html;
+       return '<div class="records-details-status">' +
+            ' <div class="order-content">' +
+            ' <ul id="order-list">' +
+            '<li class="order-list-item bodrenone">' +
+            '<ul>' +
+            '<li class="currentstatus">' + data.ZT + '</li>' +
+            '<li class="message">您的订单已提交</li>' +
+            '<li class="time">' + data.JieKuanShiJian + '</li>' +
+            ' </ul>' +
+            '</li>' +
+            ' </ul>' +
+            '</div>' +
+            '<div class="schedule-icon">' +
+            '<ul>' +
+            '<li class="schedule-item status-success"><img src="../../image/records/success.png"></li>' +
+            '</ul>' +
+            '</div>' +
+            '</div>' +
+            '<div class="clear"></div>' +
+            '</div>';
     }
   </script>
 </body>
