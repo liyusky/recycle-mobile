@@ -56,7 +56,11 @@
         tip: '正在发送...',
         operation: {
           success: function (data) {
-            renderHtml(data);
+            if(data.length){
+              renderHtml(data);
+            }else{
+              toast('暂无订单详情');
+            }
           },
           fail: function (data) {
 
