@@ -46,7 +46,7 @@
   <script type="text/javascript" src="../../iconfont/iconfont.js"></script>
   <script type="text/javascript" charset="utf-8">
     var User = null;
-    var index = null;
+    var index = -1;
     var previewDom = null;
 
     apiready = function () {
@@ -103,7 +103,7 @@
       '邮政储蓄银行': '#icon-PSBC',
       '平安银行': '#icon-PABC',
       '农商银行': '#icon-OCB'
-  }
+    }
 
     function render(data) {
       var htmlStr = '';
@@ -111,32 +111,27 @@
         htmlStr += setHtmlStr(data[i], i);
       }
       $api.html('list', htmlStr);
-      var child = $api.byId('list').children;
-      for(var i=0;i<child.length;i++){
-        child[i].onOff = true;
-        child[i].onclick = function(){
-          index = $api.attr(this, 'data-index');
-          for(var i=0;i<child.length;i++){
-            var useicons = child[i].getElementsByTagName('use')[1];
-            $api.attr(useicons, 'xlink:href', '#icon-btn-selected');
-          }
-          var useicon = this.getElementsByTagName('use')[1];
-          $api.attr(useicon, 'xlink:href', '#icon-checkbox-selected');
-        }
-      }
     }
-  
+
+    function select(_this) {
+      if (previewDom) $api.attr('select-' + index, 'xlink:href', '#icon-btn-selected');
+      index = $api.attr(_this, 'data-index');
+      $api.attr('select-' + index, 'xlink:href', '#icon-checkbox-selected');
+      previewDom = _this;
+    }
+
     function submit() {
       if (!checkNet() || !checkLogin()) return;
-       if(typeof index == 'object'){
-         toast('请选择银行卡');
-       }else{
-         create({
-           goal: 'pay',
-           card: User.Card[index].KaHao,
-           phone: User.Card[index].YlShouJiHao
-         });
-       }
+      if (index < 0) {
+        toast('请选择银行卡');
+        return;
+      }
+      // alert(JSON.stringify(User.Card[index]))
+      create({
+        goal: 'pay',
+        card: User.Card[index].KaHao,
+        phone: User.Card[index].YLShouJiHao
+      });
     }
 
     function setListener() {
@@ -147,9 +142,9 @@
     }
 
     function setHtmlStr(card, i) {
-      return '<li data-index="' + i + '">' +
+      return '<li data-index="' + i + '" onclick="javascript: select(this);">' +
         '<div class="pay-type">' +
-        '<svg class="icon" aria-hidden="true">' +
+        '<svg class="bankicon" aria-hidden="true">' +
         '<use xlink:href= ' + bankImg[card.KaiHuHang] + '></use>' +
         '</svg>' +
         '<p class="bank-name">' + card.KaiHuHang + '</p>' +
@@ -164,7 +159,7 @@
         '<svg class="icon" aria-hidden="true">' +
         '<use xlink:href="#icon-btn-selected" id="select-' + i + '"></use>' +
         '</svg>' +
-        '</li>' ;
+        '</li>';
     }
 
     function saveCard(data) {

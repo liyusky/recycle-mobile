@@ -46,7 +46,7 @@
           'phone': User.Phone,
           'deviceId': api.deviceId,
         },
-        tip: '正在发送...',
+        tip: '正在获取银行卡...',
         operation: {
           toast: false,
           success: function (data) {
@@ -61,7 +61,6 @@
           sj: User.Phone,
           deviceId: api.deviceId
         },
-        tip: '正在加载...',
         operation: {
           toast: false,
           success: function (data) {
@@ -91,7 +90,7 @@
       if (!mark) return;
       $api.removeCls('btn', 'disabled');
       $api.removeAttr('btn', 'disabled');
-      $api.text('btn', '绑定银行卡');
+      $api.text('btn', '添加银行卡');
     }
 
     // 渲染银行卡列表
@@ -103,7 +102,7 @@
       }
       $api.html('my-bank-list', htmlStr);
     };
-    
+
     var bankval = {
       '光大银行': '../../image/wode/bank/gdyh-bg.png',
       '广发银行': '../../image/wode/bank/gfyh-bg.png',
@@ -121,10 +120,10 @@
       '招商银行': '../../image/wode/bank/zsyh-bg.png',
       '中信银行': '../../image/wode/bank/zxyh-bg.png'
     };
-    
+
     function setBankCardHTML(card) {
       return '<li>' +
-      '<img id="bank-image" src=' + bankval[card.KaiHuHang] + '>' +
+        '<img id="bank-image" src=' + bankval[card.KaiHuHang] + '>' +
         '<div class="card-message">' +
         '<p class="bank-type"></p>' +
         '<span class="card-type"></span>' +

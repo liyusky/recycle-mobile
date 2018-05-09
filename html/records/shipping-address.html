@@ -45,11 +45,12 @@
           'deviceId': api.deviceId,
           'phone': User.Phone
         },
-        tip: '正在发送...',
+        tip: '正在获取收货地址...',
         operation: {
+          toast:false,
           success: function (data) {
             if (data.length) {
-              render(data[0]);
+              render(data[data.length-1]);
               $api.addCls('noaddress', 'hide');
             } else {
               $api.removeCls('noaddress', 'hide');

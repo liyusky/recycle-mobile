@@ -244,8 +244,9 @@ header .header-title {
 .records-details-status .schedule-icon ul .status-success {
   position: relative;
   z-index: 2;
-  left: 2.4vw;
+  left: 3.9vw;
   display: inline-block;
+  color: #1f8cff;
 }
 
 .records-details-status .schedule-icon ul .records-details-statusicon img {

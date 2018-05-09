@@ -25,7 +25,7 @@
         <li id="step-1">
           <img src="../../image/wode/autonym.png" class="icon">
           <div class="box">
-            <h5 class="title">实名认证</h6>
+            <h5 class="title">实名认证</h5>
               <p class="list-text">身份信息认证</p>
           </div>
           <img src="../../image/wode/more.png" class="more">
@@ -34,7 +34,7 @@
         <li id="step-2">
           <img src="../../image/wode/communication.png" class="icon">
           <div class="box">
-            <h5 class="title">上传通讯录</h6>
+            <h5 class="title">上传通讯录</h5>
               <p class="list-text">个人通信录信息</p>
           </div>
           <img src="../../image/wode/more.png" class="more">
@@ -43,7 +43,7 @@
         <li id="step-3">
           <img src="../../image/wode/credit.png" class="icon">
           <div class="box">
-            <h5 class="title">芝麻信用认证</h6>
+            <h5 class="title">芝麻信用认证</h5>
               <p class="list-text">芝麻积分</p>
           </div>
           <img src="../../image/wode/more.png" class="more">
@@ -52,7 +52,7 @@
         <li id="step-4">
           <img src="../../image/wode/operator.png" class="icon">
           <div class="box">
-            <h5 class="title">运营商认证</h6>
+            <h5 class="title">运营商认证</h5>
               <p class="list-text">运营商信息认证</p>
           </div>
           <img src="../../image/wode/more.png" class="more">
@@ -72,7 +72,7 @@
         <li id="step-5">
           <img src="../../image/wode/alipay.png" class="icon">
           <div class="box">
-            <h5 class="title">支付宝</h6>
+            <h5 class="title">支付宝</h5>
               <p class="list-text">支付宝认证</p>
           </div>
           <img src="../../image/wode/more.png" class="more">
@@ -81,7 +81,7 @@
         <li id="step-6">
           <img src="../../image/wode/jdlogo.png" class="icon">
           <div class="box">
-            <h5 class="title">京东</h6>
+            <h5 class="title">京东</h5>
               <p class="list-text">京东认证</p>
           </div>
           <img src="../../image/wode/more.png" class="more">
@@ -142,8 +142,8 @@
           sj: User.Phone,
           deviceId: api.deviceId
         },
-        tip: '正在加载...',
         operation: {
+          toast:false,
           success: function (data) {
             render(data.HYXX);
           }
