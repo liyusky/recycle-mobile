@@ -23,12 +23,15 @@
     <div class="honour">
       <div class="time">
         <img src="../../image/records/time.png">
-        <span>履约期
-          <span id="period">0</span>天</span>
+        <span>
+          履约期
+          <span id="period">0</span>
+          天
+        </span>
       </div>
-      <div class="btn hide" onclick="javascript:cancel();" id="cancel">不卖了</div>
-      <div class="btn hide" onclick="javascript:confirm();" id="confirm">确定卖出填写寄回信息</div>
-      <div class="btn hide" onclick="javascript:contact();" id="contact">联系客服</div>
+      <div class="btn hide" onclick="javascript: cancel();" id="cancel">不卖了</div>
+      <div class="btn hide" onclick="javascript: confirm();" id="confirm">确定卖出填写寄回信息</div>
+      <div class="btn hide" onclick="javascript: contact();" id="contact">联系客服</div>
     </div>
   </div>
 
@@ -41,6 +44,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
     var id = '';
+    var User = null;
     apiready = function () {
       id = api.pageParam.id;
       if (!checkNet() || !checkLogin()) return;
@@ -49,7 +53,8 @@
     }
 
     function init() {
-      var User = $api.getStorage('User');
+      if (!checkNet() || !checkLogin()) return;
+      User = $api.getStorage('User');
       request({
         url: 'GetHYJKJL',
         data: {
@@ -71,8 +76,8 @@
           }
         }
       });
-    };
 
+    };
 
     function renderHtml(data) {
       var htmlStr = '';
@@ -92,9 +97,15 @@
       $api.text('period', data.DaoQiTianShu);
       var price = null,
         contact = false, // 联系客服
+<<<<<<< HEAD
         allno = false, // 什么按钮也没有
         other = false, // 不卖了 联系客服
         alung = false; //  不卖了  确定卖出
+=======
+        allno = true, // 什么按钮也没有
+        other = true, // 不卖了 联系客服
+        alung = true; //  不卖了  确定卖出
+>>>>>>> fad5d79789db1ce427664ba2f5638e8fd562d506
       switch (Number(data.ZhuangTai)) {
         case 0: //待审核
           allno = true;
@@ -164,13 +175,13 @@
         "<img src='../../image/records/recycle.png' class='recycle'>" +
         "<div class='message'>" +
         "<p class='phonetype'>" +
-        " <span class='type'>手机型号</span>" +
+        "<span class='type'>手机型号</span>" +
         "<span id='phone-type'>" + api.deviceModel + "</span>" +
-        "  </p>" +
+        "</p>" +
         "</div>" +
         "<div class='phone-price'>" +
         "<ul>" +
-        "  <li>" +
+        "<li>" +
         "<p>手机估价 </p>" +
         "<span>" + (price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine) + "元</span>" +
         "</li>" +
@@ -180,20 +191,20 @@
         "</li>" +
         "<li>" +
         "<img src='../../image/records/help.png' class='help'>" +
-        "  <p>履约期</p>" +
+        "<p>履约期</p>" +
         "<span>" + data.QiXian + "</span>" +
         "<span>天</span>" +
-        "  </li>" +
+        "</li>" +
         "</ul>" +
-        "  </div>" +
-        "  </li>";
+        "</div>" +
+        "</li>";
       $api.removeCls('footer', 'hide');
       return html;
     }
 
     function initList() {
       if (!checkNet() || !checkLogin()) return;
-      var User = $api.getStorage('User');
+      User = $api.getStorage('User');
       request({
         url: 'GetZXJD',
         data: {
@@ -206,9 +217,7 @@
           success: function (data) {
             renderContent(data);
           },
-          error: function () {
-
-          }
+          error: function () {}
         }
       });
     };
@@ -222,16 +231,16 @@
     function sethtml(data) {
       $api.removeCls('footer', 'hide');
       return '<div class="records-details-status">' +
-        ' <div class="order-content">' +
-        ' <ul id="order-list">' +
+        '<div class="order-content">' +
+        '<ul id="order-list">' +
         '<li class="order-list-item bodrenone">' +
         '<ul>' +
         '<li class="currentstatus">' + data.ZT + '</li>' +
         '<li class="message">您的订单已提交</li>' +
         '<li class="time">' + data.JieKuanShiJian + '</li>' +
-        ' </ul>' +
+        '</ul>' +
         '</li>' +
-        ' </ul>' +
+        '</ul>' +
         '</div>' +
         '<div class="schedule-icon">' +
         '<ul>' +
@@ -245,19 +254,40 @@
         '</div>';
     };
 
-
     function cancel() {
       create('refund');
     }
 
     function confirm() {
       create('add-recycle-address');
+<<<<<<< HEAD
     };
 
     function contact() {
       var QQModule = api.require('toQQ');
       QQModule.open({
         number: data.QQ
+=======
+    }
+
+    function contact() {
+      if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'GetQQ',
+        data: {
+          deviceId: api.deviceId,
+          sj: User.Phone
+        },
+        tip: false,
+        operation: {
+          toast: false,
+          success: function (data) {
+            var QQModule = api.require('toQQ');
+            QQModule.open({ number: data });
+          },
+          fail: function (data) {}
+        }
+>>>>>>> fad5d79789db1ce427664ba2f5638e8fd562d506
       });
     }
   </script>

@@ -65,6 +65,7 @@
           deviceId: api.deviceId
         },
         operation: {
+          toast: false,
           success: function (data) {
             $api.text('price', data.JinE);
           }
@@ -77,6 +78,7 @@
           deviceId: api.deviceId
         },
         operation: {
+          toast: false,
           success: function (data) {
             saveCard(data);
             render(data);
