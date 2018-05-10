@@ -30,7 +30,7 @@
         </div>
         <img src="" onclick="javascript: getImageCode(this);" id="getImg">
       </li>
-      <li class="item-input">
+      <li class="item-input setleft-code">
         <p class="item-input-Name">验证码</p>
         <div class="input-group">
         <input class="input-control" type="number" placeholder="请输入验证码" id="phone-code" maxlength="6">
@@ -49,14 +49,15 @@
       </li>
     </ul>
     <div class="register-explain">
-      <p class="protocol">
-        <input type="checkbox" id="checkbox">
-        <label for="checkbox">
-          <span class="icon">✔</span>
-          注册即同意
-          <span class="mark">《用户注册协议》</span>
-        </label>
-      </p>
+        <p class="protocol">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-btn-selected" id="select"></use>
+              </svg>
+          <input type="checkbox" id="checkbox">
+            <label for="checkbox" onclick="javascript:changeSrc()">    
+              我阅读并理解 《手机合同》
+            </label>
+        </p>
       </div>
     </div>
   <button class="btn" onclick="javascript: submit()">注册</button>
@@ -74,6 +75,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/readyToResend.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script src="../../iconfont/iconfont.js"></script>
   <script type="text/javascript" charset="utf-8">
     var User = null;
     var fullname = null;
@@ -114,9 +116,16 @@
     };
 
     function getImageCode(obj){
-      var imgurl = RequestProductURL['ImageCode'];
-      obj.src = imgurl+'&'+Math.random(); 
-    }
+      obj.src = obj.src+'&num'+Math.random(); 
+    };
+
+      function changeSrc(){
+        if($api.byId('checkbox').checked){
+          $api.attr('select','xlink:href','#icon-btn-selected');
+        }else{
+          $api.attr('select','xlink:href','#icon-checkbox-selected');
+        }
+      }
 
     function sendSMS(dom) {
       if (!checkNet()) return;

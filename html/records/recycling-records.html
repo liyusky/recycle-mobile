@@ -35,9 +35,9 @@
           'deviceId': api.deviceId,
           'phone': User.Phone,
         },
-        tip: '正在发送...',
+        tip: '正在获取回收记录...',
         operation: {
- toast: false,
+          toast:false,
           success: function (data) {
             if (data.length) {
               renderHtml(data);
@@ -55,19 +55,15 @@
 
     function renderHtml(data) {
       var htmlStr = '';
-      if (data.length > 1) {
-        for (var i = 0; i < data.length; i++) {
-          htmlStr += setHtmltitle(data[i]);
-        }
-      } else {
-        htmlStr += setHtmltitle(data[0]);
+      for (var i = 0; i < data.length; i++) {
+        htmlStr += setHtmltitle(data[i]);
       }
       $api.html('order-list', htmlStr);
     }
 
     function setHtmltitle(data) {
-
-      return htmlStr = "<li class='recycle-list-item' onclick=javascript:openDetails(" + data.JieKuanDanHao + ");>" +
+      var price;
+      return "<li class='recycle-list-item' onclick=javascript:openDetails(" + data.JieKuanDanHao + ");>" +
         "<img src='../../image/records/recycle.png'  class='recycle'>" +
         "<div class='message'>" +
         "<p class='phonetype'>" +
@@ -80,11 +76,11 @@
         "<ul>" +
         "<li>" +
         "<p>手机估价</p>" +
-        "<span>" + data.DaoZhang + ".00元</span>" +
+        "<span>"+ (price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine) +"元</span>" +
         "</li>" +
         "<li>" +
         "<p>定金+预付款</p>" +
-        "<span>" + (data.DaoZhang + data.FeiYong) + ".00元</span>" +
+        "<span>" + (price * 1 + data.FeiYong * 1) + ".00元</span>" +
         "</li>" +
         "<li>" +
         "<p>履约期</p>" +
@@ -96,7 +92,6 @@
         "</div>" +
         "</li>";
     }
-
 
 
     function openDetails(data) {

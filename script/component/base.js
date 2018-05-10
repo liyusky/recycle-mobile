@@ -167,7 +167,7 @@ function kill(goal) {
 function toast(msg) {
   api.toast({
     msg: msg,
-    duration: 2000,
+    duration: 1000,
     location: 'middle'
   });
 }

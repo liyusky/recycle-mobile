@@ -8,6 +8,7 @@
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
   <title>退款</title>
   <link rel="stylesheet" type="text/css" href="../../css/wode/refund.css">
+  <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
 </head>
 
 <body>
@@ -42,22 +43,15 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-  <script type="text/javascript" src="../../bankfont/iconfont.js"></script>
+  <script type="text/javascript" src="../../iconfont/iconfont.js"></script>
   <script type="text/javascript" charset="utf-8">
     var User = null;
-    var index = null;
+    var index = -1;
     var previewDom = null;
 
     apiready = function () {
       setListener();
       init();
-    }
-
-    function select(_this) {
-      if (previewDom) $api.attr('select-' + index, 'class', 'iconfont ');
-      index = $api.attr(_this, 'data-index');
-      $api.attr('select-' + index, 'class', 'iconfont icon-selected');
-      previewDom = _this;
     }
 
     function init() {
@@ -121,12 +115,24 @@
       $api.html('list', htmlStr);
     }
 
+    function select(_this) {
+      if (previewDom) $api.attr('select-' + index, 'xlink:href', '#icon-btn-selected');
+      index = $api.attr(_this, 'data-index');
+      $api.attr('select-' + index, 'xlink:href', '#icon-checkbox-selected');
+      previewDom = _this;
+    }
+
     function submit() {
       if (!checkNet() || !checkLogin()) return;
+      if (index < 0) {
+        toast('请选择银行卡');
+        return;
+      }
+      // alert(JSON.stringify(User.Card[index]))
       create({
         goal: 'pay',
         card: User.Card[index].KaHao,
-        phone: User.Card[index].YlShouJiHao
+        phone: User.Card[index].YLShouJiHao
       });
     }
 
@@ -140,8 +146,8 @@
     function setHtmlStr(card, i) {
       return '<li data-index="' + i + '" onclick="javascript: select(this);">' +
         '<div class="pay-type">' +
-        '<svg class="icon" aria-hidden="true">' +
-        '<use xlink:href="' + bankImg[card.KaiHuHang] + '"></use>' +
+        '<svg class="bankicon" aria-hidden="true">' +
+        '<use xlink:href= ' + bankImg[card.KaiHuHang] + '></use>' +
         '</svg>' +
         '<p class="bank-name">' + card.KaiHuHang + '</p>' +
         '<p class="cardnum">' +
@@ -152,7 +158,9 @@
         '<span class="card-type">储蓄卡</span>' +
         '</p>' +
         '</div>' +
-        '<i class="iconfont " class="select" id="select-' + i + '">' +
+        '<svg class="icon" aria-hidden="true">' +
+        '<use xlink:href="#icon-btn-selected" id="select-' + i + '"></use>' +
+        '</svg>' +
         '</li>';
     }
 

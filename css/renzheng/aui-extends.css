@@ -2436,7 +2436,7 @@ iframe {
   height: 100%;
   outline: none;
   border: none; 
-  padding-top: 17vw;
+  padding-top: -51px;
 }
 
 /* end iframe */

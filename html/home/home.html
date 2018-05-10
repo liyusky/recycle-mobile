@@ -128,7 +128,6 @@
             sj: User.Phone,
             deviceId: api.deviceId
           },
-          tip: '正在加载...',
           operation: {
             toast: false,
             success: function (data) {
@@ -208,7 +207,7 @@
           page = 'recycling-schedule';
           text = '查看详情';
           break;
-        case 1: //审核不通过
+        case 1: //审核不通过     
           page = 'offer';
           break;
         case 2: //待放款
@@ -216,8 +215,8 @@
           text = '查看详情';
           break;
         case 3: //已放款
-          page = 'refund';
           text = '不卖了';
+          page = 'refund';
           break;
         case 4: //已逾期
           page = 'refund';
@@ -252,6 +251,9 @@
         case 12: //交催收未还清
           page = 'refund';
           text = '不卖了';
+          break;
+        default:
+          page = 'offer';
           break;
       }
       $api.text('phone-btn', text);
