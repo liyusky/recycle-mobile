@@ -50,6 +50,7 @@
     var previewDom = null;
 
     apiready = function () {
+      if (!checkNet() && !checkLogin()) return;
       setListener();
       init();
     }

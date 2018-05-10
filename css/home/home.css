@@ -134,7 +134,7 @@ header .remind {
 
 .container .banner {
   width: 100vw;
-  height: 39vw;
+  height: 37vw;
   position: relative;
   z-index: 1;
   display: flex;
@@ -319,9 +319,6 @@ header .remind {
   height: 3.33333vh;
 }
 
-.container .recycle .recycleicon {
-  padding-left: 1vw;
-}
 
 .container .recycle .recycleicon .recyclebox {
   height: 22vw;

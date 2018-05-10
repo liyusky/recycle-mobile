@@ -24,6 +24,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8">
     apiready = function () {
+      if (!checkNet() || !checkLogin()) return;
       init();
     }
 
@@ -60,7 +61,7 @@
           htmlStr += setHtmltitle(data[i]);
         }
       } else {
-        htmlStr += setHtmltitle(data[data.length-1]);
+        htmlStr += setHtmltitle(data[0]);
       }
       $api.html('order-list', htmlStr);
     }
@@ -95,7 +96,9 @@
         "</ul>" +
         "</div>" +
         "</li>";
-    }
+    };
+
+    
 
 
     function openDetails(data) {

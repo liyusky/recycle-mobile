@@ -91,71 +91,71 @@
     function setHtmltitle(data) {
       $api.text('period', data.DaoQiTianShu);
       var price = null,
-        contact = true, // 联系客服
-        allno = true, // 什么按钮也没有
-        other = true, // 不卖了 联系客服
-        alung = true; //  不卖了  确定卖出
+        contact = false, // 联系客服
+        allno = false, // 什么按钮也没有
+        other = false, // 不卖了 联系客服
+        alung = false; //  不卖了  确定卖出
       switch (Number(data.ZhuangTai)) {
         case 0: //待审核
-          allno = false;
+          allno = true;
           break;
         case 1: //审核不通过  
-          allno = false;
+          allno = true;
           break;
         case 2: //待放款
-          contact = false;
+          contact = true;
           break;
         case 3: //已放款
-          other = false;
+          other = true;
           break;
         case 4: //已逾期
-          other = false;
+          other = true;
           break;
         case 5: //已还款          
-          allno = false;
+          allno = true;
           break;
         case 6: //已交催收
-          other = false;
+          other = true;
           break;
         case 7: //交催收已还
-          allno = false;
+          allno = true;
           break;
         case 8: //交催收未还
-          contact = false;
+          contact = true;
           break;
         case 9: //初审通过
-          contact = false;
+          contact = true;
           break;
         case 10: //交催收延期
-          contact = false;
+          contact = true;
           break;
         case 11: //未还清
-          other = false;
+          other = true;
           break;
         case 12: //交催收未还清
-          contact = false;
+          contact = true;
           break;
         default:
           break;
       };
       // 联系客服
-      if (!contact) {
+      if (contact) {
         $api.addCls('confirm', 'hide');
         $api.removeCls('contact', 'hide');
       };
       // 什么都没有
-      if (!allno) {
+      if (allno) {
         $api.addCls('contact', 'hide');
         $api.addCls('cancel', 'hide');
         $api.addCls('confirm', 'hide');
       }
       // 不卖了 联系客服
-      if (!other) {
+      if (other) {
         $api.removeCls('cancel', 'hide');
         $api.removeCls('contact', 'hide');
       };
       // 确定卖出 不卖了
-      if (!alung) {
+      if (alung) {
         $api.removeCls('cancel', 'hide');
         $api.removeCls('confirm', 'hide');
       };
@@ -248,92 +248,17 @@
 
     function cancel() {
       create('refund');
-      //     var name = $api.val('name');
-      //     var phone = $api.val('phone');
-      //     User = $api.getStorage('User');
-      //     var mark = false;
-      //     var status;
-      //         request({
-      //           url: 'ApplyStatus',
-      //           data: {
-      //             sj: User.Phone,
-      //             deviceId: api.deviceId
-      //           },
-      //           operation: {
-      //             success: function (data) {
-      //                status = data.ZhuangTai;
-      //             }
-      //           }
-      //         });
-
-      //         switch(status){
-      //           case 3:
-      //           mark = true;
-      //           break;
-      //           case 4:
-      //           mark = true;
-      //           break;
-      //           case 6:
-      //           mark = true;
-      //           break;
-      //           case 8:
-      //           mark = true;
-      //           break;
-      //           case 10:
-      //           mark = true;
-      //           break;
-      //           case 11:
-      //           mark = true;
-      //           break;
-      //           case 12:
-      //           mark = true;
-      //           break;
-      //         };
-      //   if(mark){
-      //       request({
-      //           url: 'GetHYJKJL',
-      //           data: {
-      //               'deviceId': api.deviceId,
-      //               'Id': '',
-      //               'UserPhone': phone,
-      //               'Addressee': name,
-      //               'AddresseePhone': phone
-      //           },
-      //           tip: '正在发送...',
-      //           operation: {
-      //               success: function(data) {
-      //                 create('refund');
-      //               },
-      //               fail: function() {
-      //               }
-      //           }
-      //       });
     }
 
-
     function confirm() {
-      // var name = $api.val('name');
-      // var phone = $api.val('phone');
-      // var addressCurrent = $api.val('address-current');
-      // var addressDetail = $api.val('address-detail');
-      // request({
-      //     url: 'add-address',
-      //     data: {
-      //         'deviceId': api.deviceId,
-      //         'Id': '',
-      //         'UserPhone': phone,
-      //         'Addressee': name,
-      //         'AddresseePhone': phone,
-      //         'CrrentAddress': addressCurrent,
-      //         'DetailAddress': addressDetail
-      //     },
-      //     tip: '正在发送...',
-      //     operation: {
-      //         success: function(data) {
       create('add-recycle-address');
-      //         }
-      //     }
-      // });
+    };
+
+    function contact() {
+      var QQModule = api.require('toQQ');
+      QQModule.open({
+        number: data.QQ
+      });
     }
   </script>
 </body>

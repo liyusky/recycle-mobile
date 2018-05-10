@@ -30,7 +30,7 @@ var productionAppApi = {
 var RequestProductURL = {
   'ApplyStatus': 'http://118.31.104.145:9001/JDBService.svc/GetZXJD', // home 申请状态
   'PhonePrice': 'http://118.31.104.145:9001/JDBService.svc/GetPhonePrice', // offer 申请状态
-  'SubmitApply': 'http://118.31.104.145:9001/JDBService.svc/GetPhonePrice', // offer 提交定胆
+  'SubmitApply': 'http://118.31.104.145:9001/JDBService.svc/ShanDianDai', // offer 提交定胆
   'UserRegister': 'http://118.31.104.145:9001/JDBService.svc/UserRegister', // register 用户注册
   'UserLogin': 'http://118.31.104.145:9001/JDBService.svc/UserLogin', // login 用户登陆
   'FindPassword': 'http://118.31.104.145:9001/JDBService.svc/FindPass', // 找回密码
