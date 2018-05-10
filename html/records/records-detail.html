@@ -97,15 +97,9 @@
       $api.text('period', data.DaoQiTianShu);
       var price = null,
         contact = false, // 联系客服
-<<<<<<< HEAD
         allno = false, // 什么按钮也没有
         other = false, // 不卖了 联系客服
         alung = false; //  不卖了  确定卖出
-=======
-        allno = true, // 什么按钮也没有
-        other = true, // 不卖了 联系客服
-        alung = true; //  不卖了  确定卖出
->>>>>>> fad5d79789db1ce427664ba2f5638e8fd562d506
       switch (Number(data.ZhuangTai)) {
         case 0: //待审核
           allno = true;
@@ -260,14 +254,6 @@
 
     function confirm() {
       create('add-recycle-address');
-<<<<<<< HEAD
-    };
-
-    function contact() {
-      var QQModule = api.require('toQQ');
-      QQModule.open({
-        number: data.QQ
-=======
     }
 
     function contact() {
@@ -287,7 +273,6 @@
           },
           fail: function (data) {}
         }
->>>>>>> fad5d79789db1ce427664ba2f5638e8fd562d506
       });
     }
   </script>
