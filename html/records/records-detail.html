@@ -261,20 +261,17 @@
       request({
         url: 'GetQQ',
         data: {
-          'deviceId': api.deviceId,
-          'phone': User.Phone
+          deviceId: api.deviceId,
+          sj: User.Phone
         },
         tip: false,
         operation: {
           toast: false,
           success: function (data) {
             var QQModule = api.require('toQQ');
-            QQModule.open({
-              number: data
-            });
+            QQModule.open({ number: data });
           },
-          fail: function (data) {
-          }
+          fail: function (data) {}
         }
       });
     }
