@@ -16,9 +16,62 @@
     <img src="../../image/common/back.png" class="back" onclick="javascript:kill();">
     <p class="header-title">回收进度</p>
   </header>
-  <div class="order-list" id="order-list">
+  <div class="order-list" >
+    <ul id="order-list">
+      <li class="recycle-list-item">
+          <img src="../../image/records/recycle.png" class="recycle">
+          <div class="message">
+            <p class="phonetype">
+              <span class="type">手机型号</span>
+              <span id="phone-type"></span>
+            </p>
+          </div>
+          <div class="phone-price">
+            <ul>
+              <li>
+                <p>手机估价</p>
+                <span id="money"></span>
+              </li>
+              <li>
+                <p>定金+预付款</p>
+                <span id="total"></span>
+              </li>
+              <li>
+                <p>履约期</p>
+                <span id="deadline"></span>
+                <span>天</span>
+                <img src="../../image/records/help.png" class="help">
+              </li>
+            </ul>
+          </div>
+        </li>
+    </ul>
   </div>
-  <div id="scheduleList"></div>
+  <div id="scheduleList">
+    <div class="records-details-status">
+      <div class="order-content">
+        <ul id="order-list">
+          <li class="order-list-item bodrenone">
+            <ul>
+              <li class="currentstatus" id="currentStatus"></li>
+              <li class="message">您的订单已提交</li>
+              <li class="time" id="orderTime"></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="schedule-icon">
+        <ul>
+          <li class="schedule-item status-success">
+            <i class="iconfont success">&#xe6a2;</i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+  </div>
   <div class="hide" id="footer">
     <div class="honour">
       <div class="time">
@@ -42,29 +95,25 @@
     var qx = '0';
     apiready = function () {
       var qx = '0';
+      $api.text('phone-type',api.deviceModel);
       if (!checkNet() || !checkLogin()) return;
       init();
-      initList();
     }
 
     // 获取记录
     function init() {
       var User = $api.getStorage('User');
       request({
-        url: 'GetHYJKJL',
+        url: 'GetZXJD',
         data: {
           'deviceId': api.deviceId,
-          'phone': User.Phone
+          'sj': User.Phone
         },
         tip: '获取进度中...',
         operation: {
           toast: false,
           success: function (data) {
-            if (data.length) {
-              renderHtml(data[data.length - 1]);
-            } else {
-              toast('暂时还没有回收记录');
-            }
+            setHtmltitle(data);
           },
           fail: function (data) {
 
@@ -72,13 +121,6 @@
         }
       });
     };
-
-
-    function renderHtml(data) {
-      var htmlStr = '';
-      htmlStr += setHtmltitle(data);
-      $api.html('order-list', htmlStr);
-    }
 
     function setHtmltitle(data) {
       $api.text('period', data.DaoQiTianShu);
@@ -152,97 +194,19 @@
         $api.removeCls('cancel', 'hide');
         $api.removeCls('confirm', 'hide');
       };
-
-      html += "<li class='recycle-list-item'>" +
-        "<img src='../../image/records/recycle.png'  class='recycle'>" +
-        "<div class='message'>" +
-        "<p class='phonetype'>" +
-        "<span class='type'>手机型号</span>" +
-        "<span id='phone-type'>" + api.deviceModel + "</span>" +
-        "</p>" +
-        "</div>" +
-        "<div class='phone-price'> " +
-        "<ul>" +
-        "<li>" +
-        "<p>手机估价</p>" +
-        "<span>" + (price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine) + "元</span>" +
-        "</li>" +
-        "<li>" +
-        "<p>定金+预付款</p>" +
-        "<span>" + (price * 1 + data.FeiYong * 1) + ".00元</span>" +
-        "</li>" +
-        "<li>" +
-        "<p>履约期</p>" +
-        "<span>" + data.QiXian + "</span>" +
-        "<span>天</span>" +
-        "<img src='../../image/records/help.png' class='help'>" +
-        "</li>" +
-        "</ul>" +
-        "</div>" +
-        "</li>";
+      $api.text('money',data.ShenQingJine+'.00元');
+      $api.text('total',data.JinE+'.00元');
+      $api.text('deadline',data.QiXian);
+      $api.text('currentStatus',data.ZT);
+      $api.text('orderTime',data.JieKuanShiJian);
+      $api.text('period',data.TrackDays);
       $api.removeCls('footer', 'hide');
-      return html;
     };
 
     function confirm() {
       create('add-recycle-address');
     }
 
-    // 获取进度
-    function initList() {
-      if (!checkNet() || !checkLogin()) return;
-      if (!$api.getStorage('User')) return;
-
-      var User = $api.getStorage('User');
-      request({
-        url: 'GetZXJD',
-        data: {
-          sj: User.Phone,
-          deviceId: api.deviceId
-        },
-        'tip': '正在获取回收进度...',
-        operation: {
-          toast: false,
-          success: function (data) {
-            renderListHtml(data);
-          },
-          error: function () {
-
-          }
-        }
-      });
-    };
-
-    function renderListHtml(data) {
-      var htmlStr = '';
-      htmlStr += renderList(data);
-      $api.html('scheduleList', htmlStr);
-    }
-
-    function renderList(data) {
-      return '<div class="records-details-status">' +
-        ' <div class="order-content">' +
-        ' <ul id="order-list">' +
-        '<li class="order-list-item bodrenone">' +
-        '<ul>' +
-        '<li class="currentstatus">' + data.ZT + '</li>' +
-        '<li class="message">您的订单已提交</li>' +
-        '<li class="time">' + data.JieKuanShiJian + '</li>' +
-        ' </ul>' +
-        '</li>' +
-        ' </ul>' +
-        '</div>' +
-        '<div class="schedule-icon">' +
-        '<ul>' +
-        '<li class="schedule-item status-success">' +
-        '<i class="iconfont success">&#xe6a2;</i>' +
-        '</li>' +
-        '</ul>' +
-        '</div>' +
-        '</div>' +
-        '<div class="clear"></div>' +
-        '</div>';
-    };
 
     function contact() {
       if (!checkNet() || !checkLogin()) return;
@@ -257,12 +221,20 @@
           toast: false,
           success: function (data) {
             var QQModule = api.require('toQQ');
-            QQModule.open({ number: data });
+            QQModule.open({
+              number: data
+            });
           },
           fail: function (data) {}
         }
       });
+    };
+
+    
+    function cancel() {
+      create('refund');
     }
+
   </script>
 </body>
 

@@ -279,6 +279,9 @@ header .header-title {
   margin-right: 1vw;
   display: inline-block;
 }
+.honour .time p{
+  display: inline-block;
+}
 
  .honour .time span {
   font-size: 5.06667vw;
