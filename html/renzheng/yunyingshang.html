@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui.css">
   <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui-extends.css">
   <link rel="stylesheet" type="text/css" href="../../iconfont/iconfont.css">
-	<script type="text/javascript" charset="utf-8" src="../../iconfont/iconfont.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../iconfont/iconfont.js"></script>
 </head>
 
 <body class="yunyingshang background-write">
@@ -49,11 +49,11 @@
         },
         tip: false,
         operation: {
+          toast: false,
           success: function (data) {
             $api.attr('iframe', 'src', data.postURL);
           },
-          fail: function () {
-          }
+          fail: function () {}
         }
       });
     }
@@ -80,8 +80,7 @@
                     User.Certification[3] = true;
                     $api.setStorage('User');
                     sendCloseStepEvent();
-                  }
-                  else {
+                  } else {
                     toast('认证失败');
                   }
                 }
@@ -93,7 +92,9 @@
     }
 
     function sendCloseStepEvent() {
-      api.sendEvent({ name: 'CLOSE-STEP-EVENT' });
+      api.sendEvent({
+        name: 'CLOSE-STEP-EVENT'
+      });
     }
   </script>
 </body>

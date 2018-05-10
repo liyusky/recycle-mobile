@@ -42,8 +42,9 @@
           'deviceId': api.deviceId,
           'phone': User.Phone
         },
-        tip: '正在发送...',
+        tip: false,
         operation: {
+ toast: false,
           success: function (data) {
             if (data.length) {
               renderHtml(data);
@@ -117,8 +118,9 @@
           sj: User.Phone,
           deviceId: api.deviceId
         },
-        'tip': '正在发送...',
+        'tip': false,
         operation: {
+ toast: false,
           success: function (data) {
             renderListHtml(data);
           },

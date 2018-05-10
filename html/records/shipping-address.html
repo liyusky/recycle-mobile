@@ -45,8 +45,9 @@
           'deviceId': api.deviceId,
           'phone': User.Phone
         },
-        tip: '正在发送...',
+        tip: false,
         operation: {
+ toast: false,
           success: function (data) {
             if (data.length) {
               render(data[0]);
