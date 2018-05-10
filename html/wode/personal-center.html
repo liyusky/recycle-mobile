@@ -116,7 +116,6 @@
   <script type="text/javascript">
     var User = null;
     apiready = function () {
-    if (!checkNet() && !checkLogin()) return;
       setListener();
       init();
     }
@@ -126,7 +125,7 @@
       render();
     };
 
-    function render() { 
+    function render() {
       User = $api.getStorage('User');
       if (User.Status) {
         $api.addCls('btn-group', 'hide');

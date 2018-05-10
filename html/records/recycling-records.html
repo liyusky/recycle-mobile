@@ -56,13 +56,9 @@
 
     function renderHtml(data) {
       var htmlStr = '';
-      if (data.length > 1) {
         for (var i = 0; i < data.length; i++) {
           htmlStr += setHtmltitle(data[i]);
         }
-      } else {
-        htmlStr += setHtmltitle(data[data.length-1]);
-      }
       $api.html('order-list', htmlStr);
     }
 
