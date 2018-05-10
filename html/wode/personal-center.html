@@ -116,6 +116,7 @@
   <script type="text/javascript">
     var User = null;
     apiready = function () {
+    if (!checkNet() && !checkLogin()) return;
       setListener();
       init();
     }

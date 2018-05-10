@@ -61,7 +61,7 @@
           toast: false,
           success: function (data) {
             if (data.length) {
-              renderHtml(data);
+              renderHtml(data[data.length - 1]);
             } else {
               toast('暂时还没有回收记录');
             }
@@ -76,7 +76,7 @@
 
     function renderHtml(data) {
       var htmlStr = '';
-      htmlStr += setHtmltitle(data[data.length - 1]);
+      htmlStr += setHtmltitle(data);
       $api.html('order-list', htmlStr);
     }
 
@@ -84,71 +84,71 @@
       $api.text('period', data.DaoQiTianShu);
       var html = '';
       var price = null,
-        contact = true, // 联系客服
-        allno = true, // 什么按钮也没有
-        other = true, // 不卖了 联系客服
-        alung = true; // 确定卖出  不卖了
+        contact = false, // 联系客服
+        allno = false, // 什么按钮也没有
+        other = false, // 不卖了 联系客服
+        alung = false; // 确定卖出  不卖了
       switch (Number(data.ZhuangTai)) {
         case 0: //待审核
-          allno = false;
+          allno = true;
           break;
         case 1: //审核不通过  
-          allno = false;
+          allno = true;
           break;
         case 2: //待放款
-          contact = false;
+          contact = true;
           break;
         case 3: //已放款
-          other = false;
+          other = true;
           break;
         case 4: //已逾期
-          other = false;
+          other = true;
           break;
         case 5: //已还款          
-          allno = false;
+          allno = true;
           break;
         case 6: //已交催收
-          other = false;
+          other = true;
           break;
         case 7: //交催收已还
-          allno = false;
+          allno = true;
           break;
         case 8: //交催收未还
-          contact = false;
+          contact = true;
           break;
         case 9: //初审通过
-          contact = false;
+          contact = true;
           break;
         case 10: //交催收延期
-          contact = false;
+          contact = true;
           break;
         case 11: //未还清
-          other = false;
+          other = true;
           break;
         case 12: //交催收未还清
-          contact = false;
+          contact = true;
           break;
         default:
           break;
       };
       // 联系客服
-      if (!contact) {
+      if (contact) {
         $api.addCls('confirm', 'hide');
         $api.removeCls('contact', 'hide');
       };
       // 什么都没有
-      if (!allno) {
+      if (allno) {
         $api.addCls('contact', 'hide');
         $api.addCls('cancel', 'hide');
         $api.addCls('confirm', 'hide')
       }
       // 不卖了 联系客服
-      if (!other) {
+      if (other) {
         $api.removeCls('cancel', 'hide');
         $api.removeCls('contact', 'hide');
       };
       // 确定卖出 不卖了
-      if (!alung) {
+      if (alung) {
         $api.removeCls('cancel', 'hide');
         $api.removeCls('confirm', 'hide');
       };
@@ -242,6 +242,26 @@
         '</div>' +
         '<div class="clear"></div>' +
         '</div>';
+    };
+
+    function contact() {
+      if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'GetQQ',
+        data: {
+          deviceId: api.deviceId,
+          sj: User.Phone
+        },
+        tip: false,
+        operation: {
+          toast: false,
+          success: function (data) {
+            var QQModule = api.require('toQQ');
+            QQModule.open({ number: data });
+          },
+          fail: function (data) {}
+        }
+      });
     }
   </script>
 </body>
