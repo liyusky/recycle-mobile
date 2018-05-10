@@ -29,9 +29,9 @@
           天
         </span>
       </div>
-      <div class="btn hide" onclick="javascript:cancel();" id="cancel">不卖了</div>
-      <div class="btn hide" onclick="javascript:confirm();" id="confirm">确定卖出填写寄回信息</div>
-      <div class="btn hide" onclick="javascript:contact();" id="contact">联系客服</div>
+      <div class="btn hide" onclick="javascript: cancel();" id="cancel">不卖了</div>
+      <div class="btn hide" onclick="javascript: confirm();" id="confirm">确定卖出填写寄回信息</div>
+      <div class="btn hide" onclick="javascript: contact();" id="contact">联系客服</div>
     </div>
   </div>
 
@@ -44,6 +44,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
     var id = '';
+    var User = null;
     apiready = function () {
       id = api.pageParam.id;
       if (!checkNet() || !checkLogin()) return;
@@ -52,7 +53,8 @@
     }
 
     function init() {
-      var User = $api.getStorage('User');
+      if (!checkNet() || !checkLogin()) return;
+      User = $api.getStorage('User');
       request({
         url: 'GetHYJKJL',
         data: {
@@ -74,6 +76,7 @@
           }
         }
       });
+
     };
 
     function renderHtml(data) {
@@ -93,7 +96,7 @@
     function setHtmltitle(data) {
       $api.text('period', data.DaoQiTianShu);
       var price = null,
-        contact = true, // 联系客服
+        contact = false, // 联系客服
         allno = true, // 什么按钮也没有
         other = true, // 不卖了 联系客服
         alung = true; //  不卖了  确定卖出
@@ -105,7 +108,7 @@
           allno = false;
           break;
         case 2: //待放款
-          contact = false;
+          contact = true;
           break;
         case 3: //已放款
           other = false;
@@ -123,25 +126,25 @@
           allno = false;
           break;
         case 8: //交催收未还
-          contact = false;
+          contact = true;
           break;
         case 9: //初审通过
-          contact = false;
+          contact = true;
           break;
         case 10: //交催收延期
-          contact = false;
+          contact = true;
           break;
         case 11: //未还清
           other = false;
           break;
         case 12: //交催收未还清
-          contact = false;
+          contact = true;
           break;
         default:
           break;
       };
       // 联系客服
-      if (!contact) {
+      if (contact) {
         $api.addCls('confirm', 'hide');
         $api.removeCls('contact', 'hide');
       };
@@ -195,7 +198,7 @@
 
     function initList() {
       if (!checkNet() || !checkLogin()) return;
-      var User = $api.getStorage('User');
+      User = $api.getStorage('User');
       request({
         url: 'GetZXJD',
         data: {
@@ -208,8 +211,7 @@
           success: function (data) {
             renderContent(data);
           },
-          error: function () {
-          }
+          error: function () {}
         }
       });
     };
@@ -223,16 +225,16 @@
     function sethtml(data) {
       $api.removeCls('footer', 'hide');
       return '<div class="records-details-status">' +
-        ' <div class="order-content">' +
-        ' <ul id="order-list">' +
+        '<div class="order-content">' +
+        '<ul id="order-list">' +
         '<li class="order-list-item bodrenone">' +
         '<ul>' +
         '<li class="currentstatus">' + data.ZT + '</li>' +
         '<li class="message">您的订单已提交</li>' +
         '<li class="time">' + data.JieKuanShiJian + '</li>' +
-        ' </ul>' +
+        '</ul>' +
         '</li>' +
-        ' </ul>' +
+        '</ul>' +
         '</div>' +
         '<div class="schedule-icon">' +
         '<ul>' +
@@ -253,7 +255,29 @@
     function confirm() {
       create('add-recycle-address');
     }
-  
+
+    function contact() {
+      if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'GetQQ',
+        data: {
+          'deviceId': api.deviceId,
+          'phone': User.Phone
+        },
+        tip: false,
+        operation: {
+          toast: false,
+          success: function (data) {
+            var QQModule = api.require('toQQ');
+            QQModule.open({
+              number: data
+            });
+          },
+          fail: function (data) {
+          }
+        }
+      });
+    }
   </script>
 </body>
 
