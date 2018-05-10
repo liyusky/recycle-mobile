@@ -31,7 +31,7 @@ function AppStatusHandle(ret, err, operation) {
     operation(ret, err);
     return;
   }
-  if (operation.hasOwnProperty(toast)) {
+  if (operation.hasOwnProperty('toast')) {
     toastAllow = operation.toast;
   }
 
@@ -40,7 +40,8 @@ function AppStatusHandle(ret, err, operation) {
   } catch (e) {}
 
   if (ret) {
-    if (ret.Msg && (toastAllow || ret.Code != 0)) toast(ret.Msg);
+    
+    if (ret.Msg && (toastAllow || ret.Code != 1)) toast(ret.Msg);
     switch (ret.Code) {
       case 0:
         try {

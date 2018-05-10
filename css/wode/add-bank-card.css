@@ -153,6 +153,15 @@ header .compile {
   background: #fff;
   border-bottom: 1px solid #cbcbcb;
   padding-left: 5.86667vw;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: flex-start;
+  -webkit-box-pack: flex-start;
+  -webkit-justify-content: flex-start;
 }
 
 .addbank .bank-list-compile .item-add-bankcontent .item-addbank-msg {
@@ -169,8 +178,7 @@ header .compile {
   outline: none;
   border: none;
   font-size: 3.6vw;
-  height: 11.33333vw;
-  line-height: 11.33333vw;
+  padding: 3.5vw;
 }
 
 .addbank .bank-list-compile .item-add-bankcontent .sendmesg {
