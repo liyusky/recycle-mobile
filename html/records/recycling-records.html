@@ -24,6 +24,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8">
     apiready = function () {
+      if (!checkNet() || !checkLogin()) return;
       init();
     }
 
@@ -55,9 +56,9 @@
 
     function renderHtml(data) {
       var htmlStr = '';
-      for (var i = 0; i < data.length; i++) {
-        htmlStr += setHtmltitle(data[i]);
-      }
+        for (var i = 0; i < data.length; i++) {
+          htmlStr += setHtmltitle(data[i]);
+        }
       $api.html('order-list', htmlStr);
     }
 
@@ -76,7 +77,7 @@
         "<ul>" +
         "<li>" +
         "<p>手机估价</p>" +
-        "<span>"+ (price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine) +"元</span>" +
+        "<span>"+ (price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine) +".00元</span>" +
         "</li>" +
         "<li>" +
         "<p>定金+预付款</p>" +
@@ -91,8 +92,9 @@
         "</ul>" +
         "</div>" +
         "</li>";
-    }
+    };
 
+  
 
     function openDetails(data) {
       create({
