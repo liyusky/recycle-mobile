@@ -245,9 +245,22 @@
     };
 
     function contact() {
-      var QQModule = api.require('toQQ');
-      QQModule.open({
-        number: data.QQ
+      if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'GetQQ',
+        data: {
+          deviceId: api.deviceId,
+          sj: User.Phone
+        },
+        tip: false,
+        operation: {
+          toast: false,
+          success: function (data) {
+            var QQModule = api.require('toQQ');
+            QQModule.open({ number: data });
+          },
+          fail: function (data) {}
+        }
       });
     }
   </script>

@@ -61,7 +61,7 @@
           htmlStr += setHtmltitle(data[i]);
         }
       } else {
-        htmlStr += setHtmltitle(data[0]);
+        htmlStr += setHtmltitle(data[data.length-1]);
       }
       $api.html('order-list', htmlStr);
     }
