@@ -97,33 +97,39 @@
       $api.text('period', data.DaoQiTianShu);
       var price = null,
         contact = false, // 联系客服
+<<<<<<< HEAD
+        allno = false, // 什么按钮也没有
+        other = false, // 不卖了 联系客服
+        alung = false; //  不卖了  确定卖出
+=======
         allno = true, // 什么按钮也没有
         other = true, // 不卖了 联系客服
         alung = true; //  不卖了  确定卖出
+>>>>>>> fad5d79789db1ce427664ba2f5638e8fd562d506
       switch (Number(data.ZhuangTai)) {
         case 0: //待审核
-          allno = false;
+          allno = true;
           break;
         case 1: //审核不通过  
-          allno = false;
+          allno = true;
           break;
         case 2: //待放款
           contact = true;
           break;
         case 3: //已放款
-          other = false;
+          other = true;
           break;
         case 4: //已逾期
-          other = false;
+          other = true;
           break;
         case 5: //已还款          
-          allno = false;
+          allno = true;
           break;
         case 6: //已交催收
-          other = false;
+          other = true;
           break;
         case 7: //交催收已还
-          allno = false;
+          allno = true;
           break;
         case 8: //交催收未还
           contact = true;
@@ -135,7 +141,7 @@
           contact = true;
           break;
         case 11: //未还清
-          other = false;
+          other = true;
           break;
         case 12: //交催收未还清
           contact = true;
@@ -149,18 +155,18 @@
         $api.removeCls('contact', 'hide');
       };
       // 什么都没有
-      if (!allno) {
+      if (allno) {
         $api.addCls('contact', 'hide');
         $api.addCls('cancel', 'hide');
         $api.addCls('confirm', 'hide');
       }
       // 不卖了 联系客服
-      if (!other) {
+      if (other) {
         $api.removeCls('cancel', 'hide');
         $api.removeCls('contact', 'hide');
       };
       // 确定卖出 不卖了
-      if (!alung) {
+      if (alung) {
         $api.removeCls('cancel', 'hide');
         $api.removeCls('confirm', 'hide');
       };
@@ -254,6 +260,14 @@
 
     function confirm() {
       create('add-recycle-address');
+<<<<<<< HEAD
+    };
+
+    function contact() {
+      var QQModule = api.require('toQQ');
+      QQModule.open({
+        number: data.QQ
+=======
     }
 
     function contact() {
@@ -273,6 +287,7 @@
           },
           fail: function (data) {}
         }
+>>>>>>> fad5d79789db1ce427664ba2f5638e8fd562d506
       });
     }
   </script>
