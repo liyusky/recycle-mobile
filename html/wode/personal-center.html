@@ -8,10 +8,6 @@
   <meta name="format-detection" content="telephone=no">
   <title>个人中心</title>
   <link rel="stylesheet" type="text/css" href="../../css/wode/personal-center.css">
-
-
-  <style>
-  </style>
 </head>
 
 <body>
@@ -150,7 +146,8 @@
     function gotoPage(goal) {
       if (goal == 'login' || goal == 'register') {
         if (!checkNet()) return;
-      } else if (!checkNet() || !checkLogin()) {
+      }
+      else if (!checkNet() || !checkLogin()) {
         return;
       }
       create(goal);
