@@ -178,6 +178,10 @@ header .header-title {
   float: left;
 }
 
+.login .areacode span{
+  font-size: 4.8vw
+}
+
 .login .phone {
   outline: none;
   border: none;

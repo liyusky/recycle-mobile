@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="../../css/wode/personal-center.css">
 </head>
 
-<body>
+<body id="body">
 
   <header id="header">
     <img src="../../image/wode/banner.png" class="banner">
@@ -96,6 +96,17 @@
         <img src="../../image/wode/more.png" class="more">
       </div>
     </li>
+    <li class="list-item" onclick="javascript: contact();">
+        <div class="list-icon">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-lianxikefu"></use>
+          </svg>
+        </div>
+        <div class="list-message">
+          <p class="item-content">联系客服</p>
+          <img src="../../image/wode/more.png" class="more">
+        </div>
+      </li>
   </ul>
   <footer id="footer">
     <p class="tel">客服电话: 400-078-8866</p>
@@ -107,7 +118,10 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleShow.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" src="../../iconfont/iconfont.js"></script>
   <script type="text/javascript">
     var User = null;
@@ -117,7 +131,6 @@
     }
 
     function init() {
-      $api.byId('footer').style.top = $api.byId('header').offsetHeight + $api.byId('list').offsetHeight + 'px';
       render();
     };
 
@@ -151,6 +164,29 @@
         return;
       }
       create(goal);
+    };
+
+    function contact(){
+      if (!checkNet()) return;
+      request({
+        url: 'GetQQ',
+        data: {
+          deviceId: api.deviceId,
+          sj: User.Phone
+        },
+        tip: false,
+        operation: {
+          toast: false,
+          success: function (data) {
+            var QQModule = api.require('toQQ');
+            QQModule.open({
+              number: data
+            });
+          },
+          fail: function (data) {}
+        }
+      });
+  
     }
   </script>
 </body>

@@ -46,11 +46,10 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/check/check.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/check.js"></script>
   <script type="text/javascript" charset="utf-8">
     var address = null;
-
+  
     function selectCity() {
       var citySelector = api.require('citySelector');
       citySelector.open({
@@ -67,6 +66,8 @@
       });
     };
 
+
+ 
 
     function submit() {
       if (!checkNet() || !checkLogin()) return;
@@ -89,7 +90,7 @@
         data: {
           phone: phone,
           deviceId: api.deviceId,
-          Id: '',
+          Id: api.pageParam.addressId,
           Addressee: name,
           address: address,
           AddresseePhone: phone,

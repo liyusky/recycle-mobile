@@ -82,10 +82,14 @@
         tip: '正在发送...',
         operation:{
            success:function () {
-             kill('');
+             setTimeout(function(){
+               kill('');
+             },1000)
            },
            fail:function () {
-
+            setTimeout(function(){
+               kill('');
+             },1000)
            }
         }
       });

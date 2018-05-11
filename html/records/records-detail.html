@@ -113,7 +113,7 @@
           'deviceId': api.deviceId,
           'phone': User.Phone
         },
-        tip: '正在发送...',
+        tip: '正在获取订单详情...',
         operation: {
           toast: false,
           success: function (data) {
@@ -229,8 +229,6 @@
       $api.removeCls('footer', 'hide');
       $api.text('orderTime', data.time);
       $api.text('orderStatus', data.time)
-
-
     };
 
     function cancel() {
