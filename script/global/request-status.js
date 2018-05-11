@@ -40,8 +40,7 @@ function AppStatusHandle(ret, err, operation) {
   } catch (e) {}
 
   if (ret) {
-    
-    var toastMark = !!ret.Msg && (toastAllow || ret.Code != 1);
+    var toastMark = (!!ret.Msg) && (toastAllow || (ret.Code != 1));
     if (toastMark) toast(ret.Msg);
     switch (ret.Code) {
       case 0:
