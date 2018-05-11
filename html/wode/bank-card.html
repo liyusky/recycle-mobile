@@ -28,7 +28,9 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>  
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+
   <script type="text/javascript">
     var User = null;
     var mark = true;
@@ -63,10 +65,16 @@
         },
         operation: {
           toast: false,
+          before: function () {
+            closeBtnClick('submit-btn');
+          },
           success: function (data) {
             setLoginStatus(data);
             allowTarget();
-          }
+          },
+          default: function () {
+              openBtnClick('submit-btn');
+            }
         }
       });
     };

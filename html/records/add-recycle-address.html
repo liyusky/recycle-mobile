@@ -37,6 +37,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/check.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8">
     function submit() {
       if (!checkNet() || !checkLogin()) return;
@@ -48,9 +49,15 @@
         },
         'tip': '正在发送...',
         operation: {
+          before: function () {
+            closeBtnClick('submit-btn');
+          },
           success: function (data) {
             kill();
           },
+          default: function () {
+              openBtnClick('submit-btn');
+            }
         }
       });
     }

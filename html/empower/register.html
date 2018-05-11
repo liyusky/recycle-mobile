@@ -191,6 +191,9 @@
         },
         'tip': '注册中...',
         operation: {
+          before: function () {
+            closeBtnClick('submit-btn');
+          },
           init: function () {
             closeBtnClick('submit-btn');
           },

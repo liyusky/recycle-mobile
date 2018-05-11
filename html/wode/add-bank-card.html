@@ -39,7 +39,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/check.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/readyToResend.js"></script>
-
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript">
     var User = null;
     var mark = true;
@@ -109,13 +109,19 @@
         },
         tip: '正在添加银行卡...',
         operation: {
+          before: function () {
+            closeBtnClick('submit-btn');
+          },
           success: function (data) {
             sendBindCardEvent();
             kill('');
           },
           fail: function (msg) {
             toast(msg);
-          }
+          },
+          default: function () {
+              openBtnClick('submit-btn');
+            }
         }
       });
     };

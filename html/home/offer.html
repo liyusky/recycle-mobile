@@ -195,7 +195,10 @@
             SEID: ''
           },
           tip: '正在发送...',
-          operation: {            
+          operation: {   
+            before: function () {
+            closeBtnClick('submit-btn');
+          },         
             init: function () {
               closeBtnClick('submit-btn');
             },

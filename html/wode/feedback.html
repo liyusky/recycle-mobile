@@ -40,6 +40,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script>
 
       var User;
@@ -81,6 +82,9 @@
         },
         tip: '正在发送...',
         operation:{
+          before: function () {
+            closeBtnClick('submit-btn');
+          },
            success:function () {
              setTimeout(function(){
                kill('');
@@ -89,8 +93,11 @@
            fail:function () {
             setTimeout(function(){
                kill('');
-             },1000)
-           }
+             },2000)
+           },
+           default: function () {
+              openBtnClick('submit-btn');
+            }
         }
       });
     }
