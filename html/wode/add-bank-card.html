@@ -83,7 +83,7 @@
     }
 
     function render() {
-      if (!mark){
+      if (!mark) {
         create('renzheng');
         return;
       };
@@ -99,25 +99,25 @@
       var phone = $api.val('phone');
       if (!checkPhone(phone)) return;
       if (!checkBankCard(card)) return;
-        request({
-          url: 'AddYHK',
-          data: {
-            Phone: User.Phone,
-            deviceId: api.deviceId,
-            kh: card,
-            ylsj: phone
+      request({
+        url: 'AddYHK',
+        data: {
+          Phone: User.Phone,
+          deviceId: api.deviceId,
+          kh: card,
+          ylsj: phone
+        },
+        tip: '正在添加银行卡...',
+        operation: {
+          success: function (data) {
+            sendBindCardEvent();
+            kill('');
           },
-          tip: '正在添加银行卡...',
-          operation: {
-            success: function (data) {
-              sendBindCardEvent();
-              kill('');
-            },
-            fail: function () {
-              toast('银行卡绑定失败');
-            }
+          fail: function (msg) {
+            toast(msg);
           }
-        });
+        }
+      });
     };
 
 
