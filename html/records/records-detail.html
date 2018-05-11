@@ -89,11 +89,13 @@
 
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>  
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+
   <script type="text/javascript" charset="utf-8">
     var id = '';
     var User = null;
@@ -116,6 +118,9 @@
         tip: '正在获取订单详情...',
         operation: {
           toast: false,
+          before: function () {
+            closeBtnClick('submit-btn');
+          },
           success: function (data) {
             if (data.length) {
               renderHtml(data);

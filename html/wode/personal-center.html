@@ -113,15 +113,17 @@
     <p class="time">服务时间:9:00-21:00</p>
   </footer>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleShow.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+
   <script type="text/javascript" src="../../iconfont/iconfont.js"></script>
   <script type="text/javascript">
     var User = null;
@@ -131,6 +133,7 @@
     }
 
     function init() {
+      $api.byId('footer').style.top = $api.byId('header').offsetHeight+$api.byId('list').offsetHeight + 'px';
       render();
     };
 
@@ -145,8 +148,6 @@
         $api.addCls('account', 'hide');
         $api.addCls('phone', 'hide');
       }
-
-      $api.text('account', User.Phone);
       if (User.Name) $api.text('account', User.Name);
       if (User.Phone) $api.text('phone', User.Phone);
     }

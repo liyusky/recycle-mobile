@@ -26,7 +26,7 @@
         <span>￥</span>
         <span id="money">1000</span>
       </h3>
-      <span class="anew" id="valuation" onclick="init()">重新估价></span>
+      <!-- <span class="anew" id="valuation" onclick="init()">重新估价></span> -->
     </div>
   </div>
   <div class="load hide" id="loading">
@@ -77,12 +77,12 @@
     </div>
     <div class="btn" onclick="javascript: submit();">马上拿钱</div>
     <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
     <script src="../../iconfont/iconfont.js"></script>
@@ -195,7 +195,10 @@
             SEID: ''
           },
           tip: '正在发送...',
-          operation: {            
+          operation: {   
+            before: function () {
+            closeBtnClick('submit-btn');
+          },         
             init: function () {
               closeBtnClick('submit-btn');
             },

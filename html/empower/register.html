@@ -20,7 +20,7 @@
       <li class="item-input">
         <p class="item-input-Name">用户名</p>
         <div class="input-group">
-            <input class="input-control pass" id="account" type="number" placeholder="请输入手机号" maxlength="11" minlength="6">
+          <input class="input-control pass" id="account" type="number" placeholder="请输入手机号" maxlength="11" minlength="6">
         </div>
       </li>
       <li class="item-input setleft">
@@ -33,39 +33,39 @@
       <li class="item-input setleft-code">
         <p class="item-input-Name">验证码</p>
         <div class="input-group">
-        <input class="input-control" type="number" placeholder="请输入验证码" id="phone-code" maxlength="6">
-      </div>
+          <input class="input-control" type="number" placeholder="请输入验证码" id="phone-code" maxlength="6">
+        </div>
         <button class="sendMsg" id="send-SMS-btn" onclick="javascript: sendSMS(this);">发送验证码</button>
       </li>
       <li class="item-input setleft-setting">
         <p class="item-input-Name">设置密码</p>
         <div class="input-group">
           <input class="input-control" type="password" placeholder="请设置6-12位数字和字母" id="password" maxlength="12" minlength="6">
-      </div>
+        </div>
         <div class="control-input-switch">
-        <img src="../../image/common/switch.png" alt="" class="switch">
-        <img src="../../image/common/clear.png" alt="" class="clear">
-      </div>
+          <img src="../../image/common/switch.png" alt="" class="switch">
+          <img src="../../image/common/clear.png" alt="" class="clear">
+        </div>
       </li>
     </ul>
     <div class="register-explain">
-        <p class="protocol">
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-btn-selected" id="select"></use>
-              </svg>
-          <input type="checkbox" id="checkbox">
-            <label for="checkbox" onclick="javascript:changeSrc()">    
-              我阅读并理解 《手机合同》
-            </label>
-        </p>
-      </div>
+      <p class="protocol">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-btn-selected" id="select"></use>
+        </svg>
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox" onclick="javascript:changeSrc()">
+          我阅读并理解 《手机合同》
+        </label>
+      </p>
     </div>
+  </div>
   <button class="btn" onclick="javascript: submit()">注册</button>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
@@ -103,29 +103,29 @@
 
     function getkey() {
       var imgurl = RequestProductURL['ImageCode'];
-      api.ajax(
-        {
+      api.ajax({
           url: RequestProductURL['ImageKey'],
           method: 'GET',
           data: {}
         },
         function (ret, err) {
+          key = ret.Data.Key;
           $api.attr('getImg', 'src', imgurl + '?key=' + ret.Data.Key);
         }
       );
     };
 
-    function getImageCode(obj){
-      obj.src = obj.src+'&num'+Math.random(); 
+    function getImageCode(obj) {
+      obj.src = obj.src + '&num' + Math.random();
     };
 
-      function changeSrc(){
-        if($api.byId('checkbox').checked){
-          $api.attr('select','xlink:href','#icon-btn-selected');
-        }else{
-          $api.attr('select','xlink:href','#icon-checkbox-selected');
-        }
+    function changeSrc() {
+      if ($api.byId('checkbox').checked) {
+        $api.attr('select', 'xlink:href', '#icon-btn-selected');
+      } else {
+        $api.attr('select', 'xlink:href', '#icon-checkbox-selected');
       }
+    }
 
     function sendSMS(dom) {
       if (!checkNet()) return;
@@ -142,12 +142,14 @@
           phone: account,
           type: '注册'
         },
+        tip: '验证码发送中...',
         operation: {
           init: function () {
             readyToResend(dom);
           },
-          fail: function () {
-            toast('注册失败');
+          success: function (data) {},
+          fail: function (data) {
+            create('login');
           }
         }
       });
@@ -173,6 +175,7 @@
 
       var password = $api.val('password');
       if (!checkPassword(password)) return;
+
       request({
         url: 'UserRegister',
         data: {
@@ -188,22 +191,27 @@
         },
         'tip': '注册中...',
         operation: {
+          before: function () {
+            closeBtnClick('submit-btn');
+          },
           init: function () {
             closeBtnClick('submit-btn');
           },
           success: function () {
+            create('login');
+            kill('');
             setLoginStatus(account);
             sendLoginEvent();
-            kill();
           },
           fail: function () {
-            toast('注册失败');
           },
           default: function () {
             openBtnClick('submit-btn');
           }
         }
       });
+
+
     }
 
     function setLoginStatus(phone) {
