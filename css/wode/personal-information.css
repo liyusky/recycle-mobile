@@ -218,6 +218,10 @@ header .header-title {
   color: #999;
 }
 
+.hide{
+  display: none!important;
+}
+
 .selectable .select-content {
   margin: 5.33333vw auto;
   height: 22.66667vw;

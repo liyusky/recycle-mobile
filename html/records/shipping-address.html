@@ -14,7 +14,7 @@
   <header class="header">
     <img src="../../image/common/back.png" class="back" onclick="javascript: kill();">
     <p class="header-title">我的收货地址</p>
-    <span class="compile" onclick="javascript: create('add-shipping-address');">编辑</span>
+    <span class="compile" onclick="javascript: openAddress();">编辑</span>
   </header>
   <div class="shipping-address">
     <ul class="address-list" id="address-list">
@@ -31,7 +31,9 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8">
+  var addressId;
     apiready = function () {
+      addressId = '';
       setListener();
       init()
     }
@@ -70,6 +72,7 @@
     }
 
     function setHtml(data) {
+      addressId = data.Id;
       return htmlStr = '<li data-id="' + data.Id + '">' +
         '<div class="address-item">' +
         '<p class="Receiving-name">' + data.Addressee + '</p>' +
@@ -93,6 +96,13 @@
         }
       );
     }
+
+    function openAddress(){
+        create({
+          goal: 'add-shipping-address',
+          addressId:addressId
+        })
+    };
   </script>
 </body>
 

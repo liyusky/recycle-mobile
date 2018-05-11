@@ -130,11 +130,13 @@ header .login-dialog .btn-group div {
 .list {
   width: 100%;
   padding-left: 2.8vw;
+  height: 80vw;
+  overflow: auto;
 }
 
 .account{
   color: #fff;
-  font-size: 4.8vw;
+  font-size: 5vw;
 }
 
 .list .list-item {
@@ -213,6 +215,11 @@ header .login-dialog .btn-group div {
 .list .list-item:nth-of-type(6) .list-icon svg {
   width: 4.4vw;
   height: 4.26667vw;
+}
+
+.list .list-item:nth-of-type(7) .list-icon svg {
+  width: 5.5vw;
+  height: 5.26667vw;
 }
 
 footer {

@@ -55,7 +55,7 @@ var RequestProductURL = {
   'ImageCode': 'http://118.31.104.145:9001/JDBService.svc/GrapheCodeImg',
   'PaymentAmount': 'http://118.31.104.145:9001/JDBService.svc/GetZXJD',
   'Refund': 'http://118.31.104.145:9002/OrderH5.aspx',
-  'GetQQ': 'http://118.31.104.145:9001/JDBService.svc/GetKeFu',
+  'GetQQ': 'http://118.31.104.145:9001/JDBService.svc/GetKeFu'
 };
 
 var developmentAppApi = {
