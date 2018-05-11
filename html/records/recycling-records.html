@@ -39,7 +39,7 @@
         },
         tip: '正在获取回收记录...',
         operation: {
-          toast:false,
+          toast: false,
           success: function (data) {
             if (data.length) {
               renderHtml(data);
@@ -57,9 +57,9 @@
 
     function renderHtml(data) {
       var htmlStr = '';
-        for (var i = 0; i < data.length; i++) {
-          htmlStr += setHtmltitle(data[i]);
-        }
+      for (var i = 0; i < data.length; i++) {
+        htmlStr += setHtmltitle(data[i]);
+      }
       $api.html('order-list', htmlStr);
     }
 
@@ -78,7 +78,7 @@
         "<ul>" +
         "<li>" +
         "<p>手机估价</p>" +
-        "<span>"+ (price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine) +".00元</span>" +
+        "<span>" + (price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine) + ".00元</span>" +
         "</li>" +
         "<li>" +
         "<p>定金+预付款</p>" +
@@ -95,7 +95,7 @@
         "</li>";
     };
 
-  
+
 
     function openDetails(data) {
       create({

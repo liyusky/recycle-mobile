@@ -16,35 +16,35 @@
     <img src="../../image/common/back.png" class="back" onclick="javascript:kill();">
     <p class="header-title">回收进度</p>
   </header>
-  <div class="order-list" >
+  <div class="order-list">
     <ul id="order-list">
       <li class="recycle-list-item">
-          <img src="../../image/records/recycle.png" class="recycle">
-          <div class="message">
-            <p class="phonetype">
-              <span class="type">手机型号</span>
-              <span id="phone-type"></span>
-            </p>
-          </div>
-          <div class="phone-price">
-            <ul>
-              <li>
-                <p>手机估价</p>
-                <span id="money"></span>
-              </li>
-              <li>
-                <p>定金+预付款</p>
-                <span id="total"></span>
-              </li>
-              <li>
-                <p>履约期</p>
-                <span id="deadline"></span>
-                <span>天</span>
-                <img src="../../image/records/help.png" class="help">
-              </li>
-            </ul>
-          </div>
-        </li>
+        <img src="../../image/records/recycle.png" class="recycle">
+        <div class="message">
+          <p class="phonetype">
+            <span class="type">手机型号</span>
+            <span id="phone-type"></span>
+          </p>
+        </div>
+        <div class="phone-price">
+          <ul>
+            <li>
+              <p>手机估价</p>
+              <span id="money"></span>
+            </li>
+            <li>
+              <p>定金+预付款</p>
+              <span id="total"></span>
+            </li>
+            <li>
+              <p>履约期</p>
+              <span id="deadline"></span>
+              <span>天</span>
+              <img src="../../image/records/help.png" class="help">
+            </li>
+          </ul>
+        </div>
+      </li>
     </ul>
   </div>
   <div id="scheduleList">
@@ -70,7 +70,7 @@
     </div>
     <div class="clear"></div>
   </div>
-</div>
+  </div>
   </div>
   <div class="hide" id="footer">
     <div class="honour">
@@ -90,14 +90,14 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script> 
-   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
 
   <script>
     var qx = '0';
     apiready = function () {
       var qx = '0';
-      $api.text('phone-type',api.deviceModel);
+      $api.text('phone-type', api.deviceModel);
       if (!checkNet() || !checkLogin()) return;
       init();
     }
@@ -196,12 +196,12 @@
         $api.removeCls('cancel', 'hide');
         $api.removeCls('confirm', 'hide');
       };
-      $api.text('money',data.ShenQingJine+'.00元');
-      $api.text('total',data.JinE+'.00元');
-      $api.text('deadline',data.QiXian);
-      $api.text('currentStatus',data.ZT);
-      $api.text('orderTime',data.JieKuanShiJian);
-      $api.text('period',data.TrackDays);
+      $api.text('money', data.ShenQingJine + '.00元');
+      $api.text('total', data.JinE + '.00元');
+      $api.text('deadline', data.QiXian);
+      $api.text('currentStatus', data.ZT);
+      $api.text('orderTime', data.JieKuanShiJian);
+      $api.text('period', data.TrackDays);
       $api.removeCls('footer', 'hide');
     };
 
@@ -232,11 +232,10 @@
       });
     };
 
-    
+
     function cancel() {
       create('refund');
     }
-
   </script>
 </body>
 
