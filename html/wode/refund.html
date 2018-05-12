@@ -140,7 +140,10 @@
     }
 
     function setListener() {
-      loginEventListener();
+      loginEventListener();     
+      logoutEventListener(function () {
+        kill();
+      });
     }
 
     function setHtmlStr(card, i) {
