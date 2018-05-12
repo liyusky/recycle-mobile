@@ -92,4 +92,7 @@ window.ROUTER = {
   'pay': {
     path: 'widget://html/wode/pay.html',
   },
+  'select-bank-card':{
+      path: 'widget://html/wode/select-bank-card.html'
+  }
 }
