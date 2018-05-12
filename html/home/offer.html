@@ -149,7 +149,6 @@
       }
 
       function submit() {
-        if (!checkNet() || !checkLogin()) return;
         var agreement = $api.byId('checkbox').checked;
         if (!agreement) {
           toast('请同意报价合同!');
@@ -174,34 +173,35 @@
           return;
         };
 
+        create('select-bank-card');
+        closeBtnClick('submit-btn');
+      }
+
+
+      function submit(card) {
+        if (!checkNet() || !checkLogin()) return;
         request({
           url: 'SubmitApply',
-          'data': {
-            sj: User.Phone,
-            deviceId: api.deviceId,
+          data: {
+            ly: '',
+            txl: '',
             JinE: '',
+            IMEI: '',
+            SEID: '',
+            MEID: '',
+            ICCID: '',
             QiXian: '',
             FeiYong: '',
-            RuZhangKa: User.Card,
-            txl: '',
-            ly: '',
             PhoneName: '',
+            SerialNumber: '',
+            sj: User.Phone,
+            deviceId: api.deviceId,
+            RuZhangKa: card,
             PhoneModel: api.deviceModel,
             StorageSpace: '8',
-            SerialNumber: '',
-            IMEI: '',
-            ICCID: '',
-            MEID: '',
-            SEID: ''
           },
           tip: '正在发送...',
           operation: {
-            before: function () {
-              closeBtnClick('submit-btn');
-            },
-            init: function () {
-              closeBtnClick('submit-btn');
-            },
             success: function (data) {
               create('submit-order');
               kill();
@@ -218,6 +218,16 @@
         logoutEventListener(
           function () {
             kill();
+          }
+        );
+        api.addEventListener({
+            name: 'LOGOUT-EVENT'
+          },
+          function (ret, err) {
+            if (ret && ret.card) {
+              submit(ret.card);
+            }
+            openBtnClick('submit-btn');
           }
         );
       }
