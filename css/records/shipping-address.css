@@ -6,7 +6,8 @@
 }
 
 ol,
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -23,7 +24,8 @@ a {
 }
 
 ol,
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -137,13 +139,21 @@ header .compile {
   border-radius: 2vw;
   position: relative;
 }
-
-.shipping-address .address-list li .address-item .Receiving-name, .shipping-address .address-list li .address-item .Receiving-phone, .shipping-address .address-list li .box .address {
+.shipping-address .address-list li .address-item .Receiving-name{
+  width: 25vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+.shipping-address .address-list li .address-item .Receiving-name,
+.shipping-address .address-list li .address-item .Receiving-phone,
+.shipping-address .address-list li .box .address {
   margin-left: 3.6vw;
   float: left;
 }
 
-.shipping-address .address-list li .address-item .Receiving-name, .shipping-address .address-list li .address-item .Receiving-phone {
+.shipping-address .address-list li .address-item .Receiving-name,
+.shipping-address .address-list li .address-item .Receiving-phone {
   font-size: 4.66667vw;
   margin-top: 6.93333vw;
   float: left;
@@ -156,6 +166,10 @@ header .compile {
   position: absolute;
   left: 3.6vw;
   bottom: 3vw;
+  width: 70vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
 }
 
 .shipping-address .noaddress {
@@ -169,8 +183,7 @@ header .compile {
   font-size: 5.06667vw;
 }
 
-
-.shipping-address .noaddress img{
+.shipping-address .noaddress img {
   widows: 33.06666666666666vw;
   height: 23.599999999999998vw;
 }
