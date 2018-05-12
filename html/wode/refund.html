@@ -14,7 +14,7 @@
 <body>
 
   <header class="header">
-    <img class="back" src="../../image/common/back.png"  onclick="javascript: kill();">
+    <img class="back" src="../../image/common/back.png" onclick="javascript: kill();">
     <p class="header-title">退款</p>
   </header>
   <div class="content">
@@ -27,6 +27,10 @@
       </div>
     </div>
     <div class="select">
+      <p>选择退款方式</p>
+    </div>
+    <div class="bank">
+      <ul class="banklist" id="list"></ul>
     </div>
   </div>
   </div>
@@ -49,8 +53,7 @@
     apiready = function () {
       setListener();
       init();
-        
-  
+
     }
 
     function init() {
@@ -69,27 +72,109 @@
           }
         }
       });
+      request({
+        url: 'GetHYYHK',
+        data: {
+          phone: User.Phone,
+          deviceId: api.deviceId
+        },
+        operation: {
+          toast: false,
+          success: function (data) {
+            saveCard(data);
+            render(data);
+          }
+        }
+      });
     };
+
+    var bankImg = {
+      '广东发展银行': '#icon-GDB',
+      '浦发银行': '#icon-SPDB',
+      '农村信用合作社': '#icon-nongcunxinyonghezuoshe',
+      '民生银行': '#icon-CMBC',
+      '交通银行': '#icon-BOCOM',
+      '中信银行': '#icon-CCITICB',
+      '恒丰银行': '#icon-EGB',
+      '华夏银行': '#icon-HXB',
+      '工商银行': '#icon-ICBC',
+      '中国建设银行': '#icon-CCB',
+      '招商银行': '#icon-CMB',
+      '中国光大银行': '#icon-CEB',
+      '兴业银行': '#icon-RHB',
+      '中国银行': '#icon-BoC',
+      '农业银行': '#icon-ABC',
+      '邮政储蓄银行': '#icon-PSBC',
+      '平安银行': '#icon-PABC',
+      '农商银行': '#icon-OCB'
+    }
+
+    function render(data) {
+      var htmlStr = '';
+      for (var i = 0; i < data.length; i++) {
+        htmlStr += setHtmlStr(data[i], i);
+      }
+      $api.html('list', htmlStr);
+    }
+    
+
+    function select(_this) {
+      if (previewDom) $api.attr('select-' + index, 'xlink:href', '#icon-btn-selected');
+      index = $api.attr(_this, 'data-index');
+      $api.attr('select-' + index, 'xlink:href', '#icon-checkbox-selected');
+      previewDom = _this;
+    }
 
     function submit() {
       if (!checkNet() || !checkLogin()) return;
+      if (index < 0) {
+        toast('请选择银行卡');
+        return;
+      }
       // alert(JSON.stringify(User.Card[index]))
       create({
         goal: 'pay',
-        card: api.pageParam.card,
-        phone: api.pageParam.phone
-      });
-    };
-
-    function setListener() {
-      loginEventListener();
-      logoutEventListener(function () {
-        kill();
+        card: User.Card[index].KaHao,
+        phone: User.Card[index].YLShouJiHao
       });
     }
 
+    function setListener() {
+      loginEventListener();
+    }
 
+    function setHtmlStr(card, i) {
+      return '<li data-index="' + i + '" onclick="javascript: select(this);">' +
+        '<div class="pay-type">' +
+        '<div>'+
+        '<svg class="bankicon" aria-hidden="true">' +
+        '<use xlink:href='+bankImg[card.KaiHuHang]+'></use>' +
+        '</svg>' +
+        '</div>'+
+        '<div class="bankname">'+
+        '<p class="bank-name">' + card.KaiHuHang+ '</p>' +
+        '<p class="cardnum">' +
+        '<span class="pass">****</span>' +
+        '<span class="pass">****</span>' +
+        '<span class="pass">****</span>' +
+        '<span class="num">' + card.WeiHao + '</span>' +
+        '<span class="card-type">储蓄卡</span>' +
+        '</p>' +
+        '</div>'+
+        '<div>'+
+        '<svg class="icon" aria-hidden="true">' +
+        '<use xlink:href="#icon-btn-selected" id="select-' + i + '"></use>' +
+        '</svg>' +
+        '</div>'+
+        '</div>'+
+        '</li>';
+    }
 
+    function saveCard(data) {
+      User = $api.getStorage('User');
+      User.Card = data;
+      $api.setStorage('User', User);
+    }
   </script>
 </body>
 

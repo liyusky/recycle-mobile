@@ -61,7 +61,7 @@ a {
   align-items: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
-  justify: space-between;
+  justify-content: space-between;
   -webkit-box-pack: space-between;
   -webkit-justify: space-between;
 }
@@ -80,7 +80,7 @@ a {
   align-items: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
-  justify: center;
+  justify-content: center;
   -webkit-box-pack: center;
   -webkit-justify: center;
 }
@@ -172,9 +172,6 @@ header .header-title {
   font-size: 4vw;
 }
 
-.bank{
-  padding-top: 17vw;
-}
 
  .bank .banklist li {
   padding-left: 4vw;
@@ -193,21 +190,21 @@ header .header-title {
 }
 
  .bank .banklist li .pay-type {
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  padding-left: 2.66667vw;
-  position: relative;
-  width: 81.73333vw;
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  align-items: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  justify-content: space-between;
-  -webkit-box-pack: space-between;
-  -webkit-justify: space-between;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    padding-left: 2.66667vw;
+    position: relative;
+    width: 81.73333vw;
+   display: flex;
+   display: -webkit-box;
+   display: -webkit-flex;
+   align-items: center;
+   -webkit-box-align: center;
+   -webkit-align-items: center;
+   justify-content: space-between;
+   -webkit-box-pack: space-between;
+   -webkit-justify: space-between;
 }
 
  .bank .banklist li .pay-type .alipay {
