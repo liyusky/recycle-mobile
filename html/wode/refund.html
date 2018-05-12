@@ -14,7 +14,7 @@
 <body>
 
   <header class="header">
-    <img class="back" src="../../image/common/back.png"  onclick="javascript: kill();">
+    <img class="back" src="../../image/common/back.png" onclick="javascript: kill();">
     <p class="header-title">退款</p>
   </header>
   <div class="content">
@@ -53,6 +53,7 @@
     apiready = function () {
       setListener();
       init();
+
     }
 
     function init() {
@@ -115,6 +116,7 @@
       }
       $api.html('list', htmlStr);
     }
+    
 
     function select(_this) {
       if (previewDom) $api.attr('select-' + index, 'xlink:href', '#icon-btn-selected');
@@ -138,7 +140,7 @@
     }
 
     function setListener() {
-      loginEventListener();
+      loginEventListener();     
       logoutEventListener(function () {
         kill();
       });
@@ -147,10 +149,13 @@
     function setHtmlStr(card, i) {
       return '<li data-index="' + i + '" onclick="javascript: select(this);">' +
         '<div class="pay-type">' +
+        '<div>'+
         '<svg class="bankicon" aria-hidden="true">' +
-        '<use xlink:href= ' + bankImg[card.KaiHuHang] + '></use>' +
+        '<use xlink:href='+bankImg[card.KaiHuHang]+'></use>' +
         '</svg>' +
-        '<p class="bank-name">' + card.KaiHuHang + '</p>' +
+        '</div>'+
+        '<div class="bankname">'+
+        '<p class="bank-name">' + card.KaiHuHang+ '</p>' +
         '<p class="cardnum">' +
         '<span class="pass">****</span>' +
         '<span class="pass">****</span>' +
@@ -158,10 +163,13 @@
         '<span class="num">' + card.WeiHao + '</span>' +
         '<span class="card-type">储蓄卡</span>' +
         '</p>' +
-        '</div>' +
+        '</div>'+
+        '<div>'+
         '<svg class="icon" aria-hidden="true">' +
         '<use xlink:href="#icon-btn-selected" id="select-' + i + '"></use>' +
         '</svg>' +
+        '</div>'+
+        '</div>'+
         '</li>';
     }
 

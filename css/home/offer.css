@@ -302,25 +302,20 @@ header .header-title {
 }
 
 .details  .affirm .protocol label {
-  height: 20px;
-  line-height: 20px;
+  height: 4vw;
+  line-height: 4vw;
   position: relative;
   margin-left: 1.6vw;
+  width: 100%;
 }
 
-.details  .affirm .protocol .icon{
+
+.details  .affirm label .icon{
   width: 4vw; 
   height: 4vw;
-}
-
-
-.details  .affirm .protocol label .icon{
-  position: absolute;
-  left: 0.8vw;
-  top: -0.5vw;
   font-size: 3.6vw;
-  opacity: 0;
   color: #fff;
+  float: left;
 }
 
 
@@ -338,6 +333,10 @@ header .header-title {
   float: left;
   background: #fff;
   font-size: 4.26667vw;
+}
+
+iframe{
+  width: 100%;
 }
 
 .details .mark .dialog .dialog-footer button:first-child {
