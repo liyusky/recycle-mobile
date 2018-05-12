@@ -50,7 +50,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8">
     var address = null;
-  
+
     function selectCity() {
       var citySelector = api.require('citySelector');
       citySelector.open({
@@ -68,7 +68,7 @@
     };
 
 
- 
+
 
     function submit() {
       if (!checkNet() || !checkLogin()) return;
@@ -78,14 +78,17 @@
       var detailsAddress = $api.val('address-detail');
       if (!checkPhone(phone)) return;
       if (!name) {
-        toast('收件人不能为空');return;
+        toast('收件人不能为空');
+        return;
       }
-      if (!addressDetail){
-        toast('当前住址不能为空');return;
-      } 
-      if (!detailsAddress){
-        toast('详细地址不能为空');return;
-      } 
+      if (!addressDetail) {
+        toast('当前住址不能为空');
+        return;
+      }
+      if (!detailsAddress) {
+        toast('详细地址不能为空');
+        return;
+      }
       request({
         url: 'EditReceivingAddress',
         data: {
@@ -109,8 +112,8 @@
           },
           fail: function () {},
           default: function () {
-              openBtnClick('submit-btn');
-            }
+            openBtnClick('submit-btn');
+          }
         }
       });
     }

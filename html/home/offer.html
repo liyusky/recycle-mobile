@@ -140,11 +140,11 @@
         });
       }
 
-      function changeSrc(){
-        if($api.byId('checkbox').checked){
-          $api.attr('select','xlink:href','#icon-btn-selected');
-        }else{
-          $api.attr('select','xlink:href','#icon-checkbox-selected');
+      function changeSrc() {
+        if ($api.byId('checkbox').checked) {
+          $api.attr('select', 'xlink:href', '#icon-btn-selected');
+        } else {
+          $api.attr('select', 'xlink:href', '#icon-checkbox-selected');
         }
       }
 
@@ -173,7 +173,7 @@
           kill();
           return;
         };
-        
+
         request({
           url: 'SubmitApply',
           'data': {
@@ -195,10 +195,10 @@
             SEID: ''
           },
           tip: '正在发送...',
-          operation: {   
+          operation: {
             before: function () {
-            closeBtnClick('submit-btn');
-          },         
+              closeBtnClick('submit-btn');
+            },
             init: function () {
               closeBtnClick('submit-btn');
             },

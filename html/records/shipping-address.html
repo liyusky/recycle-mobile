@@ -32,7 +32,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8">
-  var addressId;
+    var addressId;
     apiready = function () {
       addressId = '';
       setListener();
@@ -50,10 +50,10 @@
         },
         tip: '正在获取收货地址...',
         operation: {
-          toast:false,
+          toast: false,
           success: function (data) {
             if (data.length) {
-              render(data[data.length-1]);
+              render(data[data.length - 1]);
               $api.addCls('noaddress', 'hide');
             } else {
               $api.removeCls('noaddress', 'hide');
@@ -98,11 +98,11 @@
       );
     }
 
-    function openAddress(){
-        create({
-          goal: 'add-shipping-address',
-          addressId:addressId
-        })
+    function openAddress() {
+      create({
+        goal: 'add-shipping-address',
+        addressId: addressId
+      })
     };
   </script>
 </body>
