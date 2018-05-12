@@ -198,12 +198,13 @@
             closeBtnClick('submit-btn');
           },
           success: function () {
-            create('login');
             setLoginStatus(account);
             sendLoginEvent();
-            kill('');
+            kill();
           },
-          fail: function () {},
+          fail: function (msg) {
+            toast(msg);
+          },
           default: function () {
             openBtnClick('submit-btn');
           }

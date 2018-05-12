@@ -162,14 +162,12 @@
         }
         if (!mark) {
           toast('请完成认证');
-          create('select-bank-card');
-          // create('refund');
-          // create('personal-information');
+          create('personal-information');
           kill();
           return;
         }
 
-        if (!User.Card) {
+        if (User.Card.length == 0) {
           toast('请绑定银行卡');
           create('add-bank-card');
           kill();
