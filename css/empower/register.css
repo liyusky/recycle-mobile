@@ -211,10 +211,11 @@ header .header-title {
   background: #fff;
   outline: none;
   border: none;
+  margin-left: 8vw
 }
 
 .register ul .item-input #getImg{
-  
+  margin-left: 8vw
 }
 
 .register ul .setleft-setting .item-input-Name{

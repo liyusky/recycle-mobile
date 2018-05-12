@@ -76,7 +76,10 @@
       var phone = $api.val('phone');
       var addressDetail = $api.val('city');
       var detailsAddress = $api.val('address-detail');
-      if (!checkPhone(phone)) return;
+      if (!checkPhone(phone)){
+        toast('手机号输入有误');
+        return;
+      }
       if (!name) {
         toast('收件人不能为空');
         return;
