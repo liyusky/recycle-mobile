@@ -167,7 +167,7 @@
           return;
         }
 
-        if (!User.Card) {
+        if (User.Card.length == 0) {
           toast('请绑定银行卡');
           create('add-bank-card');
           kill();
