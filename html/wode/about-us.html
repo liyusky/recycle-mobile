@@ -8,7 +8,7 @@
   />
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
   <title>关于趣回收</title>
-  <link rel="stylesheet" type="text/css" href="../../css/wode/help.css">
+  <link rel="stylesheet" type="text/css" href="../../css/wode/about.css">
   <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui.css">
   <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui-extends.css">
 </head>
@@ -18,12 +18,16 @@
     <img class="back" src="../../image/common/back.png" onclick="javascript: kill();">
     <p class="header-title">关于趣回收</p>
   </header>
-  <img class="reminder-image" src="../../image/wode/about-us.png">
-  <p class="reminder-message">回收有我，方便与你</p>
+  <div class="box">
+    <img class="reminder-image" src="../../image/wode/about-us.png">
+    <p class="reminder-message">回收有我，方便与你</p>
+  </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8">
+
     apiready = function () {
       setListener();
     };
