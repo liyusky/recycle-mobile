@@ -142,6 +142,8 @@
     }
 
     function setListener() {
+ offlineEventListener();
+      
       api.addEventListener({
           name: 'BIND-CARD-EVENT'
         },

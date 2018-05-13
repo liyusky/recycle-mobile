@@ -13,13 +13,13 @@
 
 <body>
   <header class="header">
-    <img class="back" src="../../image/common/back.png"  onclick="javascript:kill();">
+    <img class="back" src="../../image/common/back.png" onclick="javascript:kill();">
     <p class="header-title">订单详情</p>
   </header>
   <div class="order-list">
     <ul id="order-list">
       <li class='recycle'>
-        <img class='recycle' src='../../image/records/recycle.png' >
+        <img class='recycle' src='../../image/records/recycle.png'>
         <div class='message'>
           <p class='phonetype'>
             <span class='type'>手机型号</span>
@@ -37,7 +37,7 @@
               <span id="total"></span>
             </li>
             <li>
-              <img class='help'src='../../image/records/help.png' >
+              <img class='help' src='../../image/records/help.png'>
               <p>履约期</p>
               <span id="deadline"></span>
               <span>天</span>
@@ -100,6 +100,7 @@
     var id = '';
     var User = null;
     apiready = function () {
+      setListener();
       id = api.pageParam.id;
       $api.text('phone-type', api.deviceModel);
       if (!checkNet() || !checkLogin()) return;
@@ -263,6 +264,10 @@
           fail: function (data) {}
         }
       });
+    }
+
+    function setListener() {
+      offlineEventListener();
     }
   </script>
 </body>

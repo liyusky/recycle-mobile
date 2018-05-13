@@ -37,8 +37,13 @@
     var index = -1;
     var previewDom = null;
     apiready = function () {
+      setListener();
       init();
     };
+
+    function setListener() {
+      offlineEventListener();
+    }
 
     function submit() {
       if (!checkNet() || !checkLogin()) return;

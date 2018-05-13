@@ -25,6 +25,8 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8">
     apiready = function () {
+      setListener();
+
       if (!checkNet() || !checkLogin()) return;
       init();
     }
@@ -102,6 +104,10 @@
         goal: 'records-detail',
         id: data
       });
+    }
+
+    function setListener() {
+      offlineEventListener();
     }
   </script>
 </body>

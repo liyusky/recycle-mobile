@@ -39,6 +39,10 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8">
+    apiready = function () {
+      setListener();
+    };
+
     function submit() {
       if (!checkNet() || !checkLogin()) return;
       var name = $api.val('name');
@@ -59,6 +63,10 @@
           }
         }
       });
+    }
+
+    function setListener() {
+      offlineEventListener();
     }
   </script>
 </body>

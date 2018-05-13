@@ -59,6 +59,8 @@
     }
 
     function setListener() {
+ offlineEventListener();
+      
       $api.byId('iframe').onload = function () {
         index++;
         if (index === 2) {

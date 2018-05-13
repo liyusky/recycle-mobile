@@ -29,6 +29,13 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8">
+    apiready = function () {
+      setListener();
+    };
+
+    function setListener() {
+      offlineEventListener();
+    }
   </script>
 </body>
 

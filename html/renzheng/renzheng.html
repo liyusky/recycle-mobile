@@ -76,7 +76,7 @@
 	}
 
 	function init() {
- 		User = $api.getStorage('User');
+		User = $api.getStorage('User');
 		progress = new Progress(api.pageParam.step);
 		openFrame(api.pageParam.aim);
 	}
@@ -96,6 +96,8 @@
 	}
 
 	function setListenr() {
+		offlineEventListener();
+
 		api.addEventListener({
 				name: 'CHANGE-STEP-EVENT'
 			},

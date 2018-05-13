@@ -11,12 +11,12 @@
 
 <body>
   <header class="header">
-    <img class="back" src="../../image/common/back.png"  onclick="javascript: kill();">
+    <img class="back" src="../../image/common/back.png" onclick="javascript: kill();">
     <p class="header-title">登录</p>
   </header>
   <div class="logo">
-    <img class="logo-img"src="../../image/login/logo.png" >
-    <img class="logo-text" src="../../image/login/logotext.png" >
+    <img class="logo-img" src="../../image/login/logo.png">
+    <img class="logo-text" src="../../image/login/logotext.png">
     <span class="text">闲置二手回收共享经济</span>
   </div>
   <div class="login">
@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="btn" id="submit-btn" onclick="javascript: submit();">下一步</div>
-<script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
@@ -36,7 +36,13 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script>
+    apiready = function () {
+      setListener();
+    }
+
     function submit() {
       if (!checkNet()) return;
       var account = $api.val('account');
@@ -69,6 +75,10 @@
           }
         }
       });
+    }
+
+    function setListener() {
+      offlineEventListener();
     }
   </script>
 </body>

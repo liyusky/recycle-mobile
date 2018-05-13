@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- 芝麻认证 -->
+<!-- 关于懒钱 -->
 <html>
 
 <head>
@@ -7,41 +7,31 @@
   <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"
   />
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-  <meta name="author" content="潘剑">
-  <title>支付</title>
+  <script type="text/javascript" charset="utf-8" src="../../../script/global/flexible.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../script/global/api.js"></script>
+  <title>关于趣回收</title>
   <link rel="stylesheet" type="text/css" href="../../css/wode/help.css">
   <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui.css">
   <link rel="stylesheet" type="text/css" href="../../css/renzheng/aui-extends.css">
 </head>
 
-<body class="zhimafen">
+<body>
   <header class="header">
     <img class="back" src="../../image/common/back.png" onclick="javascript: kill();">
-    <p class="header-title">还款</p>
+    <p class="header-title">关于趣回收</p>
   </header>
-  <iframe id="iframe"></iframe>
+  <img class="reminder-image" src="../../image/wode/about-us.png">
+  <p class="reminder-message">回收有我，方便与你</p>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/request-status.js"></script>
-  <script type="text/javascript">
-    var User = null;
-    var index = 0;
+  <script type="text/javascript" charset="utf-8">
     apiready = function () {
-      init();
       setListener();
-    }
+    };
 
     function setListener() {
       offlineEventListener();
-    }
-
-    function init() {
-      if (!checkNet() && !checkLogin()) return;
-      var url = RequestProductURL['Refund'] + "?sj=" + api.pageParam.phone + "&&yhk=" + api.pageParam.card;
-      $api.attr('iframe', 'src', url);
     }
   </script>
 </body>

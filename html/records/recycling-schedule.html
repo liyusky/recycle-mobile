@@ -96,6 +96,7 @@
   <script>
     var qx = '0';
     apiready = function () {
+ setListener();
       var qx = '0';
       $api.text('phone-type', api.deviceModel);
       if (!checkNet() || !checkLogin()) return;
@@ -235,6 +236,11 @@
 
     function cancel() {
       create('refund');
+    }
+
+    
+    function setListener() {
+      offlineEventListener();
     }
   </script>
 </body>

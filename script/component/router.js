@@ -94,5 +94,8 @@ window.ROUTER = {
   },
   'select-bank-card':{
       path: 'widget://html/wode/select-bank-card.html'
+  },
+  'about-us': {
+    path: 'widget://html/wode/about-us.html'
   }
 }

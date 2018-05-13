@@ -53,7 +53,6 @@
     apiready = function () {
       setListener();
       init();
-
     }
 
     function init() {
@@ -144,6 +143,7 @@
       logoutEventListener(function () {
         kill();
       });
+ offlineEventListener();
     }
 
     function setHtmlStr(card, i) {

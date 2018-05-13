@@ -204,6 +204,7 @@
     function setStatus(data) {
       if (data.ZhuangTai == undefined) return;
       var text = '马上评估 立即拿钱';
+      alert(data.ZhuangTai)
       switch (Number(data.ZhuangTai)) {
         case 0: //待审核
           page = 'recycling-schedule';
