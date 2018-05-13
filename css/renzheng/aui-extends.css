@@ -2557,3 +2557,24 @@ iframe {
 .aui-pull-right{
   height: 11vw;
 }
+
+
+.guanyulanqian {
+  background-color: #ffffff;
+}
+
+.guanyulanqian .reminder-image {
+  width: 68vw;
+  height: 54vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35.2vw;
+  margin-bottom: 4vw;
+}
+
+.guanyulanqian .reminder-message {
+  font-size: 3.6vw;
+  line-height: 6.4vw;
+  text-align: center;
+  color: #666666;
+}
