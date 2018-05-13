@@ -108,6 +108,7 @@ function create(data) {
     url: ROUTER[goal].path,
     vScrollBarEnabled: false,
     hScrollBarEnabled: false,
+    slidBackEnabled: false,
     animation: {
       type: animationType,
       subType: animationDirection,

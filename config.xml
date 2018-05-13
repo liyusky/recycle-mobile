@@ -1,46 +1,48 @@
- <widget id="A6078888839613"  version="0.0.1">
+<widget id="A6078888839613" version="0.0.1">
 
-    <name>回收手机</name>
+	<name>回收手机</name>
 
-    <description>
+	<description>
 
-        Example For APICloud.
+		Example For APICloud.
 
-    </description>
+	</description>
 
-    <author email="developer@apicloud.com" href="http://www.apicloud.com">
+	<author email="developer@apicloud.com" href="http://www.apicloud.com">
 
-        Developer
+		Developer
 
-    </author>
+	</author>
 
-    <content src="./html/home/home.html" />
+	<content src="./html/home/home.html" />
 
-    <access origin="*" />
+	<access origin="*" />
 
-    <preference name="pageBounce" value="false"/>
+	<preference name="pageBounce" value="false" />
 
-	<preference name="appBackground" value="rgba(0,0,0,0.0)"/>
+	<preference name="appBackground" value="rgba(0,0,0,0.0)" />
 
-	<preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
+	<preference name="windowBackground" value="rgba(0,0,0,0.0)" />
 
-	<preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
+	<preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)" />
 
-	<preference name="hScrollBarEnabled" value="false"/>
+	<preference name="hScrollBarEnabled" value="false" />
 
-	<preference name="vScrollBarEnabled" value="false"/>
+	<preference name="vScrollBarEnabled" value="false" />
 
-	<preference name="autoLaunch" value="true"/>
+	<preference name="autoLaunch" value="true" />
 
-	<preference name="fullScreen" value="true"/>
+	<preference name="fullScreen" value="true" />
 
 	<preference name="autoUpdate" value="true" />
 
 	<preference name="smartUpdate" value="true" />
 
-	<preference name="debug" value="false"/>
+	<preference name="debug" value="false" />
 
-	<preference name="statusBarAppearance" value="true"/>
+	<preference name="statusBarAppearance" value="true" />
+
+	<preference name="iOS7StatusBarAppearance" value="true" />
 
 	<permission name="readPhoneState" />
 
@@ -58,6 +60,6 @@
 
 	<permission name="hardware" />
 
-  <preference name="customRefreshHeader" value="UIPullRefreshFlash"/>
+	<preference name="customRefreshHeader" value="UIPullRefreshFlash" />
 
 </widget>
