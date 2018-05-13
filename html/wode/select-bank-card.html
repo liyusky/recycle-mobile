@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,18 @@
   <link rel="stylesheet" type="text/css" href="../../css/wode/refund.css">
   <link rel="stylesheet" type="text/css" href="../../iconfonts/iconfont.css">
 </head>
+
 <body>
-    <header class="header">
-        <img class="back" src="../../image/common/back.png"  onclick="javascript: kill();">
-        <p class="header-title">选择银行卡</p>
-      </header>
+  <header class="header">
+    <img class="back" src="../../image/common/back.png" onclick="javascript: kill();">
+    <p class="header-title">选择银行卡</p>
+  </header>
   <div class="bank">
     <ul class="banklist" id="list">
     </ul>
   </div>
 
-  <div class="btn" onclick="javascript:submit();">选择银行卡</div>
+  <div class="btn" onclick="javascript: submit();">选择银行卡</div>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
@@ -30,33 +32,27 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" src="../../iconfonts/iconfont.js"></script>
-<script>
-
+  <script>
     var User = null;
     var index = -1;
     var previewDom = null;
-  apiready = function(){
-    init();
+    apiready = function () {
+      init();
+    };
 
-  };
-
-  function submit(){
-    if (!checkNet() || !checkLogin()) return;
+    function submit() {
+      if (!checkNet() || !checkLogin()) return;
       if (index < 0) {
         toast('请选择银行卡');
         return;
       }
-      // alert(JSON.stringify(User.Card[index]))
-      create({
-        goal: 'refund',
-        card: User.Card[index].KaHao,
-        phone: User.Card[index].YLShouJiHao
-      });
-  }
+      sendSelectCardEvent();
+      kill();
+    }
 
-function init() {
-    User = $api.getStorage('User');
-        request({
+    function init() {
+      User = $api.getStorage('User');
+      request({
         url: 'GetHYYHK',
         data: {
           phone: User.Phone,
@@ -70,8 +66,8 @@ function init() {
           }
         }
       });
-}
-   var bankImg = {
+    }
+    var bankImg = {
       '广东发展银行': '#icon-GDB',
       '浦发银行': '#icon-SPDB',
       '农村信用合作社': '#icon-nongcunxinyonghezuoshe',
@@ -99,6 +95,7 @@ function init() {
       }
       $api.html('list', htmlStr);
     }
+
     function select(_this) {
       if (previewDom) $api.attr('select-' + index, 'xlink:href', '#icon-btn-selected');
       index = $api.attr(_this, 'data-index');
@@ -106,16 +103,16 @@ function init() {
       previewDom = _this;
     }
 
-        function setHtmlStr(card, i) {
+    function setHtmlStr(card, i) {
       return '<li data-index="' + i + '" onclick="javascript: select(this);">' +
         '<div class="pay-type">' +
-        '<div>'+
+        '<div>' +
         '<svg class="bankicon" aria-hidden="true">' +
-        '<use xlink:href='+bankImg[card.KaiHuHang]+'></use>' +
+        '<use xlink:href=' + bankImg[card.KaiHuHang] + '></use>' +
         '</svg>' +
-        '</div>'+
-        '<div class="bankname">'+
-        '<p class="bank-name">' + card.KaiHuHang+ '</p>' +
+        '</div>' +
+        '<div class="bankname">' +
+        '<p class="bank-name">' + card.KaiHuHang + '</p>' +
         '<p class="cardnum">' +
         '<span class="pass">****</span>' +
         '<span class="pass">****</span>' +
@@ -123,21 +120,32 @@ function init() {
         '<span class="num">' + card.WeiHao + '</span>' +
         '<span class="card-type">储蓄卡</span>' +
         '</p>' +
-        '</div>'+
-        '<div>'+
+        '</div>' +
+        '<div>' +
         '<svg class="icon" aria-hidden="true">' +
         '<use xlink:href="#icon-btn-selected" id="select-' + i + '"></use>' +
         '</svg>' +
-        '</div>'+
-        '</div>'+
+        '</div>' +
+        '</div>' +
         '</li>';
     }
 
-        function saveCard(data) {
+    function saveCard(data) {
       User = $api.getStorage('User');
       User.Card = data;
       $api.setStorage('User', User);
     }
-</script>
+
+
+    function sendSelectCardEvent() {
+      api.sendEvent({
+        name: 'Select-Card',
+        extra: {
+          card: User.Card[index].KaHao
+        }
+      });
+    }
+  </script>
 </body>
+
 </html>

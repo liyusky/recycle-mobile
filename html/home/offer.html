@@ -75,7 +75,7 @@
         </label>
       </div>
     </div>
-    <div class="btn" onclick="javascript: submit();">马上拿钱</div>
+    <div class="btn" onclick="javascript: selectCard();">马上拿钱</div>
     <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -148,7 +148,7 @@
         }
       }
 
-      function submit() {
+      function selectCard() {
         var agreement = $api.byId('checkbox').checked;
         if (!agreement) {
           toast('请同意报价合同!');
@@ -172,7 +172,6 @@
           kill();
           return;
         };
-
         create('select-bank-card');
         closeBtnClick('submit-btn');
       }
@@ -221,11 +220,11 @@
           }
         );
         api.addEventListener({
-            name: 'LOGOUT-EVENT'
+            name: 'Select-Card'
           },
           function (ret, err) {
-            if (ret && ret.card) {
-              submit(ret.card);
+            if (ret && ret.value.card) {
+              submit(ret.value.card);
             }
             openBtnClick('submit-btn');
           }
