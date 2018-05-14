@@ -58,4 +58,6 @@
 
 	<permission name="hardware" />
 
+  <preference name="customRefreshHeader" value="UIPullRefreshFlash"/>
+
 </widget>

@@ -37,7 +37,7 @@
               <span id="total"></span>
             </li>
             <li>
-              <img class='help' src='../../image/records/help.png'>
+              <img class='help'src='../../image/records/help.png' onclick="javascript:showDialog();">
               <p>履约期</p>
               <span id="deadline"></span>
               <span>天</span>
@@ -86,7 +86,19 @@
       <div class="btn hide" onclick="javascript: contact();" id="contact">联系客服</div>
     </div>
   </div>
-
+  <div class="mark hide" id="mark">
+     <div class="dialog">
+         <p class="d-head">履约期</p>
+         <div class="details">
+           履约期: 指用户确认以评估价格出卖手机后与平台签订的《手机合同》
+           内约定的交付手机的实际交付期限,用户应当在交付期限内将手机实际寄送至
+           平台指定地址
+         </div>
+         <div class="dialog-footer">
+           <span class="confirm" onclick="javascript:hideDialog()">我知道了</span>
+         </div>
+     </div>
+  </div>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
@@ -95,7 +107,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
-
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8">
     var id = '';
     var User = null;
@@ -105,7 +117,17 @@
       $api.text('phone-type', api.deviceModel);
       if (!checkNet() || !checkLogin()) return;
       init();
+    };
+
+
+    function showDialog(){
+      $api.removeCls('mark','hide');
+    };
+
+    function hideDialog(){
+      $api.addCls('mark','hide');
     }
+
 
     function init() {
       if (!checkNet() || !checkLogin()) return;
@@ -233,7 +255,7 @@
     function sethtml(data) {
       $api.removeCls('footer', 'hide');
       $api.text('orderTime', data.time);
-      $api.text('orderStatus', data.time)
+      $api.text('orderStatus', data.time);
     };
 
     function cancel() {
