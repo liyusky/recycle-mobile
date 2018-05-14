@@ -13,13 +13,13 @@
 
 <body>
   <header class="header">
-    <img class="back" src="../../image/common/back.png"  onclick="javascript:kill();">
+    <img class="back" src="../../image/common/back.png" onclick="javascript:kill();">
     <p class="header-title">订单详情</p>
   </header>
   <div class="order-list">
     <ul id="order-list">
       <li class='recycle'>
-        <img class='recycle' src='../../image/records/recycle.png' >
+        <img class='recycle' src='../../image/records/recycle.png'>
         <div class='message'>
           <p class='phonetype'>
             <span class='type'>手机型号</span>
@@ -107,11 +107,12 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
-
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8">
     var id = '';
     var User = null;
     apiready = function () {
+      setListener();
       id = api.pageParam.id;
       $api.text('phone-type', api.deviceModel);
       if (!checkNet() || !checkLogin()) return;
@@ -285,6 +286,10 @@
           fail: function (data) {}
         }
       });
+    }
+
+    function setListener() {
+      offlineEventListener();
     }
   </script>
 </body>

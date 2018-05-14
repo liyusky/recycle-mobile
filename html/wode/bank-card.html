@@ -29,8 +29,10 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>  
-  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>  
   <script type="text/javascript">
+
+
     var User = null;
     var mark = true;
     apiready = function () {
@@ -142,6 +144,8 @@
     }
 
     function setListener() {
+ offlineEventListener();
+      
       api.addEventListener({
           name: 'BIND-CARD-EVENT'
         },

@@ -8,6 +8,7 @@
   <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
   <title>注册</title>
   <link rel="stylesheet" type="text/css" href="../../css/empower/register.css">
+  <script type="text/javascript" charset="utf-8" src="../../iconfonts/iconfont.js"></script>
 </head>
 
 <body>
@@ -28,7 +29,7 @@
         <div class="input-group">
           <input class="input-control" type="text" placeholder="请输入图片验证码" id="image-code" maxlength="4">
         </div>
-        <img src="" id="getImg" onclick="javascript: getImageCode(this);" >
+        <img src="" id="getImg" onclick="javascript: getImageCode(this);">
       </li>
       <li class="item-input setleft-code">
         <p class="item-input-Name">验证码</p>
@@ -53,7 +54,7 @@
         <svg class="icon" aria-hidden="true">
           <use id="select" xlink:href="#icon-btn-selected"></use>
         </svg>
-        <input id="checkbox" type="checkbox" >
+        <input id="checkbox" type="checkbox">
         <label for="checkbox" onclick="javascript:changeSrc()">
           我阅读并理解 《手机合同》
         </label>
@@ -75,7 +76,8 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/readyToResend.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
-  <script src="../../iconfonts/iconfont.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8">
     var User = null;
     var fullname = null;
@@ -98,6 +100,7 @@
     }
 
     apiready = function () {
+      setListener();
       getkey();
     }
 
@@ -210,8 +213,6 @@
           }
         }
       });
-
-
     }
 
     function setLoginStatus(phone) {
@@ -225,6 +226,10 @@
       api.sendEvent({
         name: 'LOGIN-EVENT'
       });
+    }
+
+    function setListener() {
+      offlineEventListener();
     }
   </script>
 </body>

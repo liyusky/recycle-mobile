@@ -106,10 +106,11 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
-
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script>
     var qx = '0';
     apiready = function () {
+ setListener();
       var qx = '0';
       $api.text('phone-type', api.deviceModel);
       if (!checkNet() || !checkLogin()) return;
@@ -257,6 +258,10 @@
 
     function hideDialog(){
       $api.addCls('mark','hide');
+    }
+    
+    function setListener() {
+      offlineEventListener();
     }
   </script>
 </body>

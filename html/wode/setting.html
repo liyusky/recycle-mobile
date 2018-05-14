@@ -11,13 +11,13 @@
 
 <body>
   <header class="header">
-    <img class="back"  src="../../image/common/back.png" onclick="javascript: kill();">
+    <img class="back" src="../../image/common/back.png" onclick="javascript: kill();">
     <p class="header-title">设置</p>
   </header>
 
   <div class="content">
     <ul class="setting">
-      <li>
+      <li onclick="javascript:create('about-us')">
         <p class="setlist">关于我们</p>
         <img src="../../image/wode/more.png">
       </li>
@@ -31,8 +31,17 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script>
     var User = null;
+
+    apiready = function () {
+      setListener();
+    };
+
+    function setListener() {
+      offlineEventListener();
+    }
 
     function logout() {
       setLogoutStatus();

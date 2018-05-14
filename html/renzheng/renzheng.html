@@ -66,6 +66,7 @@
 <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/global/progress.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
 
 <script type="text/javascript" charset="utf-8">
 	var progress = null;
@@ -76,7 +77,7 @@
 	}
 
 	function init() {
- 		User = $api.getStorage('User');
+		User = $api.getStorage('User');
 		progress = new Progress(api.pageParam.step);
 		openFrame(api.pageParam.aim);
 	}
@@ -96,6 +97,8 @@
 	}
 
 	function setListenr() {
+		offlineEventListener();
+
 		api.addEventListener({
 				name: 'CHANGE-STEP-EVENT'
 			},

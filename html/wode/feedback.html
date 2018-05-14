@@ -16,10 +16,10 @@
   </header>
   <div class="describe">
     <div class="describe-title">
-        <p class="describe-message">
-            <span>*</span>请描述您遇到的问题
-          </p>
-    </div> 
+      <p class="describe-message">
+        <span>*</span>请描述您遇到的问题
+      </p>
+    </div>
 
     <textarea class="describe-content" id="textarea"></textarea>
     <div class="quantity">
@@ -28,7 +28,7 @@
         <span>/</span>
         <span id="quantity-max">200</span>
       </p>
-  </div>
+    </div>
   </div>
   <p class="hide" id="msg">您的字数已超过200</p>
   <input type="text" placeholder="手机号/邮箱 (选填, 方便我们联系您)" class="information" id="account">
@@ -41,26 +41,34 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/check/checkPhone.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
+
+
+  
   <script>
+    var User;
+    apiready = function () {
+      setListener();
+      User = $api.getStorage('User');
+      $api.val('account', User.Phone);
+    }
 
-      var User;
-      apiready = function () {
-        User = $api.getStorage('User');
-        $api.val('account', User.Phone);
+    function setListener() {
+      offlineEventListener();
+    }
+
+    var content = $api.byId('textarea');
+    var text = $api.text('quantity-max');
+    content.onkeydown = content.onkeyup = function () {
+      if (this.value.length > text) {
+        this.value = this.value.substring(0, text);
+        $api.removeCls('msg', 'hide');
+        $api.text('quantity-min', this.value.length);
+      } else {
+        $api.addCls('msg', 'hide');
+        $api.text('quantity-min', this.value.length);
       }
-
-          var content = $api.byId('textarea');
-          var text = $api.text('quantity-max');
-          content.onkeydown = content.onkeyup = function(){
-            if(this.value.length > text){
-              this.value = this.value.substring(0, text);
-              $api.removeCls('msg','hide');
-              $api.text('quantity-min',this.value.length);
-            }else{
-              $api.addCls('msg','hide');
-              $api.text('quantity-min',this.value.length);
-            }
-          }
+    }
 
 
     function submit() {
@@ -69,7 +77,7 @@
       var account = $api.val('account');
 
       var User = $api.getStorage('User');
-      if(!content){
+      if (!content) {
         toast('请将内容填写完整...');
         return;
       }
@@ -77,27 +85,27 @@
         url: 'FKYJ',
         data: {
           'deviceId': api.deviceId,
-          'sj':User.Phone,
-          'nr':content
+          'sj': User.Phone,
+          'nr': content
         },
         tip: '正在发送...',
-        operation:{
+        operation: {
           before: function () {
             closeBtnClick('submit-btn');
           },
-           success:function () {
-             setTimeout(function(){
-               kill('');
-             },1000)
-           },
-           fail:function () {
-            setTimeout(function(){
-               kill('');
-             },2000)
-           },
-           default: function () {
-              openBtnClick('submit-btn');
-            }
+          success: function () {
+            setTimeout(function () {
+              kill('');
+            }, 1000)
+          },
+          fail: function () {
+            setTimeout(function () {
+              kill('');
+            }, 2000)
+          },
+          default: function () {
+            openBtnClick('submit-btn');
+          }
         }
       });
     }

@@ -13,7 +13,7 @@
 
 <body>
     <header class="header">
-        <img  class="back" src="../../image/common/back.png" onclick="javascript: kill();">
+        <img class="back" src="../../image/common/back.png" onclick="javascript: kill();">
         <p class="header-title">帮助中心</p>
     </header>
     <div class="help-content">
@@ -51,43 +51,22 @@
       <li class="item-list">
                 <div class="list-box">
                     <img class="faq" src="../../image/wode/faq.png">
-                    <p class="title">忘记支付密码</p>
+                    <p class="title">多久到账</p>
                     <img class="switch" src="../../image/wode/top.png">
+                </div>
+                <div class="details">
+                    在15分钟内到账
                 </div>
             </li>
+
             <li class="item-list">
                 <div class="list-box">
                     <img class="faq" src="../../image/wode/faq.png">
-                    <p class="title">充值多久到账、有无手续费</p>
+                    <p class="title">银行格式不支持是什么原因</p>
                     <img class="switch" src="../../image/wode/top.png">
                 </div>
-            </li> 
-            <li class="item-list">
-                <div class="list-box">
-                    <img class="faq" src="../../image/wode/faq.png">
-                    <p class="title">充值提示"无卡支付"如何处理</p>
-                    <img class="switch" src="../../image/wode/top.png">
-                </div>
-            </li>
-            <li class="item-list">
-                <div class="list-box">
-                    <img class="faq" src="../../image/wode/faq.png">
-                    <p class="title">不同银行充值限制规则</p>
-                    <img class="switch" src="../../image/wode/top.png">
-                </div>
-            </li>
-            <li class="item-list">
-                <div class="list-box">
-                    <img class="faq" src="../../image/wode/faq.png">
-                    <p class="title">充值多久到账、有无手续费</p>
-                    <img class="switch" src="../../image/wode/top.png">
-                </div>
-            </li>
-            <li class="item-list">
-                <div class="list-box">
-                    <img class="faq" src="../../image/wode/faq.png">
-                    <p class="title">充值提示"无卡支付"如何处理</p>
-                    <img class="switch" src="../../image/wode/top.png">
+                <div class="details">
+                    请使用储蓄卡
                 </div>
             </li>
      
@@ -97,8 +76,18 @@
 </body>
 <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
 <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
-<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
+
 <script type="text/javascript">
+    apiready = function () {
+        setListener();
+    };
+
+    function setListener() {
+        offlineEventListener();
+    }
+
     function count(dom) {
         $api.text('count', dom.value.length);
     }

@@ -15,9 +15,9 @@
   <header id="header">
     <img class="banner" src="../../image/wode/banner.png">
     <div class="head-content">
-      <img class="back" src="../../image/common/back.png"  onclick="javascript:kill();">
+      <img class="back" src="../../image/common/back.png" onclick="javascript:kill();">
       <span class="head-title">个人中心</span>
-      <img class="manage" src="../../image/wode/manage.png"  onclick="javascript:create('setting');">
+      <img class="manage" src="../../image/wode/manage.png" onclick="javascript:create('setting');">
     </div>
     <div class="login-dialog">
       <img class="person-img" src="../../image/wode/person.png">
@@ -38,7 +38,7 @@
       </div>
       <div class="list-message">
         <p class="item-content">我的资料</p>
-        <img class="more" src="../../image/wode/more.png" >
+        <img class="more" src="../../image/wode/more.png">
       </div>
     </li>
     <li class="list-item" onclick="javascript: gotoPage('recycling-records');">
@@ -49,7 +49,7 @@
       </div>
       <div class="list-message">
         <p class="item-content">回收记录</p>
-        <img class="more" src="../../image/wode/more.png" >
+        <img class="more" src="../../image/wode/more.png">
       </div>
     </li>
     <li class="list-item" onclick="javascript: gotoPage('bank-card');">
@@ -97,16 +97,16 @@
       </div>
     </li>
     <li class="list-item" onclick="javascript: contact();">
-        <div class="list-icon">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-lianxikefu"></use>
-          </svg>
-        </div>
-        <div class="list-message">
-          <p class="item-content">联系客服</p>
-          <img class="more" src="../../image/wode/more.png">
-        </div>
-      </li>
+      <div class="list-icon">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-lianxikefu"></use>
+        </svg>
+      </div>
+      <div class="list-message">
+        <p class="item-content">联系客服</p>
+        <img class="more" src="../../image/wode/more.png">
+      </div>
+    </li>
   </ul>
   <footer id="footer">
     <p class="tel">客服电话: 400-078-8866</p>
@@ -152,20 +152,20 @@
 
     function setListener() {
       loginEventListener();
+      offlineEventListener();
       logoutEventListener();
     }
 
     function gotoPage(goal) {
       if (goal == 'login' || goal == 'register') {
         if (!checkNet()) return;
-      }
-      else if (!checkNet() || !checkLogin()) {
+      } else if (!checkNet() || !checkLogin()) {
         return;
       }
       create(goal);
     };
 
-    function contact(){
+    function contact() {
       if (!checkNet()) return;
       request({
         url: 'GetQQ',
@@ -185,7 +185,7 @@
           fail: function (data) {}
         }
       });
-  
+
     }
   </script>
 </body>

@@ -11,7 +11,7 @@
 
 <body>
   <header class="header">
-    <img class="back" src="../../image/common/back.png"  onclick="javascript: kill();">
+    <img class="back" src="../../image/common/back.png" onclick="javascript: kill();">
     <p class="header-title">绑定银行卡</p>
   </header>
   <div class="addbank">
@@ -30,7 +30,7 @@
     </ul>
   </div>
   </div>
-  <button class="btn disabled" id="submit-btn" onclick="javascript: submit();"  disabled="disabled">请先完善资料</button>
+  <button class="btn disabled" id="submit-btn" onclick="javascript: submit();" disabled="disabled">请先完善资料</button>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/request.js"></script>
@@ -40,12 +40,19 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/readyToResend.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript">
     var User = null;
     var mark = true;
     apiready = function () {
       init();
+      setListener();
     }
+
+    function setListener() {
+      offlineEventListener();
+    }
+
 
     function init() {
       if (!checkNet() || !checkLogin()) return;
@@ -120,12 +127,11 @@
             toast(msg);
           },
           default: function () {
-              openBtnClick('submit-btn');
-            }
+            openBtnClick('submit-btn');
+          }
         }
       });
     };
-
 
     function sendBindCardEvent() {
       api.sendEvent({

@@ -9,3 +9,4 @@ function sendLogoutEvent() {
     name: 'LOGOUT-EVENT'
   });
 }
+
