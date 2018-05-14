@@ -40,7 +40,7 @@
                 <p>履约期</p>
                 <span id="deadline"></span>
                 <span>天</span>
-                <img class="help" src="../../image/records/help.png" >
+                <img class="help" src="../../image/records/help.png" onclick='javascript:showDialog();'>
               </li>
             </ul>
           </div>
@@ -84,6 +84,20 @@
       <div class="btn hide" onclick="javascript:contact();" id="contact">联系客服</div>
     </div>
   </div>
+
+  <div class="mark hide" id="mark">
+    <div class="dialog">
+        <p class="d-head">履约期</p>
+        <div class="details">
+          履约期: 指用户确认以评估价格出卖手机后与平台签订的《手机合同》
+          内约定的交付手机的实际交付期限,用户应当在交付期限内将手机实际寄送至
+          平台指定地址
+        </div>
+        <div class="dialog-footer">
+          <span class="confirm" onclick="javascript:hideDialog()">我知道了</span>
+        </div>
+    </div>
+ </div>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
@@ -235,6 +249,14 @@
 
     function cancel() {
       create('refund');
+    }
+
+   function showDialog(){
+      $api.removeCls('mark','hide');
+    };
+
+    function hideDialog(){
+      $api.addCls('mark','hide');
     }
   </script>
 </body>
