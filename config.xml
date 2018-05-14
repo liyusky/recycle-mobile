@@ -2,19 +2,7 @@
 
 	<name>回收手机</name>
 
-	<description>
-
-		Example For APICloud.
-
-	</description>
-
-	<author email="developer@apicloud.com" href="http://www.apicloud.com">
-
-		Developer
-
-	</author>
-
-	<content src="./html/home/home.html" />
+	<content src="./test/a.html" />
 
 	<access origin="*" />
 
@@ -38,7 +26,7 @@
 
 	<preference name="smartUpdate" value="true" />
 
-	<preference name="debug" value="false" />
+	<preference name="debug" value="true" />
 
 	<preference name="statusBarAppearance" value="true" />
 
@@ -59,7 +47,5 @@
 	<permission name="bootCompleted" />
 
 	<permission name="hardware" />
-
-	<preference name="customRefreshHeader" value="UIPullRefreshFlash" />
 
 </widget>
