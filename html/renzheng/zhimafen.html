@@ -38,6 +38,7 @@
     function init() {
       if (!checkNet() && !checkLogin()) return;
       User = $api.getStorage('User');
+ alert(User.Phone)
       request({
         url: 'GetZhimaAuthInfoUrl',
         data: {
@@ -49,6 +50,8 @@
         tip: false,
         operation: {
           success: function (data) {
+ alert(data)
+            
             $api.attr('iframe', 'src', data);
           }
         },
