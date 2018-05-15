@@ -21,9 +21,8 @@ function logoutEventListener(callback) {
 }
 
 function offlineEventListener() {
-  api.addEventListener({
-      name: 'OFFLINE-EVENT'
-    },
+  api.addEventListener(
+    {name: 'offline'},
     function () {
       create('offline');
     }

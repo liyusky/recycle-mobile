@@ -64,11 +64,10 @@
 	<script type="text/javascript">
 		var archive = null;
 		var User = null;
-
 		apiready = function () {
 			setListener();
 		};
-
+		
 		function getArchive() {
 			if (!checkNet() || !checkLogin()) return;
 			openAutoRecognizer();

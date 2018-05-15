@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <style>
+    .bg{
+      background-color: #fff;
+    }
+    .item {
+      height: 30vh;
+    }
+  </style>
+</head>
+
+<body class="bg">
+<div class="item" onclick="alert(1)">111111111111111111111111111</div>
+<div class="item" onclick="f1()">333333333333333333333333333333333333333</div>
+  <script>
+    function f1(params) {
+      alert(2)
+      var udcreditRecognizer = api.require('udcreditRecognizer');
+      udcreditRecognizer.simpleFaceAuthentication({
+          authKey: 'e1cf6813-3e90-4562-ad47-7223718e6c8e',
+          outOrderId: '111111111111111111111111111111'
+        },
+        function (ret, err) {}
+      );
+    }
+  </script>
+</body>
+
+</html>

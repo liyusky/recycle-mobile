@@ -149,6 +149,7 @@
       }
 
       function selectCard() {
+        User = $api.getStorage('User');
         var agreement = $api.byId('checkbox').checked;
         if (!agreement) {
           toast('请同意报价合同!');
@@ -225,6 +226,9 @@
           function (ret, err) {
             if (ret && ret.value.card) {
               submit(ret.value.card);
+            }
+            else {
+              toast('银行卡选择失败');
             }
             openBtnClick('submit-btn');
           }

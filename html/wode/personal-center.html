@@ -141,7 +141,8 @@
         $api.addCls('btn-group', 'hide');
         $api.removeCls('account', 'hide');
         $api.removeCls('phone', 'hide');
-      } else {
+      } 
+      else {
         $api.removeCls('btn-group', 'hide');
         $api.addCls('account', 'hide');
         $api.addCls('phone', 'hide');
@@ -159,14 +160,15 @@
     function gotoPage(goal) {
       if (goal == 'login' || goal == 'register') {
         if (!checkNet()) return;
-      } else if (!checkNet() || !checkLogin()) {
+      }
+      else if (!checkNet() || !checkLogin()) {
         return;
       }
       create(goal);
     };
 
     function contact() {
-      if (!checkNet()) return;
+      if (!checkNet() && !checkLogin()) return;
       request({
         url: 'GetQQ',
         data: {
@@ -181,11 +183,9 @@
             QQModule.open({
               number: data
             });
-          },
-          fail: function (data) {}
+          }
         }
       });
-
     }
   </script>
 </body>

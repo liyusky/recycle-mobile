@@ -1,6 +1,6 @@
- <widget id="A6078888839613"  version="0.0.1">
+ <widget id="A6071741918572"  version="0.0.1">
 
-    <name>回收手机</name>
+    <name>趣回收</name>
 
     <description>
 
@@ -32,15 +32,17 @@
 
 	<preference name="autoLaunch" value="true"/>
 
-	<preference name="fullScreen" value="true"/>
+	<preference name="fullScreen" value="false"/>
 
 	<preference name="autoUpdate" value="true" />
 
 	<preference name="smartUpdate" value="true" />
 
-	<preference name="debug" value="false"/>
+	<preference name="debug" value="true"/>
 
-	<preference name="statusBarAppearance" value="true"/>
+	<preference name="statusBarAppearance" value="true" />
+
+	<preference name="iOS7StatusBarAppearance" value="true" />
 
 	<permission name="readPhoneState" />
 
@@ -58,6 +60,5 @@
 
 	<permission name="hardware" />
 
-  <preference name="customRefreshHeader" value="UIPullRefreshFlash"/>
-
 </widget>
+

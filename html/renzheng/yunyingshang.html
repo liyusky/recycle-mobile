@@ -54,15 +54,14 @@
           toast: false,
           success: function (data) {
             $api.attr('iframe', 'src', data.postURL);
-          },
-          fail: function () {}
+          }
         }
       });
     }
 
     function setListener() {
- offlineEventListener();
-      
+      offlineEventListener();
+
       $api.byId('iframe').onload = function () {
         index++;
         if (index === 2) {
@@ -90,7 +89,7 @@
                 }
               }
             });
-          }, 3000);
+          }, 5000);
         }
       };
     }
