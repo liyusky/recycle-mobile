@@ -1,32 +1,44 @@
-<widget id="A6078888839613" version="0.0.1">
+ <widget id="A6071741918572"  version="0.0.1">
 
-	<name>回收手机</name>
+    <name>趣回收</name>
 
-	<content src="./test/a.html" />
+    <description>
 
-	<access origin="*" />
+        Example For APICloud.
 
-	<preference name="pageBounce" value="false" />
+    </description>
 
-	<preference name="appBackground" value="rgba(0,0,0,0.0)" />
+    <author email="developer@apicloud.com" href="http://www.apicloud.com">
 
-	<preference name="windowBackground" value="rgba(0,0,0,0.0)" />
+        Developer
 
-	<preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)" />
+    </author>
 
-	<preference name="hScrollBarEnabled" value="false" />
+    <content src="./html/home/home.html" />
 
-	<preference name="vScrollBarEnabled" value="false" />
+    <access origin="*" />
 
-	<preference name="autoLaunch" value="true" />
+    <preference name="pageBounce" value="false"/>
 
-	<preference name="fullScreen" value="true" />
+	<preference name="appBackground" value="rgba(0,0,0,0.0)"/>
+
+	<preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
+
+	<preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
+
+	<preference name="hScrollBarEnabled" value="false"/>
+
+	<preference name="vScrollBarEnabled" value="false"/>
+
+	<preference name="autoLaunch" value="true"/>
+
+	<preference name="fullScreen" value="false"/>
 
 	<preference name="autoUpdate" value="true" />
 
 	<preference name="smartUpdate" value="true" />
 
-	<preference name="debug" value="true" />
+	<preference name="debug" value="true"/>
 
 	<preference name="statusBarAppearance" value="true" />
 
@@ -49,3 +61,4 @@
 	<permission name="hardware" />
 
 </widget>
+
