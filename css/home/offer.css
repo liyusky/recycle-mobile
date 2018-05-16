@@ -291,20 +291,6 @@ margin: 5.33333vw auto;
   background: transparent;
 }
 
-.select-box .protocol{
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  align-items: center;
-  -webkit-box-align: center;
-  -webkit-align-items:center;
-  justify-content: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: flex-start;
-  height: 100%;
-}
-
-
 .select-box .protocol span{
   color: #fa570a;
 }
@@ -324,6 +310,16 @@ margin: 5.33333vw auto;
   position: relative;
   margin-left: 1.6vw;
   float: left;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items:center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: flex-start;
+  height: 100%;
 }
 
 .select-box .protocol .icon{

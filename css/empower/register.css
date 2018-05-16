@@ -297,6 +297,16 @@ header .header-title {
   position: relative;
   margin-left: 1.6vw;
   float: left;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items:center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: flex-start;
+  height: 100%;
 }
 
 .register .register-explain .protocol .icon{
