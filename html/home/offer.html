@@ -40,8 +40,7 @@
         <div class="clear"></div>
       </div>
       <div class="rules-text">
-        用户根据手机实际状况填写确认手机检测评估信息后， 根据平台提供的报价决定是否进行出售;若用户确定出手的,用户需根据 平台要求平台签订相关交易文本,用户操作完成后, 平台即刻向用户支付一定比例的定金及预付款;待平台实际收到用户手机并
-        验收通过后向用户支付尾款部分。
+        用户根据手机实际状况填写确认手机检测评估信息后， 根据平台提供的报价决定是否进行出售;若用户确定出手的,用户需根据 平台要求平台签订相关交易文本,用户操作完成后, 平台即刻向用户支付一定比例的定金及预付款;待平台实际收到用户手机并 验收通过后向用户支付尾款部分。
       </div>
     </div>
     <div class="rules">
@@ -54,15 +53,17 @@
         用户在与平台签订《手机回收合同》并收到平台支付款项后拥有7个 自然日的履约期,履约期内用户可选择撤销出售手机,解除原合同, 但应向平台退回预付款并双倍返还定金。
       </div>
     </div>
-    <div class="affirm">
-      <div class="protocol">
-        <input type="checkbox" id="checkbox">
-        <label for="checkbox" onclick="javascript:changeSrc()">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-btn-selected" id="select"></use>
-          </svg>
-          <p>我阅读并理解 <span onclick="javascript:create('protocol')">《手机合同》</span></p>
-        </label>
+    <div class="select-box">
+        <div class="protocol">
+          <input id="checkbox" type="checkbox">
+          <label for="checkbox" onclick="javascript:changeSrc()">
+              <svg class="icon" aria-hidden="true">
+                <use id="select" xlink:href="#icon-btn-selected"></use>
+              </svg>
+            我阅读并理解
+            <span onclick="javascript:create('protocol')">《手机合同》</span>
+          </label>
+        </div>
       </div>
     </div>
     <div class="btn" onclick="javascript: selectCard();">马上拿钱</div>
@@ -214,8 +215,7 @@
           function (ret, err) {
             if (ret && ret.value.card) {
               submit(ret.value.card);
-            }
-            else {
+            } else {
               toast('银行卡选择失败');
             }
             openBtnClick('submit-btn');

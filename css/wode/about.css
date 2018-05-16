@@ -6,7 +6,8 @@
 }
 
 ol,
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -23,7 +24,8 @@ a {
 }
 
 ol,
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -102,7 +104,6 @@ body {
   background: #f4f4f4;
 }
 
-
 header {
   height: 12vw;
   background: #fff;
@@ -127,8 +128,13 @@ header .compile {
   font-size: 4.66667vw;
   color: #333;
 }
-.box{
+
+.box {
+  position: absolute;
+  left: 50%;
+  margin-left: -34vw;
 }
-.reminder-message{
+
+.reminder-message {
   margin-top: 5vw;
 }

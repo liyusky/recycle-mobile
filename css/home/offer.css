@@ -271,54 +271,76 @@ header .header-title {
   line-height: 6.66667vw;
 }
 
-.details .affirm {
+ .select-box {
+margin: 5.33333vw auto;
   font-size: 3.6vw;
-  padding-bottom: 6vw;
 }
 
-.details .affirm .protocol {
+.select-box .protocol {
+    position: relative;
+    float: left;
+}
+
+ .select-box #checkbox {
+  position: relative;
+  float: left;
+  -webkit-appearance:button;
+  outline: none;
+  background: transparent;
+}
+
+.select-box .protocol span{
+  color: #fa570a;
+}
+
+.select-box .protocol input[type='checkbox'] {
+    width: 4vw;
+    height: 4vw;
+    opacity: 0;
+    display: inline-block;
+    -webkit-appearance:button;
+    outline: none;
+    background: transparent;
+    display: none;
+}
+
+.select-box  .protocol label {
+  position: relative;
+  margin-left: 1.6vw;
+  float: left;
   display: flex;
   display: -webkit-box;
   display: -webkit-flex;
   align-items: center;
   -webkit-box-align: center;
-  -webkit-align-items: center;
+  -webkit-align-items:center;
   justify-content: center;
   -webkit-box-pack: center;
   -webkit-justify-content: flex-start;
   height: 100%;
 }
 
-.details .affirm .protocol input[type='checkbox'] {
-  width: 4vw;
+.select-box .protocol .icon{
+  width: 4vw; 
   height: 4vw;
-  opacity: 0;
-  display: inline-block;
-  -webkit-appearance: button;
-  outline: none;
-  background: transparent;
-  display: none;
-}
-
-.details .affirm .protocol label {
-  height: 4vw;
-  line-height: 4vw;
-  position: relative;
-  margin-left: 1.6vw;
-  width: 100%;
-}
-
-.details .affirm .protocol span{
-  color: #fa570a;
-}
-
-.details .affirm label .icon {
-  width: 4vw;
-  height: 4vw;
-  font-size: 3.6vw;
-  color: #fff;
   float: left;
+  margin-right: 1vw;
 }
+
+.select-box .register-text {
+  width: 66.66667vw;
+  height: 17.2vw;
+  line-height: 17.2vw;
+  margin-left: 6.66667vw;
+  font-size: 3.6vw;
+}
+
+.select-box .mark {
+  color: #fa570a;
+  margin-left: 1.73333vw;
+  font-size: 3.6vw;
+}
+
 
 .details .mark .dialog .dialog-footer {
   height: 13.33333vw;
@@ -347,4 +369,27 @@ iframe {
 
 .details .mark .dialog .dialog-footer button:last-child {
   border-radius: 0 0 2.66667vw 0;
+}
+.btn {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  margin-top: 15vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 86.66667vw;
+  height: 12.66667vw;
+  background-color: #1990fe;
+  border-radius: 2vw;
+  font-size: 5.06667vw;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  text-align: center;
 }

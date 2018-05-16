@@ -130,7 +130,7 @@ header .login-dialog .btn-group div {
 .list {
   width: 100%;
   padding-left: 2.8vw;
-  height: 80vw;
+  height: 96vw;
   overflow: auto;
 }
 
@@ -224,7 +224,7 @@ header .login-dialog .btn-group div {
 
 footer {
   width: 100%;
-  height: 20.66667vw;
+  height: 14.66667vw;
   background: #fff;
   position: fixed;
   bottom: 0;
@@ -241,9 +241,6 @@ footer p {
   display: none!important;
 }
 
-footer .tel {
-  margin-top: 5.26667vw;
-}
 
 footer .time {
   margin-top: 2vw;
