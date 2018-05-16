@@ -329,18 +329,17 @@ header .header-title {
   justify-content: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
+  margin-top: 12vw;
   margin-left: auto;
   margin-right: auto;
   width: 86.66667vw;
   height: 12.66667vw;
-  display: block;
-  outline: none;
-  border: none;
+  background-color: #1990fe;
+  border-radius: 2vw;
   font-size: 5.06667vw;
-  margin: 15vw auto;
-  border-radius: 1.6vw;
-  background: #71b8fa;
-  color: #fff;
+  color: #ffffff;
+  border: none;
+  outline: none;
   text-align: center;
 
 }
