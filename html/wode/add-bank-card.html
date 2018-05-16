@@ -45,14 +45,13 @@
     var User = null;
     var mark = true;
     apiready = function () {
-      init();
       setListener();
+      init();
     }
 
     function setListener() {
       offlineEventListener();
     }
-
 
     function init() {
       if (!checkNet() || !checkLogin()) return;
@@ -101,7 +100,7 @@
 
     function submit() {
       if (!checkNet() || !checkLogin()) return;
-      var User = $api.getStorage('User');
+      User = $api.getStorage('User');
       var card = $api.val('card');
       var phone = $api.val('phone');
       if (!checkPhone(phone)) {
@@ -124,7 +123,7 @@
           },
           success: function (data) {
             sendBindCardEvent();
-            kill('');
+            saveCard();
           },
           default: function () {
             openBtnClick('submit-btn');
@@ -136,6 +135,26 @@
     function sendBindCardEvent() {
       api.sendEvent({
         name: 'BIND-CARD-EVENT'
+      });
+    }
+
+    function saveCard() {
+      request({
+        url: 'GetHYYHK',
+        data: {
+          'phone': User.Phone,
+          'deviceId': api.deviceId,
+        },
+        tip: '正在获取银行卡...',
+        operation: {
+          toast: false,
+          success: function (data) {
+            User = $api.getStorage('User');
+            User.Card = data;
+            $api.setStorage('User', User);
+            kill();
+          }
+        }
       });
     }
   </script>
