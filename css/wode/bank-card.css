@@ -166,28 +166,22 @@ header .header-title {
 }
 
 .btn {
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  align-items: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  justify-content: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  margin-top: 10.66667vw;
   margin-left: auto;
   margin-right: auto;
   width: 86.66667vw;
   height: 10.66667vw;
   background-color: #1990fe;
   border-radius: 2vw;
-  font-size: 5.06667vw;
   color: #ffffff;
   border: none;
   outline: none;
   text-align: center;
+  margin: 10vw auto;
+  display: block;
+  line-height: 10.66667vw;
+  font-size: 5vw;
 }
+
 
 .hide {
   display: none;
