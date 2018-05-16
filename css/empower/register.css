@@ -252,7 +252,6 @@ header .header-title {
 .register .register-explain .protocol {
     margin-left: 6vw;
     position: relative;
-    height: 3vw;
     float: left;
 }
 
@@ -313,6 +312,7 @@ header .header-title {
   width: 4vw; 
   height: 4vw;
   float: left;
+  margin-right: 1vw;
 }
 
 .register .register-explain .register-text {

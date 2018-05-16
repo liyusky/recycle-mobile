@@ -277,9 +277,7 @@ margin: 5.33333vw auto;
 }
 
 .select-box .protocol {
-    margin-left: 6vw;
     position: relative;
-    height: 3vw;
     float: left;
 }
 
@@ -326,6 +324,7 @@ margin: 5.33333vw auto;
   width: 4vw; 
   height: 4vw;
   float: left;
+  margin-right: 1vw;
 }
 
 .select-box .register-text {
