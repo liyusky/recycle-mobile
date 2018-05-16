@@ -56,6 +56,7 @@
     function init() {
       if (!checkNet() || !checkLogin()) return;
       User = $api.getStorage('User');
+      $api.val('phone', User.Phone);
       request({
         url: 'Certification',
         data: {
