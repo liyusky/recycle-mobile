@@ -72,6 +72,7 @@
         }
       });
     }
+    
     var bankImg = {
       '广东发展银行': '#icon-GDB',
       '浦发银行': '#icon-SPDB',
@@ -100,6 +101,7 @@
       }
       $api.html('list', htmlStr);
     }
+    
     function select(_this) {
       if (previewDom) $api.attr('select-' + index, 'xlink:href', '#icon-btn-selected');
       index = $api.attr(_this, 'data-index');
@@ -139,7 +141,6 @@
       User.Card = data;
       $api.setStorage('User', User);
     }
-
 
     function sendSelectCardEvent() {
       api.sendEvent({

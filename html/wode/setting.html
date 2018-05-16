@@ -31,7 +31,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-<script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script>
     var User = null;
 
@@ -49,9 +49,7 @@
     }
 
     function setLogoutStatus() {
-      User = $api.getStorage('User');
-      User.Status = false;
-      $api.setStorage('User', User);
+      clearUser();
       kill();
     }
 
