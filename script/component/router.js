@@ -97,5 +97,8 @@ window.ROUTER = {
   },
   'about-us': {
     path: 'widget://html/wode/about-us.html'
+  },
+  'protocol':{
+    path: 'widget://html/wode/protocol.html'
   }
 }

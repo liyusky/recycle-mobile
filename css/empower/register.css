@@ -14,6 +14,7 @@ li {
 a {
   text-decoration: none;
   color: none;
+  color: #fa570a;
 }
 
 * {
@@ -274,6 +275,11 @@ header .header-title {
   -webkit-box-pack: center;
   -webkit-justify-content: flex-start;
   height: 100%;
+}
+
+
+.register .register-explain .protocol span{
+  color: #fa570a;
 }
 
 .register .register-explain .protocol input[type='checkbox'] {
