@@ -154,14 +154,12 @@
         if (!mark) {
           toast('请完成认证');
           create('personal-information');
-          kill();
           return;
         }
 
         if (User.Card.length == 0) {
           toast('请绑定银行卡');
           create('add-bank-card');
-          kill();
           return;
         };
         create('select-bank-card');
@@ -194,7 +192,7 @@
           operation: {
             success: function (data) {
               create('submit-order');
-              kill('');
+              kill();
             },
             default: function () {
               openBtnClick('submit-btn');
