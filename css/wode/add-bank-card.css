@@ -197,18 +197,6 @@ header .compile {
 }
 
 .btn {
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  align-items: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  justify-content: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 10.66667vw;
   width: 86.66667vw;
   height: 10.66667vw;
   background-color: #1990fe;
@@ -217,6 +205,10 @@ header .compile {
   color: #ffffff;
   border: none;
   outline: none;
+  text-align: center;
+  line-height: 10.66667vw;
+  display: block;
+  margin: 10vw auto;
 }
 
 .disabled {
