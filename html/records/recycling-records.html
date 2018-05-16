@@ -38,9 +38,9 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8">
+  var id = '';
     apiready = function () {
       setListener();
-
       if (!checkNet() || !checkLogin()) return;
       init();
     }
@@ -126,7 +126,7 @@
       event.preventDefault();
       create({
         goal: 'records-detail',
-        data: data
+        id: data
       });
     }
 

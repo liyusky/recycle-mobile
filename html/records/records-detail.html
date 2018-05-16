@@ -109,11 +109,11 @@
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8">
-    var data = '';
+    var id = '';
     var User = null;
     apiready = function () {
       setListener();
-      data = api.pageParam.data;
+      id = api.pageParam.id;
       $api.text('phone-type', api.deviceModel);
       if (!checkNet() || !checkLogin()) return;
       init();
@@ -163,7 +163,7 @@
       var htmlStr = '';
       for (var i = 0; i < data.length; i++) {
         for (var key in data[i]) {
-          if (data == data[i][key]) {
+          if (id == data[i][key]) {
             setHtmltitle(data[i]);
           } else {
             setHtmltitle(data[data.length - 1]);
