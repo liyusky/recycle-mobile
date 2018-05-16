@@ -6,7 +6,8 @@
 }
 
 ol,
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -23,7 +24,8 @@ a {
 }
 
 ol,
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -156,21 +158,22 @@ header .header-title {
   font-size: 4vw;
   margin-top: 2vw;
   display: inline-block;
-  -webkit-appearance:none;
-  outline:none;
+  -webkit-appearance: none;
+  outline: none;
 }
-.load{
+
+.load {
   position: absolute;
   left: 50%;
   top: 40vw;
   z-index: 1;
 }
 
-.hide{
+.hide {
   display: none;
 }
 
-.load .load-img{
+.load .load-img {
   width: 4.266666666666667vw;
   height: 4.266666666666667vw;
 }
@@ -181,7 +184,7 @@ header .header-title {
 }
 
 .details .rules {
-  margin: 8vw auto;
+  margin: 5vw auto;
 }
 
 .details .rules .rules-title {
@@ -229,7 +232,7 @@ header .header-title {
   width: 100%;
   height: 100%;
   position: fixed;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   left: 0;
   top: 0;
   z-index: 3;
@@ -258,50 +261,47 @@ header .header-title {
   padding-right: 5.06667vw;
 }
 
-.details  #yes {
+.details #yes {
   float: left;
   font-size: 4.26667vw;
   margin-top: 1vw;
 }
-
 
 .details .mark .dialog .dialog-content .content-text {
   font-size: 3.6vw;
   line-height: 6.66667vw;
 }
 
-.details  .affirm {
+.details .affirm {
   font-size: 3.6vw;
   padding-bottom: 6vw;
-  padding-top: 6vw;
 }
 
-
-.details  .affirm .protocol{
+.details .affirm .protocol {
   display: flex;
   display: -webkit-box;
   display: -webkit-flex;
   align-items: center;
   -webkit-box-align: center;
-  -webkit-align-items:center;
+  -webkit-align-items: center;
   justify-content: center;
   -webkit-box-pack: center;
   -webkit-justify-content: flex-start;
   height: 100%;
 }
 
-.details  .affirm .protocol input[type='checkbox'] {
-    width: 4vw;
-    height: 4vw;
-    opacity: 0;
-    display: inline-block;
-    -webkit-appearance:button;
-    outline: none;
-    background: transparent;
-    display: none;
+.details .affirm .protocol input[type='checkbox'] {
+  width: 4vw;
+  height: 4vw;
+  opacity: 0;
+  display: inline-block;
+  -webkit-appearance: button;
+  outline: none;
+  background: transparent;
+  display: none;
 }
 
-.details  .affirm .protocol label {
+.details .affirm .protocol label {
   height: 4vw;
   line-height: 4vw;
   position: relative;
@@ -309,15 +309,13 @@ header .header-title {
   width: 100%;
 }
 
-
-.details  .affirm label .icon{
-  width: 4vw; 
+.details .affirm label .icon {
+  width: 4vw;
   height: 4vw;
   font-size: 3.6vw;
   color: #fff;
   float: left;
 }
-
 
 .details .mark .dialog .dialog-footer {
   height: 13.33333vw;
@@ -335,12 +333,12 @@ header .header-title {
   font-size: 4.26667vw;
 }
 
-iframe{
+iframe {
   width: 100%;
 }
 
 .details .mark .dialog .dialog-footer button:first-child {
-  border-right:0.8vw solid #ddd;
+  border-right: 0.8vw solid #ddd;
   border-radius: 0 0 0 2.66667vw;
 }
 

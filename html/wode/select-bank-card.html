@@ -100,7 +100,6 @@
       }
       $api.html('list', htmlStr);
     }
-
     function select(_this) {
       if (previewDom) $api.attr('select-' + index, 'xlink:href', '#icon-btn-selected');
       index = $api.attr(_this, 'data-index');
@@ -122,7 +121,7 @@
         '<span class="pass">****</span>' +
         '<span class="pass">****</span>' +
         '<span class="pass">****</span>' +
-        '<span class="num">' + card.WeiHao + '</span>' +
+        '<span class="num">' + 'card.WeiHao' + '</span>' +
         '<span class="card-type">储蓄卡</span>' +
         '</p>' +
         '</div>' +

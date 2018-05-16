@@ -146,8 +146,8 @@
 						$api.setStorage('User', User);
 						sendChangeStepEvent();
 					},
-					fail: function () {
-						toast('个人信息认证失败，请重试');
+					fail: function (msg) {
+						toast(msg);
 					}
 				}
 			});

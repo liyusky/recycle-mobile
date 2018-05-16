@@ -122,11 +122,11 @@
 
 
 
-
     function openDetails(data) {
+      event.preventDefault();
       create({
         goal: 'records-detail',
-        id: data
+        data: data
       });
     }
 
