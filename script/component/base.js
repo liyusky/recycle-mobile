@@ -50,7 +50,7 @@ function checkLogin(params) {
 function checkNet(params) {
   var flag = true;
   var openOffline = true;
-  
+
   try {
     if (typeof params.openOffline === 'boolean') openOffline = params.openOffline;
   } catch (e) {}
@@ -140,6 +140,7 @@ function kill(goal) {
     var animationType = 'reveal';
     var animationDirection = 'from_right';
     var param = ROUTER[goal] ? ROUTER[goal].kill : false;
+
     if (param) {
       if (param.type) animationType = param.type;
       if (param.direction) animationDirection = param.direction;

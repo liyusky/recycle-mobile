@@ -51,8 +51,7 @@
         toast('请选择银行卡');
         return;
       }
-      sendSelectCardEvent();
-      kill();
+      submitApply();
     }
 
     function init() {
@@ -72,7 +71,7 @@
         }
       });
     }
-    
+
     var bankImg = {
       '广东发展银行': '#icon-GDB',
       '浦发银行': '#icon-SPDB',
@@ -101,7 +100,7 @@
       }
       $api.html('list', htmlStr);
     }
-    
+
     function select(_this) {
       if (previewDom) $api.attr('select-' + index, 'xlink:href', '#icon-btn-selected');
       index = $api.attr(_this, 'data-index');
@@ -142,14 +141,40 @@
       $api.setStorage('User', User);
     }
 
-    function sendSelectCardEvent() {
-      api.sendEvent({
-        name: 'Select-Card',
-        extra: {
-          card: User.Card[index].KaHao
+    function submitApply() {
+      if (!checkNet() || !checkLogin()) return;
+      request({
+        url: 'SubmitApply',
+        data: {
+          ly: '',
+          txl: '',
+          JinE: '',
+          IMEI: '',
+          SEID: '',
+          MEID: '',
+          ICCID: '',
+          QiXian: '',
+          FeiYong: '',
+          PhoneName: '',
+          SerialNumber: '',
+          sj: User.Phone,
+          deviceId: api.deviceId,
+          RuZhangKa: User.Card[index].KaHao,
+          PhoneModel: api.deviceModel,
+          StorageSpace: '8',
+        },
+        tip: '正在发送...',
+        operation: {
+          success: function () {
+            create('submit-order');
+          },
+          default: function () {
+            openBtnClick('submit-btn');
+          }
         }
       });
     }
+
   </script>
 </body>
 

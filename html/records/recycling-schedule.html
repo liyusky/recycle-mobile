@@ -13,38 +13,38 @@
 
 <body>
   <header class="header">
-    <img src="../../image/common/back.png" class="back" onclick="javascript:kill();">
+<img src="../../image/common/back.png" class="back" onclick="javascript: create('home');">
     <p class="header-title">回收进度</p>
   </header>
   <div class="order-list">
     <ul id="order-list">
       <li class="recycle-list-item">
-          <img class="recycle" src="../../image/records/recycle.png" >
-          <div class="message">
-            <p class="phonetype">
-              <span class="type">手机型号</span>
-              <span id="phone-type"></span>
-            </p>
-          </div>
-          <div class="phone-price">
-            <ul>
-              <li>
-                <p>手机估价</p>
-                <span id="money"></span>
-              </li>
-              <li>
-                <p>定金+预付款</p>
-                <span id="total"></span>
-              </li>
-              <li>
-                <p>履约期</p>
-                <span id="deadline"></span>
-                <span>天</span>
-                <img class="help" src="../../image/records/help.png" onclick='javascript:showDialog();'>
-              </li>
-            </ul>
-          </div>
-        </li>
+        <img class="recycle" src="../../image/records/recycle.png">
+        <div class="message">
+          <p class="phonetype">
+            <span class="type">手机型号</span>
+            <span id="phone-type"></span>
+          </p>
+        </div>
+        <div class="phone-price">
+          <ul>
+            <li>
+              <p>手机估价</p>
+              <span id="money"></span>
+            </li>
+            <li>
+              <p>定金+预付款</p>
+              <span id="total"></span>
+            </li>
+            <li>
+              <p>履约期</p>
+              <span id="deadline"></span>
+              <span>天</span>
+              <img class="help" src="../../image/records/help.png" onclick='javascript:showDialog();'>
+            </li>
+          </ul>
+        </div>
+      </li>
     </ul>
   </div>
   <div id="scheduleList">
@@ -87,17 +87,15 @@
 
   <div class="mark hide" id="mark">
     <div class="dialog">
-        <p class="d-head">履约期</p>
-        <div class="details">
-          履约期: 指用户确认以评估价格出卖手机后与平台签订的《手机合同》
-          内约定的交付手机的实际交付期限,用户应当在交付期限内将手机实际寄送至
-          平台指定地址
-        </div>
-        <div class="dialog-footer">
-          <span class="confirm" onclick="javascript:hideDialog()">我知道了</span>
-        </div>
+      <p class="d-head">履约期</p>
+      <div class="details">
+        履约期: 指用户确认以评估价格出卖手机后与平台签订的《手机合同》 内约定的交付手机的实际交付期限,用户应当在交付期限内将手机实际寄送至 平台指定地址
+      </div>
+      <div class="dialog-footer">
+        <span class="confirm" onclick="javascript:hideDialog()">我知道了</span>
+      </div>
     </div>
- </div>
+  </div>
 
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/base.js"></script>
@@ -110,11 +108,12 @@
   <script>
     var qx = '0';
     apiready = function () {
- setListener();
+      setListener();
       var qx = '0';
       $api.text('phone-type', api.deviceModel);
       if (!checkNet() || !checkLogin()) return;
       init();
+      
     }
 
     // 获取记录
@@ -252,14 +251,14 @@
       create('refund');
     }
 
-   function showDialog(){
-      $api.removeCls('mark','hide');
+    function showDialog() {
+      $api.removeCls('mark', 'hide');
     };
 
-    function hideDialog(){
-      $api.addCls('mark','hide');
+    function hideDialog() {
+      $api.addCls('mark', 'hide');
     }
-    
+
     function setListener() {
       offlineEventListener();
     }
