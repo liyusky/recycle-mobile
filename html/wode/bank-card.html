@@ -21,7 +21,7 @@
     </ul>
 
       
-       <button class="btn disabled" disabled="disabled" id="btn" onclick="javascript:create('add-bank-card')">请先完善资料</button> 
+       <button class="btn disabled" disabled="disabled" id="submit-btn" onclick="javascript:create('add-bank-card')">请先完善资料</button> 
 
   </div>
   <script type="text/javascript" charset="utf-8" src="../../script/global/api.js"></script>
@@ -67,14 +67,14 @@
         operation: {
           toast: false,
           before: function () {
-            closeBtnClick('btn');
+            closeBtnClick('submit-btn');
           },
           success: function (data) {
             setLoginStatus(data);
             allowTarget();
           },
           default: function () {
-            openBtnClick('btn');
+            openBtnClick('submit-btn');
           }
         }
       });
@@ -97,9 +97,9 @@
 
     function allowTarget() {
       if (!mark) return;
-      $api.removeCls('btn', 'disabled');
-      $api.removeAttr('btn', 'disabled');
-      $api.text('btn', '添加银行卡');
+      $api.removeCls('submit-btn', 'disabled');
+      $api.removeAttr('submit-btn', 'disabled');
+      $api.text('submit-btn', '添加银行卡');
     }
 
     // 渲染银行卡列表
