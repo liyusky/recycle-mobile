@@ -30,7 +30,7 @@
     </div>
   </header>
   <ul class="list" id="list">
-    <li class="list-item" onclick="javascript: gotoPage('personal-information');">
+    <li class="list-item hide" id="mine-info" onclick="javascript: gotoPage('personal-information');">
       <div class="list-icon">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-data"></use>
@@ -132,8 +132,29 @@
     }
 
     function init() {
+      getConfig();
       render();
     };
+
+    function getConfig() {
+      if (!checkNet() && !checkLogin()) return;
+      User = $api.getStorage('User');
+      request({
+        url: 'GetConfig',
+        data: {
+          deviceId: api.deviceId,
+          phone: User.Phone
+        },
+        tip: false,
+        operation: {
+          toast: false,
+          success: function (data) {
+            if (data.Personal * 1 == 0) return;
+            $api.removeCls('mine-info', 'hide');
+          }
+        }
+      });
+    }
 
     function render() {
       User = $api.getStorage('User');
@@ -141,8 +162,7 @@
         $api.addCls('btn-group', 'hide');
         $api.removeCls('account', 'hide');
         $api.removeCls('phone', 'hide');
-      } 
-      else {
+      } else {
         $api.removeCls('btn-group', 'hide');
         $api.addCls('account', 'hide');
         $api.addCls('phone', 'hide');
@@ -160,8 +180,7 @@
     function gotoPage(goal) {
       if (goal == 'login' || goal == 'register') {
         if (!checkNet()) return;
-      }
-      else if (!checkNet() || !checkLogin()) {
+      } else if (!checkNet() || !checkLogin()) {
         return;
       }
       create(goal);

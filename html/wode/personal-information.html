@@ -26,7 +26,7 @@
           <img class="icon" src="../../image/wode/autonym.png">
           <div class="box">
             <h5 class="title">实名认证</h5>
-              <p class="list-text">身份信息认证</p>
+            <p class="list-text">身份信息认证</p>
           </div>
           <img class="more" src="../../image/wode/more.png">
           <span class="status" id="flag-1">待认证</span>
@@ -35,7 +35,7 @@
           <img class="icon" src="../../image/wode/communication.png">
           <div class="box">
             <h5 class="title">上传通讯录</h5>
-              <p class="list-text">个人通信录信息</p>
+            <p class="list-text">个人通信录信息</p>
           </div>
           <img class="more" src="../../image/wode/more.png">
           <span class="status" id="flag-2">待认证</span>
@@ -44,7 +44,7 @@
           <img class="icon" src="../../image/wode/credit.png">
           <div class="box">
             <h5 class="title">芝麻信用认证</h5>
-              <p class="list-text">芝麻积分</p>
+            <p class="list-text">芝麻积分</p>
           </div>
           <img class="more" src="../../image/wode/more.png">
           <span class="status" id="flag-3">待认证</span>
@@ -53,7 +53,7 @@
           <img class="icon" src="../../image/wode/operator.png">
           <div class="box">
             <h5 class="title">运营商认证</h5>
-              <p class="list-text">运营商信息认证</p>
+            <p class="list-text">运营商信息认证</p>
           </div>
           <img class="more" src="../../image/wode/more.png">
           <span class="status" id="flag-4">待认证</span>
@@ -73,7 +73,7 @@
           <img class="icon" src="../../image/wode/alipay.png">
           <div class="box">
             <h5 class="title">支付宝</h5>
-              <p class="list-text">支付宝认证</p>
+            <p class="list-text">支付宝认证</p>
           </div>
           <img class="more" src="../../image/wode/more.png">
           <span class="status" id="flag-5">待认证</span>
@@ -82,7 +82,7 @@
           <img class="icon" src="../../image/wode/jdlogo.png">
           <div class="box">
             <h5 class="title">京东</h5>
-              <p class="list-text">京东认证</p>
+            <p class="list-text">京东认证</p>
           </div>
           <img class="more" src="../../image/wode/more.png">
           <span class="status" id="flag-6">待认证</span>
@@ -90,7 +90,7 @@
       </ul>
     </div>
 
-     <div class="selectable hide">
+    <div class="selectable hide">
       <div class="selecthead">
         <img class="border" src="../../image/wode/border.png">
         <p class="select">可选认证</p>
@@ -106,7 +106,7 @@
           <li class="jd">
             <img class="icon" src="../../image/wode/jdlogo.png">
             <p>京东</p>
-            <imgclass="remain" src="../../image/wode/remain.png" >
+            <imgclass="remain" src="../../image/wode/remain.png">
           </li>
           <li>
             <img class="icon" src="../../image/wode/chsi.png">
@@ -125,7 +125,7 @@
   <script type="text/javascript" charset="utf-8" src="../../script/global/event.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/global/listen.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/router.js"></script>
-  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>  
+  <script type="text/javascript" charset="utf-8" src="../../script/global/urls.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../script/component/other/toggleBtnDisabled.js"></script>
   <script>
     var goal, User;
@@ -144,7 +144,7 @@
           deviceId: api.deviceId
         },
         operation: {
-          toast:false,
+          toast: false,
           success: function (data) {
             render(data.HYXX);
           }
@@ -197,7 +197,7 @@
     function setListenr() {
       loginEventListener();
       logoutEventListener();
- offlineEventListener();
+      offlineEventListener();
       api.addEventListener({
           name: 'CLOSE-STEP-EVENT'
         },
