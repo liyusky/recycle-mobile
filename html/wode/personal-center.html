@@ -59,7 +59,7 @@
         </svg>
       </div>
       <div class="list-message">
-        <p class="item-content">我的银行卡</p>
+        <p class="item-content">我的收款卡</p>
         <img class="more" src="../../image/wode/more.png">
       </div>
     </li>
@@ -133,7 +133,25 @@
 
     function init() {
       render();
-    };
+
+      request({
+        url: 'getConfig',
+        data: {
+          sj: User.Phone,
+          deviceId: api.deviceId
+        },
+        tip: '正在加载...',
+        operation: {
+          toast: false,
+          success: function (data) {
+            
+          },
+          fail:function(){
+            
+          }
+        }
+      });
+  };
 
     function render() {
       User = $api.getStorage('User');

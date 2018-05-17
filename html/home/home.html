@@ -37,7 +37,7 @@
         <img class="phone-img" src="../../image/home/phone.png">
         <div class="phone-message">
           <p class="messagelist" id="device-model">iphone 6s</p>
-          <!-- <p class="messagelist">内存: 16G</p> -->
+          <p class="messagelist">内存: <span id="systemVersion">16G</span></p>
           <p class="messagelist">
             <span class="MaxBackPrice">最高回收:</span>￥5000</p>
         </div>
@@ -52,7 +52,7 @@
             <div class="item-bg">
               <img src="../../image/home/evaluate.png">
             </div>
-            <p class="item-message">旧机估价</p>
+            <p class="item-message">旧机评估</p>
           </li>
           <li class="list-arrow">
             <img class="arrow" src="../../image/home/than.png">
@@ -61,7 +61,7 @@
             <div class="item-bg">
               <img src="../../image/home/order.png">
             </div>
-            <p class="item-message">在线下单</p>
+            <p class="item-message">在线售出</p>
           </li>
           <li class="list-arrow">
             <img class="arrow" src="../../image/home/than.png">
@@ -70,7 +70,7 @@
             <div class="item-bg">
               <img src="../../image/home/icon.png">
             </div>
-            <p class="item-message">急速结款</p>
+            <p class="item-message">7天反悔期</p>
           </li>
           <li class="list-arrow">
             <img class="arrow" src="../../image/home/than.png">
@@ -79,7 +79,7 @@
             <div class="item-bg">
               <img src="../../image/home/checkout.png">
             </div>
-            <p class="item-message">质检入库</p>
+            <p class="item-message">销售本机</p>
           </li>
         </ul>
       </div>
@@ -107,6 +107,7 @@
     function init() {
       if (!checkNet()) return;
       $api.text('device-model', api.deviceModel);
+      $api.text('systemVersion', api.deviceModel+api.systemVersion);
       User = $api.getStorage('User');
       if (checkLogin({
           openLogin: false
