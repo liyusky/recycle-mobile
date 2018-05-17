@@ -36,6 +36,7 @@
     var User = null;
     var index = -1;
     var previewDom = null;
+    
     apiready = function () {
       setListener();
       init();
@@ -100,6 +101,7 @@
       }
       $api.html('list', htmlStr);
     }
+
     function select(_this) {
       if (previewDom) $api.attr('select-' + index, 'xlink:href', '#icon-btn-selected');
       index = $api.attr(_this, 'data-index');
