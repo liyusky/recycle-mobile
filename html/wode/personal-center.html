@@ -134,24 +134,6 @@
     function init() {
       getConfig();
       render();
-
-      request({
-        url: 'getConfig',
-        data: {
-          sj: User.Phone,
-          deviceId: api.deviceId
-        },
-        tip: '正在加载...',
-        operation: {
-          toast: false,
-          success: function (data) {
-            
-          },
-          fail:function(){
-            
-          }
-        }
-      });
   };
 
     function getConfig() {

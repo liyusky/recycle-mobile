@@ -36,8 +36,9 @@
       <div class="phone-content">
         <img class="phone-img" src="../../image/home/phone.png">
         <div class="phone-message">
-          <p class="messagelist" id="device-model">iphone 6s</p>
-          <p class="messagelist">内存: <span id="systemVersion">16G</span></p>
+          <p class="messagelist" id="device-model"></p>
+          <p class="messagelist" id="system"></p>
+          <p class="messagelist" id="device-name"></p>
           <p class="messagelist">
             <span class="MaxBackPrice">最高回收:</span>￥5000</p>
         </div>
@@ -107,7 +108,8 @@
     function init() {
       if (!checkNet()) return;
       $api.text('device-model', api.deviceModel);
-      $api.text('systemVersion', api.deviceModel+api.systemVersion);
+      $api.text('system', api.systemType+api.systemVersion);
+      $api.text('device-name', api.deviceName);
       User = $api.getStorage('User');
       if (checkLogin({
           openLogin: false
