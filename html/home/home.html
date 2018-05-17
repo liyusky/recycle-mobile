@@ -108,7 +108,7 @@
     function init() {
       if (!checkNet()) return;
       $api.text('device-model', api.deviceModel);
-      $api.text('system', api.systemType+api.systemVersion);
+      $api.text('system', api.systemType + ' ' + api.systemVersion);
       $api.text('device-name', api.deviceName);
       User = $api.getStorage('User');
       if (checkLogin({
