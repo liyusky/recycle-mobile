@@ -67,14 +67,14 @@
         operation: {
           toast: false,
           before: function () {
-            closeBtnClick('submit-btn');
+            closeBtnClick('btn');
           },
           success: function (data) {
             setLoginStatus(data);
             allowTarget();
           },
           default: function () {
-            openBtnClick('submit-btn');
+            openBtnClick('btn');
           }
         }
       });
