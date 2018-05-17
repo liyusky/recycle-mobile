@@ -24,6 +24,7 @@ var productionAppApi = {
   'ImageKey': 'http://192.168.0.110:8008/JDBService.svc/GenerateKey', // 获取key
   'ImageCode': 'http://192.168.0.110:8008/JDBService.svc/GrapheCodeImg',
   'PaymentAmount': 'http://192.168.0.110:8008/JDBService.svc/GetZXJD',
+  'GetConfig': 'http://192.168.0.110:8008/JDBService.svc/GetConfig',
   'GetQQ': 'http://192.168.0.110:8008/JDBService.svc/GetKeFu',
   'Refund': 'http://192.168.0.110:8009/OrderH5.aspx',
 };
@@ -54,8 +55,9 @@ var RequestProductURL = {
   'ImageKey': 'http://118.31.104.145:9001/JDBService.svc/GenerateKey', // 获取key
   'ImageCode': 'http://118.31.104.145:9001/JDBService.svc/GrapheCodeImg',
   'PaymentAmount': 'http://118.31.104.145:9001/JDBService.svc/GetZXJD',
+  'GetConfig': 'http://118.31.104.145:9001/JDBService.svc/GetConfig', // 我的资料 开关
   'Refund': 'http://118.31.104.145:9002/OrderH5.aspx',
-  'GetQQ': 'http://118.31.104.145:9001/JDBService.svc/GetKeFu'
+  'GetQQ': 'http://118.31.104.145:9001/JDBService.svc/GetKeFu',
 };
 
 var developmentAppApi = {
