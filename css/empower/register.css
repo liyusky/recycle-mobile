@@ -168,8 +168,7 @@ header .header-title {
   float: left;
   padding-left: 0.66667vw;
   padding-right: 0.66667vw;
-  padding: 5vw;
-  padding-top: 5.5vw;
+  padding: 4vw;
 }
 
 .register ul li .control-input-switch .switch {
