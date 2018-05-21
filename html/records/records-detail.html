@@ -15,36 +15,9 @@
   <header class="header">
     <img class="back" src="../../image/common/back.png" onclick="javascript:kill();">
     <p class="header-title">订单详情</p>
-  </header>
+  </header> 
   <div class="order-list">
     <ul id="order-list">
-      <li class='recycle'>
-        <img class='recycle' src='../../image/records/recycle.png'>
-        <div class='message'>
-          <p class='phonetype'>
-            <span class='type'>手机型号</span>
-            <span id='phone-type'></span>
-          </p>
-        </div>
-        <div class='phone-price'>
-          <ul>
-            <li>
-              <p>手机估价 </p>
-              <span id="money"></span>
-            </li>
-            <li>
-              <p>定金+预付款</p>
-              <span id="total"></span>
-            </li>
-            <li>
-              <img class='help'src='../../image/records/help.png' onclick="javascript:showDialog();">
-              <p>履约期</p>
-              <span id="deadline"></span>
-              <span>天</span>
-            </li>
-          </ul>
-        </div>
-      </li>
     </ul>
   </div>
   <div id="scheduleList">
@@ -53,9 +26,9 @@
         <ul id="order-list">
           <li class="order-list-item bodrenone">
             <ul>
-              <li class="currentstatus" id="currentStatus"> </li>
+              <li class="currentstatus" id="currentStatus"></li>
               <li class="message">您的订单已提交</li>
-              <li class="time" id="orderTime"> </li>
+              <li class="time" id="orderTime"></li>
             </ul>
           </li>
         </ul>
@@ -71,19 +44,17 @@
     <div class="clear"></div>
   </div>
   </div>
+  </div>
   <div class="hide" id="footer">
     <div class="honour">
       <div class="time">
         <img src="../../image/records/time.png">
-        <span>
-          履约期
-          <span id="period">0</span>
-          天
-        </span>
+        <span>履约期
+          <span id="period">0</span>天</span>
       </div>
-      <div class="btn hide" onclick="javascript: cancel();" id="cancel">不卖了</div>
-      <div class="btn hide" onclick="javascript: confirm();" id="confirm">确定卖出填写寄回信息</div>
-      <div class="btn hide" onclick="javascript: contact();" id="contact">联系客服</div>
+      <div class="btn hide" onclick="javascript:cancel();" id="cancel">不卖了</div>
+      <div class="btn hide" onclick="javascript:confirm();" id="confirm">确定卖出填写寄回信息</div>
+      <div class="btn hide" onclick="javascript:contact();" id="contact">联系客服</div>
     </div>
   </div>
   <div class="mark hide" id="mark">
@@ -163,23 +134,21 @@
       var htmlStr = '';
       for (var i = 0; i < data.length; i++) {
         for (var key in data[i]) {
-          if (id == data[i][key]) {
-            setHtmltitle(data[i]);
-          } else {
-            setHtmltitle(data[data.length - 1]);
-          }
+          if (id == data[i].JieKuanDanHao) {
+            htmlStr = setHtmltitle(data[i]);
+          } 
         }
       };
+      $api.html('order-list', htmlStr);
     };
-
     function setHtmltitle(data) {
-      $api.text('period', data.DaoQiTianShu);
+      $api.text('period', 'data.DaoQiTianShu');
       var price = null,
         contact = false, // 联系客服
         allno = false, // 什么按钮也没有
         other = false, // 不卖了 联系客服
         alung = false; //  不卖了  确定卖出
-      switch (Number(data.ZhuangTai)) {
+      switch (Number('data.ZhuangTai')) {
         case 0: //待审核
           allno = true;
           break;
@@ -243,13 +212,36 @@
         $api.removeCls('cancel', 'hide');
         $api.removeCls('confirm', 'hide');
       };
-      price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine;
-      $api.text('money', price + '.00元');
-      $api.text('total', price * 1 + data.FeiYong * 1 + '.00元');
       $api.text('deadline', data.QiXian);
       $api.text('currentStatus', data.ZT);
-      $api.text('orderTime', data.JieKuanShiJian);
-      $api.removeCls('footer', 'hide');
+      return "<li class='recycle-list-item' >" +
+        "<img src='../../image/records/recycle.png'  class='recycle'>" +
+        "<div class='message'>" +
+        "<p class='phonetype'>" +
+        "<span class='type'>手机型号</span>" +
+        "<span id='phone-type'>" + api.deviceModel + "</span>" +
+        "</p>" +
+        "</div>" +
+        "<div class='price'>" +
+        "<ul>" +
+        "<li>" +
+        "<p>手机估价</p>" +
+        "<span>" + (price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine) + ".00元</span>" +
+        "</li>" +
+        "<li>" + 
+        "<p>定金+预付款</p>" +
+        "<span>" + (price * 1 + data.FeiYong * 1) + ".00元</span>" +
+        "</li>" +
+        "<li>" +
+        "<p>履约期</p>" +
+        "<span>" + data.QiXian + "</span>" +
+        "<span>天</span>" +
+        "<img src='../../image/records/help.png' class='help' onclick='javascript:showDialog();'>" +
+        "</li>" +
+        "</ul>" +
+        "</div>" +
+        "</li>";
+        $api.removeCls('footer', 'hide');
     }
 
     function sethtml(data) {
