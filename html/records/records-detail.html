@@ -18,12 +18,39 @@
   </header> 
   <div class="order-list">
     <ul id="order-list">
+        <li class='recycle-list-item' >
+            <img src='../../image/records/recycle.png'  class='recycle'>
+            <div class='message'>
+            <p class='phonetype'>
+            <span class='type'>手机型号</span>
+            <span id='phone-type'></span>
+            </p>
+            </div>
+            <div class='price'>
+            <ul>
+            <li>
+            <p>手机估价</p>
+            <span id="money"></span>
+            </li>
+            <li> 
+            <p>定金+预付款</p>
+            <span id="jinE"></span>
+            </li>
+            <li>
+            <p>履约期</p>
+            <span id="deadline"></span>
+            <span>天</span>
+            <img src='../../image/records/help.png' class='help' onclick='javascript:showDialog();'>
+            </li>
+            </ul>
+            </div>
+            </li>
     </ul>
   </div>
   <div id="scheduleList">
     <div class="records-details-status">
       <div class="order-content">
-        <ul id="order-list">
+        <ul id="schedule-list">
           <li class="order-list-item bodrenone">
             <ul>
               <li class="currentstatus" id="currentStatus"></li>
@@ -135,14 +162,13 @@
       for (var i = 0; i < data.length; i++) {
         for (var key in data[i]) {
           if (id == data[i].JieKuanDanHao) {
-            htmlStr = setHtmltitle(data[i]);
+            setHtmltitle(data[i]);
           } 
         }
       };
-      $api.html('order-list', htmlStr);
     };
     function setHtmltitle(data) {
-      $api.text('period', 'data.DaoQiTianShu');
+      $api.text('period', data.DaoQiTianShu);
       var price = null,
         contact = false, // 联系客服
         allno = false, // 什么按钮也没有
@@ -212,36 +238,14 @@
         $api.removeCls('cancel', 'hide');
         $api.removeCls('confirm', 'hide');
       };
+      price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine;
+      $api.text('money', price + '.00元');
+      $api.text('jinE', price+data.FeiYong + '.00元');
+      $api.text('total', data.JinE + '.00元');
       $api.text('deadline', data.QiXian);
-      $api.text('currentStatus', data.ZT);
-      return "<li class='recycle-list-item' >" +
-        "<img src='../../image/records/recycle.png'  class='recycle'>" +
-        "<div class='message'>" +
-        "<p class='phonetype'>" +
-        "<span class='type'>手机型号</span>" +
-        "<span id='phone-type'>" + api.deviceModel + "</span>" +
-        "</p>" +
-        "</div>" +
-        "<div class='price'>" +
-        "<ul>" +
-        "<li>" +
-        "<p>手机估价</p>" +
-        "<span>" + (price = data.DaoZhang ? data.DaoZhang : data.ShenQingJine) + ".00元</span>" +
-        "</li>" +
-        "<li>" + 
-        "<p>定金+预付款</p>" +
-        "<span>" + (price * 1 + data.FeiYong * 1) + ".00元</span>" +
-        "</li>" +
-        "<li>" +
-        "<p>履约期</p>" +
-        "<span>" + data.QiXian + "</span>" +
-        "<span>天</span>" +
-        "<img src='../../image/records/help.png' class='help' onclick='javascript:showDialog();'>" +
-        "</li>" +
-        "</ul>" +
-        "</div>" +
-        "</li>";
-        $api.removeCls('footer', 'hide');
+      $api.text('currentStatus', data.ZT);      
+      $api.text('orderTime', data.JieKuanShiJian);
+      $api.removeCls('footer', 'hide');
     }
 
     function sethtml(data) {
