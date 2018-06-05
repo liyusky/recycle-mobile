@@ -218,6 +218,16 @@ header .header-title {
   text-align: center;
   margin-top: 15vw;
 }
+.register-tip{
+  display: -webkit-box;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+}
 .register p{
   display: inline-block;
   color: #1e91fd;
@@ -225,6 +235,7 @@ header .header-title {
   font-size: 4vw;
 }
 .more{
-  width: 2.6vw;
-  height: 2.6vw;
+  width: 4vw;
+  height: 4vw;
+  margin-left: 1vw;
 }
