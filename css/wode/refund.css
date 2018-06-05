@@ -32,6 +32,10 @@ a {
   color: none;
 }
 
+body{
+  padding-top: 17.2vw
+}
+
 .header {
   width: 100%;
   height: 17.2vw;
@@ -123,7 +127,7 @@ header .header-title {
   font-size: 4.66667vw;
 }
 
- .money {
+ .item-money {
   height: 13.2vw;
   border-bottom: 1px solid #efefef;
   background: #fff;
@@ -131,48 +135,48 @@ header .header-title {
   line-height: 13.2vw;
 }
 
- .money .sum {
+ .item-money .item-sum {
   font-size: 4vw;
   float: left;
   margin-left: 4vw;
 }
 
- .money .price {
+ .item-money .item-price {
   margin-left: 10vw;
   font-size: 4.26667vw;
   float: left;
 }
 
- .money .explain {
+ .item-money .explain {
   float: right;
   margin-right: 5.2vw;
   color: #666;
 }
 
- .money .explain img {
+ .item-money .explain img {
   width: 4vw;
   height: 4vw;
   float: left;
   margin-top: 4.66667vw;
 }
 
- .money .explain .explain-text {
+ .item-money .explain .explain-text {
   display: inline-block;
   margin-left: 0.8vw;
   font-size: 3.73333vw;
 }
 
- .select {
+ .item-select {
   height: 14.53333vw;
   line-height: 14.53333vw;
 }
 
- .select p {
+ .item-select p {
   padding-left: 4vw;
   font-size: 4vw;
 }
 
- .bank .banklist li {
+ .item-bank .item-banklist li {
   padding-left: 4vw;
   height: 17.33333vw;
   border-bottom: 1px solid #efefef;
@@ -188,7 +192,7 @@ header .header-title {
   -webkit-justify: space-between;
 }
 
- .bank .banklist li .pay-type {
+ .item-bank .item-banklist li .pay-type {
     display: flex;
     display: -webkit-box;
     display: -webkit-flex;
@@ -206,27 +210,27 @@ header .header-title {
    -webkit-justify: space-between;
 }
 
- .bank .banklist li .pay-type .alipay {
+ .item-bank .item-banklist li .pay-type .alipay {
   margin-top: 1.33333vw;
 }
 
-.bank .banklist li .bankname{
+.item-bank .item-banklist li .bankname{
   width: 100%;
 }
 
- .bank .banklist li .pay-type img {
+ .item-bank .item-banklist li .pay-type img {
   width: 8vw;
   height: 8vw;
   float: left;
 }
 
- .bank .banklist li .pay-type .bank-name {
+ .item-bank .item-banklist li .pay-type .bank-name {
   margin-left: 4.13333vw;
   font-size: 4.26667vw;
   line-height: 8vw;
 }
 
- .bank .banklist li .pay-type .cardnum {
+ .item-bank .item-banklist li .pay-type .cardnum {
   font-size: 3.2vw;
   float: left;
   margin-top: 1.2vw;
@@ -235,13 +239,13 @@ header .header-title {
   bottom: -2.66667vw;
 }
 
- .bank .banklist li .pay-type .cardnum .pass {
+ .item-bank .item-banklist li .pay-type .cardnum .pass {
   margin-top: 0.4vw;
   float: left;
   margin-right: 2.93333vw;
 }
 
- .bank .banklist li .icon{
+ .item-bank .item-banklist li .icon{
     width: 8vw; 
     height: 8vw;
     vertical-align: -0.15em;
@@ -249,7 +253,7 @@ header .header-title {
     overflow: hidden;
 }
 
- .bank .banklist li .bankicon{
+ .item-bank .item-banklist li .bankicon{
   width: 10vw; 
   height: 10vw;
   vertical-align: -0.15em;
@@ -257,22 +261,22 @@ header .header-title {
   overflow: hidden;
 }
 
- .bank .banklist li .pay-type .cardnum span {
+ .item-bank .item-banklist li .pay-type .cardnum span {
   float: left;
 }
 
- .bank .banklist li .pay-type .cardnum .card-type {
+ .item-bank .item-banklist li .pay-type .cardnum .card-type {
 
   margin-left: 1vw;
 }
 
- .bank .banklist li .pay-type .message {
+ .item-bank .item-banklist li .pay-type .message {
   font-size: 3.2vw;
   padding-left: 2.13333vw;
   float: left;
 }
 
- .bank .banklist li .select {
+ .item-bank .item-banklist li .item-select {
   width: 7.33333vw;
   height: 7.33333vw;
   border-radius: 100%;
@@ -281,11 +285,11 @@ header .header-title {
   position: relative;
 }
 
- .bank .banklist li .selectd {
+ .item-bank .item-banklist li .selectd {
   border: none;
 }
 
- .bank .banklist li .selectd img {
+ .item-bank .item-banklist li .selectd img {
   width: 7.33333vw;
   height: 7.33333vw;
   position: absolute;
