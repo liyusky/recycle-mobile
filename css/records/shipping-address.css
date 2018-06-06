@@ -172,6 +172,10 @@ header .compile {
   white-space: nowrap
 }
 
+.hide{
+  display: none!important;
+}
+
 .shipping-address .noaddress {
   display: block;
   margin: 12.93333vw auto;
